@@ -5,12 +5,32 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Thu Apr 14 12:40:39 2016 Antoine Baché
+** Last update Fri Apr 15 01:37:52 2016 Ludovic Petrenko
 */
 
 #ifndef	RAYTRACER2_H_
 # define RAYTRACER2_H_
 
 # include <lapin.h>
+# include <stdbool.h>
+# include "engine/scene.h"
+# include "config.h"
+# include "events.h"
+
+# define DEFAULT_WIDTH		1280
+# define DEFAULT_HEIGHT		720
+# define WIN_NAME		"Ray Ta Soeur"
+
+typedef struct		s_data
+{
+  t_bunny_window	*win;
+  t_bunny_pixelarray	*render;
+  int			width;
+  int			height;
+  int			log_level;
+  t_scene		*scene;
+  t_config		config;
+  bool			events[NB_EVENT_KEY];
+}			t_data;
 
 #endif /* RAYTRACER2_H_ */
