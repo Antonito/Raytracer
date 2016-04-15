@@ -5,12 +5,17 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Fri Apr 15 01:37:52 2016 Ludovic Petrenko
+** Last update Fri Apr 15 11:43:04 2016 Antoine Baché
 */
 
 #ifndef	RAYTRACER2_H_
 # define RAYTRACER2_H_
 
+# ifdef	__APPLE__
+#  include "OpenCL/opencl.h"
+# else
+#  include "CL/cl.h"
+# endif
 # include <lapin.h>
 # include <stdbool.h>
 # include "engine/scene.h"
