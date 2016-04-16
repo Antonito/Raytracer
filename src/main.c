@@ -5,12 +5,17 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:38:13 2016 Antoine Baché
-** Last update Thu Apr 14 12:39:18 2016 Antoine Baché
+** Last update Sat Apr 16 18:16:09 2016 Ludovic Petrenko
 */
 
-int	main(int ac, char **av, char **env)
+#include "raytracer.h"
+
+int		main(int ac, char **av, char **env)
 {
-  if (!*env)
+  t_data	*data;
+
+  if (!*env || init_data(ac, av, &data) ||
+      launch_raytracer(data))
     {
 #ifdef	DEBUG
       write(1, "Status: KO\n", 11);

@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:33:45 2016 Ludovic Petrenko
-** Last update Fri Apr 15 01:28:46 2016 Ludovic Petrenko
+** Last update Sat Apr 16 17:07:25 2016 Ludovic Petrenko
 */
 
 #ifndef OBJECT_H_
@@ -26,6 +26,7 @@ typedef enum	e_obj_type
 
 typedef struct	s_obj
 {
+  t_obj_type	type;
   t_vec3	pos;
   t_vec3	rot;
   unsigned int	color;
@@ -35,5 +36,62 @@ typedef struct	s_obj
   struct s_obj	*sub;
   t_intersect	(*get_intersect)(void *, t_ray);
 }		t_obj;
+
+typedef struct	s_sphere
+{
+  t_obj_type	type;
+  t_vec3	pos;
+  t_vec3	rot;
+  unsigned int	color;
+  double	opacity;
+  double	reflectivity;
+  struct s_obj	*next;
+  struct s_obj	*sub;
+  t_intersect	(*get_intersect)(void *, t_ray);
+  double	radius;
+}		t_sphere;
+
+typedef struct	s_plane
+{
+  t_obj_type	type;
+  t_vec3	pos;
+  t_vec3	rot;
+  unsigned int	color;
+  double	opacity;
+  double	reflectivity;
+  struct s_obj	*next;
+  struct s_obj	*sub;
+  t_intersect	(*get_intersect)(void *, t_ray);
+}		t_plane;
+
+typedef struct	s_cylinder
+{
+  t_obj_type	type;
+  t_vec3	pos;
+  t_vec3	rot;
+  unsigned int	color;
+  double	opacity;
+  double	reflectivity;
+  struct s_obj	*next;
+  struct s_obj	*sub;
+  t_intersect	(*get_intersect)(void *, t_ray);
+  double	radius;
+  double	height;
+}		t_cylinder;
+
+typedef struct	s_cone
+{
+  t_obj_type	type;
+  t_vec3	pos;
+  t_vec3	rot;
+  unsigned int	color;
+  double	opacity;
+  double	reflectivity;
+  struct s_obj	*next;
+  struct s_obj	*sub;
+  t_intersect	(*get_intersect)(void *, t_ray);
+  double	angle;
+  double	height;
+}		t_cone;
 
 #endif /* !OBJECT_H_ */

@@ -5,12 +5,13 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:53:20 2016 Ludovic Petrenko
-** Last update Fri Apr 15 01:30:11 2016 Ludovic Petrenko
+** Last update Sat Apr 16 16:57:13 2016 Ludovic Petrenko
 */
 
 #ifndef SCENE_H_
 # define SCENE_H_
 
+# include <lapin.h>
 # include "camera.h"
 # include "object.h"
 # include "light.h"
@@ -22,6 +23,7 @@ typedef struct		s_scene
   t_obj			*objs;
   int			nb_light;
   t_light		*lights;
+  t_bunny_pixelarray	*cache;
   struct s_scene	*prev;
   struct s_scene	*next;
 }			t_scene;

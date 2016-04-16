@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:57:52 2016 Ludovic Petrenko
-** Last update Fri Apr 15 01:01:07 2016 Ludovic Petrenko
+** Last update Sat Apr 16 17:09:43 2016 Ludovic Petrenko
 */
 
 #ifndef LIGHT_H_
@@ -26,6 +26,7 @@ typedef struct	s_light
   t_vec3	pos;
   t_vec3	dir;
   unsigned int	color;
+  double	radius;
   double	power;
 }		t_light;
 
