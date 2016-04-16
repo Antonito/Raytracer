@@ -5,21 +5,27 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 16 16:32:45 2016 Ludovic Petrenko
-** Last update Sat Apr 16 18:14:06 2016 Ludovic Petrenko
+** Last update Sat Apr 16 18:45:57 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
 
-t_bunny_response	main_events(t_bunny_event_state s,
-				    t_bunny_keysym k,
+t_bunny_response	main_events(UNUSED t_bunny_event_state s,
+				    UNUSED t_bunny_keysym k,
 				    t_data *data)
 {
+  static const bool	*keys = NULL;
+
+  if (!keys)
+    keys = bunny_get_keyboard();
+  (void)data;
   return (GO_ON);
 }
 
 t_bunny_response	main_loop(t_data *data)
 {
   /*  set_frame(data);*/
+  (void)data;
   return (GO_ON);
 }
 

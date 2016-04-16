@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Sat Apr 16 18:16:32 2016 Ludovic Petrenko
+** Last update Sat Apr 16 18:43:11 2016 Ludovic Petrenko
 */
 
 #ifndef	RAYTRACER2_H_
@@ -26,6 +26,7 @@
 # define DEFAULT_WIDTH		1280
 # define DEFAULT_HEIGHT		720
 # define WIN_NAME		"Ray Ta Soeur"
+# define UNUSED		__attribute__((unused))
 
 typedef struct		s_data
 {
@@ -41,8 +42,8 @@ typedef struct		s_data
 
 int			init_data(int ac, char **av, t_data **data);
 int			launch_raytracer(t_data *data);
-t_bunny_response	main_events(t_bunny_event_state s,
-				    t_bunny_keysym k,
+t_bunny_response	main_events(UNUSED t_bunny_event_state s,
+				    UNUSED t_bunny_keysym k,
 				    t_data *data);
 t_bunny_response	main_loop(t_data *data);
 int			set_frame(t_data *data);
