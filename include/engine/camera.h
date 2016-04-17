@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:23:28 2016 Ludovic Petrenko
-** Last update Fri Apr 15 00:32:51 2016 Ludovic Petrenko
+** Last update Sun Apr 17 16:38:51 2016 Ludovic Petrenko
 */
 
 #ifndef CAMERA_H_
@@ -17,8 +17,7 @@ typedef struct	s_camera
 {
   t_vec3	pos;
   t_vec3	dir;
-  t_vec3	up;
-  double	z_near;
+  double        focale;
   double	fov;
 }		t_camera;
 

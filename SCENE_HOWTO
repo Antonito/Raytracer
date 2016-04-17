@@ -1,0 +1,85 @@
+ ______________________________
+|			       |
+| HOW TO CREATE YOUR OWN SCENE |
+|______________________________|
+
+We will present how to format your .ini file.
+
+[This_is_a_scope]
+parameter1=0
+parameter2=0.1,0.5,200.0
+parameter3="FooFoo", "BarBar"
+
+This is an example of a scope. Each parameter has 1 or more index.
+The data type is not important, but has to be valid.
+(ex: if we wait a number, "Hello" is not valid...)
+
+
+The color parameters use hexadecimal notation:
+0xAABBGGRR or 0xBBGGRR
+(A -> Alpha | B -> Blue | G -> Green | R -> Red)
+
+The position/direction parameters are points in space or 3D vectors:
+x,y,z
+
+Rotation has the same notation (x,y,z) but is different:
+It's the rotation angle applied on axis x, y, and z for that object, in this precise order.
+Those angles are in degree.
+
+
+The scopes:
+
+[scene]
+width=1920
+height=1080
+background_color=0xFF00AA
+
+If you use this scope, the name should always be "scene".
+The parameters are all optionnals, if you don't use it, default values will be used.
+
+
+[camera]
+position=-5.0,0.1,0.3
+direction=0,0,0
+focale=0.1
+fov=90
+
+If you use this scope, the name should always be "scene".
+The parameters are all optionnals, if you don't use it, default values will be used.
+
+
+[mat_glass]
+color=0xFF00AA
+opacity=0.3
+reflectivity=0.4
+fresnel=0.8
+
+This is a material. The name should always begin with "mat_".
+They will be applied on the objects. Those are visual properties.
+You can have more than one material.
+The parameters are all optionnals, if you don't use it, default values will be used.
+
+
+[obj_1]
+type=sphere
+position=0,0,0
+rotation=0,0,0
+material=mat_glass
+
+This is an object. The name should always begin with "obj_".
+You can choose the type between [sphere | plane | cylinder | cone].
+You can also choose the material with his scope name.
+The parameters are all optionnals, if you don't use it, default values will be used.
+
+
+[light_1]
+type=spot
+position=0,3,5
+direction=3,2.5,1
+color=0xFFFF00
+radius=0.5
+power=10
+
+This is a light. The name should always begin with "light_".
+You can choose the type between [point | directionnal | spot].
+The parameters are all optionnals, if you don't use it, default values will be used.
