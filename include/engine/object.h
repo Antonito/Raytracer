@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:33:45 2016 Ludovic Petrenko
-** Last update Sat Apr 16 17:07:25 2016 Ludovic Petrenko
+** Last update Sun Apr 17 00:16:09 2016 Ludovic Petrenko
 */
 
 #ifndef OBJECT_H_
@@ -18,11 +18,19 @@
 typedef enum	e_obj_type
   {
     NONE = -1,
+    LIGHT,
     SPHERE,
     PLANE,
     CYLINDER,
     CONE
   }		t_obj_type;
+
+typedef enum	e_light_type
+  {
+    POINT,
+    DIRECTIONNAL,
+    SPOT
+  }		t_light_type;
 
 typedef struct	s_obj
 {
@@ -36,6 +44,20 @@ typedef struct	s_obj
   struct s_obj	*sub;
   t_intersect	(*get_intersect)(void *, t_ray);
 }		t_obj;
+
+typedef struct	s_light
+{
+  t_obj_type	type;
+  t_vec3	pos;
+  t_vec3	dir;
+  unsigned int	color;
+  double        radius;
+  double        power;
+  struct s_obj	*next;
+  struct s_obj	*sub;
+  t_intersect	(*get_intersect)(void *, t_ray);
+  t_light_type	light_type;
+}		t_light;
 
 typedef struct	s_sphere
 {

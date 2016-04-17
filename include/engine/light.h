@@ -5,20 +5,13 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:57:52 2016 Ludovic Petrenko
-** Last update Sat Apr 16 17:09:43 2016 Ludovic Petrenko
+** Last update Sun Apr 17 16:03:21 2016 Ludovic Petrenko
 */
 
 #ifndef LIGHT_H_
 # define LIGHT_H_
 
 # include "vector.h"
-
-typedef enum	e_light_type
-  {
-    POINT,
-    DIRECTIONNAL,
-    SPOT
-  }		t_light_type;
 
 typedef struct	s_light
 {
