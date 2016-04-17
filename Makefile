@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sat Apr 16 18:12:01 2016 Ludovic Petrenko
+## Last update Sun Apr 17 17:36:42 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -16,13 +16,23 @@ SRC_FILES=		init_data.c			\
 			launch.c			\
 			main.c
 
+NETWORK_PREFIX=		src/cluster/
+
+NETWORK_FILES=		connection.c			\
+			packet.c			\
+			server.c
+
 TOOLS_PREFIX=		src/tools/
 
 TOOLS_FILES=		memory.c
 
 SRC=			$(addprefix $(SRC_PREFIX),$(SRC_FILES))
 
+SRC_NETWORK=		$(addprefix $(NETWORK_PREFIX),$(NETWORK_FILES))
+
 SRC_TOOLS=		$(addprefix $(TOOLS_PREFIX),$(TOOLS_FILES))
+
+SRC+=			$(SRC_NETWORK)
 
 SRC+=			$(SRC_TOOLS)
 
@@ -41,6 +51,7 @@ LIB=			-L/usr/local/lib		\
 			-lstdc++ 			\
 			-ldl 				\
 			-lOpenCL			\
+			-lpthread			\
 			-lm
 
 CFLAGS=			$(HEAD) -W -Wall -Wextra
