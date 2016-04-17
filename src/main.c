@@ -5,9 +5,10 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:38:13 2016 Antoine Baché
-** Last update Sat Apr 16 18:16:09 2016 Ludovic Petrenko
+** Last update Sun Apr 17 17:45:30 2016 Antoine Baché
 */
 
+#include <unistd.h>
 #include "raytracer.h"
 
 int		main(int ac, char **av, char **env)

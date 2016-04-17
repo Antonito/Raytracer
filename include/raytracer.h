@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Sat Apr 16 18:43:11 2016 Ludovic Petrenko
+** Last update Sun Apr 17 17:52:03 2016 Antoine Baché
 */
 
 #ifndef	RAYTRACER2_H_
@@ -28,6 +28,16 @@
 # define WIN_NAME		"Ray Ta Soeur"
 # define UNUSED		__attribute__((unused))
 
+typedef struct		s_network
+{
+  int			fd;
+  int			port;
+  int			max_client;
+  int			*clients;
+  bool			run;
+  bool			all_connected;
+}			t_network;
+
 typedef struct		s_data
 {
   t_bunny_window	*win;
@@ -37,6 +47,7 @@ typedef struct		s_data
   bool			fullscreen;
   t_scene		*scene;
   t_config		config;
+  t_network		network;
   bool			events[NB_EVENT_KEY];
 }			t_data;
 
