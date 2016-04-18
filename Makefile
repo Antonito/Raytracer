@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sun Apr 17 17:36:42 2016 Antoine Baché
+## Last update Mon Apr 18 11:11:57 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -22,13 +22,22 @@ NETWORK_FILES=		connection.c			\
 			packet.c			\
 			server.c
 
+CLIENT_PREFIX=		src/client/
+
+CLIENT_FILES=		main.c				\
+			loop.c
+
 TOOLS_PREFIX=		src/tools/
 
-TOOLS_FILES=		memory.c
+TOOLS_FILES=		memory.c			\
+			my_strlen.c			\
+			my_getnbr.c
 
 SRC=			$(addprefix $(SRC_PREFIX),$(SRC_FILES))
 
 SRC_NETWORK=		$(addprefix $(NETWORK_PREFIX),$(NETWORK_FILES))
+
+SRC_CLIENT=		$(addprefix $(CLIENT_PREFIX),$(CLIENT_FILES))
 
 SRC_TOOLS=		$(addprefix $(TOOLS_PREFIX),$(TOOLS_FILES))
 
@@ -36,7 +45,11 @@ SRC+=			$(SRC_NETWORK)
 
 SRC+=			$(SRC_TOOLS)
 
+SRC_CLIENT+=		$(SRC_TOOLS)
+
 NAME=			raytracer2
+
+NAME_CLIENT=		client_raytracer2
 
 HEAD=			-Iinclude			\
 			-I/home/${USER}/.froot/include
@@ -67,6 +80,13 @@ RM=			rm -f
 
 OBJ=			$(SRC:.c=.o)
 
+OBJ_CLIENT=		$(SRC_CLIENT:.c=.o)
+
+$(NAME_CLIENT): $(OBJ_CLIENT)
+	@$(CC) $(OBJ_CLIENT) -o $(NAME_CLIENT) $(LIB)
+	@echo -ne '\e[1m\e[32m[ OK ] \e[0m'
+	@echo "Compiled client"
+
 $(NAME): $(OBJ)
 	@$(CC) $(OBJ) -o $(NAME) $(LIB)
 	@echo -ne '\e[1m\e[32m[ OK ] \e[0m'
@@ -77,7 +97,7 @@ $(NAME): $(OBJ)
 	@echo -ne '\e[1m\e[32m[ OK ] \e[0m'
 	@echo "Compiling" $<
 
-all:	$(NAME) infos
+all:	$(NAME) $(NAME_CLIENT) infos
 
 infos:
 ifeq ($(DEBUG), yes)
@@ -91,11 +111,13 @@ endif
 
 clean:
 	@$(RM) $(OBJ)
+	@$(RM) $(OBJ_CLIENT)
 	@echo -ne '\e[1m\e[31m[ RM ] \e[0m'
 	@echo "Removing OBJ files ..."
 
 fclean:	clean
 	@$(RM) $(NAME)
+	@$(RM) $(NAME_CLIENT)
 	@echo -ne '\e[1m\e[31m[ RM ] \e[0m'
 	@echo "Removing binaries ..."
 
