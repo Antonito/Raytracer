@@ -5,13 +5,13 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Apr 18 11:20:41 2016 Antoine Baché
-** Last update Mon Apr 18 12:39:46 2016 Antoine Baché
+** Last update Mon Apr 18 12:45:44 2016 Antoine Baché
 */
 
 #include <unistd.h>
 #include "noise.h"
 
-double		perlin_noise_2d(t_vec2 *pos, float scale)
+static double  	perlin_noise_2d(t_vec2 *pos, float scale)
 {
   static t_vec2	*table = NULL;
 
@@ -20,7 +20,7 @@ double		perlin_noise_2d(t_vec2 *pos, float scale)
   return (0.0);
 }
 
-double		perlin_noise_3d(t_vec3 *pos, float scale)
+static double  	perlin_noise_3d(t_vec3 *pos, float scale)
 {
   static t_vec3	*table = NULL;
 
@@ -29,7 +29,7 @@ double		perlin_noise_3d(t_vec3 *pos, float scale)
   return (0.0);
 }
 
-double		perlin_noise_4d(t_vec4 *pos, float scale)
+static double  	perlin_noise_4d(t_vec4 *pos, float scale)
 {
   static t_vec4	*table = NULL;
 
