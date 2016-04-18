@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Mon Apr 18 11:17:36 2016 Antoine Baché
+## Last update Mon Apr 18 12:39:22 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -15,6 +15,13 @@ SRC_PREFIX=		src/
 SRC_FILES=		init_data.c			\
 			launch.c			\
 			main.c
+
+NOISE_PREFIX=		src/noise/
+
+NOISE_FILES=		perlin.c			\
+			perlin_tables.c			\
+			perlin_tables_4d.c		\
+			perlin_tables_4d_next.c
 
 NETWORK_PREFIX=		src/cluster/
 
@@ -36,11 +43,15 @@ TOOLS_FILES=		memory.c			\
 
 SRC=			$(addprefix $(SRC_PREFIX),$(SRC_FILES))
 
+SRC_NOISE=		$(addprefix $(NOISE_PREFIX),$(NOISE_FILES))
+
 SRC_NETWORK=		$(addprefix $(NETWORK_PREFIX),$(NETWORK_FILES))
 
 SRC_CLIENT=		$(addprefix $(CLIENT_PREFIX),$(CLIENT_FILES))
 
 SRC_TOOLS=		$(addprefix $(TOOLS_PREFIX),$(TOOLS_FILES))
+
+SRC+=			$(SRC_NOISE)
 
 SRC+=			$(SRC_NETWORK)
 
