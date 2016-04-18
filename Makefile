@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Mon Apr 18 11:11:57 2016 Antoine Baché
+## Last update Mon Apr 18 11:17:36 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -31,7 +31,8 @@ TOOLS_PREFIX=		src/tools/
 
 TOOLS_FILES=		memory.c			\
 			my_strlen.c			\
-			my_getnbr.c
+			my_getnbr.c			\
+			my_getdouble.c
 
 SRC=			$(addprefix $(SRC_PREFIX),$(SRC_FILES))
 
