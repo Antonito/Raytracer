@@ -5,11 +5,12 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 23:13:18 2016 Ludovic Petrenko
-** Last update Tue Apr 19 23:38:38 2016 Ludovic Petrenko
+** Last update Tue Apr 19 23:48:49 2016 Antoine Baché
 */
 
 #include "raytracer.h"
 #include "loader.h"
+#include "tools/str.h"
 
 int		load_network(t_data *data, const t_bunny_ini *ini)
 {

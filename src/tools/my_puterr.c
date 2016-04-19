@@ -5,9 +5,10 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 23:21:03 2016 Ludovic Petrenko
-** Last update Tue Apr 19 23:22:19 2016 Ludovic Petrenko
+** Last update Tue Apr 19 23:48:23 2016 Antoine Baché
 */
 
+#include <unistd.h>
 #include "tools/str.h"
 
 void	my_puterr(const char *str)
