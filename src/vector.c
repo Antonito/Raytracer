@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon Apr 18 01:41:06 2016 Ludovic Petrenko
-** Last update Mon Apr 18 01:46:39 2016 Ludovic Petrenko
+** Last update Tue Apr 19 19:05:56 2016 Ludovic Petrenko
 */
 
 #include "engine/vector.h"
@@ -13,25 +13,51 @@
 
 t_vec3		vec3(double x, double y, double z)
 {
-  return ((t_vec3){x, y, z});
+  t_vec3	new;
+
+  new.x = x;
+  new.y = y;
+  new.z = z;
+  return (new);
 }
 
 t_vec4		vec4(double x, double y, double z, double w)
 {
-  return ((t_vec4){x, y, z, w});
+  t_vec4	new;
+
+  new.x = x;
+  new.y = y;
+  new.z = z;
+  new.w = w;
+  return (new);
 }
 
 t_ivec2		ivec2(int x, int y)
 {
-  return ((t_ivec2){x, y});
+  t_ivec2	new;
+
+  new.x = x;
+  new.y = y;
+  return (new);
 }
 
 t_vec3		vec4_to_3(t_vec4 v)
 {
-  return ((t_vec3){v.x, v.y, v.z});
+  t_vec3	new;
+
+  new.x = v.x;
+  new.y = v.y;
+  new.z = v.z;
+  return (new);
 }
 
 t_vec4		vec3_to_4(t_vec3 v, double w)
 {
-  return ((t_vec4){v.x, v.y, v.z, w});
+  t_vec4	new;
+
+  new.x = v.x;
+  new.y = v.y;
+  new.z = v.z;
+  new.w = w;
+  return (new);
 }

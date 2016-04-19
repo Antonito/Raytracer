@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Tue Apr 19 11:57:00 2016 Antoine Baché
+## Last update Tue Apr 19 20:09:26 2016 Ludovic Petrenko
 ##
 
 DEBUG=			yes
@@ -14,7 +14,9 @@ SRC_PREFIX=		src/
 
 SRC_FILES=		init_data.c			\
 			launch.c			\
-			main.c
+			main.c				\
+			vector.c			\
+			vector_op.c
 
 NOISE_PREFIX=		src/noise/
 
@@ -41,12 +43,26 @@ CLIENT_PREFIX=		src/client/
 CLIENT_FILES=		main.c				\
 			loop.c
 
+LOADER_PREFIX=		src/loader/
+
+LOADER_FILES=		count.c				\
+			get_material.c			\
+			load_light_type.c		\
+			load_mat.c			\
+			load_obj.c			\
+			load_obj_type.c			\
+			load_scene.c			\
+			obj_type.c
+
 TOOLS_PREFIX=		src/tools/
 
 TOOLS_FILES=		memory.c			\
 			my_strlen.c			\
 			my_getnbr.c			\
-			my_getdouble.c
+			my_getdouble.c			\
+			my_strcmp.c			\
+			my_strncmp.c			\
+			my_gethexa.c
 
 SRC=			$(addprefix $(SRC_PREFIX),$(SRC_FILES))
 
@@ -56,6 +72,8 @@ SRC_NETWORK=		$(addprefix $(NETWORK_PREFIX),$(NETWORK_FILES))
 
 SRC_CLIENT=		$(addprefix $(CLIENT_PREFIX),$(CLIENT_FILES))
 
+SRC_LOADER=		$(addprefix $(LOADER_PREFIX),$(LOADER_FILES))
+
 SRC_TOOLS=		$(addprefix $(TOOLS_PREFIX),$(TOOLS_FILES))
 
 SRC+=			$(SRC_NOISE)
@@ -63,6 +81,8 @@ SRC+=			$(SRC_NOISE)
 SRC+=			$(SRC_NETWORK)
 
 SRC+=			$(SRC_TOOLS)
+
+SRC+=			$(SRC_LOADER)
 
 SRC_CLIENT+=		$(SRC_TOOLS)
 

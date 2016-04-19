@@ -5,10 +5,11 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 22:32:39 2016 Ludovic Petrenko
-** Last update Sat Apr 16 18:46:51 2016 Ludovic Petrenko
+** Last update Tue Apr 19 22:06:48 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
+#include "loader.h"
 
 int	init_data(int ac, char **av, t_data **data)
 {
@@ -21,5 +22,13 @@ int	init_data(int ac, char **av, t_data **data)
       !((*data)->render = bunny_new_pixelarray((*data)->width,
 					       (*data)->height)))
     return (1);
+  if (ac == 2)
+    if (!((*data)->scene = load_scene(av[1])))
+      return (1);
+  printf("%p\n", (*data)->scene);
+  printf("0x%08.8X\n", (*data)->scene->mat->color);
+  printf("%.2f\n", (*data)->scene->mat->opacity);
+  printf("%.2f\n", (*data)->scene->mat->reflectivity);
+  printf("%.2f\n", (*data)->scene->mat->fresnel);
   return (0);
 }
