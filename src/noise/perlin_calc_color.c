@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Apr 19 10:21:35 2016 Antoine Baché
-** Last update Tue Apr 19 11:31:32 2016 Antoine Baché
+** Last update Tue Apr 19 12:01:32 2016 Antoine Baché
 */
 
 #include <stdarg.h>
@@ -21,8 +21,8 @@ static void	perlin_calc_color_2d(t_perlin_color2 *color, t_vec2 *pos,
   float		tmp_y;
 
   va_start(args, origin);
-  gradient = va_args(args, t_gradient2 *);
-  table = va_args(args, t_vec2 *);
+  gradient = va_arg(args, t_gradient2 *);
+  table = va_arg(args, t_vec2 *);
   va_end(args);
   tmp_x = pos->x - origin->x;
   tmp_y = pos->y - origin->y;
@@ -45,8 +45,8 @@ static void	perlin_calc_color_3d(t_perlin_color3 *c, t_vec3 *pos,
   t_vec3	tmp;
 
   va_start(args, origin);
-  g = va_args(args, t_gradient3 *);
-  t = va_args(args, t_vec3 *);
+  g = va_arg(args, t_gradient3 *);
+  t = va_arg(args, t_vec3 *);
   va_end(args);
   tmp.x = pos->x - origin->x;
   tmp.y = pos->y - origin->y;
@@ -72,8 +72,8 @@ static void	perlin_calc_color_4d(t_perlin_color4 *color, t_vec4 *pos,
   t_gradient4	*gradient;
 
   va_start(args, origin);
-  gradient = va_args(args, t_gradient4 *);
-  table = va_args(args, t_vec4 *);
+  gradient = va_arg(args, t_gradient4 *);
+  table = va_arg(args, t_vec4 *);
   va_end(args);
 }
 

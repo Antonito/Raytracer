@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Apr 19 09:16:10 2016 Antoine Baché
-** Last update Tue Apr 19 09:30:11 2016 Antoine Baché
+** Last update Tue Apr 19 12:03:39 2016 Antoine Baché
 */
 
 #include <stdarg.h>
@@ -56,11 +56,11 @@ static void		perlin_calc_init_4d(t_vec4 *pos, t_ivec4 *origin,
 void		perlin_calc_init(void *pos, void *origin, void *mask, ...)
 {
   va_list	args;
-  float		scale;
+  double       	scale;
   int		dim;
 
   va_start(args, mask);
-  scale = va_arg(args, float);
+  scale = va_arg(args, double);
   dim = va_arg(args, int);
   va_end(args);
   if (dim == 2)

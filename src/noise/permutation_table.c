@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Apr 18 12:43:11 2016 Antoine Baché
-** Last update Mon Apr 18 19:16:37 2016 Antoine Baché
+** Last update Tue Apr 19 12:06:40 2016 Antoine Baché
 */
 
 #include "tools/memory.h"
@@ -14,9 +14,9 @@ static unsigned char	*sort_table(unsigned char *table, unsigned char tmp[])
 {
   int			i;
 
-  i = 0;
-  while (i < 512)
-    table[i++] = tmp & 255;
+  i = -1;
+  while (++i < 512)
+    table[i] = tmp[i & 255] & 255;
   return (table);
 }
 
@@ -40,7 +40,7 @@ unsigned char		*permutation_table(void)
      241, 81, 51, 145, 235, 249, 14, 239, 107, 49, 192, 214, 31, 181, 199,
      106, 157, 184, 84, 204, 176, 115, 121, 50, 45, 127, 4, 150, 254, 138,
      236, 205, 93, 222, 114, 67, 29, 24, 72, 243, 141, 128, 195, 78, 66, 215,
-     61, 156, 180}
+     61, 156, 180};
 
   if (!(table = my_malloc(sizeof(unsigned char) * 512)))
     return (NULL);

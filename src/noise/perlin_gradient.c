@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Apr 19 08:54:01 2016 Antoine Baché
-** Last update Tue Apr 19 09:15:12 2016 Antoine Baché
+** Last update Tue Apr 19 12:02:50 2016 Antoine Baché
 */
 
 #include "noise.h"
@@ -42,7 +42,7 @@ static void	calc_perlin_gradient_4d(t_gradient4 *grad, t_mask4 *m,
   grad->e = p[m->x + p[m->y + p[m->z + 1 + p[m->w]]]] & 31;
   grad->f = p[m->x + 1 + p[m->y + p[m->z + 1 + p[m->w]]]] & 31;
   grad->g = p[m->x + p[m->y + 1 + p[m->z + 1 + p[m->w]]]] & 31;;
-  grad->h = p[m->x + 1 + p[m->y + 1 + p[m->z + 1 p[m->w]]]] & 31;
+  grad->h = p[m->x + 1 + p[m->y + 1 + p[m->z + 1 + p[m->w]]]] & 31;
   grad->i = p[m->x + p[m->y + p[m->z + p[m->w + 1]]]] & 31;
   grad->j = p[m->x + 1 + p[m->y + p[m->z + p[m->w + 1]]]] & 31;
   grad->k = p[m->x + p[m->y + 1 + p[m->z + p[m->w + 1]]]] & 31;

@@ -1,11 +1,11 @@
 /*
-1;4401;0c** noise.h for Raytracer2 in /gfx_raytracer2/include
+** noise.h for Raytracer2 in /gfx_raytracer2/include
 **
 ** Made by Antoine Baché
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Apr 18 11:54:08 2016 Antoine Baché
-** Last update Tue Apr 19 11:48:35 2016 Antoine Baché
+** Last update Tue Apr 19 12:05:00 2016 Antoine Baché
 */
 
 #ifndef NOISE_H_
@@ -101,6 +101,7 @@ typedef struct	s_perlin_color4
 
 double		perlin_noise(void *, float, int);
 
+unsigned char	*permutation_table(void);
 t_vec2		*perlin_2d_table(void);
 t_vec3		*perlin_3d_table(void);
 t_vec4		*perlin_4d_table(void);

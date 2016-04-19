@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Tue Apr 19 11:34:56 2016 Antoine Baché
+## Last update Tue Apr 19 11:57:00 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -21,6 +21,7 @@ NOISE_PREFIX=		src/noise/
 NOISE_FILES=		perlin.c			\
 			perlin_calc_color.c		\
 			perlin_calc_init.c		\
+			perlin_calc_pixel.c		\
 			perlin_calc_smooth.c		\
 			perlin_calc_smooth_values.c	\
 			perlin_gradient.c		\
