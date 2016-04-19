@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Apr 18 11:54:08 2016 Antoine Baché
-** Last update Tue Apr 19 12:05:00 2016 Antoine Baché
+** Last update Tue Apr 19 18:33:05 2016 Antoine Baché
 */
 
 #ifndef NOISE_H_
@@ -13,6 +13,12 @@
 
 # include "tools/types.h"
 # include "engine/vector.h"
+
+typedef enum	e_perlin_state
+  {
+    DRAW,
+    FREE
+  }		t_perlin_state;
 
 typedef struct	s_mask2
 {
@@ -99,7 +105,7 @@ typedef struct	s_perlin_color4
   float		d[4];
 }		t_perlin_color4;
 
-double		perlin_noise(void *, float, int);
+double		perlin_noise(void *, float, int, t_perlin_state);
 
 unsigned char	*permutation_table(void);
 t_vec2		*perlin_2d_table(void);
@@ -111,6 +117,7 @@ void		calc_perlin_gradient(void *, void *, unsigned char *, int);
 void		perlin_calc_smooth_values(void *, void *, void *, int);
 void		perlin_calc_smooth(void *, void *, int);
 void		perlin_calc_color(void *, void *, void *, ...);
+double		perlin_calc_pixel_2d(t_perlin_color2 *, t_vec2 *);
 double		perlin_calc_pixel_3d(t_perlin_color3 *, t_vec3 *);
 double		perlin_calc_pixel_4d(t_perlin_color4 *, t_vec4 *);
 

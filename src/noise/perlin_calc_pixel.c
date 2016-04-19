@@ -5,10 +5,21 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Apr 19 11:35:24 2016 Antoine Baché
-** Last update Tue Apr 19 11:55:58 2016 Antoine Baché
+** Last update Tue Apr 19 18:36:27 2016 Antoine Baché
 */
 
 #include "noise.h"
+
+double		perlin_calc_pixel_2d(t_perlin_color2 *color, t_vec2 *smooth)
+{
+  double	tmp[2];
+  double	res;
+
+  tmp[0] = color->a + smooth->x * (color->b - color->a);
+  tmp[1] = color->c + smooth->x * (color->d - color->c);
+  res = tmp[0] + smooth->y * (tmp[1] - tmp[0]);
+  return (res);
+}
 
 double		perlin_calc_pixel_3d(t_perlin_color3 *color, t_vec3 *smooth)
 {
