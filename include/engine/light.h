@@ -5,14 +5,14 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:57:52 2016 Ludovic Petrenko
-** Last update Sun Apr 17 16:03:21 2016 Ludovic Petrenko
+** Last update Mon Apr 18 11:07:10 2016 Antoine Baché
 */
 
 #ifndef LIGHT_H_
 # define LIGHT_H_
 
 # include "vector.h"
-
+/*
 typedef struct	s_light
 {
   t_light_type	type;
@@ -22,5 +22,5 @@ typedef struct	s_light
   double	radius;
   double	power;
 }		t_light;
-
+*/
 #endif /* !LIGHT_H_ */

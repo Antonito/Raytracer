@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun Apr 17 16:29:27 2016 Antoine Baché
-** Last update Sun Apr 17 17:56:11 2016 Antoine Baché
+** Last update Mon Apr 18 10:14:56 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -56,7 +56,7 @@ static void		*tcp_thread(void *data_arg)
       write(2, "Error: Cannot listen\n", 21);
       return (NULL);
     }
-  write(1, "Press a key to start Raytracer2\n", 32);
+  write(1, "Waiting for clients...\n", 23);
   connect_to_server(data);
   server_loop(data);
   return (NULL);

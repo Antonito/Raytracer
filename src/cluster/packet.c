@@ -5,12 +5,12 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun Apr 17 15:17:11 2016 Antoine Baché
-** Last update Sun Apr 17 17:41:49 2016 Antoine Baché
+** Last update Mon Apr 18 10:28:11 2016 Antoine Baché
 */
 
 #include "tools/types.h"
 
-void		write_int(char *packet, int pos, int nb)
+void		write_int(char *packet, const int pos, int nb)
 {
   char		*tmp;
 
@@ -21,7 +21,7 @@ void		write_int(char *packet, int pos, int nb)
   packet[pos + 3] = tmp[3];
 }
 
-void		fill_uint(char *packet, int pos, unsigned int *nb)
+void		fill_uint(const char *packet, const int pos, unsigned int *nb)
 {
   char		*tmp;
 
@@ -32,7 +32,7 @@ void		fill_uint(char *packet, int pos, unsigned int *nb)
   tmp[3] = packet[pos + 3];
 }
 
-void		fill_int(char *packet, int pos, int *nb)
+void		fill_int(const char *packet, const int pos, int *nb)
 {
   char		*tmp;
 
@@ -64,7 +64,8 @@ void		create_packet(char *packet, unsigned int *pixels, int id,
     }
 }
 
-void		read_packet(char *packet, t_bunny_pixelarray *pix, int size)
+void		read_packet(char *packet, t_bunny_pixelarray *pix,
+			    const int size)
 {
   int		index;
   int		i;

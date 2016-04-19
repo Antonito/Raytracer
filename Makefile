@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sun Apr 17 17:36:42 2016 Antoine Baché
+## Last update Tue Apr 19 11:57:00 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -16,27 +16,59 @@ SRC_FILES=		init_data.c			\
 			launch.c			\
 			main.c
 
+NOISE_PREFIX=		src/noise/
+
+NOISE_FILES=		perlin.c			\
+			perlin_calc_color.c		\
+			perlin_calc_init.c		\
+			perlin_calc_pixel.c		\
+			perlin_calc_smooth.c		\
+			perlin_calc_smooth_values.c	\
+			perlin_gradient.c		\
+			perlin_tables.c			\
+			perlin_tables_4d.c		\
+			perlin_tables_4d_next.c		\
+			permutation_table.c
+
 NETWORK_PREFIX=		src/cluster/
 
 NETWORK_FILES=		connection.c			\
 			packet.c			\
 			server.c
 
+CLIENT_PREFIX=		src/client/
+
+CLIENT_FILES=		main.c				\
+			loop.c
+
 TOOLS_PREFIX=		src/tools/
 
-TOOLS_FILES=		memory.c
+TOOLS_FILES=		memory.c			\
+			my_strlen.c			\
+			my_getnbr.c			\
+			my_getdouble.c
 
 SRC=			$(addprefix $(SRC_PREFIX),$(SRC_FILES))
 
+SRC_NOISE=		$(addprefix $(NOISE_PREFIX),$(NOISE_FILES))
+
 SRC_NETWORK=		$(addprefix $(NETWORK_PREFIX),$(NETWORK_FILES))
 
+SRC_CLIENT=		$(addprefix $(CLIENT_PREFIX),$(CLIENT_FILES))
+
 SRC_TOOLS=		$(addprefix $(TOOLS_PREFIX),$(TOOLS_FILES))
+
+SRC+=			$(SRC_NOISE)
 
 SRC+=			$(SRC_NETWORK)
 
 SRC+=			$(SRC_TOOLS)
 
+SRC_CLIENT+=		$(SRC_TOOLS)
+
 NAME=			raytracer2
+
+NAME_CLIENT=		client_raytracer2
 
 HEAD=			-Iinclude			\
 			-I/home/${USER}/.froot/include
@@ -67,6 +99,13 @@ RM=			rm -f
 
 OBJ=			$(SRC:.c=.o)
 
+OBJ_CLIENT=		$(SRC_CLIENT:.c=.o)
+
+$(NAME_CLIENT): $(OBJ_CLIENT)
+	@$(CC) $(OBJ_CLIENT) -o $(NAME_CLIENT) $(LIB)
+	@echo -ne '\e[1m\e[32m[ OK ] \e[0m'
+	@echo "Compiled client"
+
 $(NAME): $(OBJ)
 	@$(CC) $(OBJ) -o $(NAME) $(LIB)
 	@echo -ne '\e[1m\e[32m[ OK ] \e[0m'
@@ -77,7 +116,7 @@ $(NAME): $(OBJ)
 	@echo -ne '\e[1m\e[32m[ OK ] \e[0m'
 	@echo "Compiling" $<
 
-all:	$(NAME) infos
+all:	$(NAME) $(NAME_CLIENT) infos
 
 infos:
 ifeq ($(DEBUG), yes)
@@ -91,11 +130,13 @@ endif
 
 clean:
 	@$(RM) $(OBJ)
+	@$(RM) $(OBJ_CLIENT)
 	@echo -ne '\e[1m\e[31m[ RM ] \e[0m'
 	@echo "Removing OBJ files ..."
 
 fclean:	clean
 	@$(RM) $(NAME)
+	@$(RM) $(NAME_CLIENT)
 	@echo -ne '\e[1m\e[31m[ RM ] \e[0m'
 	@echo "Removing binaries ..."
 

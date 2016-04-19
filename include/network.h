@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun Apr 17 14:38:13 2016 Antoine Baché
-** Last update Sun Apr 17 18:01:29 2016 Antoine Baché
+** Last update Mon Apr 18 10:28:16 2016 Antoine Baché
 */
 
 #ifndef NETWORK_H_
@@ -28,11 +28,11 @@ int			init_server(t_data *);
 /*
 ** packet.c
 */
-void			write_int(char *, int, int);
-void			fill_int(char *, int, int *);
-void			fill_uint(char *, int, unsigned int *);
+void			write_int(char *, const int, int);
+void			fill_int(const char *, const int, int *);
+void			fill_uint(const char *, const int, unsigned int *);
 void			create_packet(char *, unsigned int *, int, t_coord *);
-void			read_packet(char *, t_bunny_pixelarray *, int);
+void			read_packet(char *, t_bunny_pixelarray *, const int);
 
 /*
 ** connection.c
