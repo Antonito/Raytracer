@@ -5,23 +5,23 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sun Apr 17 16:36:11 2016 Ludovic Petrenko
-** Last update Sun Apr 17 16:44:35 2016 Ludovic Petrenko
+** Last update Mon Apr 18 20:28:20 2016 Ludovic Petrenko
 */
 
 #ifndef MATERIAL_H_
 # define MATERIAL_H_
 
+# define DEFAULT_MAT_COLOR		0xFFFFFF
+# define DEFAULT_MAT_OPACITY		1.0
+# define DEFAULT_MAT_REFLECTIVITY	0.2
+# define DEFAULT_MAT_FRESNEL		0.0
+
 typedef struct	s_material
 {
-  unsigned int	ambiant_color;
-  unsigned int	diffuse_color;
-  unsigned int	reflection_color;
-  unsigned int	specular_color;
-  double	ambiant;
-  double	diffuse;
-  double	reflection;
-  double	specular;
+  const char	*name;
+  unsigned int	color;
   double	opacity;
+  double	reflectivity;
   double	fresnel;
 }		t_material;
 

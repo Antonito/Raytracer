@@ -60,26 +60,64 @@ You can have more than one material.
 The parameters are all optionnals, if you don't use it, default values will be used.
 
 
+[light_1]
+type=point
+position=0,3,5
+color=0xFFFFFF
+radius=0.5
+power=9.3
+
+[light_2]
+type=directionnal
+position=0,3,5
+direction=3,2.5,1
+color=0xFFFF00
+power=5
+
+[light_3]
+type=spot
+position=0,3,5
+direction=3,2.5,1
+color=0xFF00FF
+radius=0.9
+power=10
+
+Those are lights. The name should always begin with "light_".
+You can choose the type between [point | directionnal | spot].
+The parameters are all optionnals, if you don't use it, default values will be used.
+
+
 [obj_1]
 type=sphere
 position=0,0,0
 rotation=0,0,0
 material=mat_glass
+radius=3.0
 
-This is an object. The name should always begin with "obj_".
+[obj_002]
+type=plane
+position=3,0,0
+rotation=0,0,30
+material=mat_glass
+normale=1,0,2
+
+[obj_example]
+type=cylinder
+position=3,6,0
+rotation=20,0,0
+material=mat_glass
+radius=2.0
+height=9
+
+[obj_cone]
+type=cone
+position=0,2,2
+rotation=0,90,0
+material=mat_glass
+angle=45
+height=5
+
+Those are objects. The name should always begin with "obj_".
 You can choose the type between [sphere | plane | cylinder | cone].
 You can also choose the material with his scope name.
-The parameters are all optionnals, if you don't use it, default values will be used.
-
-
-[light_1]
-type=spot
-position=0,3,5
-direction=3,2.5,1
-color=0xFFFF00
-radius=0.5
-power=10
-
-This is a light. The name should always begin with "light_".
-You can choose the type between [point | directionnal | spot].
 The parameters are all optionnals, if you don't use it, default values will be used.
