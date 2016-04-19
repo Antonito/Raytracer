@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Tue Apr 19 20:09:26 2016 Ludovic Petrenko
+## Last update Tue Apr 19 23:39:48 2016 Ludovic Petrenko
 ##
 
 DEBUG=			yes
@@ -47,6 +47,7 @@ LOADER_PREFIX=		src/loader/
 
 LOADER_FILES=		count.c				\
 			get_material.c			\
+			load_config.c			\
 			load_light_type.c		\
 			load_mat.c			\
 			load_obj.c			\
@@ -62,7 +63,8 @@ TOOLS_FILES=		memory.c			\
 			my_getdouble.c			\
 			my_strcmp.c			\
 			my_strncmp.c			\
-			my_gethexa.c
+			my_gethexa.c			\
+			my_puterr.c
 
 SRC=			$(addprefix $(SRC_PREFIX),$(SRC_FILES))
 
