@@ -5,82 +5,44 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Apr 18 12:43:11 2016 Antoine Baché
-** Last update Mon Apr 18 15:19:43 2016 Antoine Baché
+** Last update Mon Apr 18 19:16:37 2016 Antoine Baché
 */
 
 #include "tools/memory.h"
 
-void		fill_permutation_table(unsigned char *table,
-				       int loop)
+static unsigned char	*sort_table(unsigned char *table, unsigned char tmp[])
 {
-  static unsigned char	*ref = NULL;
+  int			i;
 
-  if (!ref && !(ref = my_malloc(sizeof(unsigned char) * 16)))
-    return ;
-  generate_ref(ref, loop);
-  table[0 + (loop * 16)] = ref[0];
-  table[1 + (loop * 16)] = ref[1];
-  table[2 + (loop * 16)] = ref[2];
-  table[3 + (loop * 16)] = ref[3];
-  table[4 + (loop * 16)] = ref[4];
-  table[5 + (loop * 16)] = ref[5];
-  table[6 + (loop * 16)] = ref[6];
-  table[7 + (loop * 16)] = ref[7];
-  table[8 + (loop * 16)] = ref[8];
-  table[9 + (loop * 16)] = ref[9];
-  table[10 + (loop * 16)] = ref[10];
-  table[11 + (loop * 16)] = ref[11];
-  table[12 + (loop * 16)] = ref[12];
-  table[13 + (loop * 16)] = ref[13];
-  table[14 + (loop * 16)] = ref[14];
-  table[15 + (loop * 16)] = ref[15];
-  if (loop < 15)
-    fill_permutation_table(table, loop + 1);
-  else
-    my_free(ref);
-}
-
-/* void		fill_permutation_table(unsigned char *table) */
-/* { */
-/*   table[0]= 151; */
-/*   table[1]= 160; */
-/*   table[2]= 137; */
-/*   table[3]= 91; */
-/*   table[4]= 90; */
-/*   table[5]= 15; */
-/*   table[6]= 131; */
-/*   table[7]= 13; */
-/*   table[8]= 201; */
-/*   table[9]= 95; */
-/*   table[10]= 96; */
-/*   table[11]= 53; */
-/*   table[12]= 194; */
-/*   table[13]= 233; */
-/*   table[14]= 7; */
-/*   table[15]= 225; */
-/*   table[16]= 140; */
-/*   table[17]= 36; */
-/*   table[18]= 103; */
-/*   table[19]= 30; */
-/*   table[20]= 69; */
-/*   table[21]= 142; */
-/*   table[22]= 8; */
-/*   table[23]= 99; */
-/*   fill_permutation_table_more(); */
-/* } */
-
-unsigned char	*permutation_table(void)
-{
-  unsigned char	*table;
-  unsigned char	*tmp;
-  int		i;
-
-  if (!(table = my_malloc(sizeof(unsigned char) * 512)) ||
-      !(tmp = my_malloc(sizeof(unsigned char) * 256)))
-    return (NULL);
   i = 0;
-  fill_permutation_table(tmp);
-  while (i < 256)
+  while (i < 512)
     table[i++] = tmp & 255;
   return (table);
+}
+
+unsigned char		*permutation_table(void)
+{
+  unsigned char		*table;
+  static unsigned char	tmp[256] =
+    {151, 160, 137, 91, 90, 15, 131, 13, 201, 95, 96, 53, 194, 233, 7,
+     225, 140, 36, 103, 30, 69, 142, 8, 99, 37, 240, 21, 10, 23, 190, 6, 148,
+     247, 120, 234, 75,0, 26, 197, 62, 94, 252, 219, 203, 117, 35, 11, 32, 57,
+     177, 33, 88, 237, 149, 56, 87, 174, 20, 125, 136, 171, 168, 68, 175, 74,
+     165, 71, 134, 139, 48, 27, 166, 77, 146, 158, 231, 83, 111, 229, 122, 60,
+     211, 133, 230, 220, 105, 92, 41, 55, 46, 245, 40, 244, 102, 143, 54, 65,
+     25, 63, 161, 1, 216, 80, 73, 209, 76, 132, 187, 208, 89, 18, 169, 200,
+     196, 135, 130, 116, 188, 159, 86, 164, 100, 109, 198, 173, 186, 3, 64, 52,
+     217, 226, 250, 124, 123, 5, 202, 38, 147, 118, 126, 255, 82, 85, 212, 207,
+     206, 59, 227, 47, 16, 58, 17, 182, 189, 28, 42, 223, 183, 170, 213, 119,
+     248, 152, 2, 44, 154, 163, 70, 221, 153, 101, 155, 167, 43, 172, 9, 129,
+     22, 39, 253, 19, 98, 108, 110, 79, 113, 224, 232, 178, 185, 112, 104,
+     218, 246, 97, 228, 251, 34, 242, 193, 238, 210, 144, 12, 191, 179, 162,
+     241, 81, 51, 145, 235, 249, 14, 239, 107, 49, 192, 214, 31, 181, 199,
+     106, 157, 184, 84, 204, 176, 115, 121, 50, 45, 127, 4, 150, 254, 138,
+     236, 205, 93, 222, 114, 67, 29, 24, 72, 243, 141, 128, 195, 78, 66, 215,
+     61, 156, 180}
+
+  if (!(table = my_malloc(sizeof(unsigned char) * 512)))
+    return (NULL);
+  return (sort_table(table, tmp));
 }

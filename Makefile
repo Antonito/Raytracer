@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Mon Apr 18 12:39:22 2016 Antoine Baché
+## Last update Mon Apr 18 18:52:30 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -21,7 +21,8 @@ NOISE_PREFIX=		src/noise/
 NOISE_FILES=		perlin.c			\
 			perlin_tables.c			\
 			perlin_tables_4d.c		\
-			perlin_tables_4d_next.c
+			perlin_tables_4d_next.c		\
+			permutation_table.c
 
 NETWORK_PREFIX=		src/cluster/
 
