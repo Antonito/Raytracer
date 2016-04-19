@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Mon Apr 18 18:52:30 2016 Antoine Baché
+## Last update Tue Apr 19 09:32:17 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -19,6 +19,8 @@ SRC_FILES=		init_data.c			\
 NOISE_PREFIX=		src/noise/
 
 NOISE_FILES=		perlin.c			\
+			perlin_calc_init.c		\
+			perlin_gradient.c		\
 			perlin_tables.c			\
 			perlin_tables_4d.c		\
 			perlin_tables_4d_next.c		\
