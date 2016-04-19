@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Apr 18 11:54:08 2016 Antoine Baché
-** Last update Tue Apr 19 09:13:52 2016 Antoine Baché
+** Last update Tue Apr 19 09:30:43 2016 Antoine Baché
 */
 
 #ifndef NOISE_H_
@@ -81,6 +81,7 @@ t_vec2		*perlin_2d_table(void);
 t_vec3		*perlin_3d_table(void);
 t_vec4		*perlin_4d_table(void);
 void		perlin_4d_table_last(t_vec4 *);
+void		perlin_calc_init(void *, void *, void *, ...);
 void		calc_perlin_gradient(void *, void *, unsigned char *, int);
 
 #endif /* !NOISE_H_ */

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Apr 18 11:20:41 2016 Antoine Baché
-** Last update Tue Apr 19 09:05:11 2016 Antoine Baché
+** Last update Tue Apr 19 09:25:37 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -15,18 +15,13 @@ static double		perlin_noise_2d(t_vec2 *pos, float scale,
 					unsigned char *perm)
 {
   static t_vec2		*table = NULL;
-  t_vec2		origin;
+  t_ivec2		origin;
   t_mask2		mask;
   t_gradient2		gradient;
 
   if (!table)
     table = perlin_2d_table();
-  pos.x /= scale;
-  pos.y /= scale;
-  origin.x = (int)pos.x;
-  origin.y = (int)pos.y;
-  mask.x = origin.x & 255;
-  mask.y = origin.y & 255;
+  perlin_calc_init(pos, &origin, &mask, scale, 2);
   calc_perlin_gradient(&gradient, &mask, perm, 2);
   return (0.0);
 }
@@ -35,21 +30,13 @@ static double		perlin_noise_3d(t_vec3 *pos, float scale,
 					unsigned char *perm)
 {
   static t_vec3		*table = NULL;
-  t_vec3		origin;
+  t_ivec3		origin;
   t_mask3		mask;
   t_gradient3		gradient;
 
   if (!table)
     table = perlin_3d_table();
-  pos.x /= scale;
-  pos.y /= scale;
-  pos.z /= scale;
-  origin.x = (int)pos.x;
-  origin.y = (int)pos.y;
-  origin.z = (int)pos.z;
-  mask.x = origin.x & 255;
-  mask.y = origin.y & 255;
-  mask.z = origin.z & 255;
+  perlin_calc_init(pos, &origin, &mask, scale, 3);
   calc_perlin_gradient(&gradient, &mask, perm, 3);
   return (0.0);
 }
@@ -58,24 +45,13 @@ static double		perlin_noise_4d(t_vec4 *pos, float scale,
 					unsigned char *perm)
 {
   static t_vec4		*table = NULL;
-  t_vec4		origin;
+  t_ivec4		origin;
   t_mask4		mask;
   t_gradient4		gradient;
 
   if (!table)
     table = perlin_4d_table();
-  pos.x /= scale;
-  pos.y /= scale;
-  pos.z /= scale;
-  pos.w /= scale;
-  origin.x = (int)pos.x;
-  origin.y = (int)pos.y;
-  origin.z = (int)pos.z;
-  origin.w = (int)pos.w;
-  mask.x = origin.x & 255;
-  mask.y = origin.y & 255;
-  mask.z = origin.z & 255;
-  mask.w = origin.w & 255;
+  perlin_calc_init(pos, &origin, &mask, scale, 4);
   calc_perlin_gradient(&gradient, &mask, perm, 4);
   return (0.0);
 }
