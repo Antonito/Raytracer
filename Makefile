@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Tue Apr 19 23:39:48 2016 Ludovic Petrenko
+## Last update Thu Apr 21 00:30:48 2016 Ludovic Petrenko
 ##
 
 DEBUG=			yes
@@ -13,6 +13,8 @@ DEBUG=			yes
 SRC_PREFIX=		src/
 
 SRC_FILES=		init_data.c			\
+			build_octree.c			\
+			get_node.c			\
 			launch.c			\
 			main.c				\
 			vector.c			\

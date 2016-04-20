@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:33:45 2016 Ludovic Petrenko
-** Last update Tue Apr 19 19:15:43 2016 Ludovic Petrenko
+** Last update Thu Apr 21 00:20:05 2016 Ludovic Petrenko
 */
 
 #ifndef OBJECT_H_
@@ -77,6 +77,7 @@ typedef struct	s_cone
 {
   double	angle;
   double	height;
+  double	radius;
 }		t_cone;
 
 typedef struct	s_obj
