@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Apr 19 11:35:24 2016 Antoine Baché
-** Last update Tue Apr 19 18:36:27 2016 Antoine Baché
+** Last update Wed Apr 20 10:33:54 2016 Antoine Baché
 */
 
 #include "noise.h"
@@ -18,7 +18,7 @@ double		perlin_calc_pixel_2d(t_perlin_color2 *color, t_vec2 *smooth)
   tmp[0] = color->a + smooth->x * (color->b - color->a);
   tmp[1] = color->c + smooth->x * (color->d - color->c);
   res = tmp[0] + smooth->y * (tmp[1] - tmp[0]);
-  return (res);
+  return ((res + 1) * 0.5 * 255.0);
 }
 
 double		perlin_calc_pixel_3d(t_perlin_color3 *color, t_vec3 *smooth)
@@ -33,7 +33,7 @@ double		perlin_calc_pixel_3d(t_perlin_color3 *color, t_vec3 *smooth)
   tmp[4] = tmp[0] + smooth->y * (tmp[1] - tmp[0]);
   tmp[5] = tmp[2] + smooth->y * (tmp[3] - tmp[2]);
   res = tmp[4] + smooth->z * (tmp[5] - tmp[4]);
-  return (res);
+  return ((res + 1) * 0.5 * 255.0);
 }
 
 double		perlin_calc_pixel_4d(t_perlin_color4 *color, t_vec4 *smooth)
@@ -56,5 +56,5 @@ double		perlin_calc_pixel_4d(t_perlin_color4 *color, t_vec4 *smooth)
   tmp[12] = tmp[8] + smooth->z * (tmp[9] - tmp[8]);
   tmp[13] = tmp[10] + smooth->z * (tmp[11] - tmp[10]);
   res = tmp[12] + smooth->w * (tmp[13] - tmp[12]);
-  return (res);
+  return ((res + 1) * 0.5 * 255.0);
 }
