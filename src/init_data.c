@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 22:32:39 2016 Ludovic Petrenko
-** Last update Tue Apr 19 23:42:47 2016 Ludovic Petrenko
+** Last update Wed Apr 20 20:14:14 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -13,6 +13,7 @@
 
 int	init_data(int ac, char **av, t_data **data)
 {
+  set_max_heap_size(6 * 1024);
   if (!(*data = my_calloc(1, sizeof(t_data))))
     return (1);
   (*data)->width = DEFAULT_WIDTH;
