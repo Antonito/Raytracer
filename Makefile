@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Tue Apr 19 23:39:48 2016 Ludovic Petrenko
+## Last update Wed Apr 20 19:57:48 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -30,7 +30,16 @@ NOISE_FILES=		perlin.c			\
 			perlin_tables.c			\
 			perlin_tables_4d.c		\
 			perlin_tables_4d_next.c		\
-			permutation_table.c
+			permutation_table.c		\
+			simplex.c			\
+			simplex_calc_det.c		\
+			simplex_calc_grad.c		\
+			simplex_calc_init.c		\
+			simplex_calc_offset.c		\
+			simplex_calc_offset_next.c	\
+			simplex_calc_pixel.c		\
+			simplex_calc_table.c		\
+			simplex_mask.c
 
 NETWORK_PREFIX=		src/cluster/
 

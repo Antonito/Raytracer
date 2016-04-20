@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Apr 20 11:30:21 2016 Antoine Baché
-** Last update Wed Apr 20 13:01:45 2016 Antoine Baché
+** Last update Wed Apr 20 17:28:29 2016 Antoine Baché
 */
 
 #include <stdarg.h>
@@ -75,28 +75,18 @@ static void		simplex_calc_det_4d(t_vec4 *det, t_vec4 *dist,
 }
 
 void			simplex_calc_det(void *det, void *dist,
-					 void *grad, ...)
+					 void *offset, int dim)
 {
-  va_list		args;
-  unsigned char		*table;
-  void			*offset;
-  int			dim;
-
-  va_start(args, grad);
-  table = va_arg(args, unsigned char *);
-  offset = va_arg(args, void *);
-  dim = va_arg(args, int);
-  va_end(args);
   if (dim == 2)
     {
       simplex_calc_det_2d(det, dist, offset);
     }
   else if (dim == 3)
     {
-      simplex_calc_det_3d(det, dist, grad, offset);
+      simplex_calc_det_3d(det, dist, offset);
     }
   else if (dim == 4)
     {
-      simplex_calc_det_4d(det, dist, grad, offset);
+      simplex_calc_det_4d(det, dist, offset);
     }
 }

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Apr 18 11:54:08 2016 Antoine Baché
-** Last update Wed Apr 20 12:36:23 2016 Antoine Baché
+** Last update Wed Apr 20 20:01:50 2016 Antoine Baché
 */
 
 #ifndef NOISE_H_
@@ -149,12 +149,16 @@ double		perlin_calc_pixel_4d(t_perlin_color4 *, t_vec4 *);
 /*
 ** Simplex Specific, should not be called.
 */
-void		simplex_calc_det(void *, void *, void *, ...);
+void		simplex_mask(void *, void *, int);
+void		simplex_calc_det(void *, void *, void *, int);
 void		simplex_calc_init(void *, void *, void *, ...);
 void		simplex_calc_offset(void *, void *, int, t_perlin_state);
 void		simplex_calc_offset_3d_sup(t_vec3 *, t_vec3 *);
 void		simplex_calc_offset_3d_inf(t_vec3 *, t_vec3 *);
-void		simplex_calc_offset_4d_table(int, t_vec4, t_vec4);
+void		simplex_calc_offset_4d_table(int, t_ivec4 *, t_vec4 *);
 int		simplex_calc_index_4d(t_vec4 *);
+void		simplex_calc_grad(int *, void *, void *, ...);
+double		simplex_calc_pixel(void *, void *, void *, int);
+t_ivec4		*simplex_calc_table_4d(void);
 
 #endif /* !NOISE_H_ */

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Apr 20 11:45:19 2016 Antoine Baché
-** Last update Wed Apr 20 12:35:25 2016 Antoine Baché
+** Last update Wed Apr 20 20:00:51 2016 Antoine Baché
 */
 
 #include "noise.h"
@@ -69,18 +69,18 @@ int		simplex_calc_index_4d(t_vec4 *dist)
 	  ((dist->z > dist->w) ? 1 : 0));
 }
 
-void		simplex_calc_offset_4d_table(int i, t_vec4 *table, t_vec4 *off)
+void		simplex_calc_offset_4d_table(int i, t_ivec4 *table, t_vec4 *off)
 {
-  off[0].x = ((table[i][0] >= 3) ? 1 : 0);
-  off[0].y = ((table[i][1] >= 3) ? 1 : 0);
-  off[0].z = ((table[i][2] >= 3) ? 1 : 0);
-  off[0].w = ((table[i][3] >= 3) ? 1 : 0);
-  off[1].x = ((table[i][0] >= 2) ? 1 : 0);
-  off[1].y = ((table[i][1] >= 2) ? 1 : 0);
-  off[1].z = ((table[i][2] >= 2) ? 1 : 0);
-  off[1].w = ((table[i][3] >= 2) ? 1 : 0);
-  off[2].x = ((table[i][0] >= 1) ? 1 : 0);
-  off[2].y = ((table[i][1] >= 1) ? 1 : 0);
-  off[2].z = ((table[i][2] >= 1) ? 1 : 0);
-  off[2].w = ((table[i][3] >= 1) ? 1 : 0);
+  off[0].x = ((table[i].x >= 3) ? 1 : 0);
+  off[0].y = ((table[i].y >= 3) ? 1 : 0);
+  off[0].z = ((table[i].z >= 3) ? 1 : 0);
+  off[0].w = ((table[i].w >= 3) ? 1 : 0);
+  off[1].x = ((table[i].x >= 2) ? 1 : 0);
+  off[1].y = ((table[i].y >= 2) ? 1 : 0);
+  off[1].z = ((table[i].z >= 2) ? 1 : 0);
+  off[1].w = ((table[i].w >= 2) ? 1 : 0);
+  off[2].x = ((table[i].x >= 1) ? 1 : 0);
+  off[2].y = ((table[i].y >= 1) ? 1 : 0);
+  off[2].z = ((table[i].z >= 1) ? 1 : 0);
+  off[2].w = ((table[i].w >= 1) ? 1 : 0);
 }

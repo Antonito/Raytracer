@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Apr 20 10:41:36 2016 Antoine Baché
-** Last update Wed Apr 20 11:32:21 2016 Antoine Baché
+** Last update Wed Apr 20 19:01:13 2016 Antoine Baché
 */
 
 #include <stdarg.h>
@@ -15,6 +15,7 @@
 static void		simplex_calc_init_2d(t_vec2 *pos, t_ivec2 *origin_int,
 					     t_vec2 *origin, ...)
 {
+  va_list		args;
   double		scale;
   double		tmp;
   t_vec2		*dist_origin;
@@ -38,6 +39,7 @@ static void		simplex_calc_init_2d(t_vec2 *pos, t_ivec2 *origin_int,
 static void		simplex_calc_init_3d(t_vec3 *pos, t_ivec3 *origin_int,
 					     t_vec3 *origin, ...)
 {
+  va_list		args;
   double		scale;
   double		tmp;
   t_vec3		*dist_origin;
@@ -74,6 +76,7 @@ static void		simplex_calc_init_4d_dist(t_vec4 *dist_origin,
 static void		simplex_calc_init_4d(t_vec4 *pos, t_ivec4 *origin_int,
 					     t_vec4 *origin, ...)
 {
+  va_list		args;
   double		scale;
   double		tmp;
   t_vec4		*dist_origin;
