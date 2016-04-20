@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Apr 20 10:41:36 2016 Antoine Baché
-** Last update Wed Apr 20 11:07:29 2016 Antoine Baché
+** Last update Wed Apr 20 11:32:21 2016 Antoine Baché
 */
 
 #include <stdarg.h>
@@ -19,7 +19,7 @@ static void		simplex_calc_init_2d(t_vec2 *pos, t_ivec2 *origin_int,
   double		tmp;
   t_vec2		*dist_origin;
 
-  va_start(args, mask);
+  va_start(args, origin);
   dist_origin = va_arg(args, t_vec2 *);
   scale = va_arg(args, double);
   va_end(args);
@@ -42,7 +42,7 @@ static void		simplex_calc_init_3d(t_vec3 *pos, t_ivec3 *origin_int,
   double		tmp;
   t_vec3		*dist_origin;
 
-  va_start(args, mask);
+  va_start(args, origin);
   dist_origin = va_arg(args, t_vec3 *);
   scale = va_arg(args, double);
   va_end(args);
@@ -78,7 +78,7 @@ static void		simplex_calc_init_4d(t_vec4 *pos, t_ivec4 *origin_int,
   double		tmp;
   t_vec4		*dist_origin;
 
-  va_start(args, mask);
+  va_start(args, origin);
   dist_origin = va_arg(args, t_vec4 *);
   scale = va_arg(args, double);
   va_end(args);
@@ -108,7 +108,7 @@ void			simplex_calc_init(void *pos, void *origin_int,
   double		scale;
   int			dim;
 
-  va_start(args, mask);
+  va_start(args, origin);
   dist_origin = va_arg(args, void *);
   scale = va_arg(args, double);
   dim = va_arg(args, int);
