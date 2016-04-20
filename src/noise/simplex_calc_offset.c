@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Apr 20 11:37:59 2016 Antoine Baché
-** Last update Wed Apr 20 11:51:59 2016 Antoine Baché
+** Last update Wed Apr 20 12:39:35 2016 Antoine Baché
 */
 
 #include "noise.h"
@@ -42,12 +42,31 @@ static void	simplex_calc_offset_3d(t_vec3 *offset, t_vec3 *dist)
     }
 }
 
-void		simplex_calc_offset(void *offset, void *dist, int dim)
+static void	simplex_calc_offset_4d(t_vec4 *offset, t_vec4 *dist,
+				       t_perlin_state state)
+{
+  int		index;
+  static t_vec4	*table = NULL;
+
+  if (state == FREE)
+    {
+      if (table)
+	my_free(table);
+      table = NULL;
+      return ;
+    }
+  if (!table && !(table = simplex_calc_table_4d()))
+    return ;
+  simplex_calc_offset_4d_table(simplex_calc_index_4d(dist), table, offset);
+}
+
+void		simplex_calc_offset(void *offset, void *dist, int dim,
+				    t_perlin_state state)
 {
   if (dim == 2)
     simplex_calc_offset_2d(offset, dist);
   else if (dim == 3)
     simplex_calc_offset_3d(offset, dist);
   else if (dim == 4)
-    simplex_calc_offset_4d(offset, dist);
+    simplex_calc_offset_4d(offset, dist, state);
 }
