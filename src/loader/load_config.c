@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 23:13:18 2016 Ludovic Petrenko
-** Last update Tue Apr 19 23:48:49 2016 Antoine Baché
+** Last update Thu Apr 21 17:52:00 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -16,22 +16,22 @@ int		load_network(t_data *data, const t_bunny_ini *ini)
 {
   const char	*tmp;
 
-  if (!(tmp = bunny_ini_get_field(ini, "network", "port", 0)))
+  if (!(tmp = bunny_ini_get_field(ini, SCOPE_NETWORK, PORT_NETWORK, 0)))
     {
-      my_puterr("Missing port in config.ini\n");
+      my_puterr(MISSING_PORT_ERROR);
       return (1);
     }
   if ((data->network.port = my_getnbr(tmp)) > 65535 || data->network.port < 0)
     {
-      my_puterr("Invalid port in config.ini\n"\
-		"Choose a port between 0 and 65535\n");
+      my_puterr(INVALID_PORT_ERROR);
+      my_puterr(CHOOSE_PORT_ERROR);
       return (1);
     }
-  if (!(tmp = bunny_ini_get_field(ini, "network", "max_client", 0)))
-    tmp = "42";
+  if (!(tmp = bunny_ini_get_field(ini, SCOPE_NETWORK, CLIENT_NETWORK, 0)))
+    tmp = MAX_CLIENT_DEFAULT;
   if ((data->network.max_client = my_getnbr(tmp)) < 0)
     {
-      my_puterr("Invalid max_client in config.ini\n");
+      my_puterr(MAX_CLIENT_ERROR);
       return (1);
     }
   return (0);

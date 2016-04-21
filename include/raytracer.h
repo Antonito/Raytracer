@@ -5,17 +5,12 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Mon Apr 18 00:51:23 2016 Ludovic Petrenko
+** Last update Thu Apr 21 18:24:18 2016 Antoine Baché
 */
 
 #ifndef	RAYTRACER2_H_
 # define RAYTRACER2_H_
 
-# ifdef	__APPLE__
-#  include "OpenCL/opencl.h"
-# else
-#  include "CL/cl.h"
-# endif
 # include <lapin.h>
 # include <stdbool.h>
 # include "engine/scene.h"
@@ -26,7 +21,64 @@
 # define DEFAULT_WIDTH		1280
 # define DEFAULT_HEIGHT		720
 # define WIN_NAME		"Ray Ta Soeur"
-# define UNUSED		__attribute__((unused))
+# define UNUSED			__attribute__((unused))
+
+/*
+** Scopes expected in .ini files
+*/
+# define SCOPE_NETWORK		"network"
+# define PORT_NETWORK		"port"
+# define CLIENT_NETWORK		"max_client"
+# define RADIUS_FIELD		"radius"
+# define NORMALE_FIELD		"normale"
+# define HEIGHT_FIELD		"height"
+# define COLOR_FIELD		"color"
+# define POWER_FIELD		"power"
+# define DIR_FIELD		"direction"
+# define ANGLE_FIELD		"angle"
+# define OPACITY_FIELD		"opacity"
+# define REFLECT_FIELD		"reflectivity"
+# define FRESNEL_FIELD		"fresnel"
+# define POS_FIELD		"position"
+# define ROT_FIELD		"rotation"
+# define MAT_FIELD		"material"
+# define CAM_FIELD		"camera"
+# define FOV_FIELD		"fov"
+# define FOCALE_FIELD		"focale"
+# define SCENE_FIELD		"scene"
+# define BACK_FIELD		"bg_color"
+# define AMB_FIELD		"ambiant"
+# define MAT_PREFIX		"mat_"
+# define OBJ_PREFIX		"obj_"
+# define LIGHT_PREFIX		"light_"
+
+/*
+** Default configuration
+*/
+# define SCENE_DEFAULT		"scenes/default.ini"
+# define MAX_CLIENT_DEFAULT	"42"
+
+/*
+** Error messages
+*/
+# define MISSING_PORT_ERROR    	"Missing port in config.ini\n"
+# define INVALID_PORT_ERROR	"Invalid port in config.ini\n"
+# define CHOOSE_PORT_ERROR     	"Choose a port between 0 and 65535\n"
+# define MAX_CLIENT_ERROR    	"Invalid max_client in config.ini\n"
+# define NEW_CLIENT_ERROR	"Error: Cannot accept new client\n"
+# define MAX_CLIENT_REACHED	"Max number of client reached\n"
+# define INIT_SERVER_ERROR	"Error: Cannot start server\n"
+# define SOCKET_ERROR		"Error: Cannot create scoket\n"
+# define LISTEN_ERROR		"Error: Cannot listen\n"
+# define CREATE_THREAD_ERROR	"Error: Cannot create the TCP thread\n"
+# define THREAD_ERROR		"Error: In TCP thread\n"
+
+/*
+** Dhiver messages
+*/
+# define NEW_CLIENT		"New client added\n"
+# define NEW_CLIENT_CONNECTED	"Infos: New client connected\n"
+# define WAIT_CLIENT		"Waiting for clients...\n"
 
 typedef struct		s_network
 {

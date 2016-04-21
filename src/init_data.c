@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 22:32:39 2016 Ludovic Petrenko
-** Last update Thu Apr 21 17:26:47 2016 Antoine Baché
+** Last update Thu Apr 21 17:35:35 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -28,7 +28,7 @@ int	init_data(int ac, char **av, t_data **data)
       if (!((*data)->scene = load_scene(av[1])))
 	return (1);
     }
-  else if (!((*data)->scene = load_scene("scenes/default.ini")))
+  else if (!((*data)->scene = load_scene(SCENE_DEFAULT)))
     return (1);
   return (0);
 }

@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sun Apr 17 19:17:30 2016 Ludovic Petrenko
-** Last update Thu Apr 21 01:07:19 2016 Antoine Baché
+** Last update Thu Apr 21 18:10:47 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -43,9 +43,9 @@ void	load_scene_info(t_scene *s, const t_bunny_ini *ini)
   char	*tmp;
 
   s->spec.bg_color = DEFAULT_BG_COLOR;
-  if ((tmp = (char *)bunny_ini_get_field(ini, "scene", "bg_color", 0)))
+  if ((tmp = (char *)bunny_ini_get_field(ini, SCENE_FIELD, BACK_FIELD, 0)))
     s->spec.bg_color = my_gethexa(tmp);
-  if ((tmp = (char *)bunny_ini_get_field(ini, "scene", "ambiant", 0)))
+  if ((tmp = (char *)bunny_ini_get_field(ini, SCENE_FIELD, AMB_FIELD, 0)))
     s->spec.ambiant = my_getdouble(tmp);
 }
 
@@ -57,27 +57,27 @@ void	load_camera(t_camera *c, const t_bunny_ini *ini)
   c->dir = DEFAULT_CAM_DIR;
   c->focale = DEFAULT_CAM_FOCALE;
   c->fov = DEFAULT_CAM_FOV;
-  if ((tmp = (char *)bunny_ini_get_field(ini, "camera", "position", 0)))
+  if ((tmp = (char *)bunny_ini_get_field(ini, CAM_FIELD, POS_FIELD, 0)))
     c->pos.x = my_getdouble(tmp);
-  if ((tmp = (char *)bunny_ini_get_field(ini, "camera", "position", 1)))
+  if ((tmp = (char *)bunny_ini_get_field(ini, CAM_FIELD, POS_FIELD, 1)))
     c->pos.y = my_getdouble(tmp);
-  if ((tmp = (char *)bunny_ini_get_field(ini, "camera", "position", 2)))
+  if ((tmp = (char *)bunny_ini_get_field(ini, CAM_FIELD, POS_FIELD, 2)))
     c->pos.z = my_getdouble(tmp);
-  if ((tmp = (char *)bunny_ini_get_field(ini, "camera", "direction", 0)))
+  if ((tmp = (char *)bunny_ini_get_field(ini, CAM_FIELD, DIR_FIELD, 0)))
     c->dir.x = my_getdouble(tmp);
-  if ((tmp = (char *)bunny_ini_get_field(ini, "camera", "direction", 1)))
+  if ((tmp = (char *)bunny_ini_get_field(ini, CAM_FIELD, DIR_FIELD, 1)))
     c->dir.y = my_getdouble(tmp);
-  if ((tmp = (char *)bunny_ini_get_field(ini, "camera", "direction", 2)))
+  if ((tmp = (char *)bunny_ini_get_field(ini, CAM_FIELD, DIR_FIELD, 2)))
     c->dir.z = my_getdouble(tmp);
-  if ((tmp = (char *)bunny_ini_get_field(ini, "camera", "focale", 0)))
+  if ((tmp = (char *)bunny_ini_get_field(ini, CAM_FIELD, FOCALE_FIELD, 0)))
     c->focale = my_getdouble(tmp);
-  if ((tmp = (char *)bunny_ini_get_field(ini, "camera", "fov", 0)))
+  if ((tmp = (char *)bunny_ini_get_field(ini, CAM_FIELD, FOV_FIELD, 0)))
     c->fov = my_getdouble(tmp);
 }
 
 int	load_materials(t_scene *s, const t_bunny_ini *ini)
 {
-  s->nb_mat = ini_count_prefix(ini, "mat_");
+  s->nb_mat = ini_count_prefix(ini, MAT_PREFIX);
   if (!(s->mat = my_calloc(s->nb_mat, sizeof(t_material))))
     return (1);
   if (load_mat(s->mat, ini))
@@ -90,8 +90,8 @@ int	load_materials(t_scene *s, const t_bunny_ini *ini)
 
 int	load_scene_elements(t_scene *s, const t_bunny_ini *ini)
 {
-  s->nb_light = ini_count_prefix(ini, "light_");
-  s->nb_obj = ini_count_prefix(ini, "obj_");
+  s->nb_light = ini_count_prefix(ini, LIGHT_PREFIX);
+  s->nb_obj = ini_count_prefix(ini, OBJ_PREFIX);
   if (!(s->objs = my_calloc(s->nb_obj + s->nb_light, sizeof(t_obj))))
     return (1);
   if (!(s->lights = my_calloc(s->nb_light, sizeof(t_obj))))

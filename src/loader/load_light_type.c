@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 01:48:54 2016 Ludovic Petrenko
-** Last update Tue Apr 19 19:26:05 2016 Ludovic Petrenko
+** Last update Thu Apr 21 17:56:31 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -20,11 +20,11 @@ void	load_point(t_obj *obj, const t_bunny_ini_scope *scope)
   obj->spec.light.color = DEFAULT_LIGHT_COLOR;
   obj->spec.light.radius = DEFAULT_LIGHT_RADIUS;
   obj->spec.light.power = DEFAULT_LIGHT_POWER;
-  if ((tmp = (char *)bunny_ini_scope_get_field(scope, "color", 0)))
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, COLOR_FIELD, 0)))
     obj->spec.light.color = my_gethexa(tmp);
-  if ((tmp = (char *)bunny_ini_scope_get_field(scope, "radius", 0)))
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, RADIUS_FIELD, 0)))
     obj->spec.light.radius = my_getdouble(tmp);
-  if ((tmp = (char *)bunny_ini_scope_get_field(scope, "power", 0)))
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, POWER_FIELD, 0)))
     obj->spec.light.power = my_getdouble(tmp);
 }
 
@@ -36,15 +36,15 @@ void	load_directionnal(t_obj *obj, const t_bunny_ini_scope *scope)
   obj->spec.light.color = DEFAULT_LIGHT_COLOR;
   obj->spec.light.power = DEFAULT_LIGHT_POWER;
   obj->spec.light.dir = DEFAULT_LIGHT_DIR;
-  if ((tmp = (char *)bunny_ini_scope_get_field(scope, "color", 0)))
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, COLOR_FIELD, 0)))
     obj->spec.light.color = my_gethexa(tmp);
-  if ((tmp = (char *)bunny_ini_scope_get_field(scope, "power", 0)))
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, POWER_FIELD, 0)))
     obj->spec.light.power = my_getdouble(tmp);
-  if ((tmp = (char *)bunny_ini_scope_get_field(scope, "direction", 0)))
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, DIR_FIELD, 0)))
     obj->spec.light.dir.x = my_getdouble(tmp);
-  if ((tmp = (char *)bunny_ini_scope_get_field(scope, "direction", 1)))
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, DIR_FIELD, 1)))
     obj->spec.light.dir.y = my_getdouble(tmp);
-  if ((tmp = (char *)bunny_ini_scope_get_field(scope, "direction", 2)))
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, DIR_FIELD, 2)))
     obj->spec.light.dir.z = my_getdouble(tmp);
 }
 
@@ -57,16 +57,16 @@ void	load_spot(t_obj *obj, const t_bunny_ini_scope *scope)
   obj->spec.light.power = DEFAULT_LIGHT_POWER;
   obj->spec.light.dir = DEFAULT_LIGHT_DIR;
   obj->spec.light.angle = DEFAULT_LIGHT_ANGLE;
-  if ((tmp = (char *)bunny_ini_scope_get_field(scope, "color", 0)))
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, COLOR_FIELD, 0)))
     obj->spec.light.color = my_gethexa(tmp);
-  if ((tmp = (char *)bunny_ini_scope_get_field(scope, "power", 0)))
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, POWER_FIELD, 0)))
     obj->spec.light.power = my_getdouble(tmp);
-  if ((tmp = (char *)bunny_ini_scope_get_field(scope, "direction", 0)))
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, DIR_FIELD, 0)))
     obj->spec.light.dir.x = my_getdouble(tmp);
-  if ((tmp = (char *)bunny_ini_scope_get_field(scope, "direction", 1)))
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, DIR_FIELD, 1)))
     obj->spec.light.dir.y = my_getdouble(tmp);
-  if ((tmp = (char *)bunny_ini_scope_get_field(scope, "direction", 2)))
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, DIR_FIELD, 2)))
     obj->spec.light.dir.z = my_getdouble(tmp);
-  if ((tmp = (char *)bunny_ini_scope_get_field(scope, "angle", 2)))
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, ANGLE_FIELD, 2)))
     obj->spec.light.angle = my_getdouble(tmp);
 }
