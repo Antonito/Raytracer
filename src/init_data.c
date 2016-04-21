@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 22:32:39 2016 Ludovic Petrenko
-** Last update Thu Apr 21 17:35:35 2016 Antoine Baché
+** Last update Thu Apr 21 18:26:11 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -13,13 +13,13 @@
 
 int	init_data(int ac, char **av, t_data **data)
 {
-  set_max_heap_size(4500);
+  set_max_heap_size(4000);
   if (!(*data = my_calloc(1, sizeof(t_data))))
     return (1);
   (*data)->width = DEFAULT_WIDTH;
   (*data)->height = DEFAULT_HEIGHT;
   if (!((*data)->win = bunny_start((*data)->width, (*data)->height,
-				(*data)->fullscreen, WIN_NAME)) ||
+				   (*data)->fullscreen, WIN_NAME)) ||
       !((*data)->render = bunny_new_pixelarray((*data)->width,
 					       (*data)->height)))
     return (1);
