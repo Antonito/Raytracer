@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 22:32:39 2016 Ludovic Petrenko
-** Last update Thu Apr 21 18:26:11 2016 Antoine Baché
+** Last update Thu Apr 21 18:35:57 2016 Antoine Baché
 */
 
 #include "raytracer.h"

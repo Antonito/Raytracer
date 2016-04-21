@@ -5,9 +5,11 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 22:40:54 2016 Ludovic Petrenko
-** Last update Thu Apr 21 16:58:06 2016 Ludovic Petrenko
+** Last update Thu Apr 21 18:37:03 2016 Antoine Baché
 */
 
+#include <lapin.h>
+#include "tools/str.h"
 #include "tools/memory.h"
 
 void	*my_malloc(size_t size)
