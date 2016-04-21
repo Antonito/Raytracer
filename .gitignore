@@ -30,5 +30,6 @@ vgcore*
 # Debug files
 *.dSYM/
 .#*
+*~
 #ctags vim/emacs
 tags

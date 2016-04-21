@@ -5,9 +5,10 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 01:06:07 2016 Ludovic Petrenko
-** Last update Tue Apr 19 19:24:40 2016 Ludovic Petrenko
+** Last update Thu Apr 21 00:32:40 2016 Ludovic Petrenko
 */
 
+#include <math.h>
 #include "raytracer.h"
 #include "tools/str.h"
 #include "engine/vector.h"
@@ -61,4 +62,6 @@ void	load_cone(t_obj *obj, const t_bunny_ini_scope *scope)
     obj->spec.cone.angle = my_getdouble(tmp);
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, "height", 0)))
     obj->spec.cone.height = my_getdouble(tmp);
+  obj->spec.cone.radius = tan(obj->spec.cone.angle * M_PI / 360.0) *
+    obj->spec.cone.height;
 }
