@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sun Apr 17 19:17:30 2016 Ludovic Petrenko
-** Last update Tue Apr 19 22:20:53 2016 Ludovic Petrenko
+** Last update Thu Apr 21 01:07:19 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -19,7 +19,7 @@ t_scene		*load_scene(const char *file)
 
   if (!(ini = bunny_load_ini(file)))
     {
-    return (NULL);
+      return (NULL);
     }
   if (!(scene = my_malloc(sizeof(t_scene))))
     {
