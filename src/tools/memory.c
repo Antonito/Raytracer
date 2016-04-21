@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 22:40:54 2016 Ludovic Petrenko
-** Last update Sat Apr 16 17:52:14 2016 Ludovic Petrenko
+** Last update Thu Apr 21 16:58:06 2016 Ludovic Petrenko
 */
 
 #include "tools/memory.h"
@@ -14,13 +14,14 @@ void	*my_malloc(size_t size)
 {
   void	*ptr;
 
-  ptr = malloc(size);
+  if (!(ptr = bunny_malloc(size)))
+    my_puterr("Malloc Failed !\n");
   return (ptr);
 }
 
 void	my_free(void *ptr)
 {
-  free(ptr);
+  bunny_free(ptr);
 }
 
 void		*my_calloc(size_t nmemb, size_t size)
@@ -30,10 +31,12 @@ void		*my_calloc(size_t nmemb, size_t size)
   size_t	total_size;
 
   total_size = nmemb * size;
-  if (!(ptr = malloc(total_size)))
-    return (NULL);
+  if (!(ptr = bunny_malloc(total_size)))
+    {
+      my_puterr("Calloc Failed !\n");
+      return (NULL);
+    }
   i = 0;
-  total_size /= sizeof(*ptr);
   while (i < total_size)
     {
       ptr[i] = 0;
