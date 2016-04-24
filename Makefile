@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Thu Apr 21 00:34:37 2016 Ludovic Petrenko
+## Last update Sun Apr 24 17:03:18 2016 Arthur ARNAUD
 ##
 
 DEBUG=			yes
@@ -75,7 +75,16 @@ TOOLS_FILES=		memory.c			\
 			my_strcmp.c			\
 			my_strncmp.c			\
 			my_gethexa.c			\
-			my_puterr.c
+			my_puterr.c			\
+			str_to_wordtab.c
+
+PLY_PREFIX=		src/ply/
+
+PLY_FILES=		add_element.c			\
+			check_var.c			\
+			get_ply.c			\
+			init.c				\
+			read_header.c
 
 SRC=			$(addprefix $(SRC_PREFIX),$(SRC_FILES))
 
@@ -89,6 +98,8 @@ SRC_LOADER=		$(addprefix $(LOADER_PREFIX),$(LOADER_FILES))
 
 SRC_TOOLS=		$(addprefix $(TOOLS_PREFIX),$(TOOLS_FILES))
 
+SRC_PLY=		$(addprefix $(PLY_PREFIX),$(PLY_FILES))
+
 SRC+=			$(SRC_NOISE)
 
 SRC+=			$(SRC_NETWORK)
@@ -96,6 +107,8 @@ SRC+=			$(SRC_NETWORK)
 SRC+=			$(SRC_TOOLS)
 
 SRC+=			$(SRC_LOADER)
+
+SRC+=			$(SRC_PLY)
 
 SRC_CLIENT+=		$(SRC_TOOLS)
 

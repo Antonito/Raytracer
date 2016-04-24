@@ -5,10 +5,11 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Thu Apr 21 18:10:40 2016 Ludovic Petrenko
-** Last update Thu Apr 21 18:24:04 2016 Ludovic Petrenko
+** Last update Sun Apr 24 17:04:03 2016 Arthur ARNAUD
 */
 
 #include "tools/str.h"
+#include <stdlib.h>
 
 char	**str_to_wordtab(char *s, char c)
 {
