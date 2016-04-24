@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Wed Apr 20 09:57:10 2016 Arthur ARNAUD
-** Last update Sun Apr 24 17:07:56 2016 Arthur ARNAUD
+** Last update Sun Apr 24 19:03:59 2016 Arthur ARNAUD
 */
 
 #ifndef PLY_H_
@@ -17,13 +17,16 @@
 # include "tools/types.h"
 # include "tools/str.h"
 # include "tools/memory.h"
+# include "tools/get_next_line.h"
 # include "engine/vector.h"
 
 # define LIST_ELEM "no_elem vertex face"
 # define LIST_V_VAR "x y z red green blue alpha confidence intensity"
 # define COORD_TYPE "float"
 # define COLOR_TYPE "uchar"
-# define LIST_F_VAR "vertex_indices texcoord texnumber red green blue alpha"
+# define LIST_F_VAR1 "vertex_indices texcoord "
+# define LIST_F_VAR2 "texnumber red green blue alpha"
+# define LIST_F_VAR LIST_F_VAR1 LIST_F_VAR2
 # define LIST_KEY "comment property element"
 # define TYPE_FILE "ply"
 # define FORMAT "format ascii 1.0"

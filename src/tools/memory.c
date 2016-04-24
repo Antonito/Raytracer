@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 22:40:54 2016 Ludovic Petrenko
-** Last update Thu Apr 21 18:37:03 2016 Antoine Baché
+** Last update Sun Apr 24 19:14:03 2016 Arthur ARNAUD
 */
 
 #include <lapin.h>
@@ -21,9 +21,10 @@ void	*my_malloc(size_t size)
   return (ptr);
 }
 
-void	my_free(void *ptr)
+int	my_free(void *ptr)
 {
   bunny_free(ptr);
+  return (0);
 }
 
 void		*my_calloc(size_t nmemb, size_t size)

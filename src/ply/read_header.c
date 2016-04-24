@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Wed Apr 20 10:22:11 2016 Arthur ARNAUD
-** Last update Sun Apr 24 17:00:19 2016 Arthur ARNAUD
+** Last update Sun Apr 24 18:43:21 2016 Arthur ARNAUD
 */
 
 #include "ply.h"
@@ -25,8 +25,8 @@ int	check_format(int fd)
 {
   char	*str;
 
-  if ((str = get_next_line(fd)) != NULL && !(my_strcmp(str, TYPE_FILE)) ||
-      (str = get_next_line(fd)) != NULL && !(my_strcmp(str, FORMAT)))
+  if (((str = get_next_line(fd)) != NULL && !(my_strcmp(str, TYPE_FILE))) ||
+      ((str = get_next_line(fd)) != NULL && !(my_strcmp(str, FORMAT))))
     return (1);
   return (0);
 }

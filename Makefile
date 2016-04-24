@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sun Apr 24 17:03:18 2016 Arthur ARNAUD
+## Last update Sun Apr 24 19:16:01 2016 Arthur ARNAUD
 ##
 
 DEBUG=			yes
@@ -74,9 +74,11 @@ TOOLS_FILES=		memory.c			\
 			my_getdouble.c			\
 			my_strcmp.c			\
 			my_strncmp.c			\
+			my_strdup.c			\
 			my_gethexa.c			\
 			my_puterr.c			\
-			str_to_wordtab.c
+			str_to_wordtab.c		\
+			get_next_line.c
 
 PLY_PREFIX=		src/ply/
 

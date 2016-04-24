@@ -5,17 +5,23 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Thu Apr 21 17:05:08 2016 Arthur ARNAUD
-** Last update Sun Apr 24 16:49:38 2016 Arthur ARNAUD
+** Last update Sun Apr 24 19:13:31 2016 Arthur ARNAUD
 */
 
 #include "ply.h"
 
 int	init_info(t_ply_info *info)
 {
-  if (!(info->list_elem = str_to_wordtab(LIST_ELEM, ' ')) ||
-      !(info->list_v_var = str_to_wordtab(LIST_V_VAR, ' ')) ||
-      !(info->list_f_var = str_to_wordtab(LIST_F_VAR, ' ')) ||
-      !(info->list_key = str_to_wordtab(LIST_KEY, ' ')))
+  char	*tmp;
+
+  if (!(tmp = my_strdup(LIST_ELEM)) ||
+      !(info->list_elem = str_to_wordtab(LIST_ELEM, ' ')) || my_free(tmp) ||
+      !(tmp = my_strdup(LIST_V_VAR)) ||
+      !(info->list_v_var = str_to_wordtab(LIST_V_VAR, ' ')) || my_free(tmp) ||
+      !(tmp = my_strdup(LIST_F_VAR)) ||
+      !(info->list_f_var = str_to_wordtab(LIST_F_VAR, ' ')) || my_free(tmp) ||
+      !(tmp = my_strdup(LIST_KEY)) ||
+      !(info->list_key = str_to_wordtab(LIST_KEY, ' ')) || my_free(tmp))
     return (1);
   return (0);
 }
