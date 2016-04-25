@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Thu Apr 21 18:24:18 2016 Antoine Baché
+** Last update Sun Apr 24 19:50:49 2016 Arthur ARNAUD
 */
 
 #ifndef	RAYTRACER2_H_
@@ -17,6 +17,7 @@
 # include "config.h"
 # include "events.h"
 # include "tools/memory.h"
+# include "ply.h"
 
 # define DEFAULT_WIDTH		1280
 # define DEFAULT_HEIGHT		720

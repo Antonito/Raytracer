@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sun Apr 24 19:16:01 2016 Arthur ARNAUD
+## Last update Mon Apr 25 02:05:39 2016 Arthur ARNAUD
 ##
 
 DEBUG=			yes
@@ -74,9 +74,9 @@ TOOLS_FILES=		memory.c			\
 			my_getdouble.c			\
 			my_strcmp.c			\
 			my_strncmp.c			\
-			my_strdup.c			\
 			my_gethexa.c			\
 			my_puterr.c			\
+			my_strndup.c			\
 			str_to_wordtab.c		\
 			get_next_line.c
 
@@ -86,6 +86,7 @@ PLY_FILES=		add_element.c			\
 			check_var.c			\
 			get_ply.c			\
 			init.c				\
+			fill_ply.c			\
 			read_header.c
 
 SRC=			$(addprefix $(SRC_PREFIX),$(SRC_FILES))

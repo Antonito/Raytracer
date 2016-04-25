@@ -5,23 +5,35 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Thu Apr 21 17:05:08 2016 Arthur ARNAUD
-** Last update Sun Apr 24 19:13:31 2016 Arthur ARNAUD
+** Last update Mon Apr 25 00:18:03 2016 Arthur ARNAUD
 */
 
 #include "ply.h"
+
+int	set_tab(int *tab, int size)
+{
+  int	i;
+
+  i = -1;
+  while (++i < size)
+    tab[i] = -1;
+  return (0);
+}
 
 int	init_info(t_ply_info *info)
 {
   char	*tmp;
 
-  if (!(tmp = my_strdup(LIST_ELEM)) ||
-      !(info->list_elem = str_to_wordtab(LIST_ELEM, ' ')) || my_free(tmp) ||
+  if (set_tab(info->vertex_prop, NB_V_VAR) ||
+      set_tab(info->face_prop, NB_F_VAR) ||
+      !(tmp = my_strdup(LIST_ELEM)) ||
+      !(info->list_elem = str_to_wordtab(tmp, ' ')) ||
       !(tmp = my_strdup(LIST_V_VAR)) ||
-      !(info->list_v_var = str_to_wordtab(LIST_V_VAR, ' ')) || my_free(tmp) ||
+      !(info->list_v_var = str_to_wordtab(tmp, ' ')) ||
       !(tmp = my_strdup(LIST_F_VAR)) ||
-      !(info->list_f_var = str_to_wordtab(LIST_F_VAR, ' ')) || my_free(tmp) ||
+      !(info->list_f_var = str_to_wordtab(tmp, ' ')) ||
       !(tmp = my_strdup(LIST_KEY)) ||
-      !(info->list_key = str_to_wordtab(LIST_KEY, ' ')) || my_free(tmp))
+      !(info->list_key = str_to_wordtab(tmp, ' ')))
     return (1);
   return (0);
 }

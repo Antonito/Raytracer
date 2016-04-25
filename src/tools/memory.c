@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 22:40:54 2016 Ludovic Petrenko
-** Last update Sun Apr 24 19:14:03 2016 Arthur ARNAUD
+** Last update Sun Apr 24 22:30:48 2016 Arthur ARNAUD
 */
 
 #include <lapin.h>
@@ -16,14 +16,14 @@ void	*my_malloc(size_t size)
 {
   void	*ptr;
 
-  if (!(ptr = bunny_malloc(size)))
+  if (!(ptr = malloc(size)))
     my_puterr("Malloc Failed !\n");
   return (ptr);
 }
 
 int	my_free(void *ptr)
 {
-  bunny_free(ptr);
+  free(ptr);
   return (0);
 }
 

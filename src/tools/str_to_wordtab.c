@@ -5,10 +5,11 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Thu Apr 21 18:10:40 2016 Ludovic Petrenko
-** Last update Sun Apr 24 17:04:03 2016 Arthur ARNAUD
+** Last update Sun Apr 24 19:40:15 2016 Arthur ARNAUD
 */
 
 #include "tools/str.h"
+#include "tools/memory.h"
 #include <stdlib.h>
 
 char	**str_to_wordtab(char *s, char c)
@@ -26,7 +27,7 @@ char	**str_to_wordtab(char *s, char c)
 	s[i] = 0;
 	n++;
       }
-  if (!(tab = malloc((n + 1) * sizeof(char *))))
+  if (!(tab = my_malloc((n + 1) * sizeof(char *))))
     return (NULL);
   n = -1;
   j = 0;

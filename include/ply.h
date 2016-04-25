@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Wed Apr 20 09:57:10 2016 Arthur ARNAUD
-** Last update Sun Apr 24 19:03:59 2016 Arthur ARNAUD
+** Last update Mon Apr 25 02:03:00 2016 Arthur ARNAUD
 */
 
 #ifndef PLY_H_
@@ -82,7 +82,7 @@ typedef enum	e_face_property
 typedef struct	s_vertex
 {
   t_vec3	vec;
-  t_color	*color;
+  t_color	color;
 }		t_vertex;
 
 typedef struct	s_face
@@ -90,7 +90,7 @@ typedef struct	s_face
   unsigned char	index;
   int		*face;
   int		*texcoord;
-  t_color	*color;
+  t_color	color;
 }		t_face;
 
 typedef struct	s_ply_info

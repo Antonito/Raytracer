@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Wed Apr 20 10:22:11 2016 Arthur ARNAUD
-** Last update Sun Apr 24 18:43:21 2016 Arthur ARNAUD
+** Last update Sun Apr 24 22:53:53 2016 Arthur ARNAUD
 */
 
 #include "ply.h"
@@ -16,7 +16,7 @@ int	is_in_tab(char *str, char **tab)
 
   i = -1;
   while (tab[++i])
-    if (my_strcmp(str, tab[i]))
+    if (!(my_strcmp(str, tab[i])))
       return (i);
   return (-1);
 }
@@ -25,8 +25,8 @@ int	check_format(int fd)
 {
   char	*str;
 
-  if (((str = get_next_line(fd)) != NULL && !(my_strcmp(str, TYPE_FILE))) ||
-      ((str = get_next_line(fd)) != NULL && !(my_strcmp(str, FORMAT))))
+  if (((str = get_next_line(fd)) != NULL && my_strcmp(str, TYPE_FILE)) ||
+      ((str = get_next_line(fd)) != NULL && my_strcmp(str, FORMAT)))
     return (1);
   return (0);
 }
@@ -54,8 +54,8 @@ int	read_header(int fd, t_ply_info *info)
     return (1);
   while ((str = get_next_line(fd)) != NULL && my_strcmp(str, END_HEADER))
     {
-      if ((components = str_to_wordtab(str, ' ')) != NULL ||
-	  (key = is_in_tab(components[KEY], info->list_key)) ||
+      if (!(components = str_to_wordtab(str, ' ')) ||
+	  (key = is_in_tab(components[KEY], info->list_key)) == -1 ||
 	  check_key(key, components, info))
 	return (1);
     }
