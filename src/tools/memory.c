@@ -5,9 +5,10 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 22:40:54 2016 Ludovic Petrenko
-** Last update Thu Apr 21 16:58:06 2016 Ludovic Petrenko
+** Last update Thu Apr 21 18:35:43 2016 Ludovic Petrenko
 */
 
+#include <lapin.h>
 #include "tools/memory.h"
 
 void	*my_malloc(size_t size)
@@ -37,6 +38,7 @@ void		*my_calloc(size_t nmemb, size_t size)
       return (NULL);
     }
   i = 0;
+  total_size /= sizeof(*ptr);
   while (i < total_size)
     {
       ptr[i] = 0;

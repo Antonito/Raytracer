@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 16 16:32:45 2016 Ludovic Petrenko
-** Last update Thu Apr 21 16:27:42 2016 Ludovic Petrenko
+** Last update Thu Apr 21 18:29:42 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -19,8 +19,8 @@ t_bunny_response	main_events(UNUSED t_bunny_event_state s,
   if (!keys)
     keys = bunny_get_keyboard();
   (void)data;
-  if (keys[BKS_ESCAPE])
-    return (EXIT_ON_SUCCESS);
+  /* if (keys[BKS_ESCAPE]) */
+  /*   return (EXIT_ON_SUCCESS); */
   return (GO_ON);
 }
 
