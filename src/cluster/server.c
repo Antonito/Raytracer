@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun Apr 17 16:29:27 2016 Antoine Baché
-** Last update Mon Apr 18 10:14:56 2016 Antoine Baché
+** Last update Thu Apr 21 18:24:34 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -20,10 +20,10 @@ static int		bind_server(struct sockaddr_in *serv, int fd, int port)
   serv->sin_port = htons(port);
   if (bind(fd, (struct sockaddr *)serv, sizeof(*serv)) == -1)
     {
-      write(2, "Error: Cannot start server\n", 27);
+      write(2, INIT_SERVER_ERROR, sizeof(INIT_SERVER_ERROR) - 1);
       return (1);
     }
-  write(1, "Infos: New client connected\n", 28);
+  write(1, NEW_CLIENT_CONNECTED, sizeof(NEW_CLIENT_CONNECTED) - 1);
   return (0);
 }
 
@@ -46,17 +46,17 @@ static void		*tcp_thread(void *data_arg)
   data = data_arg;
   if ((data->network.fd = socket(AF_INET, SOCK_STREAM, 0)) == -1)
     {
-      write(2, "Error: Cannot create socket\n", 28);
+      write(2, SOCKET_ERROR, sizeof(SOCKET_ERROR) - 1);
       return (NULL);
     }
   if (bind_server(&serv, data->network.fd, data->network.port))
     return (NULL);
   if (listen(data->network.fd, 1))
     {
-      write(2, "Error: Cannot listen\n", 21);
+      write(2, LISTEN_ERROR, sizeof(LISTEN_ERROR) - 1);
       return (NULL);
     }
-  write(1, "Waiting for clients...\n", 23);
+  write(1, WAIT_CLIENT, sizeof(WAIT_CLIENT) - 1);
   connect_to_server(data);
   server_loop(data);
   return (NULL);
@@ -73,12 +73,12 @@ int			init_server(t_data *data)
     return (1);
   if (pthread_create(&tcp_thread_buff, NULL, tcp_thread, (void *)data))
     {
-      write(2, "Error: Cannot create the TCP thread\n", 36);
+      write(2, CREATE_THREAD_ERROR, sizeof(CREATE_THREAD_ERROR) - 1);
       return (1);
     }
   if (pthread_join(tcp_thread_buff, NULL))
     {
-      write(2, "Error: In TCP thread\n", 21);
+      write(2, THREAD_ERROR, sizeof(THREAD_ERROR) - 1);
       return (1);
     }
   return (0);

@@ -5,10 +5,11 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 22:40:54 2016 Ludovic Petrenko
-** Last update Thu Apr 21 18:35:43 2016 Ludovic Petrenko
+** Last update Mon Apr 25 19:43:03 2016 Ludovic Petrenko
 */
 
 #include <lapin.h>
+#include "tools/str.h"
 #include "tools/memory.h"
 
 void	*my_malloc(size_t size)
@@ -20,9 +21,10 @@ void	*my_malloc(size_t size)
   return (ptr);
 }
 
-void	my_free(void *ptr)
+int	my_free(void *ptr)
 {
   bunny_free(ptr);
+  return (0);
 }
 
 void		*my_calloc(size_t nmemb, size_t size)

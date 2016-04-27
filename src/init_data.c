@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 22:32:39 2016 Ludovic Petrenko
-** Last update Thu Apr 21 19:55:18 2016 Ludovic Petrenko
+** Last update Mon Apr 25 19:43:42 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -19,7 +19,7 @@ int	init_data(int ac, char **av, t_data **data)
   (*data)->width = DEFAULT_WIDTH;
   (*data)->height = DEFAULT_HEIGHT;
   if (!((*data)->win = bunny_start((*data)->width, (*data)->height,
-				(*data)->fullscreen, WIN_NAME)) ||
+				   (*data)->fullscreen, WIN_NAME)) ||
       !((*data)->render = bunny_new_pixelarray((*data)->width,
 					       (*data)->height)))
     return (1);
@@ -28,7 +28,7 @@ int	init_data(int ac, char **av, t_data **data)
       if (!((*data)->scene = load_scene(av[1])))
 	return (1);
     }
-  else if (!((*data)->scene = load_scene("scenes/default.ini")))
+  else if (!((*data)->scene = load_scene(SCENE_DEFAULT)))
     return (1);
   return (0);
 }

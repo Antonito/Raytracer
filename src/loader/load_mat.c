@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon Apr 18 19:28:33 2016 Ludovic Petrenko
-** Last update Tue Apr 19 22:17:51 2016 Ludovic Petrenko
+** Last update Thu Apr 21 17:58:14 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -20,13 +20,13 @@ void	load_mat_data(t_material *mat, const t_bunny_ini *ini)
   mat->opacity = DEFAULT_MAT_OPACITY;
   mat->reflectivity = DEFAULT_MAT_REFLECTIVITY;
   mat->fresnel = DEFAULT_MAT_FRESNEL;
-  if ((tmp = (char *)bunny_ini_get_field(ini, mat->name, "color", 0)))
+  if ((tmp = (char *)bunny_ini_get_field(ini, mat->name, COLOR_FIELD, 0)))
     mat->color = my_gethexa(tmp);
-  if ((tmp = (char *)bunny_ini_get_field(ini, mat->name, "opacity", 0)))
+  if ((tmp = (char *)bunny_ini_get_field(ini, mat->name, OPACITY_FIELD, 0)))
     mat->opacity = my_getdouble(tmp);
-  if ((tmp = (char *)bunny_ini_get_field(ini, mat->name, "reflectivity", 0)))
+  if ((tmp = (char *)bunny_ini_get_field(ini, mat->name, REFLECT_FIELD, 0)))
     mat->reflectivity = my_getdouble(tmp);
-  if ((tmp = (char *)bunny_ini_get_field(ini, mat->name, "fresnel", 0)))
+  if ((tmp = (char *)bunny_ini_get_field(ini, mat->name, FRESNEL_FIELD, 0)))
     mat->fresnel = my_getdouble(tmp);
 }
 
@@ -42,7 +42,7 @@ int			load_mat(t_material *mat, const t_bunny_ini *ini)
   while ((scope = bunny_ini_next((t_bunny_ini *)ini, scope)))
     {
       scope_name = bunny_ini_scope_name(ini, scope);
-      if (scope_name && !my_strncmp(scope_name, "mat_", 4))
+      if (scope_name && !my_strncmp(scope_name, MAT_PREFIX, 4))
 	{
 	  mat[i].name = scope_name;
 	  load_mat_data(mat + i, ini);
