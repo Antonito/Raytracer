@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Wed Apr 27 05:44:29 2016 Antoine Baché
+## Last update Wed Apr 27 17:18:33 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -70,7 +70,9 @@ SOLVER_PREFIX=		src/solver/
 
 SOLVER_FILES=		second_degree.c			\
 			third_degree.c			\
-			fourth_degree.c
+			fourth_degree.c			\
+			fourth_degree_extended.c	\
+			check_solution.c
 
 TOOLS_PREFIX=		src/tools/
 
