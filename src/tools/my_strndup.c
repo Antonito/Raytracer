@@ -5,11 +5,12 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue Feb 23 16:10:17 2016 Antoine Baché
-** Last update Sun Apr 24 20:19:39 2016 Antoine Baché
+** Last update Wed Apr 27 05:50:57 2016 Antoine Baché
 */
 
 #include <stdlib.h>
-#include "tools.h"
+#include "tools/str.h"
+#include "tools/memory.h"
 
 char	*my_strndup(const char *src, int n)
 {
