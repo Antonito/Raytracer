@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sun Apr 24 20:17:57 2016 Antoine Baché
+## Last update Wed Apr 27 23:22:50 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -66,9 +66,18 @@ LOADER_FILES=		count.c				\
 			load_scene.c			\
 			obj_type.c
 
+SOLVER_PREFIX=		src/solver/
+
+SOLVER_FILES=		second_degree.c			\
+			third_degree.c			\
+			fourth_degree.c			\
+			fourth_degree_extended.c	\
+			check_solution.c
+
 TOOLS_PREFIX=		src/tools/
 
 TOOLS_FILES=		memory.c			\
+			fast_sqrt.c			\
 			my_strlen.c			\
 			my_getnbr.c			\
 			my_getdouble.c			\
@@ -88,6 +97,8 @@ SRC_CLIENT=		$(addprefix $(CLIENT_PREFIX),$(CLIENT_FILES))
 
 SRC_LOADER=		$(addprefix $(LOADER_PREFIX),$(LOADER_FILES))
 
+SRC_SOLVER=		$(addprefix $(SOLVER_PREFIX),$(SOLVER_FILES))
+
 SRC_TOOLS=		$(addprefix $(TOOLS_PREFIX),$(TOOLS_FILES))
 
 SRC+=			$(SRC_NOISE)
@@ -97,6 +108,8 @@ SRC+=			$(SRC_NETWORK)
 SRC+=			$(SRC_TOOLS)
 
 SRC+=			$(SRC_LOADER)
+
+SRC+=			$(SRC_SOLVER)
 
 SRC_CLIENT+=		$(SRC_TOOLS)
 
