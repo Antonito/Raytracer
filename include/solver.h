@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Apr 27 04:02:18 2016 Antoine Baché
-** Last update Wed Apr 27 23:22:02 2016 Antoine Baché
+** Last update Sat Apr 30 19:36:47 2016 Antoine Baché
 */
 
 #ifndef SOLVER_H_
@@ -31,7 +31,7 @@ double		solver_fourth_degree(double, double, double, ...);
 ** called.
 */
 double		check_solution_equation(double, double);
-double		quadratic_solution_calc(double [], double);
-void		quadratic_solution_det(double **, double, double, ...);
+double		quadratic_solution_calc(double *, double);
+void		quadratic_solution_det(double *, double, double, ...);
 
 #endif /* !SOLVER_H_ */
