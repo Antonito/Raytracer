@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Apr 27 04:15:39 2016 Antoine Baché
-** Last update Mon May  2 02:57:10 2016 Antoine Baché
+** Last update Mon May  2 02:59:47 2016 Antoine Baché
 */
 
 #define _ISOC99_SOURCE
@@ -37,16 +37,10 @@ static void	solver_third_degree_round(double *x, double *tmp, double val)
 {
   x[1] = (tmp[0] * (tmp[1] + tmp[2])) - val;
   x[2] = (tmp[0] * (tmp[1] - tmp[2])) - val;
-  x[0] = x[0] * 100000000000000.0;
-  x[0] = round(x[0]);
-  x[0] = x[0] / 100000000000000.0;
-  x[1] = x[1] * 100000000000000.0;
-  x[1] = round(x[1]);
-  x[1] = x[1] / 100000000000000.0;
-  x[2] = x[2] * 100000000000000.0;
-  x[2] = round(x[2]);
-  x[2] = x[2] / 100000000000000.0;
-  x[1] = check_solution_equation(CHECK_SOLUTION(x[1]), CHECK_SOLUTION(x[2]));
+  x[0] = CHECK_SOLUTION(round(x[0] * 100000000000000.0) / 100000000000000.0);
+  x[1] = CHECK_SOLUTION(round(x[1] * 100000000000000.0) / 100000000000000.0);
+  x[2] = CHECK_SOLUTION(round(x[2] * 100000000000000.0) / 100000000000000.0);
+  x[1] = check_solution_equation(x[1], x[2]);
 }
 
 static double	solver_third_degree_neg(double g, double h, double val)

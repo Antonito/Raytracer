@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 01:23:21 2016 Ludovic Petrenko
-** Last update Fri Apr 15 01:29:30 2016 Ludovic Petrenko
+** Last update Mon May  2 05:35:15 2016 Antoine Baché
 */
 
 #ifndef INTERSECT_H_
@@ -22,5 +22,10 @@ typedef struct	s_intersect
   double	dist;
   unsigned int	color;
 }		t_intersect;
+
+/*
+** Functions
+*/
+t_intersect	get_intersect_sphere(t_obj *, t_ray *);
 
 #endif /* !INTERSECT_H_ */

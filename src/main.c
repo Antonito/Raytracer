@@ -5,12 +5,8 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:38:13 2016 Antoine Baché
-** Last update Mon May  2 02:57:30 2016 Antoine Baché
+** Last update Mon May  2 04:19:36 2016 Antoine Baché
 */
-
-#include <math.h>
-#include <sys/time.h>
-#include "tools/math.h"
 
 #include <unistd.h>
 #include "raytracer.h"
