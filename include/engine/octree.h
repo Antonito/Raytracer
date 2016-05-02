@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sun Apr 17 00:24:50 2016 Ludovic Petrenko
-** Last update Fri Apr 29 18:58:11 2016 Ludovic Petrenko
+** Last update Mon May  2 05:16:43 2016 Ludovic Petrenko
 */
 
 #ifndef OCTREE_H_
@@ -27,10 +27,12 @@ typedef struct	s_node
   t_obj		obj_list;
 }		t_node;
 
-bool	light_node(t_node *node, t_obj *obj);
-bool    sphere_node(t_node *node, t_obj *obj);
-bool    plane_node(t_node *node, t_obj *obj);
-bool    cylinder_node(t_node *node, t_obj *obj);
-bool	cone_node(t_node *node, t_obj *obj);
+t_intersect	node_intersect(t_node *node, t_ray ray);
+int		get_next_node(double *dist, double last);
+bool		light_node(t_node *node, t_obj *obj);
+bool		sphere_node(t_node *node, t_obj *obj);
+bool		plane_node(t_node *node, t_obj *obj);
+bool		cylinder_node(t_node *node, t_obj *obj);
+bool		cone_node(t_node *node, t_obj *obj);
 
 #endif /* !OCTREE_H_ */

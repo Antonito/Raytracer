@@ -5,11 +5,13 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Apr 27 16:52:24 2016 Antoine Baché
-** Last update Sat Apr 30 19:37:19 2016 Antoine Baché
+** Last update Sat Apr 30 20:20:35 2016 Ludovic Petrenko
 */
 
 #include <stdarg.h>
 #include "tools/math.h"
+
+/* double	check_solution_equation(double, double); */
 
 void		quadratic_solution_det(double *det, double a, double b, ...)
 {

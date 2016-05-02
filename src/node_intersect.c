@@ -5,42 +5,47 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Wed Apr 27 05:31:16 2016 Ludovic Petrenko
-** Last update Fri Apr 29 19:27:55 2016 Ludovic Petrenko
+** Last update Mon May  2 05:45:22 2016 Ludovic Petrenko
 */
 
+#define _ISOC99_SOURCE
+
 #include <math.h>
-#include "engine/intersect.h"
 #include "engine/octree.h"
+#include "engine/intersect.h"
+
+static bool	is_in_node(t_vec4 p, t_node *node)
+{
+  if (p.x >= node->min.x && p.x <= node->max.x &&
+      p.y >= node->min.y && p.y <= node->max.y &&
+      p.z >= node->min.z && p.z <= node->max.z)
+    return (true);
+  return (false);
+}
 
 static void	get_node_dist(t_node *node, t_ray ray, double *dist)
 {
   int		i;
-  t_intersect	t;
-  t_intersect	tmp;
+  t_vec4	t;
 
   i = -1;
   while (++i < 8)
     {
-      t.dist = INFINITY;
-      if (node->child[i] == NULL)
-	dist[i] = INFINITY;
-      else
+      dist[i] = INFINITY;
+      if (node->child[i])
 	{
-	  tmp = get_x(ray, (ray.dir.x > 0.0) ? node->child[i]->min.x
-		      : node->child[i]->max.x);
-	  if (tmp.dist < t.dist && is_in_node(tmp.pos, node->child + i,
-					      bvec3(false, true, true)))
-	    t = tmp;
-	  tmp = get_y(ray, (ray.dir.y > 0.0) ? node->child[i]->min.y
-		      : node->child[i]->max.y);
-	  if (tmp.dist < t.dist && is_in_node(tmp.pos, node->child + i,
-					      bvec3(true, false, true)))
-	    t = tmp;
-	  tmp = get_z(ray, (ray.dir.z > 0.0) ? node->child[i]->min.z
-		      : node->child[i]->max.z);
-	  if (tmp.dist < t.dist && is_in_node(tmp.pos, node->child + i,
-					      bvec3(true, true, false)))
-	    t = tmp;
+	  t = get_x(ray, (ray.dir.x > 0.0) ? node->child[i]->min.x
+		       : node->child[i]->max.x);
+	  if (t.w < dist[i] && is_in_node(t, node->child[i]))
+	    dist[i] = t.w;
+	  t = get_y(ray, (ray.dir.y > 0.0) ? node->child[i]->min.y
+		       : node->child[i]->max.y);
+	  if (t.w < dist[i] && is_in_node(t, node->child[i]))
+	    dist[i] = t.w;
+	  t = get_z(ray, (ray.dir.z > 0.0) ? node->child[i]->min.z
+		       : node->child[i]->max.z);
+	  if (t.w < dist[i] && is_in_node(t, node->child[i]))
+	    dist[i] = t.w;
 	}
     }
 }
@@ -59,7 +64,7 @@ static void	subnode_intersect(t_node *node, t_ray ray, t_intersect *i)
   while (++x < 8)
     {
       id = get_next_node(dist, last);
-      if (id == -1 || dist[id] <= i->dist)
+      if (id == -1 || dist[id] == INFINITY)
 	return ;
       tmp = node_intersect(node->child + id, ray);
       if (tmp.dist < i->dist)
@@ -80,7 +85,7 @@ t_intersect	node_intersect(t_node *node, t_ray ray)
   obj = &node->obj_list;
   while (!(obj = obj->next))
     {
-      tmp = obj_intersect(obj, ray);
+      tmp = obj->get_intersect(obj, ray);
       if (tmp.dist > 0.0 && tmp.dist < cur.dist)
 	cur = tmp;
     }

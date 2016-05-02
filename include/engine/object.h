@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:33:45 2016 Ludovic Petrenko
-** Last update Thu Apr 21 00:20:05 2016 Ludovic Petrenko
+** Last update Mon May  2 04:56:08 2016 Ludovic Petrenko
 */
 
 #ifndef OBJECT_H_

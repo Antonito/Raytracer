@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Wed Apr 27 23:22:50 2016 Antoine Baché
+## Last update Mon May  2 05:03:00 2016 Ludovic Petrenko
 ##
 
 DEBUG=			yes
@@ -14,10 +14,15 @@ SRC_PREFIX=		src/
 
 SRC_FILES=		init_data.c			\
 			build_octree.c			\
+			calc_fragment.c			\
+			calc_ray.c			\
 			get_node.c			\
 			launch.c			\
 			main.c				\
+			node_intersect.c		\
+			node_intersect2.c		\
 			vector.c			\
+			vector_add.c			\
 			vector_op.c
 
 NOISE_PREFIX=		src/noise/

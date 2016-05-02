@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:30:38 2016 Ludovic Petrenko
-** Last update Mon Apr 25 20:15:04 2016 Ludovic Petrenko
+** Last update Sat Apr 30 22:09:15 2016 Ludovic Petrenko
 */
 
 #ifndef VECTOR_H_
