@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Mon Apr 25 02:05:39 2016 Arthur ARNAUD
+## Last update Mon May  2 14:38:31 2016 Arthur ARNAUD
 ##
 
 DEBUG=			yes
@@ -87,6 +87,8 @@ PLY_FILES=		add_element.c			\
 			get_ply.c			\
 			init.c				\
 			fill_ply.c			\
+			parse_prop.c			\
+			free_ply.c			\
 			read_header.c
 
 SRC=			$(addprefix $(SRC_PREFIX),$(SRC_FILES))

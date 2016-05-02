@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Apr 18 11:13:21 2016 Antoine Baché
-** Last update Mon Apr 18 11:18:21 2016 Antoine Baché
+** Last update Thu Apr 28 01:18:41 2016 Arthur ARNAUD
 */
 
 #include "tools/memory.h"
@@ -17,7 +17,7 @@ int		my_power(int nb, const int exp)
 
   i = 0;
   while (++i < exp)
-    nb *= nb;
+    nb *= 10;
   return (nb);
 }
 

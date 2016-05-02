@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Wed Apr 20 10:22:11 2016 Arthur ARNAUD
-** Last update Sun Apr 24 22:53:53 2016 Arthur ARNAUD
+** Last update Mon May  2 17:24:49 2016 Arthur ARNAUD
 */
 
 #include "ply.h"
@@ -26,8 +26,10 @@ int	check_format(int fd)
   char	*str;
 
   if (((str = get_next_line(fd)) != NULL && my_strcmp(str, TYPE_FILE)) ||
+      my_free(str) ||
       ((str = get_next_line(fd)) != NULL && my_strcmp(str, FORMAT)))
     return (1);
+  my_free(str);
   return (0);
 }
 
@@ -58,6 +60,9 @@ int	read_header(int fd, t_ply_info *info)
 	  (key = is_in_tab(components[KEY], info->list_key)) == -1 ||
 	  check_key(key, components, info))
 	return (1);
+      my_free(components);
+      my_free(str);
     }
+  my_free(str);
   return (0);
 }

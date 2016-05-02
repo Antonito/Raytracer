@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Wed Apr 20 09:57:10 2016 Arthur ARNAUD
-** Last update Mon Apr 25 02:03:00 2016 Arthur ARNAUD
+** Last update Mon May  2 14:35:05 2016 Arthur ARNAUD
 */
 
 #ifndef PLY_H_
@@ -87,9 +87,11 @@ typedef struct	s_vertex
 
 typedef struct	s_face
 {
-  unsigned char	index;
   int		*face;
-  int		*texcoord;
+  double	*texcoord;
+  int		nb_face;
+  int		nb_tex;
+  int		texnumber;
   t_color	color;
 }		t_face;
 
@@ -113,16 +115,28 @@ typedef struct	s_ply
   t_face	*list_face;
 }		t_ply;
 
-t_ply	*get_ply(char *name);
+t_ply	*get_ply(char *);
 int	add_element(char **, int *, int *, t_ply_info *);
 int	add_property(char **, int, int *, t_ply_info *);
-int	check_vertex_var(char **, char **list);
-int	check_face_var(char **, char **list, int size);
-int	init_info(t_ply_info *info);
-int	init_ply(t_ply *ply, t_ply_info *info);
-int	is_in_tab(char *str, char **tab);
-int	check_format(int fd);
-int	check_key(int keey, char ** components, t_ply_info *info);
-int	read_header(int fd, t_ply_info *info);
+int	check_vertex_var(char **, char **);
+int	check_face_var(char **, char **, int);
+int	init_info(t_ply_info *);
+int	init_ply(t_ply *, t_ply_info *);
+int	is_in_tab(char *, char **);
+int	check_format(int);
+int	check_key(int, char **, t_ply_info *);
+int	read_header(int, t_ply_info *);
+int	count_tab(char **);
+int	count_prop(int *, int);
+int	fill_face(t_ply *, t_ply_info *, int);
+int	fill_vertex(t_ply *, t_ply_info *, int);
+int	fill_ply(t_ply *, t_ply_info *, int);
+int	*add_list_face(char **, int *, int *, int);
+double	*add_list_texcoord(char **, int *, int *, int);
+int	parse_color_face(t_color *, char **, int *, int);
+int	parse_color_vertex(t_color *, char **, int *);
+void	free_tab(char **tab);
+void	free_ply_info(t_ply_info *info);
+void	free_ply(t_ply *ply);
 
 #endif /* !PLY_H_ */
