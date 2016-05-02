@@ -5,12 +5,11 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Apr 27 04:15:39 2016 Antoine Baché
-** Last update Mon May  2 02:55:26 2016 Antoine Baché
+** Last update Mon May  2 02:57:10 2016 Antoine Baché
 */
 
 #define _ISOC99_SOURCE
 
-#include <stdio.h>
 #include <math.h>
 #include "solver.h"
 #include "tools/math.h"

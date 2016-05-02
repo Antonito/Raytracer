@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:38:13 2016 Antoine Baché
-** Last update Mon May  2 01:55:13 2016 Antoine Baché
+** Last update Mon May  2 02:57:30 2016 Antoine Baché
 */
 
 #include <math.h>
@@ -20,8 +20,6 @@ int		main(int ac, char **av, char **env)
 {
   t_data	*data;
 
-  printf("Sol = %f\n", solver_third_degree(24.0, -32.0, 23.0, -89.0));
-  return (0);
   if (!*env || init_data(ac, av, &data) ||
       launch_raytracer(data))
     {
