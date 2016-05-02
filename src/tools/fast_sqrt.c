@@ -5,26 +5,24 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Apr 27 05:14:59 2016 Antoine Baché
-** Last update Wed Apr 27 05:47:15 2016 Antoine Baché
+** Last update Mon May  2 01:36:48 2016 Antoine Baché
 */
 
 #include "tools/math.h"
 
 float		fast_sqrt(float value)
 {
-  t_sqrt	tmp;
-
-  tmp.val = value;
-  tmp.tmp -= 1 << 23;
-  tmp.tmp >>= 1;
-  tmp.tmp += 1 << 29;
-  return (tmp.val);
+  return (1.0 / inv_fast_sqrt(value));
 }
 
 float		inv_fast_sqrt(float value)
 {
   float		half;
   int		i;
+
+  union { float f; unsigned int u; } y = {value};
+  y.u = 0x5F1FFFF9ul - (y.u >> 1);
+  return 0.703952253f * y.f * (2.38924456f - value * y.f * y.f);
 
   i = *(int *)&value;
   half = value * 0.5f;

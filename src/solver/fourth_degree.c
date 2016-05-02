@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Apr 27 04:18:12 2016 Antoine Baché
-** Last update Sat Apr 30 21:05:45 2016 Antoine Baché
+** Last update Mon May  2 01:58:19 2016 Antoine Baché
 */
 
 #include <stdarg.h>
@@ -32,12 +32,12 @@ static void	quadratic_solution_pq(double *p, double *q, double a, ...)
 static double	quadratic_solution_det_pos(double p, double det0, double det1,
 					   double a)
 {
-  return ((1.0 / 2.0) * fast_sqrt((-(2.0 / 3.0) * p) +
-				  ((2.0 / (3.0 * a)) * fast_sqrt(det0) *
-				   cos((acos(det1 /
-					     (2.0 * fast_sqrt(det0 * det0 *
-							      det0))))) /
-				   3.0)));
+  return ((1.0 / 2.0) * sqrt((-(2.0 / 3.0) * p) +
+			     ((2.0 / (3.0 * a)) * sqrt(det0) *
+			      cos((acos(det1 /
+					(2.0 * sqrt(det0 * det0 *
+						    det0))))) /
+			      3.0)));
 }
 
 static double	solver_fourth_solve(double val, double s, double p, double q)
@@ -45,8 +45,8 @@ static double	solver_fourth_solve(double val, double s, double p, double q)
   double	tmp[3];
 
   tmp[0] = val;
-  tmp[1] = (1.0 / 2.0) * fast_sqrt(-4.0 * s * s - 2.0 * p + (q / s));
-  tmp[2] = (1.0 / 2.0) * fast_sqrt(-4.0 * s * s - 2.0 * p - (q / s));
+  tmp[1] = (1.0 / 2.0) * sqrt(-4.0 * s * s - 2.0 * p + (q / s));
+  tmp[2] = (1.0 / 2.0) * sqrt(-4.0 * s * s - 2.0 * p - (q / s));
   return (quadratic_solution_calc(tmp, s));
 }
 
@@ -56,13 +56,13 @@ static double	solver_fourth_calc_s(double *values)
   double	s;
 
   if (values[2] != 0.0 && values[0] == 0.0)
-    values[1] = fast_sqrt(values[1] * values[1]);
-  Q = CUBIC_ROOT((values[1] + fast_sqrt((values[1] * values[1]) -
-					4.0 * (values[0] * values[0] *
-					       values[0]))) / 2.0);
-  s = (1.0 / 2.0) * fast_sqrt(((-2.0 / 3.0) * values[4]) +
-			      ((1.0 / (3.0 * values[3])) *
-			       (Q + (values[0] / Q))));
+    values[1] = sqrt(values[1] * values[1]);
+  Q = CUBIC_ROOT((values[1] + sqrt((values[1] * values[1]) -
+				   4.0 * (values[0] * values[0] *
+					  values[0]))) / 2.0);
+  s = (1.0 / 2.0) * sqrt(((-2.0 / 3.0) * values[4]) +
+			 ((1.0 / (3.0 * values[3])) *
+			  (Q + (values[0] / Q))));
   return (s);
 }
 
