@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May  2 04:39:20 2016 Antoine Baché
-** Last update Mon May  2 06:18:02 2016 Antoine Baché
+** Last update Mon May  2 17:11:40 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -44,9 +44,9 @@ t_intersect	get_intersect_sphere(t_obj *obj, t_ray *ray)
   inter.dir = ray->dir;
   inter.material = obj->mat;
   get_dist_sphere(obj, ray, &inter);
-  if (inter.dist == -1)
+  if (inter.dist == -1.0)
     return (inter);
-  inter.pos = add_vec3(ray->pos, mult_vec3(inter.dist, inter.dir));
+  inter.pos = add_vec3(ray->pos, mult_vec3(inter.dir, inter.dist));
   inter.norm = div_vec3(sub_vec3(inter.pos - obj->pos), obj->spec.radius);
   return (inter);
 }
