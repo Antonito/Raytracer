@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Tue May  3 17:26:56 2016 Antoine Baché
+## Last update Tue May  3 17:27:27 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -119,7 +119,7 @@ SRC+=			$(SRC_TOOLS)
 
 SRC+=			$(SRC_LOADER)
 
-SRC+=			$(SRC_SHAPE)
+#SRC+=			$(SRC_SHAPE)
 
 SRC+=			$(SRC_SOLVER)
 
