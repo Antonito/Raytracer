@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May  2 07:53:57 2016 Antoine Baché
-** Last update Mon May  2 08:02:53 2016 Antoine Baché
+** Last update Tue May  3 02:12:24 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -13,17 +13,13 @@
 
 static void	get_plane_dist(t_obj *obj, t_ray *ray, t_intersect *inter)
 {
-  double	t;
-
   if (ray->dir.x)
     {
-      t = (-1.0 * ray->pos.x)/ ray->dir.x;
-      inter.dist = solver_second_degree(ray->dir.x * t + ray->pos.x,
-					ray->dir.y * t + ray->pos.y,
-					ray->dir.z * t + ray->pos.z);
+      inter->dist = (-1.0 * ray->pos.x) / ray->dir.x;
+      inter->pos = add_vec3(mult_vec3(ray->dir, inter->dist), inter->pos);
     }
   else
-    inter.dist = -1.0;
+    inter->dist = -1.0;
 }
 
 t_intersect	get_intersect_plane(t_obj *obj, t_ray *ray)
