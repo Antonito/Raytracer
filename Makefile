@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Mon May  2 17:50:34 2016 Antoine Baché
+## Last update Tue May  3 17:26:56 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -77,8 +77,10 @@ SOLVER_FILES=		second_degree.c			\
 SHAPE_PREFIX=		src/shape/
 
 SHAPE_FILES=		plane.c				\
+			cylinder.c			\
 			sphere.c			\
-			tore.c
+			tore.c				\
+			void_cube.c
 
 TOOLS_PREFIX=		src/tools/
 
