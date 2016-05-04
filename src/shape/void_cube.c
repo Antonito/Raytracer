@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May  3 16:58:16 2016 Antoine Baché
-** Last update Tue May  3 17:24:57 2016 Antoine Baché
+** Last update Wed May  4 01:06:58 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -18,9 +18,9 @@ static void	get_dist_void_cube(t_obj *obj, t_ray *ray, t_intersect *inter)
   sol[0] = (ray->dist.x * ray->dist.x * ray->dist.x * ray->dist.x) +
     (ray->dist.y * ray->dist.y * ray->dist.y * ray->dist.y) +
     (ray->dist.z * ray->dist.z * ray->dist.z * ray->dist.z);
-  sol[1] = 4 * ((ray->dist.x * ray->dist.x * ray->dist.x * ray->pos.x)
-		+ (ray->dist.y * ray->dist.y * ray->dist.y * ray->pos.y)
-		+ (ray->dist.z * ray->dist.z * ray->dist.z * ray->pos.z));
+  sol[1] = 4.0 * ((ray->dist.x * ray->dist.x * ray->dist.x * ray->pos.x)
+		  + (ray->dist.y * ray->dist.y * ray->dist.y * ray->pos.y)
+		  + (ray->dist.z * ray->dist.z * ray->dist.z * ray->pos.z));
   sol[2] = 6.0 * ((ray->dist.x * ray->dist.x * ray->pos.x * ray->pos.x) +
 		  (ray->dist.y * ray->dist.y * ray->pos.y * ray->pos.y) +
 		  (ray->dist.z * ray->dist.z * ray->pos.z * ray->pos.z)) -
