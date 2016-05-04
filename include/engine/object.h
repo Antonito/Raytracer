@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:33:45 2016 Ludovic Petrenko
-** Last update Mon May  2 04:56:08 2016 Ludovic Petrenko
+** Last update Wed May  4 05:19:01 2016 Ludovic Petrenko
 */
 
 #ifndef OBJECT_H_
@@ -87,7 +87,7 @@ typedef struct	s_obj
   t_vec3	rot;
   t_material	*mat;
   struct s_obj	*next;
-  t_intersect	(*get_intersect)(struct s_obj *, t_ray);
+  t_intersect	(*get_intersect)(struct s_obj *, t_ray *);
   union
   {
     t_light	light;
@@ -97,5 +97,16 @@ typedef struct	s_obj
     t_cone	cone;
   }		spec;
 }		t_obj;
+
+/*
+** Functions
+*/
+t_intersect	get_intersect_sphere(t_obj *, t_ray *);
+t_intersect	get_intersect_plane(t_obj *, t_ray *);
+t_intersect	get_intersect_tore(t_obj *, t_ray *);
+void		light_dim(t_obj *, t_vec3 *);
+void		sphere_dim(t_obj *, t_vec3 *);
+void	        cylinder_dim(t_obj *, t_vec3 *);
+void		cone_dim(t_obj *, t_vec3 *);
 
 #endif /* !OBJECT_H_ */

@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon Apr 18 20:37:43 2016 Ludovic Petrenko
-** Last update Thu Apr 21 18:01:37 2016 Antoine Baché
+** Last update Tue May  3 16:33:52 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -35,7 +35,7 @@ void		load_obj_data(t_scene *scene, t_obj *obj,
 {
   const char	*tmp;
 
-  obj->mat = scene->mat;
+  obj->mat = NULL;
   if ((tmp = bunny_ini_scope_get_field(scope, MAT_FIELD, 0)))
     obj->mat = get_material(scene->mat, scene->nb_mat, tmp);
   load_obj_spec(obj, scope);
@@ -65,5 +65,9 @@ void	load_objs(t_scene *scene, t_obj *obj, const t_bunny_ini *ini)
 	  load_light_spec(obj + i, scope);
 	  i++;
 	}
+      obj[i].next = obj + i + 1;
     }
+  if (i)
+    obj[i - 1].next = NULL;
+  scene->octree.obj_list.next = obj;
 }

@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Wed Apr 27 05:31:16 2016 Ludovic Petrenko
-** Last update Mon May  2 05:45:22 2016 Ludovic Petrenko
+** Last update Tue May  3 16:32:19 2016 Ludovic Petrenko
 */
 
 #define _ISOC99_SOURCE
@@ -66,7 +66,7 @@ static void	subnode_intersect(t_node *node, t_ray ray, t_intersect *i)
       id = get_next_node(dist, last);
       if (id == -1 || dist[id] == INFINITY)
 	return ;
-      tmp = node_intersect(node->child + id, ray);
+      tmp = node_intersect(node->child[id], ray);
       if (tmp.dist < i->dist)
 	{
 	  *i = tmp;
@@ -83,9 +83,9 @@ t_intersect	node_intersect(t_node *node, t_ray ray)
 
   cur.dist = INFINITY;
   obj = &node->obj_list;
-  while (!(obj = obj->next))
+  while ((obj = obj->next))
     {
-      tmp = obj->get_intersect(obj, ray);
+      tmp = obj->get_intersect(obj, &ray);
       if (tmp.dist > 0.0 && tmp.dist < cur.dist)
 	cur = tmp;
     }

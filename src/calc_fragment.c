@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Thu Apr 21 20:09:40 2016 Ludovic Petrenko
-** Last update Mon May  2 05:31:05 2016 Ludovic Petrenko
+** Last update Wed May  4 08:55:01 2016 Ludovic Petrenko
 */
 
 #include <math.h>
@@ -31,14 +31,12 @@ void		set_vectors(t_data *data, t_camera *c)
 unsigned int	calc_pixel(t_scene *scene, t_ivec2 *pix)
 {
   t_ray		ray;
-  t_intersect	i;
 
   ray.pos = scene->cam.pos;
   ray.dir = scene->cam.origin;
   ray.dir = add_vec3(ray.dir, mult_vec3(scene->cam.incr_x, pix->x));
   ray.dir = add_vec3(ray.dir, mult_vec3(scene->cam.incr_y, pix->y));
-  ray.dir = sub_vec3(ray.dir, ray.pos);
-  i = node_intersect(&scene->octree, ray);
+  ray.dir = vec3_normalize(sub_vec3(ray.dir, ray.pos));
   return (calc_ray(scene, ray, 0));
 }
 
@@ -49,7 +47,7 @@ void		calc_fragment(t_data *data, unsigned int *buf, t_ivec2 *pos)
 
   tmp = pos[0];
   i = 0;
-  while (tmp.x < pos[1].x && tmp.y < pos[1].y)
+  while (tmp.x < pos[1].x && tmp.y <= pos[1].y)
     {
       buf[i] = calc_pixel(data->scene, pos);
       tmp.x = (tmp.x + 1 < data->width) ? tmp.x + 1 : 0;

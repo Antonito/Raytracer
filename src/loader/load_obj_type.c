@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 01:06:07 2016 Ludovic Petrenko
-** Last update Thu Apr 21 17:48:55 2016 Antoine Baché
+** Last update Mon May  2 23:06:46 2016 Ludovic Petrenko
 */
 
 #include <math.h>
@@ -19,6 +19,7 @@ void	load_sphere(t_obj *obj, const t_bunny_ini_scope *scope)
 
   obj->type = SPHERE;
   obj->spec.sphere.radius = DEFAULT_SPHERE_RADIUS;
+  obj->get_intersect = &get_intersect_sphere;
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, RADIUS_FIELD, 0)))
     obj->spec.sphere.radius = my_getdouble(tmp);
 }
@@ -29,6 +30,7 @@ void	load_plane(t_obj *obj, const t_bunny_ini_scope *scope)
 
   obj->type = PLANE;
   obj->spec.plane.normale = DEFAULT_PLANE_NORMALE;
+  obj->get_intersect = &get_intersect_plane;
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, NORMALE_FIELD, 0)))
     obj->spec.plane.normale.x = my_getdouble(tmp);
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, NORMALE_FIELD, 1)))

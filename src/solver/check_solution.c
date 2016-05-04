@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Apr 27 14:07:51 2016 Antoine Baché
-** Last update Sat Apr 30 19:16:42 2016 Antoine Baché
+** Last update Sat Apr 30 20:28:04 2016 Antoine Baché
 */
 
 #include "tools/math.h"
@@ -24,6 +24,5 @@ double		check_solution_equation(double nb1, double nb2)
     {
       return (nb2);
     }
-  printf("Je modifie que ce printf\n");
   return (-1.0);
 }

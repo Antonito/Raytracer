@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 22:32:39 2016 Ludovic Petrenko
-** Last update Mon Apr 25 19:43:42 2016 Ludovic Petrenko
+** Last update Mon May  2 22:36:53 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -29,6 +29,9 @@ int	init_data(int ac, char **av, t_data **data)
 	return (1);
     }
   else if (!((*data)->scene = load_scene(SCENE_DEFAULT)))
+    return (1);
+  if (!((*data)->scene->cache = bunny_new_pixelarray((*data)->width,
+						     (*data)->height)))
     return (1);
   return (0);
 }

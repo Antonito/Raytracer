@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Mon May  2 05:03:00 2016 Ludovic Petrenko
+## Last update Wed May  4 06:55:41 2016 Ludovic Petrenko
 ##
 
 DEBUG=			yes
@@ -16,11 +16,13 @@ SRC_FILES=		init_data.c			\
 			build_octree.c			\
 			calc_fragment.c			\
 			calc_ray.c			\
+			get_dim.c			\
 			get_node.c			\
 			launch.c			\
 			main.c				\
 			node_intersect.c		\
 			node_intersect2.c		\
+			set_frame.c			\
 			vector.c			\
 			vector_add.c			\
 			vector_op.c
@@ -79,6 +81,12 @@ SOLVER_FILES=		second_degree.c			\
 			fourth_degree_extended.c	\
 			check_solution.c
 
+SHAPE_PREFIX=		src/shape/
+
+SHAPE_FILES=		plane.c				\
+			sphere.c			\
+			tore.c
+
 TOOLS_PREFIX=		src/tools/
 
 TOOLS_FILES=		memory.c			\
@@ -102,6 +110,8 @@ SRC_CLIENT=		$(addprefix $(CLIENT_PREFIX),$(CLIENT_FILES))
 
 SRC_LOADER=		$(addprefix $(LOADER_PREFIX),$(LOADER_FILES))
 
+SRC_SHAPE=		$(addprefix $(SHAPE_PREFIX),$(SHAPE_FILES))
+
 SRC_SOLVER=		$(addprefix $(SOLVER_PREFIX),$(SOLVER_FILES))
 
 SRC_TOOLS=		$(addprefix $(TOOLS_PREFIX),$(TOOLS_FILES))
@@ -113,6 +123,8 @@ SRC+=			$(SRC_NETWORK)
 SRC+=			$(SRC_TOOLS)
 
 SRC+=			$(SRC_LOADER)
+
+SRC+=			$(SRC_SHAPE)
 
 SRC+=			$(SRC_SOLVER)
 
@@ -139,8 +151,9 @@ LIB=			-L/usr/local/lib		\
 			-lm
 
 CFLAGS=			$(HEAD) -W -Wall -Wextra
+
 ifeq ($(DEBUG), yes)
-	CFLAGS+=	-ansi -pedantic -g -D DEBUG
+	CFLAGS+=	-ansi -pedantic -Ofast -g -D DEBUG
 else
 	CFLAGS+=	-Werror
 endif
