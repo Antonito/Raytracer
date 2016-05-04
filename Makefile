@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Wed May  4 02:49:37 2016 Antoine Baché
+## Last update Wed May  4 03:31:16 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -81,6 +81,7 @@ SHAPE_FILES=		plane.c				\
 			sphere.c			\
 			tore.c				\
 			triangle.c			\
+			cone.c				\
 			void_cube.c
 
 TOOLS_PREFIX=		src/tools/
