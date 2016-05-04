@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 01:23:21 2016 Ludovic Petrenko
-** Last update Wed May  4 03:31:02 2016 Antoine Baché
+** Last update Wed May  4 07:25:47 2016 Antoine Baché
 */
 
 #ifndef INTERSECT_H_
@@ -32,6 +32,7 @@ t_intersect	get_intersect_plane(t_obj *, t_ray *);
 t_intersect	get_intersect_tore(t_obj *, t_ray *);
 t_intersect	get_intersect_triangle(t_obj *, t_ray *);
 t_intersect	get_intersect_cone(t_obj *, t_ray *);
+t_intersect	get_intersect_mobius(t_obj *, t_ray *);
 t_intersect	get_intersect_void_cube(t_obj *, t_ray *);
 
 #endif /* !INTERSECT_H_ */
