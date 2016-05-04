@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May  4 07:24:31 2016 Antoine Baché
-** Last update Wed May  4 07:53:01 2016 Antoine Baché
+** Last update Wed May  4 12:09:04 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -41,6 +41,7 @@ static void	get_dist_mobius(t_obj *obj, t_ray *ray, t_intersect *inter)
 t_intersect	get_intersect_mobius(t_obj *obj, t_ray *ray)
 {
   t_intersect	inter;
+  double	v;
 
   inter.dir = ray->dir;
   inter.material = obj->mat;
@@ -52,5 +53,12 @@ t_intersect	get_intersect_mobius(t_obj *obj, t_ray *ray)
       return (inter);
     }
   inter.pos = add_vec3(mult_vec3(ray->dist, inter.dist), ray->pos);
+  v = atan(inter.pos.y / inter.pos.x);
+  inter.norm = vec3_normalize(vec3(-1.0 * cos(v) * cos(v / 2.0),
+				   -1.0 * sin(v) * cos(v / 2.0),
+				   -1.0 * sin(v / 2.0)));
+  if (vec3_len(add_vec3(mult_vec3(ray->dir, inter->dist), inter->norm)) <
+      inter->dist)
+    inter->norm = mult_vec3(inter->norm, -1.00);
   return (inter);
 }
