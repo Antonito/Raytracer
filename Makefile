@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Wed May  4 19:30:03 2016 Ludovic Petrenko
+## Last update Fri May  6 23:49:19 2016 Ludovic Petrenko
 ##
 
 DEBUG=			yes
@@ -16,6 +16,7 @@ SRC_FILES=		init_data.c			\
 			build_octree.c			\
 			calc_fragment.c			\
 			calc_ray.c			\
+			camera.c			\
 			get_dim.c			\
 			get_node.c			\
 			launch.c			\
@@ -157,7 +158,7 @@ LIB=			-L/usr/local/lib		\
 CFLAGS=			$(HEAD) -W -Wall -Wextra
 
 ifeq ($(DEBUG), yes)
-	CFLAGS+=	-Ofast -g -D DEBUG
+	CFLAGS+=	-g -D DEBUG -rdynamic
 else
 	CFLAGS+=	-Werror
 endif

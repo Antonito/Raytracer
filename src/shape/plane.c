@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May  2 07:53:57 2016 Antoine Baché
-** Last update Wed May  4 19:33:36 2016 Ludovic Petrenko
+** Last update Fri May  6 22:16:54 2016 Ludovic Petrenko
 */
 
 #include "solver.h"
@@ -32,6 +32,6 @@ t_intersect	get_intersect_plane(t_obj *obj, t_ray *ray)
   get_plane_dist(ray, &inter);
   if (inter.dist == -1.0)
     return (inter);
-  inter.norm = obj->spec.plane.normale;
+  inter.norm = obj->plane.normale;
   return (inter);
 }

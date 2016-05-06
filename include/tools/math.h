@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Apr 27 05:16:20 2016 Antoine Baché
-** Last update Fri May  6 10:42:34 2016 Ludovic Petrenko
+** Last update Fri May  6 22:07:26 2016 Ludovic Petrenko
 */
 
 #ifndef	MATH_H_
