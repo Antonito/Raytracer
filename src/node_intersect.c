@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Wed Apr 27 05:31:16 2016 Ludovic Petrenko
-** Last update Tue May  3 16:32:19 2016 Ludovic Petrenko
+** Last update Wed May  4 19:17:01 2016 Ludovic Petrenko
 */
 
 #define _ISOC99_SOURCE
@@ -89,6 +89,6 @@ t_intersect	node_intersect(t_node *node, t_ray ray)
       if (tmp.dist > 0.0 && tmp.dist < cur.dist)
 	cur = tmp;
     }
-  subnode_intersect(node, ray, &cur);
+  /* subnode_intersect(node, ray, &cur); */
   return (cur);
 }

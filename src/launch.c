@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 16 16:32:45 2016 Ludovic Petrenko
-** Last update Wed May  4 08:42:18 2016 Ludovic Petrenko
+** Last update Fri May  6 15:44:35 2016 Ludovic Petrenko
 */
 
 #include <stdio.h>
@@ -24,9 +24,15 @@ t_bunny_response	main_events(UNUSED t_bunny_event_state s,
   if (keys[BKS_ESCAPE])
     return (EXIT_ON_SUCCESS);
   if (keys[BKS_Z])
-    data->scene->cam.pos.x += 1;
+    data->scene->cam.pos = add_vec3(data->scene->cam.pos,
+				    data->scene->cam.dir);
   if (keys[BKS_S])
-    data->scene->cam.pos.x -= 1;
+    data->scene->cam.pos = sub_vec3(data->scene->cam.pos,
+				    data->scene->cam.dir);
+  if (keys[BKS_A])
+    data->scene->cam.dir.z += 1.0;
+  if (keys[BKS_E])
+    data->scene->cam.dir.z -= 1.0;
   /* printf("%f %f %f\n", data->scene->cam.pos.x, data->scene->cam.pos.y, data->scene->cam.pos.z); */
   return (GO_ON);
 }

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Apr 18 11:13:21 2016 Antoine Baché
-** Last update Wed May  4 07:13:03 2016 Ludovic Petrenko
+** Last update Thu May  5 17:28:57 2016 Ludovic Petrenko
 */
 
 #include "tools/memory.h"
@@ -49,13 +49,12 @@ double		my_getdouble(const char *str)
 
   if (!str)
     return (0);
-  i = -1;
-  k = 0;
-  while (str[i] != '\0' && ++i && ++k);
+  k = i = 0;
+  while (str[i] != '.' && str[i] && ++i);
+  while (str[k + i] && ++k);
   if (!(tmp = my_malloc(my_strlen(str) + 1)))
     return (1);
   remove_comma(str, tmp);
-  k -= 1;
   res = ((k) ? (double)my_getnbr(tmp) / my_power(10, k) : my_getnbr(tmp));
   my_free(tmp);
   return (res);

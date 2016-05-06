@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon Apr 18 20:37:43 2016 Ludovic Petrenko
-** Last update Tue May  3 16:33:52 2016 Ludovic Petrenko
+** Last update Fri May  6 13:17:54 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -28,6 +28,7 @@ void		load_obj_basics(t_obj *obj, const t_bunny_ini_scope *s)
     obj->rot.y = my_getdouble(tmp);
   if ((tmp = bunny_ini_scope_get_field(s, ROT_FIELD, 2)))
     obj->rot.z = my_getdouble(tmp);
+  obj->next = obj + 1;
 }
 
 void		load_obj_data(t_scene *scene, t_obj *obj,
@@ -41,7 +42,8 @@ void		load_obj_data(t_scene *scene, t_obj *obj,
   load_obj_spec(obj, scope);
 }
 
-void	load_objs(t_scene *scene, t_obj *obj, const t_bunny_ini *ini)
+void			load_objs(t_scene *scene, t_obj *obj,
+				  const t_bunny_ini *ini)
 {
   t_bunny_ini_scope	*scope;
   const char		*scope_name;
@@ -65,7 +67,6 @@ void	load_objs(t_scene *scene, t_obj *obj, const t_bunny_ini *ini)
 	  load_light_spec(obj + i, scope);
 	  i++;
 	}
-      obj[i].next = obj + i + 1;
     }
   if (i)
     obj[i - 1].next = NULL;

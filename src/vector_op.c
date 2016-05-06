@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 18:58:07 2016 Ludovic Petrenko
-** Last update Wed May  4 06:36:25 2016 Ludovic Petrenko
+** Last update Wed May  4 17:47:46 2016 Ludovic Petrenko
 */
 
 #include <math.h>
@@ -43,4 +43,9 @@ t_vec3		vec3_max(t_vec3 u, t_vec3 v)
   max.y = (u.y >= v.y) ? u.y : v.y;
   max.z = (u.z >= v.z) ? u.z : v.z;
   return (max);
+}
+
+double		dot_vec3(t_vec3 u, t_vec3 v)
+{
+  return (u.x * v.x + u.y * v.y + v.z * v.z);
 }

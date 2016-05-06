@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Wed May  4 06:55:41 2016 Ludovic Petrenko
+## Last update Wed May  4 19:30:03 2016 Ludovic Petrenko
 ##
 
 DEBUG=			yes
@@ -84,8 +84,12 @@ SOLVER_FILES=		second_degree.c			\
 SHAPE_PREFIX=		src/shape/
 
 SHAPE_FILES=		plane.c				\
+			cylinder.c			\
 			sphere.c			\
-			tore.c
+			tore.c				\
+			triangle.c			\
+			cone.c				\
+			void_cube.c
 
 TOOLS_PREFIX=		src/tools/
 
@@ -153,7 +157,7 @@ LIB=			-L/usr/local/lib		\
 CFLAGS=			$(HEAD) -W -Wall -Wextra
 
 ifeq ($(DEBUG), yes)
-	CFLAGS+=	-ansi -pedantic -Ofast -g -D DEBUG
+	CFLAGS+=	-Ofast -g -D DEBUG
 else
 	CFLAGS+=	-Werror
 endif
