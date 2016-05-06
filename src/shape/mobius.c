@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May  4 07:24:31 2016 Antoine Baché
-** Last update Wed May  4 12:09:04 2016 Antoine Baché
+** Last update Wed May  4 20:39:02 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -13,7 +13,7 @@
 
 static void	get_dist_mobius(t_obj *obj, t_ray *ray, t_intersect *inter)
 {
-  vec4		sol;
+  t_vec4	sol;
 
   sol.x = ray->dir.x * ray->dir.x * ray->dir.y - 4.0 * ray->dir.x *
     ray->dir.x * ray->dir.z + ray->dir.y * ray->dir.y * ray->dir.y +
