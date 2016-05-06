@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Wed Apr 20 00:59:49 2016 Ludovic Petrenko
-** Last update Fri May  6 21:38:22 2016 Antoine Baché
+** Last update Sat May  7 01:16:12 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -76,8 +76,7 @@ void		set_first_node(t_node *node)
   void		(**tab)(t_obj *, t_vec3 *);
   t_obj		*obj;
 
-  tab = (__typeof__(*tab)[4]){light_dim, sphere_dim,
-			      cylinder_dim, cone_dim};
+  tab = (__typeof__(*tab)[4]){light_dim, sphere_dim, cylinder_dim, cone_dim};
   dim = (__typeof__(*dim)[2]){vec3(0, 0, 0), vec3(0, 0, 0)};
   if (node->obj_list.next)
     {

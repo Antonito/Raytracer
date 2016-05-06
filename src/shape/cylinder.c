@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May  3 02:16:26 2016 Antoine Baché
-** Last update Wed May  4 17:43:15 2016 Ludovic Petrenko
+** Last update Fri May  6 22:17:13 2016 Ludovic Petrenko
 */
 
 #include "solver.h"
@@ -15,15 +15,15 @@
 static void	get_dist_cylinder_special(t_obj *obj, t_ray *ray,
 					  t_intersect *inter)
 {
-  if ((ray->pos.x > obj->spec.cylinder.height) ||
-      (ray->pos.x > 0.0 && ray->pos.x < obj->spec.cylinder.height))
+  if ((ray->pos.x > obj->cylinder.height) ||
+      (ray->pos.x > 0.0 && ray->pos.x < obj->cylinder.height))
     {
       inter->norm.x = 1.0;
-      inter->dist = (ray->dir.x) ? (obj->spec.cylinder.height - ray->pos.x) /
+      inter->dist = (ray->dir.x) ? (obj->cylinder.height - ray->pos.x) /
 	ray->dir.x : -1.0;
     }
   else if (ray->pos.x < 0.0 || (ray->pos.x > 0.0 &&
-				ray->pos.x < obj->spec.cylinder.height))
+				ray->pos.x < obj->cylinder.height))
     {
       inter->norm.x = -1.0;
       inter->dist = (ray->dir.x) ? (-1.0 * ray->pos.x) / ray->dir.x : -1.0;
@@ -40,12 +40,12 @@ static void	get_dist_cylinder(t_obj *obj, t_ray *ray, t_intersect *inter)
   a = ray->dir.y * ray->dir.y + ray->dir.z * ray->dir.z;
   b = 2.0 * ray->dir.y * ray->pos.y + ray->dir.z * ray->pos.z;
   c = ray->pos.y * ray->pos.y + ray->pos.z * ray->pos.z -
-    (obj->spec.cylinder.radius * obj->spec.cylinder.radius);
+    (obj->cylinder.radius * obj->cylinder.radius);
   if ((inter->dist = solver_second_degree(a, b, c)) == NOT_A_SOLUTION)
     inter->dist = -1.0;
   if (inter->dist == -1.0 &&
       (ray->pos.y * ray->pos.y + ray->pos.z * ray->pos.z <=
-       obj->spec.cylinder.radius * obj->spec.cylinder.radius))
+       obj->cylinder.radius * obj->cylinder.radius))
     {
       get_dist_cylinder_special(obj, ray, inter);
       return ;

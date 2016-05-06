@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sun Apr 17 00:24:50 2016 Ludovic Petrenko
-** Last update Wed May  4 19:33:01 2016 Ludovic Petrenko
+** Last update Sat May  7 00:14:12 2016 Ludovic Petrenko
 */
 
 #ifndef OCTREE_H_
@@ -27,7 +27,7 @@ typedef struct	s_node
   t_obj		obj_list;
 }		t_node;
 
-t_intersect	node_intersect(t_node *node, t_ray ray);
+void		node_intersect(t_node *node, t_ray *ray, t_intersect *i);
 int		get_next_node(double *dist, double last);
 bool		light_node(t_node *node, t_obj *obj);
 bool		sphere_node(t_node *node, t_obj *obj);

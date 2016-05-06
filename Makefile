@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Fri May  6 16:30:33 2016 Antoine Baché
+## Last update Sat May  7 01:19:02 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -16,6 +16,7 @@ SRC_FILES=		init_data.c			\
 			build_octree.c			\
 			calc_fragment.c			\
 			calc_ray.c			\
+			camera.c			\
 			get_dim.c			\
 			get_node.c			\
 			launch.c			\
@@ -152,13 +153,13 @@ LIB=			-L/usr/local/lib		\
 			-ldl 				\
 			-lOpenCL			\
 			-lpthread			\
-			-lm				\
-			-rdynamic
+			-lm
 
 CFLAGS=			$(HEAD) -W -Wall -Wextra
 
 ifeq ($(DEBUG), yes)
 	CFLAGS+=	-g -D DEBUG
+	LIB+=		-rdynamic
 else
 	CFLAGS+=	-Werror
 endif

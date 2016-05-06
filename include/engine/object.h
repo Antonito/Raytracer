@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:33:45 2016 Ludovic Petrenko
-** Last update Wed May  4 17:46:10 2016 Ludovic Petrenko
+** Last update Fri May  6 22:13:58 2016 Ludovic Petrenko
 */
 
 #ifndef OBJECT_H_
@@ -101,7 +101,7 @@ typedef struct	s_obj
     t_cylinder	cylinder;
     t_cone	cone;
     t_triangle	triangle;
-  }		spec;
+  };
 }		t_obj;
 
 /*
