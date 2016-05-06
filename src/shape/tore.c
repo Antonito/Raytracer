@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May  2 08:11:21 2016 Antoine Baché
-** Last update Tue May  3 17:25:15 2016 Antoine Baché
+** Last update Wed May  4 19:35:22 2016 Ludovic Petrenko
 */
 
 #define HOLE_RADIUS	1.0
@@ -13,8 +13,9 @@
 
 #include "solver.h"
 #include "engine/intersect.h"
+#include "engine/object.h"
 
-static void	get_dist_tore(t_obj *obj, t_ray *ray, t_intersect *inter)
+static void	get_dist_tore(t_ray *ray, t_intersect *inter)
 {
   double	tmp[3];
   double	a;
@@ -48,8 +49,8 @@ t_intersect	get_intersect_tore(t_obj *obj, t_ray *ray)
   double	tmp[2];
 
   inter.dir = ray->dir;
-  inter.material = obj->mat;
-  get_dist_tore(obj, ray, &inter);
+  inter.mat = obj->mat;
+  get_dist_tore(ray, &inter);
   if (inter.dist == -1.0 || inter.dist == NOT_A_SOLUTION)
     {
       inter.dist = -1.0;

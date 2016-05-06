@@ -5,13 +5,14 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May  2 07:53:57 2016 Antoine Baché
-** Last update Tue May  3 02:12:24 2016 Antoine Baché
+** Last update Wed May  4 19:33:36 2016 Ludovic Petrenko
 */
 
 #include "solver.h"
 #include "engine/intersect.h"
+#include "engine/object.h"
 
-static void	get_plane_dist(t_obj *obj, t_ray *ray, t_intersect *inter)
+static void	get_plane_dist(t_ray *ray, t_intersect *inter)
 {
   if (ray->dir.x)
     {
@@ -27,10 +28,10 @@ t_intersect	get_intersect_plane(t_obj *obj, t_ray *ray)
   t_intersect	inter;
 
   inter.dir = ray->dir;
-  inter.material = obj->mat;
-  get_plane_dist(obj, ray, &inter);
+  inter.mat = obj->mat;
+  get_plane_dist(ray, &inter);
   if (inter.dist == -1.0)
     return (inter);
-  // Calcul de la normale
+  inter.norm = obj->spec.plane.normale;
   return (inter);
 }

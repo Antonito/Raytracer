@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Wed May  4 03:31:16 2016 Antoine Baché
+## Last update Fri May  6 16:30:33 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -14,10 +14,17 @@ SRC_PREFIX=		src/
 
 SRC_FILES=		init_data.c			\
 			build_octree.c			\
+			calc_fragment.c			\
+			calc_ray.c			\
+			get_dim.c			\
 			get_node.c			\
 			launch.c			\
 			main.c				\
+			node_intersect.c		\
+			node_intersect2.c		\
+			set_frame.c			\
 			vector.c			\
+			vector_add.c			\
 			vector_op.c
 
 NOISE_PREFIX=		src/noise/
@@ -121,7 +128,7 @@ SRC+=			$(SRC_TOOLS)
 
 SRC+=			$(SRC_LOADER)
 
-#SRC+=			$(SRC_SHAPE)
+SRC+=			$(SRC_SHAPE)
 
 SRC+=			$(SRC_SOLVER)
 
@@ -145,11 +152,13 @@ LIB=			-L/usr/local/lib		\
 			-ldl 				\
 			-lOpenCL			\
 			-lpthread			\
-			-lm
+			-lm				\
+			-rdynamic
 
 CFLAGS=			$(HEAD) -W -Wall -Wextra
+
 ifeq ($(DEBUG), yes)
-	CFLAGS+=	-ansi -pedantic -g -D DEBUG
+	CFLAGS+=	-g -D DEBUG
 else
 	CFLAGS+=	-Werror
 endif

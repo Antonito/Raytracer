@@ -5,13 +5,13 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Wed Apr 20 00:59:49 2016 Ludovic Petrenko
-** Last update Thu Apr 21 00:31:48 2016 Ludovic Petrenko
+** Last update Fri May  6 21:38:22 2016 Antoine Baché
 */
 
 #include "raytracer.h"
 #include "engine/octree.h"
 
-int	get_obj_node(t_node *n, t_obj *obj)
+int		get_obj_node(t_node *n, t_obj *obj)
 {
   static bool	(*get_node[])(t_node *, t_obj *) =
     {&light_node, &sphere_node, &plane_node, &cylinder_node, &cone_node};
@@ -70,13 +70,44 @@ int		build_subnodes(t_node *node)
   return (0);
 }
 
+void		set_first_node(t_node *node)
+{
+  t_vec3	*dim;
+  void		(**tab)(t_obj *, t_vec3 *);
+  t_obj		*obj;
+
+  tab = (__typeof__(*tab)[4]){light_dim, sphere_dim,
+			      cylinder_dim, cone_dim};
+  dim = (__typeof__(*dim)[2]){vec3(0, 0, 0), vec3(0, 0, 0)};
+  if (node->obj_list.next)
+    {
+      tab[node->obj_list.next->type](node->obj_list.next, dim);
+      node->min = dim[0];
+      node->max = dim[1];
+    }
+  obj = &node->obj_list;
+  while ((obj = obj->next))
+    {
+      tab[obj->type](obj, dim);
+      node->min = vec3_min(node->min, dim[0]);
+      node->max = vec3_max(node->max, dim[1]);
+    }
+}
+
 int	build_octree(t_node *node, int level)
 {
   t_obj	*cur;
   int	subnode;
   int	i;
 
-  if (level >= 16)
+  printf("%d\n", level);
+  if (level == 0)
+    {
+      node->min = vec3(-1000, -1000, -1000);
+      node->max = vec3(1000, 1000, 1000);
+      /* set_first_node(node); */
+    }
+  else if (level >= 16)
     return (0);
   if (build_subnodes(node))
     return (1);

@@ -5,9 +5,11 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 16 16:32:45 2016 Ludovic Petrenko
-** Last update Thu Apr 21 16:27:42 2016 Ludovic Petrenko
+** Last update Sat May  7 00:32:51 2016 Antoine Baché
 */
 
+#include <stdio.h>
+#include <time.h>
 #include "raytracer.h"
 
 t_bunny_response	main_events(UNUSED t_bunny_event_state s,
@@ -21,13 +23,35 @@ t_bunny_response	main_events(UNUSED t_bunny_event_state s,
   (void)data;
   if (keys[BKS_ESCAPE])
     return (EXIT_ON_SUCCESS);
+  if (keys[BKS_Z])
+    data->scene->cam.pos = add_vec3(data->scene->cam.pos,
+				    data->scene->cam.dir);
+  if (keys[BKS_S])
+    data->scene->cam.pos = sub_vec3(data->scene->cam.pos,
+				    data->scene->cam.dir);
+  if (keys[BKS_A])
+    data->scene->cam.dir.z += 1.0;
+  if (keys[BKS_E])
+    data->scene->cam.dir.z -= 1.0;
+  /* printf("%f %f %f\n", data->scene->cam.pos.x, data->scene->cam.pos.y, data->scene->cam.pos.z); */
   return (GO_ON);
 }
 
 t_bunny_response	main_loop(t_data *data)
 {
-  /*  set_frame(data);*/
-  (void)data;
+  static int		t = 0;
+  static int		fps = 0;
+
+  if (t != time(NULL))
+    {
+      t = time(NULL);
+      /* printf("\r%d    ", fps); */
+      /* fflush(stdout); */
+      fps = 0;
+    }
+  else
+    fps++;
+  set_frame(data);
   return (GO_ON);
 }
 

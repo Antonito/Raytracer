@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 01:23:21 2016 Ludovic Petrenko
-** Last update Wed May  4 07:25:47 2016 Antoine Baché
+** Last update Wed May  4 17:39:30 2016 Ludovic Petrenko
 */
 
 #ifndef INTERSECT_H_
@@ -13,6 +13,7 @@
 
 # include "vector.h"
 # include "ray.h"
+# include "material.h"
 
 typedef struct	s_intersect
 {
@@ -20,19 +21,11 @@ typedef struct	s_intersect
   t_vec3	dir;
   t_vec3	norm;
   double	dist;
-  unsigned int	color;
+  t_material	*mat;
 }		t_intersect;
 
-/*
-** Functions
-*/
-t_intersect	get_intersect_sphere(t_obj *, t_ray *);
-t_intersect	get_intersect_cylinder(t_obj *, t_ray *);
-t_intersect	get_intersect_plane(t_obj *, t_ray *);
-t_intersect	get_intersect_tore(t_obj *, t_ray *);
-t_intersect	get_intersect_triangle(t_obj *, t_ray *);
-t_intersect	get_intersect_cone(t_obj *, t_ray *);
-t_intersect	get_intersect_mobius(t_obj *, t_ray *);
-t_intersect	get_intersect_void_cube(t_obj *, t_ray *);
+t_vec4		get_x(t_ray ray, double x);
+t_vec4		get_y(t_ray ray, double y);
+t_vec4		get_z(t_ray ray, double z);
 
 #endif /* !INTERSECT_H_ */

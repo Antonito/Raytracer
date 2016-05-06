@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Apr 27 04:18:12 2016 Antoine Baché
-** Last update Mon May  2 01:58:19 2016 Antoine Baché
+** Last update Fri May  6 18:41:43 2016 Antoine Baché
 */
 
 #include <stdarg.h>
@@ -55,7 +55,7 @@ static double	solver_fourth_calc_s(double *values)
   double	Q;
   double	s;
 
-  if (values[2] != 0.0 && values[0] == 0.0)
+  if (!IS_ZERO(values[2]) && IS_ZERO(values[0]))
     values[1] = sqrt(values[1] * values[1]);
   Q = CUBIC_ROOT((values[1] + sqrt((values[1] * values[1]) -
 				   4.0 * (values[0] * values[0] *

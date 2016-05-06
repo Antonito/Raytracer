@@ -5,32 +5,33 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May  3 16:58:16 2016 Antoine Baché
-** Last update Wed May  4 01:06:58 2016 Antoine Baché
+** Last update Wed May  4 19:37:50 2016 Ludovic Petrenko
 */
 
 #include "solver.h"
 #include "engine/intersect.h"
+#include "engine/object.h"
 
-static void	get_dist_void_cube(t_obj *obj, t_ray *ray, t_intersect *inter)
+static void	get_dist_void_cube(t_ray *ray, t_intersect *inter)
 {
   double	sol[5];
 
-  sol[0] = (ray->dist.x * ray->dist.x * ray->dist.x * ray->dist.x) +
-    (ray->dist.y * ray->dist.y * ray->dist.y * ray->dist.y) +
-    (ray->dist.z * ray->dist.z * ray->dist.z * ray->dist.z);
-  sol[1] = 4.0 * ((ray->dist.x * ray->dist.x * ray->dist.x * ray->pos.x)
-		  + (ray->dist.y * ray->dist.y * ray->dist.y * ray->pos.y)
-		  + (ray->dist.z * ray->dist.z * ray->dist.z * ray->pos.z));
-  sol[2] = 6.0 * ((ray->dist.x * ray->dist.x * ray->pos.x * ray->pos.x) +
-		  (ray->dist.y * ray->dist.y * ray->pos.y * ray->pos.y) +
-		  (ray->dist.z * ray->dist.z * ray->pos.z * ray->pos.z)) -
-    5.0 * (ray->dist.x * ray->dist.x + ray->dist.y * ray->dist.y *
-	   ray->dist.z * ray->dist.z);
-  sol[3] = 4 * (ray->pos.x * ray->pos.x * ray->pos.x * ray->dist.x +
-		ray->pos.y * ray->pos.y * ray->pos.y * ray->dist.y +
-		ray->pos.z * ray->pos.z * ray->pos.z * ray->dist.z) -
-    10.0 * (ray->dist.x * ray->pos.x + ray->dist.y * ray->pos.y +
-	    ray->dist.z * ray->pos.z);
+  sol[0] = (ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.x) +
+    (ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y) +
+    (ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z);
+  sol[1] = 4.0 * ((ray->dir.x * ray->dir.x * ray->dir.x * ray->pos.x)
+		  + (ray->dir.y * ray->dir.y * ray->dir.y * ray->pos.y)
+		  + (ray->dir.z * ray->dir.z * ray->dir.z * ray->pos.z));
+  sol[2] = 6.0 * ((ray->dir.x * ray->dir.x * ray->pos.x * ray->pos.x) +
+		  (ray->dir.y * ray->dir.y * ray->pos.y * ray->pos.y) +
+		  (ray->dir.z * ray->dir.z * ray->pos.z * ray->pos.z)) -
+    5.0 * (ray->dir.x * ray->dir.x + ray->dir.y * ray->dir.y *
+	   ray->dir.z * ray->dir.z);
+  sol[3] = 4 * (ray->pos.x * ray->pos.x * ray->pos.x * ray->dir.x +
+		ray->pos.y * ray->pos.y * ray->pos.y * ray->dir.y +
+		ray->pos.z * ray->pos.z * ray->pos.z * ray->dir.z) -
+    10.0 * (ray->dir.x * ray->pos.x + ray->dir.y * ray->pos.y +
+	    ray->dir.z * ray->pos.z);
   sol[4] = (ray->pos.x * ray->pos.x * ray->pos.x * ray->pos.x) +
     (ray->pos.y * ray->pos.y * ray->pos.y * ray->pos.y) +
     (ray->pos.z * ray->pos.z * ray->pos.z * ray->pos.z) -
@@ -42,22 +43,21 @@ static void	get_dist_void_cube(t_obj *obj, t_ray *ray, t_intersect *inter)
 t_intersect	get_intersect_void_cube(t_obj *obj, t_ray *ray)
 {
   t_intersect	inter;
-  double	tmp[2];
 
   inter.dir = ray->dir;
-  inter.material = obj->mat;
-  get_dist_void_cube(obj, ray, &inter);
+  inter.mat = obj->mat;
+  get_dist_void_cube(ray, &inter);
   if (inter.dist == -1.0 || inter.dist == NOT_A_SOLUTION)
     {
       inter.dist = -1.0;
       return (inter);
     }
-  inter.sol = add_vec3(mult_vec3(ray->dir, inter.dist), ray->pos);
-  inter.norm.x = 4 * inter.sol.x * inter.sol.x * inter.sol.x -
-    10.0 * inter.sol.x;
-  inter.norm.x = 4 * inter.sol.y * inter.sol.y * inter.sol.y -
-    10.0 * inter.sol.y;
-  inter.norm.x = 4 * inter.sol.z * inter.sol.z * inter.sol.z -
-    10.0 * inter.sol.z;
+  inter.pos = add_vec3(mult_vec3(ray->dir, inter.dist), ray->pos);
+  inter.norm.x = 4 * inter.pos.x * inter.pos.x * inter.pos.x -
+    10.0 * inter.pos.x;
+  inter.norm.x = 4 * inter.pos.y * inter.pos.y * inter.pos.y -
+    10.0 * inter.pos.y;
+  inter.norm.x = 4 * inter.pos.z * inter.pos.z * inter.pos.z -
+    10.0 * inter.pos.z;
   return (inter);
 }

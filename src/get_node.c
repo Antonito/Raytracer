@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Wed Apr 20 20:28:51 2016 Ludovic Petrenko
-** Last update Thu Apr 21 00:32:48 2016 Ludovic Petrenko
+** Last update Fri May  6 18:04:56 2016 Antoine Baché
 */
 
 #include <math.h>
@@ -36,29 +36,9 @@ bool    sphere_node(t_node *node, t_obj *obj)
   return (false);
 }
 
-bool		plane_node(t_node *node, t_obj *obj)
+bool		plane_node(UNUSED t_node *node, UNUSED t_obj *obj)
 {
-  double	d;
-  int		i;
-  double	a;
-  double	b;
-  t_vec3	corner;
-
-  d = -(obj->spec.plane.normale.x * obj->pos.x + obj->spec.plane.normale.y
-	* obj->pos.y + obj->spec.plane.normale.z * obj->pos.z);
-  i = -1;
-  while (++i < 8)
-    {
-      corner.x = (i & HALF_X) ? node->max.x : node->min.x;
-      corner.y = (i & HALF_Y) ? node->max.y : node->min.y;
-      corner.z = (i & HALF_Z) ? node->max.z : node->min.z;
-      a = obj->spec.plane.normale.x * corner.x + obj->spec.plane.normale.y
-	* corner.y + obj->spec.plane.normale.z * corner.z + d;
-      if (i && a * b <= 0.0)
-	return (true);
-      b = a;
-    }
-  return (false);
+  return (true);
 }
 
 bool		cylinder_node(t_node *node, t_obj *obj)
@@ -77,7 +57,7 @@ bool		cylinder_node(t_node *node, t_obj *obj)
   return (false);
 }
 
-bool	cone_node(t_node *node, t_obj *obj)
+bool		cone_node(t_node *node, t_obj *obj)
 {
   double	radius;
 

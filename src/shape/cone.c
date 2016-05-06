@@ -5,13 +5,15 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May  4 03:24:31 2016 Antoine Baché
-** Last update Wed May  4 05:36:22 2016 Antoine Baché
+** Last update Wed May  4 19:36:32 2016 Ludovic Petrenko
 */
 
+#include <math.h>
 #include "solver.h"
 #include "engine/intersect.h"
+#include "engine/object.h"
 
-static void	get_dist_cone(t_obj *obj, t_ray *ray, t_intersect *inter)
+static void	get_dist_cone(t_ray *ray, t_intersect *inter)
 {
   double	a;
   double	b;
@@ -32,9 +34,9 @@ t_intersect	get_intersect_cone(t_obj *obj, t_ray *ray)
   t_intersect	inter;
 
   inter.dir = ray->dir;
-  inter.material = obj->mat;
+  inter.mat = obj->mat;
   inter.dist = -1.0;
-  get_dist_cone(obj, ray, &inter);
+  get_dist_cone(ray, &inter);
   if (inter.dist == -1.0)
     return (inter);
   return (inter);

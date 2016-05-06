@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Apr 27 05:14:59 2016 Antoine Baché
-** Last update Mon May  2 01:36:48 2016 Antoine Baché
+** Last update Wed May  4 19:27:37 2016 Ludovic Petrenko
 */
 
 #include "tools/math.h"
@@ -24,7 +24,6 @@ float		inv_fast_sqrt(float value)
   y.u = 0x5F1FFFF9ul - (y.u >> 1);
   return 0.703952253f * y.f * (2.38924456f - value * y.f * y.f);
 
-  i = *(int *)&value;
   half = value * 0.5f;
   i = MAGIC_SQRT_NUMBER - (i >> 1);
   value = *(float *)&i;

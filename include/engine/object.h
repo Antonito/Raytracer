@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:33:45 2016 Ludovic Petrenko
-** Last update Thu Apr 21 00:20:05 2016 Ludovic Petrenko
+** Last update Wed May  4 17:46:10 2016 Ludovic Petrenko
 */
 
 #ifndef OBJECT_H_
@@ -80,6 +80,11 @@ typedef struct	s_cone
   double	radius;
 }		t_cone;
 
+typedef struct	s_triangle
+{
+  t_vec3	poly[3];
+}		t_triangle;
+
 typedef struct	s_obj
 {
   t_obj_type	type;
@@ -87,7 +92,7 @@ typedef struct	s_obj
   t_vec3	rot;
   t_material	*mat;
   struct s_obj	*next;
-  t_intersect	(*get_intersect)(struct s_obj *, t_ray);
+  t_intersect	(*get_intersect)(struct s_obj *, t_ray *);
   union
   {
     t_light	light;
@@ -95,7 +100,24 @@ typedef struct	s_obj
     t_plane	plane;
     t_cylinder	cylinder;
     t_cone	cone;
+    t_triangle	triangle;
   }		spec;
 }		t_obj;
+
+/*
+** Functions
+*/
+void		light_dim(t_obj *, t_vec3 *);
+void		sphere_dim(t_obj *, t_vec3 *);
+void	        cylinder_dim(t_obj *, t_vec3 *);
+void		cone_dim(t_obj *, t_vec3 *);
+t_intersect	get_intersect_sphere(t_obj *, t_ray *);
+t_intersect	get_intersect_cylinder(t_obj *, t_ray *);
+t_intersect	get_intersect_plane(t_obj *, t_ray *);
+t_intersect	get_intersect_tore(t_obj *, t_ray *);
+t_intersect	get_intersect_triangle(t_obj *, t_ray *);
+t_intersect	get_intersect_cone(t_obj *, t_ray *);
+t_intersect	get_intersect_mobius(t_obj *, t_ray *);
+t_intersect	get_intersect_void_cube(t_obj *, t_ray *);
 
 #endif /* !OBJECT_H_ */
