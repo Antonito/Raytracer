@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 16 16:32:45 2016 Ludovic Petrenko
-** Last update Fri May  6 18:35:17 2016 Ludovic Petrenko
+** Last update Sat May  7 04:33:15 2016 Ludovic Petrenko
 */
 
 #include <stdio.h>
@@ -81,7 +81,7 @@ int	launch_raytracer(t_data *data)
   bunny_set_key_response((t_bunny_key)main_events);
   bunny_set_move_response((t_bunny_move)mouse_response);
   bunny_set_click_response((t_bunny_click)click_response);
-  if (bunny_loop(data->win, 60, data) == EXIT_ON_ERROR)
+  if (bunny_loop(data->win, 120, data) == EXIT_ON_ERROR)
     return (1);
   return (0);
 }

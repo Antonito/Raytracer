@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Wed Apr 27 05:31:16 2016 Ludovic Petrenko
-** Last update Sat May  7 00:14:52 2016 Ludovic Petrenko
+** Last update Sat May  7 04:24:13 2016 Ludovic Petrenko
 */
 
 #define _ISOC99_SOURCE
@@ -23,7 +23,7 @@ static bool	is_in_node(t_vec4 p, t_node *node)
   return (false);
 }
 
-static void	get_node_dist(t_node *node, t_ray ray, double *dist)
+static void	get_node_dist(t_node *node, t_ray *ray, double *dist)
 {
   int		i;
   t_vec4	t;
@@ -34,15 +34,15 @@ static void	get_node_dist(t_node *node, t_ray ray, double *dist)
       dist[i] = INFINITY;
       if (node->child[i])
 	{
-	  t = get_x(ray, (ray.dir.x > 0.0) ? node->child[i]->min.x
+	  t = get_x(ray, (ray->dir.x > 0.0) ? node->child[i]->min.x
 		       : node->child[i]->max.x);
 	  if (t.w < dist[i] && is_in_node(t, node->child[i]))
 	    dist[i] = t.w;
-	  t = get_y(ray, (ray.dir.y > 0.0) ? node->child[i]->min.y
+	  t = get_y(ray, (ray->dir.y > 0.0) ? node->child[i]->min.y
 		       : node->child[i]->max.y);
 	  if (t.w < dist[i] && is_in_node(t, node->child[i]))
 	    dist[i] = t.w;
-	  t = get_z(ray, (ray.dir.z > 0.0) ? node->child[i]->min.z
+	  t = get_z(ray, (ray->dir.z > 0.0) ? node->child[i]->min.z
 		       : node->child[i]->max.z);
 	  if (t.w < dist[i] && is_in_node(t, node->child[i]))
 	    dist[i] = t.w;
@@ -50,7 +50,7 @@ static void	get_node_dist(t_node *node, t_ray ray, double *dist)
     }
 }
 
-static void	subnode_intersect(t_node *node, t_ray ray, t_intersect *i)
+static void	subnode_intersect(t_node *node, t_ray *ray, t_intersect *i)
 {
   double	dist[8];
   int		x;
@@ -63,15 +63,18 @@ static void	subnode_intersect(t_node *node, t_ray ray, t_intersect *i)
   last = 0.0;
   while (++x < 8)
     {
-      id = get_next_node(dist, last);
-      if (id == -1 || dist[id] == INFINITY)
-	return ;
-      node_intersect(node->child[id], &ray, &tmp);
+      /* id = get_next_node(dist, last); */
+      /* if (id == -1 || dist[id] == INFINITY) */
+      /* 	return ; */
+      if (dist[x] == INFINITY)
+	continue ;
+      node_intersect(node->child[x], ray, &tmp);
       if (tmp.dist < i->dist)
 	{
 	  *i = tmp;
 	  return ;
 	}
+      /* last = dist[id]; */
     }
 }
 
@@ -88,5 +91,5 @@ void	node_intersect(t_node *node, t_ray *ray, t_intersect *cur)
       if (tmp.dist > 0.0 && tmp.dist < cur->dist)
 	*cur = tmp;
     }
-  /* subnode_intersect(node, ray, &cur); */
+  subnode_intersect(node, ray, cur);
 }

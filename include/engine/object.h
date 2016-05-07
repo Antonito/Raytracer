@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:33:45 2016 Ludovic Petrenko
-** Last update Fri May  6 22:13:58 2016 Ludovic Petrenko
+** Last update Sat May  7 06:03:43 2016 Ludovic Petrenko
 */
 
 #ifndef OBJECT_H_
@@ -27,6 +27,8 @@
 # define DEFAULT_LIGHT_POWER		1.0
 # define DEFAULT_LIGHT_DIR		vec3(-1.0, 0.0, -1.0)
 # define DEFAULT_LIGHT_ANGLE		40.0
+# define DEFAULT_TORUS_RADIUS_HOLE	2.0
+# define DEFAULT_TORUS_RADIUS_SOLID	0.5
 
 typedef enum	e_obj_type
   {
@@ -36,6 +38,10 @@ typedef enum	e_obj_type
     PLANE,
     CYLINDER,
     CONE,
+    TORUS,
+    TRIANGLE,
+    MOBIUS,
+    VOID_CUBE,
     NB_OBJ_TYPE
   }		t_obj_type;
 
@@ -85,6 +91,17 @@ typedef struct	s_triangle
   t_vec3	poly[3];
 }		t_triangle;
 
+typedef struct	s_torus
+{
+  double	radius_hole;
+  double	radius_solid;
+}		t_torus;
+
+typedef struct	s_mobius
+{
+  double	radius;
+}		t_mobius;
+
 typedef struct	s_obj
 {
   t_obj_type	type;
@@ -101,6 +118,8 @@ typedef struct	s_obj
     t_cylinder	cylinder;
     t_cone	cone;
     t_triangle	triangle;
+    t_torus	torus;
+    t_mobius	mobius;
   };
 }		t_obj;
 

@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 30 22:16:15 2016 Ludovic Petrenko
-** Last update Mon May  2 05:45:35 2016 Ludovic Petrenko
+** Last update Sat May  7 01:51:41 2016 Ludovic Petrenko
 */
 
 #define _ISOC99_SOURCE
@@ -27,50 +27,50 @@ int	get_next_node(double *dist, double last)
   return (next);
 }
 
-t_vec4		get_x(t_ray ray, double x)
+t_vec4		get_x(t_ray *ray, double x)
 {
   t_vec4	t;
 
-  if (ray.dir.x == 0.0)
+  if (ray->dir.x == 0.0)
     {
       t.w = INFINITY;
       return (t);
     }
-  t.w = (x - ray.pos.x) / ray.dir.x;
+  t.w = (x - ray->pos.x) / ray->dir.x;
   t.x = x;
-  t.y = ray.dir.y * t.w + ray.pos.y;
-  t.z = ray.dir.z * t.w + ray.pos.z;
+  t.y = ray->dir.y * t.w + ray->pos.y;
+  t.z = ray->dir.z * t.w + ray->pos.z;
   return (t);
 }
 
-t_vec4		get_y(t_ray ray, double y)
+t_vec4		get_y(t_ray *ray, double y)
 {
   t_vec4	t;
 
-  if (ray.dir.y == 0.0)
+  if (ray->dir.y == 0.0)
     {
       t.w = INFINITY;
       return (t);
     }
-  t.w = (y - ray.pos.y) / ray.dir.y;
-  t.x = ray.dir.x * t.w + ray.pos.x;
+  t.w = (y - ray->pos.y) / ray->dir.y;
+  t.x = ray->dir.x * t.w + ray->pos.x;
   t.y = y;
-  t.z = ray.dir.z * t.w + ray.pos.z;
+  t.z = ray->dir.z * t.w + ray->pos.z;
   return (t);
 }
 
-t_vec4		get_z(t_ray ray, double z)
+t_vec4		get_z(t_ray *ray, double z)
 {
   t_vec4	t;
 
-  if (ray.dir.z == 0.0)
+  if (ray->dir.z == 0.0)
     {
       t.w = INFINITY;
       return (t);
     }
-  t.w = (z - ray.pos.z) / ray.dir.z;
-  t.x = ray.dir.x * t.w + ray.pos.x;
-  t.y = ray.dir.y * t.w + ray.pos.y;
+  t.w = (z - ray->pos.z) / ray->dir.z;
+  t.x = ray->dir.x * t.w + ray->pos.x;
+  t.y = ray->dir.y * t.w + ray->pos.y;
   t.z = z;
   return (t);
 }

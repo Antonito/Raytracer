@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 18:58:07 2016 Ludovic Petrenko
-** Last update Wed May  4 17:47:46 2016 Ludovic Petrenko
+** Last update Sat May  7 06:11:43 2016 Ludovic Petrenko
 */
 
 #include <math.h>
@@ -45,7 +45,12 @@ t_vec3		vec3_max(t_vec3 u, t_vec3 v)
   return (max);
 }
 
-double		dot_vec3(t_vec3 u, t_vec3 v)
+double	dot_vec3(t_vec3 u, t_vec3 v)
 {
   return (u.x * v.x + u.y * v.y + v.z * v.z);
+}
+
+double	vec3_len(t_vec3 u)
+{
+  return (sqrt(u.x * u.x + u.y * u.y + u.z * u.z));
 }

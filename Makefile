@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Fri May  6 23:49:19 2016 Ludovic Petrenko
+## Last update Sat May  7 06:07:22 2016 Ludovic Petrenko
 ##
 
 DEBUG=			yes
@@ -71,6 +71,7 @@ LOADER_FILES=		count.c				\
 			load_mat.c			\
 			load_obj.c			\
 			load_obj_type.c			\
+			load_obj_type_more.c		\
 			load_scene.c			\
 			obj_type.c
 
@@ -90,6 +91,7 @@ SHAPE_FILES=		plane.c				\
 			tore.c				\
 			triangle.c			\
 			cone.c				\
+			mobius.c			\
 			void_cube.c
 
 TOOLS_PREFIX=		src/tools/
@@ -158,7 +160,7 @@ LIB=			-L/usr/local/lib		\
 CFLAGS=			$(HEAD) -W -Wall -Wextra
 
 ifeq ($(DEBUG), yes)
-	CFLAGS+=	-g -D DEBUG -rdynamic
+	CFLAGS+=	-g -D DEBUG -rdynamic -Ofast
 else
 	CFLAGS+=	-Werror
 endif

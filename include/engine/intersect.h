@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 01:23:21 2016 Ludovic Petrenko
-** Last update Wed May  4 17:39:30 2016 Ludovic Petrenko
+** Last update Sat May  7 05:48:21 2016 Ludovic Petrenko
 */
 
 #ifndef INTERSECT_H_
@@ -22,10 +22,11 @@ typedef struct	s_intersect
   t_vec3	norm;
   double	dist;
   t_material	*mat;
+  void		*obj;
 }		t_intersect;
 
-t_vec4		get_x(t_ray ray, double x);
-t_vec4		get_y(t_ray ray, double y);
-t_vec4		get_z(t_ray ray, double z);
+t_vec4		get_x(t_ray *ray, double x);
+t_vec4		get_y(t_ray *ray, double y);
+t_vec4		get_z(t_ray *ray, double z);
 
 #endif /* !INTERSECT_H_ */

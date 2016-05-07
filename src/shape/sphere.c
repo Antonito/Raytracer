@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May  2 04:39:20 2016 Antoine Baché
-** Last update Sat May  7 00:38:06 2016 Ludovic Petrenko
+** Last update Sat May  7 05:47:20 2016 Ludovic Petrenko
 */
 
 #include "solver.h"
@@ -38,6 +38,11 @@ t_intersect	get_intersect_sphere(t_obj *obj, t_ray *ray)
 {
   t_intersect	inter;
 
+  if (ray->src == obj)
+    {
+      inter.dist = -1.0;
+      return (inter);
+    }
   inter.dir = ray->dir;
   inter.mat = obj->mat;
   /* printf("%f\n", obj->sphere.radius); */
@@ -47,5 +52,6 @@ t_intersect	get_intersect_sphere(t_obj *obj, t_ray *ray)
   /* printf("Dist: %f\n", inter.dist); */
   inter.pos = add_vec3(ray->pos, mult_vec3(ray->dir, inter.dist));
   inter.norm = vec3_normalize(sub_vec3(inter.pos, obj->pos));
+  inter.obj = obj;
   return (inter);
 }

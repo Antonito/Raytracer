@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 22:32:39 2016 Ludovic Petrenko
-** Last update Sat May  7 00:48:46 2016 Ludovic Petrenko
+** Last update Sat May  7 04:34:30 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -18,7 +18,7 @@ int	init_data(int ac, char **av, t_data **data)
     return (1);
   (*data)->width = DEFAULT_WIDTH;
   (*data)->height = DEFAULT_HEIGHT;
-  (*data)->fullscreen = true;
+  (*data)->fullscreen = false;
   if (!((*data)->win = bunny_start((*data)->width, (*data)->height,
 				   (*data)->fullscreen, WIN_NAME)) ||
       !((*data)->render = bunny_new_pixelarray((*data)->width,

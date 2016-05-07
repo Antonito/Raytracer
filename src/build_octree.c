@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Wed Apr 20 00:59:49 2016 Ludovic Petrenko
-** Last update Fri May  6 22:50:36 2016 Ludovic Petrenko
+** Last update Sat May  7 03:15:55 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -20,8 +20,12 @@ int	get_obj_node(t_node *n, t_obj *obj)
   int		cur;
 
   i = -1;
+  printf("BOOL\n");
   while (++i < 8)
-    node[i] = get_node[obj->type](n->child[i], obj);
+    {
+      node[i] = get_node[obj->type](n->child[i], obj);
+      printf("node[%d]:%d\n", i, node[i]);
+    }
   cur = i = -1;
   while (++i < 8)
     if (cur == -1 && node[i])
@@ -44,6 +48,8 @@ int	push_obj_to_subnode(t_obj *obj, t_node *node, int subnode)
     cur = cur->next;
   cur->next = obj;
   obj->next = NULL;
+  node->child[subnode]->nb_obj++;
+  node->nb_obj--;
   return (0);
 }
 
@@ -66,6 +72,9 @@ int		build_subnodes(t_node *node)
       node->child[i]->max.x = node->min.x + size.x * (1 + ((i >> 2) & 1));
       node->child[i]->max.y = node->min.y + size.y * (1 + ((i >> 1) & 1));
       node->child[i]->max.z = node->min.z + size.z * (1 + (i & 1));
+      printf("MIN:(%f, %f, %f)\n", node->child[i]->min.x, node->child[i]->min.y, node->child[i]->min.z);
+      printf("MAX:(%f, %f, %f)\n", node->child[i]->max.x, node->child[i]->max.y, node->child[i]->max.z);
+
     }
   return (0);
 }
@@ -91,29 +100,30 @@ void		set_first_node(t_node *node)
       node->min = vec3_min(node->min, dim[0]);
       node->max = vec3_max(node->max, dim[1]);
     }
+  node->min = sub_vec3(node->min, vec3(0.001, 0.001, 0.001));
+  node->max = add_vec3(node->max, vec3(0.001, 0.001, 0.001));
+  printf("MIN:(%f, %f, %f)\n", node->min.x, node->min.y, node->min.z);
+  printf("MAX:(%f, %f, %f)\n", node->max.x, node->max.y, node->max.z);
 }
 
 int	build_octree(t_node *node, int level)
 {
   t_obj	*cur;
+  t_obj	*tmp;
   int	subnode;
   int	i;
 
   printf("%d\n", level);
   if (level == 0)
-    {
-      node->min = vec3(-1000, -1000, -1000);
-      node->max = vec3(1000, 1000, 1000);
-      /* set_first_node(node); */
-    }
+    set_first_node(node);
   else if (level >= 16)
     return (0);
   if (build_subnodes(node))
     return (1);
   cur = &node->obj_list;
-  while ((cur = cur->next))
+  while ((tmp = cur) && (cur = cur->next))
     if ((subnode = get_obj_node(node, cur)) >= 0)
-      if (push_obj_to_subnode(cur, node, subnode))
+      if (push_obj_to_subnode(cur, node, subnode) || ((cur = tmp) && 0))
 	return (1);
   i = -1;
   while (++i < 8)

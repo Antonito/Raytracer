@@ -5,13 +5,27 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 01:06:07 2016 Ludovic Petrenko
-** Last update Fri May  6 22:16:29 2016 Ludovic Petrenko
+** Last update Sat May  7 05:58:34 2016 Ludovic Petrenko
 */
 
 #include <math.h>
 #include "raytracer.h"
 #include "tools/str.h"
 #include "engine/vector.h"
+
+void	load_torus(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  char	*tmp;
+
+  obj->type = TORUS;
+  obj->torus.radius_hole = DEFAULT_TORUS_RADIUS_HOLE;
+  obj->torus.radius_solid = DEFAULT_TORUS_RADIUS_SOLID;
+  obj->get_intersect = &get_intersect_tore;
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, RADIUS_TORE_FIELD, 0)))
+    obj->torus.radius_hole = my_getdouble(tmp);
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, RADIUS_TORE_FIELD2, 0)))
+    obj->torus.radius_solid = my_getdouble(tmp);
+}
 
 void	load_sphere(t_obj *obj, const t_bunny_ini_scope *scope)
 {

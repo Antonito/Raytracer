@@ -5,15 +5,17 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May  4 07:24:31 2016 Antoine Baché
-** Last update Wed May  4 12:09:04 2016 Antoine Baché
+** Last update Sat May  7 06:09:34 2016 Ludovic Petrenko
 */
 
+#include <math.h>
 #include "solver.h"
 #include "engine/intersect.h"
+#include "engine/object.h"
 
 static void	get_dist_mobius(t_obj *obj, t_ray *ray, t_intersect *inter)
 {
-  vec4		sol;
+  t_vec4	sol;
 
   sol.x = ray->dir.x * ray->dir.x * ray->dir.y - 4.0 * ray->dir.x *
     ray->dir.x * ray->dir.z + ray->dir.y * ray->dir.y * ray->dir.y +
@@ -44,21 +46,21 @@ t_intersect	get_intersect_mobius(t_obj *obj, t_ray *ray)
   double	v;
 
   inter.dir = ray->dir;
-  inter.material = obj->mat;
-  inter->dist = -1.0;
+  inter.mat = obj->mat;
+  inter.dist = -1.0;
   get_dist_mobius(obj, ray, &inter);
   if (inter.dist == -1.0)
     {
       inter.dist = -1.0;
       return (inter);
     }
-  inter.pos = add_vec3(mult_vec3(ray->dist, inter.dist), ray->pos);
+  inter.pos = add_vec3(mult_vec3(ray->dir, inter.dist), ray->pos);
   v = atan(inter.pos.y / inter.pos.x);
   inter.norm = vec3_normalize(vec3(-1.0 * cos(v) * cos(v / 2.0),
 				   -1.0 * sin(v) * cos(v / 2.0),
 				   -1.0 * sin(v / 2.0)));
-  if (vec3_len(add_vec3(mult_vec3(ray->dir, inter->dist), inter->norm)) <
-      inter->dist)
-    inter->norm = mult_vec3(inter->norm, -1.00);
+  if (vec3_len(add_vec3(mult_vec3(ray->dir, inter.dist), inter.norm)) <
+      inter.dist)
+    inter.norm = mult_vec3(inter.norm, -1.00);
   return (inter);
 }
