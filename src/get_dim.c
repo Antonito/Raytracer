@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Wed May  4 04:34:28 2016 Ludovic Petrenko
-** Last update Fri May  6 22:14:40 2016 Ludovic Petrenko
+** Last update Sat May  7 06:28:21 2016 Ludovic Petrenko
 */
 
 #include <math.h>
@@ -77,6 +77,19 @@ void		cone_dim(t_obj *obj, t_vec3 *dim)
 
   radius = sqrt(obj->cone.height * obj->cone.height + 4 *
 		obj->cone.radius * obj->cone.radius) / 2.0;
+  dim[0].x = obj->pos.x - radius;
+  dim[0].y = obj->pos.y - radius;
+  dim[0].z = obj->pos.z - radius;
+  dim[1].x = obj->pos.x + radius;
+  dim[1].y = obj->pos.y + radius;
+  dim[1].z = obj->pos.z + radius;
+}
+
+void		torus_dim(t_obj *obj, t_vec3 *dim)
+{
+  double	radius;
+
+  radius = obj->torus.radius_hole + obj->torus.radius_solid;
   dim[0].x = obj->pos.x - radius;
   dim[0].y = obj->pos.y - radius;
   dim[0].z = obj->pos.z - radius;

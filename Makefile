@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sat May  7 06:07:22 2016 Ludovic Petrenko
+## Last update Sat May  7 06:36:27 2016 Ludovic Petrenko
 ##
 
 DEBUG=			yes
@@ -19,6 +19,7 @@ SRC_FILES=		init_data.c			\
 			camera.c			\
 			get_dim.c			\
 			get_node.c			\
+			get_node2.c			\
 			launch.c			\
 			main.c				\
 			node_intersect.c		\
@@ -157,10 +158,11 @@ LIB=			-L/usr/local/lib		\
 			-lpthread			\
 			-lm
 
-CFLAGS=			$(HEAD) -W -Wall -Wextra
+CFLAGS=			$(HEAD) -W -Wall -Wextra -Ofast
 
 ifeq ($(DEBUG), yes)
-	CFLAGS+=	-g -D DEBUG -rdynamic -Ofast
+	CFLAGS+=	-g -D DEBUG
+	LIB+=		-rdynamic
 else
 	CFLAGS+=	-Werror
 endif

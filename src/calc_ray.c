@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 30 23:30:01 2016 Ludovic Petrenko
-** Last update Sat May  7 05:47:53 2016 Ludovic Petrenko
+** Last update Sat May  7 06:14:13 2016 Ludovic Petrenko
 */
 
 #define _ISOC99_SOURCE
@@ -27,7 +27,6 @@ unsigned int	mix_colors(t_intersect *i, t_color reflect,
   coeff = (1.0 - refl) * MIN(1.0, MAX(dot_vec3(vec3_normalize(i->norm),
 					       vec3_normalize(vec3(0,1,1))), 0.1));
   color.full = (i->mat != NULL) ? i->mat->color : DEFAULT_MAT_COLOR;
-  /* printf("DIST: %f\n", i->dist); */
   final.argb[0] = (unsigned char)(color.argb[0] * coeff +
 				  reflect.argb[0] * refl);
   final.argb[1] = (unsigned char)(color.argb[1] * coeff +

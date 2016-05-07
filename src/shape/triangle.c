@@ -5,12 +5,13 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May  4 01:20:34 2016 Antoine Baché
-** Last update Fri May  6 22:17:58 2016 Ludovic Petrenko
+** Last update Sat May  7 01:11:48 2016 Antoine Baché
 */
 
 #include "solver.h"
 #include "engine/intersect.h"
 #include "engine/object.h"
+#include "tools/math.h"
 
 static void	get_dist_triangle(t_obj *obj, t_ray *ray, t_intersect *inter,
 				  t_vec3 *edge)
@@ -25,7 +26,7 @@ static void	get_dist_triangle(t_obj *obj, t_ray *ray, t_intersect *inter,
 
   det_tmp = cross_vec3(ray->dir, edge[1]);
   det = dot_vec3(edge[0], det_tmp);
-  if ((det > -0.000001 && det < 0.000001) || det == 0.0)
+  if (IS_ZERO(det))
     return ;
   inv_det = 1.0 / det;
   dist = sub_vec3((t_vec3){0.0, 0.0, 0.0}, obj->triangle.poly[0]);

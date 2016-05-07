@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Sat May  7 06:05:04 2016 Ludovic Petrenko
+** Last update Sat May  7 06:37:06 2016 Ludovic Petrenko
 */
 
 #ifndef	RAYTRACER2_H_
@@ -22,7 +22,7 @@
 # define DEFAULT_HEIGHT		720
 # define WIN_NAME		"Ray Ta Soeur"
 # define UNUSED			__attribute__((unused))
-# define MAX_RECURSIVE		5
+# define MAX_RECURSIVE		1
 
 /*
 ** Scopes expected in .ini files
@@ -112,7 +112,8 @@ t_bunny_response	main_events(UNUSED t_bunny_event_state s,
 				    t_data *data);
 t_bunny_response	main_loop(t_data *data);
 int			set_frame(t_data *data);
-void			calc_fragment(t_data *data, unsigned int *buf, t_ivec2 *pos);
+void			calc_fragment(t_data *data, unsigned int *buf,
+				      t_ivec2 *pos);
 unsigned int		calc_ray(t_scene *scene, t_ray *ray, int i);
 void			set_vectors(t_data *data, t_camera *c);
 

@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:33:45 2016 Ludovic Petrenko
-** Last update Sat May  7 06:03:43 2016 Ludovic Petrenko
+** Last update Sat May  7 06:30:31 2016 Ludovic Petrenko
 */
 
 #ifndef OBJECT_H_
@@ -38,8 +38,8 @@ typedef enum	e_obj_type
     PLANE,
     CYLINDER,
     CONE,
-    TORUS,
     TRIANGLE,
+    TORUS,
     MOBIUS,
     VOID_CUBE,
     NB_OBJ_TYPE
@@ -130,6 +130,7 @@ void		light_dim(t_obj *, t_vec3 *);
 void		sphere_dim(t_obj *, t_vec3 *);
 void	        cylinder_dim(t_obj *, t_vec3 *);
 void		cone_dim(t_obj *, t_vec3 *);
+void		torus_dim(t_obj *, t_vec3 *);
 t_intersect	get_intersect_sphere(t_obj *, t_ray *);
 t_intersect	get_intersect_cylinder(t_obj *, t_ray *);
 t_intersect	get_intersect_plane(t_obj *, t_ray *);

@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon Apr 18 23:15:28 2016 Ludovic Petrenko
-** Last update Fri May  6 23:31:44 2016 Ludovic Petrenko
+** Last update Sat May  7 06:25:07 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -14,9 +14,11 @@
 
 void		load_obj_spec(t_obj *obj, const t_bunny_ini_scope *scope)
 {
-  static char	*types[] = {"sphere", "plane", "cylinder", "cone"};
+  static char	*types[] = {"sphere", "plane", "cylinder", "cone",
+			    "triangle", "torus", "mobius", "void_cube"};
   static void	(*loader[])(t_obj *, const t_bunny_ini_scope *) =
-    {&load_sphere, &load_plane, &load_cylinder, &load_cone};
+    {load_sphere, load_plane, load_cylinder, load_cone, load_triangle,
+     load_torus, load_mobius, load_void_cube};
   int		i;
   char		*type;
 

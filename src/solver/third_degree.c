@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Apr 27 04:15:39 2016 Antoine Baché
-** Last update Mon May  2 16:00:56 2016 Antoine Baché
+** Last update Fri May  6 18:40:57 2016 Antoine Baché
 */
 
 #define _ISOC99_SOURCE
@@ -80,7 +80,7 @@ double		solver_third_degree(double a, double b, double c, double d)
 				   (b / (3.0 * a)));
       solver_third_degree_round(x, tmp, (b / (3.0 * a)));
     }
-  if (!(val[0] + val[1] + val[2]))
+  if (IS_ZERO(val[0] + val[1] + val[2]))
     x[0] = x[1] = x[2] = (d < 0) ? pow(d / a, (1.0 / 3.0)) * -1 :
       pow((-d) / a, (1.0 / 3.0));
   return (check_solution_equation(CHECK_SOLUTION(x[0]), CHECK_SOLUTION(x[1])));

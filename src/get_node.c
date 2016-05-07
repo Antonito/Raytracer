@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Wed Apr 20 20:28:51 2016 Ludovic Petrenko
-** Last update Fri May  6 22:15:00 2016 Ludovic Petrenko
+** Last update Sat May  7 01:13:30 2016 Antoine Baché
 */
 
 #include <math.h>
@@ -57,7 +57,7 @@ bool		cylinder_node(t_node *node, t_obj *obj)
   return (false);
 }
 
-bool	cone_node(t_node *node, t_obj *obj)
+bool		cone_node(t_node *node, t_obj *obj)
 {
   double	radius;
 

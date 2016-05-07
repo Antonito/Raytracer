@@ -1,11 +1,11 @@
 /*
-1;4401;0c** set_frame.c for Raytracer2 in /rendu/semestre_02/gfx_raytracer2
+** set_frame.c for Raytracer2 in /rendu/semestre_02/gfx_raytracer2
 **
 ** Made by Ludovic Petrenko
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon May  2 22:15:55 2016 Ludovic Petrenko
-** Last update Fri May  6 15:54:12 2016 Ludovic Petrenko
+** Last update Sat May  7 00:20:34 2016 Antoine Baché
 */
 
 #include "raytracer.h"

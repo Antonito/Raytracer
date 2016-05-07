@@ -5,16 +5,17 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Wed Apr 20 00:59:49 2016 Ludovic Petrenko
-** Last update Sat May  7 03:15:55 2016 Ludovic Petrenko
+** Last update Sat May  7 06:34:04 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
 #include "engine/octree.h"
 
-int	get_obj_node(t_node *n, t_obj *obj)
+int		get_obj_node(t_node *n, t_obj *obj)
 {
   static bool	(*get_node[])(t_node *, t_obj *) =
-    {&light_node, &sphere_node, &plane_node, &cylinder_node, &cone_node};
+    {light_node, sphere_node, plane_node, cylinder_node, cone_node, NULL,
+    torus_node};
   bool		node[8];
   int		i;
   int		cur;
@@ -85,7 +86,8 @@ void		set_first_node(t_node *node)
   void		(**tab)(t_obj *, t_vec3 *);
   t_obj		*obj;
 
-  tab = (__typeof__(*tab)[4]){light_dim, sphere_dim, cylinder_dim, cone_dim};
+  tab = (__typeof__(*tab)[7]){light_dim, sphere_dim, NULL, cylinder_dim,
+			      cone_dim, NULL, torus_dim};
   dim = (__typeof__(*dim)[2]){vec3(0, 0, 0), vec3(0, 0, 0)};
   if (node->obj_list.next)
     {

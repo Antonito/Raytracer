@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 16 16:32:45 2016 Ludovic Petrenko
-** Last update Sat May  7 04:33:15 2016 Ludovic Petrenko
+** Last update Sat May  7 06:13:53 2016 Ludovic Petrenko
 */
 
 #include <stdio.h>
@@ -59,14 +59,14 @@ t_bunny_response	click_response(t_bunny_event_state sta,
 
 t_bunny_response	main_loop(t_data *data)
 {
-  static int	t = 0;
-  static int	fps = 0;
+  static int		t = 0;
+  static int		fps = 0;
 
   if (t != time(NULL))
     {
       t = time(NULL);
-      printf("\r%d    ", fps);
-      fflush(stdout);
+      /* printf("\r%d    ", fps); */
+      /* fflush(stdout); */
       fps = 0;
     }
   else

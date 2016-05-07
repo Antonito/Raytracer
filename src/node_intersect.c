@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Wed Apr 27 05:31:16 2016 Ludovic Petrenko
-** Last update Sat May  7 04:24:13 2016 Ludovic Petrenko
+** Last update Sat May  7 06:13:28 2016 Ludovic Petrenko
 */
 
 #define _ISOC99_SOURCE
@@ -13,6 +13,7 @@
 #include <math.h>
 #include "engine/octree.h"
 #include "engine/intersect.h"
+#include "engine/object.h"
 
 static bool	is_in_node(t_vec4 p, t_node *node)
 {
