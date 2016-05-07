@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sat May  7 17:37:46 2016 Antoine Baché
+## Last update Sat May  7 21:04:54 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -58,17 +58,19 @@ NETWORK_FILES=		camera.c			\
 			connection.c			\
 			lights.c			\
 			materials.c			\
-			messages.c			\
-			numbers.c			\
 			objects.c			\
-			packet.c			\
 			scene.c				\
 			server.c
 
 CLIENT_PREFIX=		src/client/
 
-CLIENT_FILES=		main.c				\
-			loop.c
+CLIENT_FILES=		camera.c			\
+			debug.c				\
+			light.c				\
+			loop.c				\
+			main.c				\
+			scene.c				\
+			specs.c
 
 LOADER_PREFIX=		src/loader/
 
@@ -102,6 +104,12 @@ SHAPE_FILES=		plane.c				\
 			mobius.c			\
 			void_cube.c
 
+NET_TOOLS_PREFIX=	src/cluster/
+
+NET_TOOLS_FILES=	messages.c			\
+			numbers.c			\
+			packet.c
+
 TOOLS_PREFIX=		src/tools/
 
 TOOLS_FILES=		memory.c			\
@@ -129,6 +137,8 @@ SRC_SHAPE=		$(addprefix $(SHAPE_PREFIX),$(SHAPE_FILES))
 
 SRC_SOLVER=		$(addprefix $(SOLVER_PREFIX),$(SOLVER_FILES))
 
+SRC_NET_TOOLS=		$(addprefix $(NET_TOOLS_PREFIX),$(NET_TOOLS_FILES))
+
 SRC_TOOLS=		$(addprefix $(TOOLS_PREFIX),$(TOOLS_FILES))
 
 SRC+=			$(SRC_NOISE)
@@ -143,7 +153,11 @@ SRC+=			$(SRC_SHAPE)
 
 SRC+=			$(SRC_SOLVER)
 
+SRC+=			$(SRC_NET_TOOLS)
+
 SRC_CLIENT+=		$(SRC_TOOLS)
+
+SRC_CLIENT+=		$(SRC_NET_TOOLS)
 
 NAME=			raytracer2
 

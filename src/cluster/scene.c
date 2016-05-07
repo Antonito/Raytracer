@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May  7 16:07:22 2016 Antoine Baché
-** Last update Sat May  7 17:49:23 2016 Antoine Baché
+** Last update Sat May  7 20:25:04 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -49,6 +49,7 @@ void		send_scene_all_clients(t_data *data)
   while (data->network.clients[i] != -1)
     {
       tmp = data->scene;
+#pragma message("Penser a envoyer nb de scene en premier")
       while (tmp)
 	{
 	  if (send_camera(data->network.clients[i], &tmp->cam) ||

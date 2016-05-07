@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May  7 17:14:41 2016 Antoine Baché
-** Last update Sat May  7 17:36:40 2016 Antoine Baché
+** Last update Sat May  7 21:06:00 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -17,7 +17,7 @@ int		send_number(const int fd, int nb)
   return (0);
 }
 
-inline int	read_number(const int fd)
+int		read_number(const int fd)
 {
   int		nb;
   char		buff[sizeof(int)];

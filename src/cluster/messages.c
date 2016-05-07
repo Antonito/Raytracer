@@ -5,14 +5,14 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May  7 16:50:42 2016 Antoine Baché
-** Last update Sat May  7 17:36:10 2016 Antoine Baché
+** Last update Sat May  7 21:05:39 2016 Antoine Baché
 */
 
 #include <unistd.h>
 #include "tools/memory.h"
 #include "tools/str.h"
 
-inline int	read_ko(const int fd)
+int		read_ko(const int fd)
 {
   char		*msg;
 
@@ -46,14 +46,14 @@ int		read_ok(const int fd)
   return (0);
 }
 
-inline int	send_ko(const int fd)
+int		send_ko(const int fd)
 {
   if (write(fd, "KO", 2) == -1)
     return (1);
   return (0);
 }
 
-inline int	send_ok(const int fd)
+int		send_ok(const int fd)
 {
   if (write(fd, "OK", 2) == -1)
     return (1);
