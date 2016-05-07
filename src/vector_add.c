@@ -5,12 +5,12 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Thu Apr 21 20:53:31 2016 Ludovic Petrenko
-** Last update Fri May  6 15:47:42 2016 Ludovic Petrenko
+** Last update Sat May  7 15:43:31 2016 Antoine Baché
 */
 
 #include "engine/vector.h"
 
-t_vec3		add_vec3(t_vec3 a, t_vec3 b)
+inline t_vec3	add_vec3(t_vec3 a, t_vec3 b)
 {
   t_vec3	res;
 
@@ -20,7 +20,7 @@ t_vec3		add_vec3(t_vec3 a, t_vec3 b)
   return (res);
 }
 
-t_vec3	        sub_vec3(t_vec3 a, t_vec3 b)
+inline t_vec3	sub_vec3(t_vec3 a, t_vec3 b)
 {
   t_vec3	res;
 
@@ -30,7 +30,7 @@ t_vec3	        sub_vec3(t_vec3 a, t_vec3 b)
   return (res);
 }
 
-t_vec3	        mult_vec3(t_vec3 a, double m)
+inline t_vec3	mult_vec3(t_vec3 a, double m)
 {
   t_vec3	res;
 
@@ -40,7 +40,7 @@ t_vec3	        mult_vec3(t_vec3 a, double m)
   return (res);
 }
 
-t_vec3	        div_vec3(t_vec3 a, double m)
+inline t_vec3	div_vec3(t_vec3 a, double m)
 {
   t_vec3	res;
 
@@ -50,7 +50,7 @@ t_vec3	        div_vec3(t_vec3 a, double m)
   return (res);
 }
 
-t_vec3	        cross_vec3(t_vec3 a, t_vec3 b)
+inline t_vec3	cross_vec3(t_vec3 a, t_vec3 b)
 {
   t_vec3	res;
 

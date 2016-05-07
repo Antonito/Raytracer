@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sat May  7 06:36:27 2016 Ludovic Petrenko
+## Last update Sat May  7 17:37:46 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -54,8 +54,15 @@ NOISE_FILES=		perlin.c			\
 
 NETWORK_PREFIX=		src/cluster/
 
-NETWORK_FILES=		connection.c			\
+NETWORK_FILES=		camera.c			\
+			connection.c			\
+			lights.c			\
+			materials.c			\
+			messages.c			\
+			numbers.c			\
+			objects.c			\
 			packet.c			\
+			scene.c				\
 			server.c
 
 CLIENT_PREFIX=		src/client/
@@ -161,8 +168,8 @@ LIB=			-L/usr/local/lib		\
 CFLAGS=			$(HEAD) -W -Wall -Wextra -Ofast
 
 ifeq ($(DEBUG), yes)
-	CFLAGS+=	-g -D DEBUG
-	LIB+=		-rdynamic
+	CFLAGS+=	 -g -D DEBUG
+	LIB+=		-rdynamic #-pg
 else
 	CFLAGS+=	-Werror
 endif

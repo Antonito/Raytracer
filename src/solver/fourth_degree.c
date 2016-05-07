@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Apr 27 04:18:12 2016 Antoine Baché
-** Last update Fri May  6 18:41:43 2016 Antoine Baché
+** Last update Sat May  7 15:41:20 2016 Antoine Baché
 */
 
 #include <stdarg.h>
@@ -66,7 +66,7 @@ static double	solver_fourth_calc_s(double *values)
   return (s);
 }
 
-double		solver_fourth_degree(double a, double b, double c, ...)
+inline double	solver_fourth_degree(double a, double b, double c, ...)
 {
   va_list	args;
   double	d;

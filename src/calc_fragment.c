@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Thu Apr 21 20:09:40 2016 Ludovic Petrenko
-** Last update Sat May  7 06:14:42 2016 Ludovic Petrenko
+** Last update Sat May  7 15:49:34 2016 Antoine Baché
 */
 
 #include <math.h>
@@ -35,11 +35,10 @@ unsigned int	calc_pixel(t_scene *scene, t_ivec2 *pix)
 
   ray.pos = scene->cam.pos;
   ray.dir = add_vec3(scene->cam.origin,
-		     mult_vec3(scene->cam.incr_x, (double)pix->x));
-  ray.dir = add_vec3(ray.dir, mult_vec3(scene->cam.incr_y, (double)pix->y));
+		     mult_vec3(scene->cam.incr_x, pix->x));
+  ray.dir = add_vec3(ray.dir, mult_vec3(scene->cam.incr_y, pix->y));
   ray.dir = vec3_normalize(sub_vec3(ray.dir, ray.pos));
   ray.src = NULL;
-  /* printf("DIR (%.5f, %.5f, %.5f)\n", ray.dir.x, ray.dir.y, ray.dir.z); */
   return (calc_ray(scene, &ray, 0));
 }
 
@@ -58,7 +57,7 @@ void		calc_fragment(t_data *data, unsigned int *buf, t_ivec2 *pos)
       /* buf[i + pos[1].x + 1] = buf[i]; */
       tmp.x = (tmp.x + 1 < pos[1].x) ? tmp.x + 1 : 0;
       tmp.y += (tmp.x == 0);
-      i+=1;
+      ++i;
       /* if (tmp.x == 0) */
       /* 	i += pos[1].x; */
     }

@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 16 16:32:45 2016 Ludovic Petrenko
-** Last update Sat May  7 06:13:53 2016 Ludovic Petrenko
+** Last update Sat May  7 15:45:59 2016 Antoine Baché
 */
 
 #include <stdio.h>
@@ -29,7 +29,6 @@ t_bunny_response	main_events(UNUSED t_bunny_event_state s,
   if (keys[BKS_S])
     data->scene->cam.pos = sub_vec3(data->scene->cam.pos,
 				    data->scene->cam.dir);
-  /* printf("%f %f %f\n", data->scene->cam.pos.x, data->scene->cam.pos.y, data->scene->cam.pos.z); */
   return (GO_ON);
 }
 
@@ -65,8 +64,8 @@ t_bunny_response	main_loop(t_data *data)
   if (t != time(NULL))
     {
       t = time(NULL);
-      /* printf("\r%d    ", fps); */
-      /* fflush(stdout); */
+      printf("\r%d    ", fps);
+      fflush(stdout);
       fps = 0;
     }
   else

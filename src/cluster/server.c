@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun Apr 17 16:29:27 2016 Antoine Baché
-** Last update Thu Apr 21 18:24:34 2016 Antoine Baché
+** Last update Sat May  7 16:14:51 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -29,6 +29,7 @@ static int		bind_server(struct sockaddr_in *serv, int fd, int port)
 
 static void		server_loop(t_data *data)
 {
+  send_scene_all_clients(data);
   while (data->network.run)
     {
       /**
@@ -64,6 +65,7 @@ static void		*tcp_thread(void *data_arg)
 
 int			init_server(t_data *data)
 {
+  int			i;
   pthread_t		tcp_thread_buff;
 
   data->network.run = true;
@@ -71,6 +73,9 @@ int			init_server(t_data *data)
   if (!(data->network.clients =
 	my_malloc(sizeof(int) * data->network.max_client)))
     return (1);
+  i = -1;
+  while (++i < data->network.max_client)
+    data->network.clients[i] = -1;
   if (pthread_create(&tcp_thread_buff, NULL, tcp_thread, (void *)data))
     {
       write(2, CREATE_THREAD_ERROR, sizeof(CREATE_THREAD_ERROR) - 1);
