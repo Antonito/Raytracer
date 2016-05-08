@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sat May  7 21:04:54 2016 Antoine Baché
+## Last update Sun May  8 17:40:18 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -69,6 +69,8 @@ CLIENT_FILES=		camera.c			\
 			light.c				\
 			loop.c				\
 			main.c				\
+			materials.c			\
+			objects.c			\
 			scene.c				\
 			specs.c
 
@@ -114,6 +116,8 @@ TOOLS_PREFIX=		src/tools/
 
 TOOLS_FILES=		memory.c			\
 			fast_sqrt.c			\
+			my_bzero.c			\
+			my_memset.c			\
 			my_strlen.c			\
 			my_getnbr.c			\
 			my_getdouble.c			\
@@ -154,6 +158,8 @@ SRC+=			$(SRC_SHAPE)
 SRC+=			$(SRC_SOLVER)
 
 SRC+=			$(SRC_NET_TOOLS)
+
+SRC+=			src/client/debug.c
 
 SRC_CLIENT+=		$(SRC_TOOLS)
 

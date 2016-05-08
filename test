@@ -1,0 +1,57 @@
+OKCamera OK
+Loading objs
+Loading objs
+Loading objs
+Loading objs
+Obj loaded
+Lights loaded !
+Getting materials
+Material loaded
+Getting specs
+Specs loaded !
+Scene loaded
+=========================
+Scene 0
+=========================
+-----
+Camera
+-----
+POS : 0.000000 5.000000 0.000000
+DIR : 0.000000 -1.000000 0.000000
+Focale : 10.000000
+FOV : 90.000000
+ORIGIN : 0.000000 0.000000 0.000000
+INCR_X : 0.000000 0.000000 0.000000
+INCR_Y : 0.000000 0.000000 0.000000
+Rot : 0.000000 0.000000
+-----
+Obj : 4
+-----
+----> Object 0
+Type = sphere
+POS : -1.000000 0.000000 3.000000
+ROT : 0.000000 0.000000 0.000000
+Material : ???
+----> Object 1
+Type = sphere
+POS : -3.000000 3.000000 3.000000
+ROT : 0.000000 0.000000 0.000000
+Material : ???
+----> Object 2
+Type = sphere
+POS : 3.000000 -3.000000 -1.000000
+ROT : 0.000000 0.000000 0.000000
+Material : ???
+----> Object 3
+Type = sphere
+POS : -3.000000 -3.000000 2.000000
+ROT : 0.000000 0.000000 0.000000
+Material : ???
+-----
+Light : 0
+-----
+-----
+Material : 2
+-----
+----> Material 0
+Name : "

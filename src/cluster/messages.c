@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May  7 16:50:42 2016 Antoine Baché
-** Last update Sat May  7 21:05:39 2016 Antoine Baché
+** Last update Sun May  8 14:42:28 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -14,48 +14,43 @@
 
 int		read_ko(const int fd)
 {
-  char		*msg;
+  char		msg[1024];
 
-  if (!(msg = my_calloc(1, 1024)))
-    return (1);
+  my_bzero(msg, sizeof(msg));
   if (read(fd, msg, 1023) == -1)
     return (1);
   if (my_strcmp("KO", msg))
     {
-      my_free(msg);
       return (1);
     }
-  my_free(msg);
   return (0);
 }
 
 int		read_ok(const int fd)
 {
-  char		*msg;
+  char		msg[1024];
 
-  if (!(msg = my_calloc(1, 1024)))
-    return (1);
+  my_bzero(msg, sizeof(msg));
   if (read(fd, msg, 1023) == -1)
     return (1);
+  write(1, msg, my_strlen(msg));
   if (my_strcmp("OK", msg))
     {
-      my_free(msg);
       return (1);
     }
-  my_free(msg);
   return (0);
 }
 
 int		send_ko(const int fd)
 {
-  if (write(fd, "KO", 2) == -1)
+  if (write(fd, "KO\0", 3) == -1)
     return (1);
   return (0);
 }
 
 int		send_ok(const int fd)
 {
-  if (write(fd, "OK", 2) == -1)
+  if (write(fd, "OK\0", 3) == -1)
     return (1);
   return (0);
 }

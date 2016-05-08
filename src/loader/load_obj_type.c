@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 01:06:07 2016 Ludovic Petrenko
-** Last update Sat May  7 05:58:34 2016 Ludovic Petrenko
+** Last update Sun May  8 02:38:08 2016 Antoine Baché
 */
 
 #include <math.h>
@@ -75,6 +75,7 @@ void	load_cone(t_obj *obj, const t_bunny_ini_scope *scope)
   obj->type = CONE;
   obj->cone.angle = DEFAULT_CONE_ANGLE;
   obj->cone.height = DEFAULT_CONE_HEIGHT;
+  obj->get_intersect = &get_intersect_cone;
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, RADIUS_FIELD, 0)))
     obj->cone.angle = my_getdouble(tmp);
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, HEIGHT_FIELD, 0)))

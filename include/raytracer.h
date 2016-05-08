@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Sat May  7 06:37:06 2016 Ludovic Petrenko
+** Last update Sun May  8 17:24:03 2016 Antoine Baché
 */
 
 #ifndef	RAYTRACER2_H_
@@ -58,6 +58,7 @@
 /*
 ** Default configuration
 */
+# define CONFIG_FILE		"config.ini"
 # define SCENE_DEFAULT		"scenes/default.ini"
 # define MAX_CLIENT_DEFAULT	"42"
 
@@ -91,6 +92,7 @@ typedef struct		s_network
   int			*clients;
   bool			run;
   bool			all_connected;
+  bool			draw;
 }			t_network;
 
 typedef struct		s_data

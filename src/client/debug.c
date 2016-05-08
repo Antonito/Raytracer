@@ -5,11 +5,13 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May  7 18:08:38 2016 Antoine Baché
-** Last update Sat May  7 18:49:31 2016 Antoine Baché
+** Last update Sun May  8 16:49:48 2016 Antoine Baché
 */
 
 #include <stdio.h>
 #include "raytracer.h"
+
+#pragma message("Attention, ce fichier m'est pas a la norme ! (client/debug.c)")
 
 void		print_camera(t_camera *cam)
 {
@@ -26,17 +28,16 @@ void		print_camera(t_camera *cam)
 void		print_objs(t_obj *objs, int nb)
 {
   static char	*name[9] = {"light", "sphere", "plane", "cylinder", "cone",
-			   "triangle", "torus", "mobius", "void_cube"};
+			    "triangle", "torus", "mobius", "void_cube"};
   int		i;
-  t_obj		*obj;
 
   i = 0;
-  while ((obj = objs->next))
+  while (i < nb)
     {
       printf("----> Object %d\n", i);
-      printf("Type = %s\n", name[obj->type]);
-      printf("POS : %f %f %f\n", obj->pos.x, obj->pos.y, obj->pos.z);
-      printf("ROT : %f %f %f\n", obj->rot.x, obj->rot.y, obj->rot.z);
+      printf("Type = %s\n", name[objs[i].type]);
+      printf("POS : %f %f %f\n", objs[i].pos.x, objs[i].pos.y, objs[i].pos.z);
+      printf("ROT : %f %f %f\n", objs[i].rot.x, objs[i].rot.y, objs[i].rot.z);
       printf("Material : ???\n");
       ++i;
     }

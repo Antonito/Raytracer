@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May  7 20:23:15 2016 Antoine Baché
-** Last update Sat May  7 21:02:17 2016 Antoine Baché
+** Last update Sun May  8 15:52:28 2016 Antoine Baché
 */
 
 #include "client.h"
@@ -31,11 +31,13 @@ t_scene		*get_scene(int fd)
   int		nb_scene;
   int		i;
   t_scene	*scene;
+  t_scene	*first;
 
   if ((nb_scene = read_number(fd)) <= 0 ||
       send_ok(fd))
     return (NULL);
   scene = NULL;
+  first = NULL;
   i = 0;
   while (i < nb_scene)
     {
@@ -43,7 +45,10 @@ t_scene		*get_scene(int fd)
 	  get_objs(fd, scene) || get_lights(fd, scene) || get_mats(fd, scene) ||
 	  get_specs(fd, scene))
 	return (NULL);
+      if (!i)
+	first = scene;
       ++i;
     }
-  return (scene);
+  write(1, "Scene loaded\n", 13);
+  return (first);
 }

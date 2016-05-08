@@ -5,12 +5,13 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 16 16:32:45 2016 Ludovic Petrenko
-** Last update Sat May  7 15:45:59 2016 Antoine Baché
+** Last update Sun May  8 17:24:33 2016 Antoine Baché
 */
 
 #include <stdio.h>
 #include <time.h>
 #include "raytracer.h"
+#include "network.h"
 #include "tools/math.h"
 
 t_bunny_response	main_events(UNUSED t_bunny_event_state s,
@@ -76,6 +77,10 @@ t_bunny_response	main_loop(t_data *data)
 
 int	launch_raytracer(t_data *data)
 {
+  print_scenes(data->scene);
+  if (init_server(data))
+    return (1);
+  printf("Starting to draw\n");
   bunny_set_loop_main_function((t_bunny_loop)main_loop);
   bunny_set_key_response((t_bunny_key)main_events);
   bunny_set_move_response((t_bunny_move)mouse_response);

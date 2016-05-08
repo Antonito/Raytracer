@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May  7 17:04:58 2016 Antoine Baché
-** Last update Sat May  7 17:25:09 2016 Antoine Baché
+** Last update Sun May  8 17:07:00 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -32,19 +32,20 @@ int		send_objs(int fd, t_obj *objs, int nb)
   char		*tmp;
   int		i;
 
-  if (!(tmp = my_calloc(1, sizeof(t_obj))))
+  if (read_ok(fd) || !(tmp = my_calloc(1, sizeof(t_obj))))
     return (1);
   i = 0;
-  if (send_number(fd, nb) || read_ok(fd))
+  if (send_number(fd, nb))
     return (1);
   while (i < nb)
     {
+      write(1, "New obj\n", 8);
       create_obj_packet(tmp, &objs[i]);
-      if (write(fd, tmp, sizeof(t_obj)) == -1 ||
-	  read_ok(fd))
+      if (read_ok(fd) || write(fd, tmp, sizeof(t_obj)) == -1)
 	return (1);
       ++i;
     }
+  write(1, "Objs sent !\n", 12);
   my_free(tmp);
   return (0);
 }

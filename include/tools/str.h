@@ -5,12 +5,14 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Apr 18 10:23:14 2016 Antoine Baché
-** Last update Sun Apr 24 20:19:30 2016 Antoine Baché
+** Last update Sun May  8 17:40:36 2016 Antoine Baché
 */
 
 #ifndef	STR_H_
 # define STR_H_
 
+void		my_bzero(void *, int);
+void		my_memset(void *, int, const char);
 int		my_power(int, const int);
 double		my_getdouble(const char *);
 unsigned int	my_gethexa(const char *);

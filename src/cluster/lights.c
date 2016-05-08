@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May  7 17:21:53 2016 Antoine Baché
-** Last update Sat May  7 17:37:13 2016 Antoine Baché
+** Last update Sun May  8 15:47:34 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -28,11 +28,10 @@ static void	create_light_packet(char *packet, t_light *light)
 
 int		send_lights(int fd, t_light *lights, int nb)
 {
-  char		*tmp;
+  char		tmp[sizeof(t_light)];
   int		i;
 
-  if (!(tmp = my_calloc(1, sizeof(t_light))))
-    return (1);
+  my_bzero(tmp, sizeof(t_light));
   i = 0;
   if (send_number(fd, nb) || read_ok(fd))
     return (1);
@@ -44,6 +43,6 @@ int		send_lights(int fd, t_light *lights, int nb)
 	return (1);
       ++i;
     }
-  my_free(tmp);
+  write(1, "Light sent !\n", 13);
   return (0);
 }

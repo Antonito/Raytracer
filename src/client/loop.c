@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Apr 18 10:53:35 2016 Antoine Baché
-** Last update Sat May  7 21:02:35 2016 Antoine Baché
+** Last update Sun May  8 16:39:27 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -17,5 +17,6 @@ int		client_loop(int fd)
 
   if (!(scene = get_scene(fd)))
     return (1);
+  print_scenes(scene);
   return (0);
 }

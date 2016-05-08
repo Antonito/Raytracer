@@ -5,14 +5,14 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May  7 17:14:41 2016 Antoine Baché
-** Last update Sat May  7 21:06:00 2016 Antoine Baché
+** Last update Sun May  8 14:39:30 2016 Antoine Baché
 */
 
 #include <unistd.h>
 
 int		send_number(const int fd, int nb)
 {
-  if (write(fd, &nb, sizeof(int)))
+  if (write(fd, &nb, sizeof(int)) == -1)
     return (1);
   return (0);
 }
