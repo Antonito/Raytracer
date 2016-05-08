@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun Apr 17 16:29:27 2016 Antoine Baché
-** Last update Sun May  8 17:44:51 2016 Antoine Baché
+** Last update Sun May  8 17:50:08 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -33,6 +33,8 @@ static void		*tcp_loop(void *data_arg)
   t_data		*data;
 
   data = data_arg;
+  if (data->network.clients[0] == -1)
+    return (NULL);
   while (data->network.run)
     {
       /**
@@ -40,6 +42,7 @@ static void		*tcp_loop(void *data_arg)
        */
       ;
     }
+  return (NULL);
 }
 
 static void		*tcp_thread(void *data_arg)

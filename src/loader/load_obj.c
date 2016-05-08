@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon Apr 18 20:37:43 2016 Ludovic Petrenko
-** Last update Fri May  6 13:17:54 2016 Ludovic Petrenko
+** Last update Sun May  8 17:55:26 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -53,21 +53,19 @@ void			load_objs(t_scene *scene, t_obj *obj,
   if (!(scope = bunny_ini_first((t_bunny_ini *)ini)))
     return ;
   while ((scope = bunny_ini_next((t_bunny_ini *)ini, scope)))
-    {
-      scope_name = bunny_ini_scope_name(ini, scope);
-      if (scope_name && !my_strncmp(scope_name, OBJ_PREFIX, 4))
-	{
-	  load_obj_basics(obj + i, scope);
-	  load_obj_data(scene, obj + i, scope);
-	  i++;
-	}
-      else if (scope_name && !my_strncmp(scope_name, LIGHT_PREFIX, 6))
-	{
-	  load_obj_basics(obj + i, scope);
-	  load_light_spec(obj + i, scope);
-	  i++;
-	}
-    }
+    if ((scope_name = bunny_ini_scope_name(ini, scope)) &&
+	!my_strncmp(scope_name, OBJ_PREFIX, 4))
+      {
+	load_obj_basics(obj + i, scope);
+	load_obj_data(scene, obj + i, scope);
+	i++;
+      }
+    else if (scope_name && !my_strncmp(scope_name, LIGHT_PREFIX, 6))
+      {
+	load_obj_basics(obj + i, scope);
+	load_light_spec(obj + i, scope);
+	i++;
+      }
   if (i)
     obj[i - 1].next = NULL;
   scene->octree.obj_list.next = obj;

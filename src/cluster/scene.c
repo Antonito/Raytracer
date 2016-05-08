@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May  7 16:07:22 2016 Antoine Baché
-** Last update Sun May  8 17:38:26 2016 Antoine Baché
+** Last update Sun May  8 17:53:54 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -79,7 +79,6 @@ void		send_scene_all_clients(t_data *data)
 	    }
 	  tmp = tmp->next;
 	}
-      printf("Scene sent to client %d\n", i);
       ++i;
     }
 }

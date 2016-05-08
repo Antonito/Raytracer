@@ -5,9 +5,8 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun May  8 17:39:38 2016 Antoine Baché
-** Last update Sun May  8 17:39:57 2016 Antoine Baché
+** Last update Sun May  8 17:49:13 2016 Antoine Baché
 */
-
 
 void		my_memset(void *content, int size, const char c)
 {
