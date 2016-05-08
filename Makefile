@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sun May  8 17:40:18 2016 Antoine Baché
+## Last update Sun May  8 22:07:39 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -93,6 +93,7 @@ SOLVER_FILES=		second_degree.c			\
 			third_degree.c			\
 			fourth_degree.c			\
 			fourth_degree_extended.c	\
+			n_degree_solve.c		\
 			check_solution.c
 
 SHAPE_PREFIX=		src/shape/

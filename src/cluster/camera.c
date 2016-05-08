@@ -5,13 +5,14 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May  7 16:40:27 2016 Antoine Baché
-** Last update Sun May  8 17:53:34 2016 Antoine Baché
+** Last update Sun May  8 22:16:31 2016 Antoine Baché
 */
 
 #include <unistd.h>
 #include "network.h"
 #include "engine/camera.h"
 #include "tools/memory.h"
+#include "tools/str.h"
 
 static void	create_camera_packet(char *packet, t_camera *cam)
 {

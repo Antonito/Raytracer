@@ -5,12 +5,13 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May  7 17:21:53 2016 Antoine Baché
-** Last update Sun May  8 15:47:34 2016 Antoine Baché
+** Last update Sun May  8 22:16:35 2016 Antoine Baché
 */
 
 #include <unistd.h>
 #include "network.h"
 #include "tools/memory.h"
+#include "tools/str.h"
 
 static void	create_light_packet(char *packet, t_light *light)
 {

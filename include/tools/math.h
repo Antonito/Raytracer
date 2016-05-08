@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Apr 27 05:16:20 2016 Antoine Baché
-** Last update Sat May  7 01:16:46 2016 Antoine Baché
+** Last update Sun May  8 21:51:29 2016 Antoine Baché
 */
 
 #ifndef	MATH_H_
@@ -24,6 +24,7 @@
 # define MIN(A, B)		SMALLER(A, B)
 # define MAX(A, B)		(((A) > (B)) ? (A) : (B))
 # define CUBIC_ROOT(A)		(pow(A, 1.0 / 3.0))
+# define CHECK_COEF(A)		((A < ZERO_DN) ? (-1) : (A > ZERO_DP))
 
 typedef union	u_sqrt
 {

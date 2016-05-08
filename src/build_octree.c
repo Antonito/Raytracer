@@ -5,9 +5,11 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Wed Apr 20 00:59:49 2016 Ludovic Petrenko
-** Last update Sat May  7 06:34:04 2016 Ludovic Petrenko
+** Last update Sun May  8 22:19:41 2016 Antoine Baché
 */
 
+#pragma message("WARNING Enlever printf")
+#include <stdio.h>
 #include "raytracer.h"
 #include "engine/octree.h"
 

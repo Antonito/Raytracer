@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun Apr 17 16:29:27 2016 Antoine Baché
-** Last update Sun May  8 17:50:08 2016 Antoine Baché
+** Last update Sun May  8 22:16:05 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -69,9 +69,9 @@ static void		*tcp_thread(void *data_arg)
   return (NULL);
 }
 
+#pragma message("Penser a rm le premier thread (useless)")
 int			init_server(t_data *data)
 {
-  int			i;
   pthread_t		tcp_thread_buff;
   pthread_t		tcp_thread_loop;
 

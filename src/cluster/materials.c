@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May  7 17:40:12 2016 Antoine Baché
-** Last update Sun May  8 16:51:08 2016 Antoine Baché
+** Last update Sun May  8 22:16:51 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -17,7 +17,6 @@ static void	create_material_packet(char *packet, t_material *material)
 {
   char		*tmp;
   unsigned int	i;
-  int		len;
 
   tmp = (char *)material;
   i = 0;
@@ -28,7 +27,6 @@ static void	create_material_packet(char *packet, t_material *material)
     }
 }
 
-#pragma message("Penser a envoyer et recuperer nom mat")
 int		send_materials(int fd, t_material *materials, int nb)
 {
   char		tmp[sizeof(t_material)];

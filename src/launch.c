@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 16 16:32:45 2016 Ludovic Petrenko
-** Last update Sun May  8 17:24:33 2016 Antoine Baché
+** Last update Sun May  8 22:20:50 2016 Antoine Baché
 */
 
 #include <stdio.h>
@@ -50,9 +50,9 @@ t_bunny_response	mouse_response(const t_bunny_position *rel,
   return (GO_ON);
 }
 
-t_bunny_response	click_response(t_bunny_event_state sta,
-				       t_bunny_mouse_button but,
-				       t_data *data)
+t_bunny_response	click_response(UNUSED t_bunny_event_state sta,
+				       UNUSED t_bunny_mouse_button but,
+				       UNUSED t_data *data)
 {
   return (GO_ON);
 }

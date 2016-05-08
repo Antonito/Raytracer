@@ -5,9 +5,10 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May  7 20:23:15 2016 Antoine Baché
-** Last update Sun May  8 15:52:28 2016 Antoine Baché
+** Last update Sun May  8 19:07:14 2016 Antoine Baché
 */
 
+#include <unistd.h>
 #include "client.h"
 #include "network.h"
 #include "tools/memory.h"

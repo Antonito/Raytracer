@@ -5,12 +5,13 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May  7 16:07:22 2016 Antoine Baché
-** Last update Sun May  8 17:53:54 2016 Antoine Baché
+** Last update Sun May  8 22:14:56 2016 Antoine Baché
 */
 
 #include <unistd.h>
 #include "raytracer.h"
 #include "network.h"
+#include "tools/str.h"
 
 static void	create_specs_packet(char *packet, t_scene_spec *spec)
 {
