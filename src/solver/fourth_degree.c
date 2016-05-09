@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Apr 27 04:18:12 2016 Antoine Baché
-** Last update Sat May  7 15:41:20 2016 Antoine Baché
+** Last update Mon May  9 10:38:53 2016 Antoine Baché
 */
 
 #include <stdarg.h>
@@ -36,8 +36,8 @@ static double	quadratic_solution_det_pos(double p, double det0, double det1,
 			     ((2.0 / (3.0 * a)) * sqrt(det0) *
 			      cos((acos(det1 /
 					(2.0 * sqrt(det0 * det0 *
-						    det0))))) /
-			      3.0)));
+						    det0)))) /
+				  3.0))));
 }
 
 static double	solver_fourth_solve(double val, double s, double p, double q)
