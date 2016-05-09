@@ -5,13 +5,14 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun Apr 17 16:29:27 2016 Antoine Baché
-** Last update Thu Apr 21 18:24:34 2016 Antoine Baché
+** Last update Sun May  8 22:16:05 2016 Antoine Baché
 */
 
 #include <unistd.h>
 #include <pthread.h>
 #include "raytracer.h"
 #include "network.h"
+#include "tools/str.h"
 
 static int		bind_server(struct sockaddr_in *serv, int fd, int port)
 {
@@ -27,8 +28,13 @@ static int		bind_server(struct sockaddr_in *serv, int fd, int port)
   return (0);
 }
 
-static void		server_loop(t_data *data)
+static void		*tcp_loop(void *data_arg)
 {
+  t_data		*data;
+
+  data = data_arg;
+  if (data->network.clients[0] == -1)
+    return (NULL);
   while (data->network.run)
     {
       /**
@@ -36,6 +42,7 @@ static void		server_loop(t_data *data)
        */
       ;
     }
+  return (NULL);
 }
 
 static void		*tcp_thread(void *data_arg)
@@ -58,19 +65,22 @@ static void		*tcp_thread(void *data_arg)
     }
   write(1, WAIT_CLIENT, sizeof(WAIT_CLIENT) - 1);
   connect_to_server(data);
-  server_loop(data);
+  send_scene_all_clients(data);
   return (NULL);
 }
 
+#pragma message("Penser a rm le premier thread (useless)")
 int			init_server(t_data *data)
 {
   pthread_t		tcp_thread_buff;
+  pthread_t		tcp_thread_loop;
 
   data->network.run = true;
   data->network.all_connected = false;
   if (!(data->network.clients =
 	my_malloc(sizeof(int) * data->network.max_client)))
     return (1);
+  my_memset(data->network.clients, sizeof(data->network.clients), -1);
   if (pthread_create(&tcp_thread_buff, NULL, tcp_thread, (void *)data))
     {
       write(2, CREATE_THREAD_ERROR, sizeof(CREATE_THREAD_ERROR) - 1);
@@ -81,5 +91,7 @@ int			init_server(t_data *data)
       write(2, THREAD_ERROR, sizeof(THREAD_ERROR) - 1);
       return (1);
     }
+  if (pthread_create(&tcp_thread_loop, NULL, tcp_loop, (void *)data))
+    return (1);
   return (0);
 }

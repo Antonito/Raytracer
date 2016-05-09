@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Mon May  9 07:21:05 2016 Ludovic Petrenko
+** Last update Mon May  9 10:52:25 2016 Ludovic Petrenko
 */
 
 #ifndef	RAYTRACER2_H_
@@ -23,7 +23,7 @@
 # define WIN_NAME		"Ray Ta Soeur"
 # define UNUSED			__attribute__((unused))
 # define MAX_RECURSIVE		50
-# define MINIMUM_FPS		1
+# define MINIMUM_FPS		10
 
 /*
 ** Scopes expected in .ini files
@@ -59,6 +59,7 @@
 /*
 ** Default configuration
 */
+# define CONFIG_FILE		"config.ini"
 # define SCENE_DEFAULT		"scenes/default.ini"
 # define MAX_CLIENT_DEFAULT	"42"
 
@@ -92,6 +93,7 @@ typedef struct		s_network
   int			*clients;
   bool			run;
   bool			all_connected;
+  bool			draw;
 }			t_network;
 
 typedef struct		s_data

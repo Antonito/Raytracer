@@ -5,13 +5,13 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon Apr 18 01:41:06 2016 Ludovic Petrenko
-** Last update Tue Apr 19 19:05:56 2016 Ludovic Petrenko
+** Last update Sat May  7 15:42:38 2016 Antoine Baché
 */
 
 #include "engine/vector.h"
 #include "tools/types.h"
 
-t_vec3		vec3(double x, double y, double z)
+inline t_vec3	vec3(double x, double y, double z)
 {
   t_vec3	new;
 
@@ -21,7 +21,7 @@ t_vec3		vec3(double x, double y, double z)
   return (new);
 }
 
-t_vec4		vec4(double x, double y, double z, double w)
+inline t_vec4	vec4(double x, double y, double z, double w)
 {
   t_vec4	new;
 
@@ -32,7 +32,7 @@ t_vec4		vec4(double x, double y, double z, double w)
   return (new);
 }
 
-t_ivec2		ivec2(int x, int y)
+inline t_ivec2	ivec2(int x, int y)
 {
   t_ivec2	new;
 
@@ -41,7 +41,7 @@ t_ivec2		ivec2(int x, int y)
   return (new);
 }
 
-t_vec3		vec4_to_3(t_vec4 v)
+inline t_vec3	vec4_to_3(t_vec4 v)
 {
   t_vec3	new;
 
@@ -51,7 +51,7 @@ t_vec3		vec4_to_3(t_vec4 v)
   return (new);
 }
 
-t_vec4		vec3_to_4(t_vec3 v, double w)
+inline t_vec4	vec3_to_4(t_vec3 v, double w)
 {
   t_vec4	new;
 

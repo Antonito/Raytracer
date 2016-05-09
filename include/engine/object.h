@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:33:45 2016 Ludovic Petrenko
-** Last update Sat May  7 06:30:31 2016 Ludovic Petrenko
+** Last update Mon May  9 04:12:06 2016 Antoine Baché
 */
 
 #ifndef OBJECT_H_
@@ -139,5 +139,14 @@ t_intersect	get_intersect_triangle(t_obj *, t_ray *);
 t_intersect	get_intersect_cone(t_obj *, t_ray *);
 t_intersect	get_intersect_mobius(t_obj *, t_ray *);
 t_intersect	get_intersect_void_cube(t_obj *, t_ray *);
+t_intersect	get_intersect_klein(t_obj *, t_ray *);
+
+/*
+** Klein specific functions
+*/
+double		calc_d_klein(t_ray *);
+double		calc_e_klein(t_ray *);
+double		calc_f_klein(t_ray *);
+double		calc_g_klein(t_ray *);
 
 #endif /* !OBJECT_H_ */

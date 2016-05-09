@@ -5,13 +5,13 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Apr 27 04:00:25 2016 Antoine Baché
-** Last update Sun May  8 05:33:13 2016 Ludovic Petrenko
+** Last update Mon May  9 10:44:52 2016 Ludovic Petrenko
 */
 
 #include "solver.h"
 #include "tools/math.h"
 
-double		solver_second_degree(double a, double b, double c)
+inline double	solver_second_degree(double a, double b, double c)
 {
   double	res;
   double	det;

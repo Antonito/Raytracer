@@ -5,10 +5,10 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 30 23:30:01 2016 Ludovic Petrenko
-** Last update Mon May  9 06:18:45 2016 Ludovic Petrenko
+** Last update Mon May  9 10:49:28 2016 Ludovic Petrenko
 */
 
-#pragma GCC warning "\e[31m\e[1mCommentaires + Norme !\e[0m"
+#pragma GCC warning "\e[31m\e[1mCommentaires + Norme + Boucle opti!\e[0m"
 
 #define _ISOC99_SOURCE
 

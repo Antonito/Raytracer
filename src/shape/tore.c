@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May  2 08:11:21 2016 Antoine Baché
-** Last update Sat May  7 06:22:48 2016 Ludovic Petrenko
+** Last update Mon May  9 10:08:37 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -14,54 +14,68 @@
 
 static void	get_dist_tore(t_ray *ray, t_intersect *inter, t_obj *obj)
 {
-  double	tmp[3];
   double	a;
   double	b;
   double	c;
   double	d;
   double	e;
 
-  tmp[0] = ray->dir.x * ray->dir.x + ray->dir.y * ray->dir.y + ray->dir.z *
-    ray->dir.z;
-  tmp[1] = ray->dir.x * ray->pos.x + ray->dir.y * ray->pos.y + ray->dir.z *
-    ray->pos.z;
-  tmp[3] = ray->pos.x * ray->pos.x + ray->pos.y * ray->pos.y +
-    ray->pos.z * ray->pos.z + obj->torus.radius_hole * obj->torus.radius_hole
-    - obj->torus.radius_solid * obj->torus.radius_solid;
-  a = tmp[0] * tmp[0];
-  b = 4.0 * tmp[0] * tmp[1];
-  c = 2.0 * tmp[0] * tmp[3] + (tmp[1] * tmp[1]) - 4.0
-    * obj->torus.radius_hole * obj->torus.radius_hole *
-    (ray->dir.x * ray->dir.x + ray->dir.z * ray->dir.z);
-  d = 4.0 * tmp[1] * tmp[3] - 8.0 * obj->torus.radius_hole
-    * obj->torus.radius_hole *
-    (ray->dir.x * ray->pos.x + ray->dir.z * ray->pos.z);
-  e = tmp[3] * tmp[3] - 4.0 * obj->torus.radius_hole * obj->torus.radius_hole
-    * (ray->pos.x * ray->pos.x + ray->pos.z * ray->pos.z);
+  a = (ray->dir.x * ray->dir.x + ray->dir.y * ray->dir.y + ray->dir.z *
+       ray->dir.z) *
+    (ray->dir.x * ray->dir.x + ray->dir.y * ray->dir.y + ray->dir.z *
+     ray->dir.z);
+  b = 4.0 * (ray->dir.x * ray->dir.x + ray->dir.y * ray->dir.y +
+	     ray->dir.z * ray->dir.z) *
+    (ray->dir.x * ray->pos.x + ray->dir.y * ray->pos.y + ray->dir.z *
+     ray->pos.z);
+  c = 2.0 * (ray->dir.x * ray->dir.x + ray->dir.y * ray->dir.y + ray->dir.z *
+	     ray->dir.z) * (ray->pos.x * ray->pos.x + ray->pos.y * ray->pos.y +
+			    ray->pos.z * ray->pos.z + obj->torus.radius_hole *
+			    obj->torus.radius_hole - obj->torus.radius_solid *
+			    obj->torus.radius_solid) +
+    4.0 * (ray->pos.x * ray->dir.x + ray->dir.y * ray->pos.y + ray->dir.z *
+	   ray->pos.z) *
+    (ray->pos.x * ray->dir.x + ray->dir.y * ray->pos.y + ray->dir.z *
+     ray->pos.z) - 4.0 * obj->torus.radius_hole * obj->torus.radius_hole *
+    (ray->dir.x * ray->dir.x + ray->dir.y * ray->dir.y);
+  d = 4.0 * (ray->pos.x * ray->dir.x + ray->dir.y * ray->pos.y + ray->dir.z *
+	     ray->pos.z) * (ray->pos.x * ray->pos.x + ray->pos.y * ray->pos.y +
+			    ray->pos.z * ray->pos.z + obj->torus.radius_hole *
+			    obj->torus.radius_hole - obj->torus.radius_solid *
+			    obj->torus.radius_solid) -
+    8.0 * obj->torus.radius_hole * obj->torus.radius_hole *
+    (ray->dir.x * ray->pos.x + ray->dir.y * ray->pos.y);
+  e = (ray->pos.x * ray->pos.x + ray->pos.y * ray->pos.y +
+       ray->pos.z * ray->pos.z + obj->torus.radius_hole *
+       obj->torus.radius_hole - obj->torus.radius_solid *
+       obj->torus.radius_solid) *
+    (ray->pos.x * ray->pos.x + ray->pos.y * ray->pos.y +
+     ray->pos.z * ray->pos.z + obj->torus.radius_hole *
+     obj->torus.radius_hole - obj->torus.radius_solid *
+     obj->torus.radius_solid) - 4.0 * obj->torus.radius_hole *
+    obj->torus.radius_hole * (ray->pos.x * ray->pos.x + ray->pos.y *
+			      ray->pos.y);
   inter->dist = solver_fourth_degree(a, b, c, d, e);
 }
 
 t_intersect	get_intersect_tore(t_obj *obj, t_ray *ray)
 {
   t_intersect	inter;
-  double	tmp[2];
+  t_vec3	u;
 
   inter.dir = ray->dir;
   inter.mat = obj->mat;
   get_dist_tore(ray, &inter, obj);
-  if (inter.dist == -1.0 || inter.dist == NOT_A_SOLUTION)
+  if (inter.dist < 0.0 || inter.dist == NOT_A_SOLUTION)
     {
       inter.dist = -1.0;
       return (inter);
     }
-  inter.pos = add_vec3(mult_vec3(inter.dir, inter.dist), ray->pos);
-  tmp[0] = inter.pos.x * inter.pos.x + inter.pos.y * inter.pos.y +
-    inter.pos.z * inter.pos.z + obj->torus.radius_hole
-    * obj->torus.radius_hole -
-    obj->torus.radius_solid * obj->torus.radius_solid;
-  tmp[1] = 8.0 * obj->torus.radius_hole * obj->torus.radius_hole;
-  inter.norm.x = 4.0 * inter.pos.x * tmp[0] - tmp[1] * inter.pos.x;
-  inter.norm.y = 4.0 * inter.pos.y * tmp[0];
-  inter.norm.z = 4.0 * inter.pos.y * tmp[0] - tmp[1] * inter.pos.z;
+  inter.pos = add_vec3(mult_vec3(ray->dir, inter.dist), ray->pos);
+  u = sub_vec3(inter.pos, obj->pos);
+  u.z = 0.0;
+  u = mult_vec3(vec3_normalize(u), obj->torus.radius_hole);
+  u = add_vec3(u, obj->pos);
+  inter.norm = vec3_normalize(sub_vec3(inter.pos, u));
   return (inter);
 }

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Apr 27 04:15:39 2016 Antoine Baché
-** Last update Fri May  6 18:40:57 2016 Antoine Baché
+** Last update Mon May  9 07:55:37 2016 Antoine Baché
 */
 
 #define _ISOC99_SOURCE
@@ -58,7 +58,7 @@ static double	solver_third_degree_neg(double g, double h, double val)
   return (n[1] + m[1]);
 }
 
-double		solver_third_degree(double a, double b, double c, double d)
+inline double	solver_third_degree(double a, double b, double c, double d)
 {
   double	x[3];
   double	val[3];

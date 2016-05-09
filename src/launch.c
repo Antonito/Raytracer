@@ -5,12 +5,13 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 16 16:32:45 2016 Ludovic Petrenko
-** Last update Mon May  9 01:29:30 2016 Ludovic Petrenko
+** Last update Mon May  9 10:48:13 2016 Ludovic Petrenko
 */
 
 #include <stdio.h>
 #include <time.h>
 #include "raytracer.h"
+#include "network.h"
 #include "tools/math.h"
 
 t_bunny_response	events(t_data *data)
@@ -27,7 +28,6 @@ t_bunny_response	events(t_data *data)
   if (keys[BKS_S])
     data->scene->cam.pos = sub_vec3(data->scene->cam.pos,
 				    mult_vec3(data->scene->cam.dir, 0.2));
-  /* printf("%f %f %f\n", data->scene->cam.pos.x, data->scene->cam.pos.y, data->scene->cam.pos.z); */
   return (GO_ON);
 }
 
@@ -55,9 +55,9 @@ t_bunny_response	mouse_response(const t_bunny_position *rel,
   return (GO_ON);
 }
 
-t_bunny_response	click_response(t_bunny_event_state sta,
-				       t_bunny_mouse_button but,
-				       t_data *data)
+t_bunny_response	click_response(UNUSED t_bunny_event_state sta,
+				       UNUSED t_bunny_mouse_button but,
+				       UNUSED t_data *data)
 {
   return (GO_ON);
 }
@@ -70,9 +70,9 @@ t_bunny_response	main_loop(t_data *data)
   if (t != time(NULL))
     {
       t = time(NULL);
-      /* printf("\r%d    ", fps); */
-      /* fflush(stdout); */
       refresh_size(data, fps);
+      printf("\r%d    ", fps);
+      fflush(stdout);
       fps = 0;
     }
   else
@@ -92,6 +92,10 @@ int	launch_raytracer(t_data *data)
 {
   data->cur_width = data->width / 2;
   data->cur_height = data->height / 2;
+  print_scenes(data->scene);
+  if (init_server(data))
+    return (1);
+  printf("Starting to draw\n");
   bunny_set_loop_main_function((t_bunny_loop)main_loop);
   bunny_set_key_response((t_bunny_key)main_events);
   bunny_set_move_response((t_bunny_move)mouse_response);
