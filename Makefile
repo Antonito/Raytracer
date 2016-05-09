@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sun May  8 22:07:39 2016 Antoine Baché
+## Last update Mon May  9 05:21:30 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -105,7 +105,10 @@ SHAPE_FILES=		plane.c				\
 			triangle.c			\
 			cone.c				\
 			mobius.c			\
-			void_cube.c
+			void_cube.c			\
+			klein.c				\
+			klein_coefs.c			\
+			klein_coef_more.c
 
 NET_TOOLS_PREFIX=	src/cluster/
 

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May  3 02:16:26 2016 Antoine Baché
-** Last update Sun May  8 22:10:52 2016 Antoine Baché
+** Last update Mon May  9 00:21:25 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -25,9 +25,14 @@ static void	get_dist_cylinder_face(t_obj *obj, t_ray *ray,
 	  (POSITIVE(ray->pos.x) && ray->pos.x < obj->cylinder.height))
 	{
 	  t = (obj->cylinder.height - ray->pos.x) / ray->dir.x;
+	  inter->pos.y = ray->dir.y * t + ray->pos.y;
+	  inter->pos.z = ray->dir.z * t + ray->pos.z;
 	}
       else if (ray->pos.x < 0.0)
 	{
+	  t = -ray->pos.x / ray->dir.x;
+	  inter->pos.y = ray->dir.y * t + ray->pos.y;
+	  inter->pos.z = ray->dir.z * t + ray->pos.z;
 	}
     }
   else
@@ -65,8 +70,6 @@ t_intersect	get_intersect_cylinder(t_obj *obj, t_ray *ray)
 #pragma message("Il faut afficher les face du cylindre")
   if (inter.pos.x > obj->cylinder.height ||
       inter.pos.x < -obj->cylinder.height)
-    {
-      get_dist_cylinder_face(obj, ray, &inter);
-    }
+    get_dist_cylinder_face(obj, ray, &inter);
   return (inter);
 }

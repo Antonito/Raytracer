@@ -5,16 +5,17 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May  2 07:53:57 2016 Antoine Baché
-** Last update Fri May  6 22:16:54 2016 Ludovic Petrenko
+** Last update Mon May  9 05:57:12 2016 Antoine Baché
 */
 
 #include "solver.h"
 #include "engine/intersect.h"
 #include "engine/object.h"
+#include "tools/math.h"
 
 static void	get_plane_dist(t_ray *ray, t_intersect *inter)
 {
-  if (ray->dir.x)
+  if (IS_ZERO(ray->dir.x))
     {
       inter->dist = (-1.0 * ray->pos.x) / ray->dir.x;
       inter->pos = add_vec3(mult_vec3(ray->dir, inter->dist), inter->pos);
