@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 16 16:32:45 2016 Ludovic Petrenko
-** Last update Sat May  7 06:13:53 2016 Ludovic Petrenko
+** Last update Mon May  9 01:29:30 2016 Ludovic Petrenko
 */
 
 #include <stdio.h>
@@ -13,9 +13,7 @@
 #include "raytracer.h"
 #include "tools/math.h"
 
-t_bunny_response	main_events(UNUSED t_bunny_event_state s,
-				    UNUSED t_bunny_keysym k,
-				    t_data *data)
+t_bunny_response	events(t_data *data)
 {
   static const bool	*keys = NULL;
 
@@ -25,11 +23,18 @@ t_bunny_response	main_events(UNUSED t_bunny_event_state s,
     return (EXIT_ON_SUCCESS);
   if (keys[BKS_Z])
     data->scene->cam.pos = add_vec3(data->scene->cam.pos,
-				    data->scene->cam.dir);
+				    mult_vec3(data->scene->cam.dir, 0.2));
   if (keys[BKS_S])
     data->scene->cam.pos = sub_vec3(data->scene->cam.pos,
-				    data->scene->cam.dir);
+				    mult_vec3(data->scene->cam.dir, 0.2));
   /* printf("%f %f %f\n", data->scene->cam.pos.x, data->scene->cam.pos.y, data->scene->cam.pos.z); */
+  return (GO_ON);
+}
+
+t_bunny_response	main_events(UNUSED t_bunny_event_state s,
+				    UNUSED t_bunny_keysym k,
+				    UNUSED t_data *data)
+{
   return (GO_ON);
 }
 
@@ -60,23 +65,33 @@ t_bunny_response	click_response(t_bunny_event_state sta,
 t_bunny_response	main_loop(t_data *data)
 {
   static int		t = 0;
-  static int		fps = 0;
+  static int		fps = MINIMUM_FPS / 4;
 
   if (t != time(NULL))
     {
       t = time(NULL);
       /* printf("\r%d    ", fps); */
       /* fflush(stdout); */
+      refresh_size(data, fps);
       fps = 0;
     }
   else
     fps++;
+  if (events(data) != GO_ON)
+    return (EXIT_ON_SUCCESS);
   set_frame(data);
+  data->scene->cache->clipable.clip_width = data->cur_width;
+  data->scene->cache->clipable.clip_height = data->cur_height;
+  blit_scaled(data->scene->cache, data->render);
+  bunny_blit(&data->win->buffer, &data->render->clipable, NULL);
+  bunny_display(data->win);
   return (GO_ON);
 }
 
 int	launch_raytracer(t_data *data)
 {
+  data->cur_width = data->width / 2;
+  data->cur_height = data->height / 2;
   bunny_set_loop_main_function((t_bunny_loop)main_loop);
   bunny_set_key_response((t_bunny_key)main_events);
   bunny_set_move_response((t_bunny_move)mouse_response);

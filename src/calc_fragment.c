@@ -5,8 +5,10 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Thu Apr 21 20:09:40 2016 Ludovic Petrenko
-** Last update Sat May  7 06:14:42 2016 Ludovic Petrenko
+** Last update Sun May  8 23:08:08 2016 Ludovic Petrenko
 */
+
+#pragma GCC warning "\e[31m\e[1mCommentaires + Norme !\e[0m"
 
 #include <math.h>
 #include "raytracer.h"
@@ -17,16 +19,18 @@ void		set_vectors(t_data *data, t_camera *c)
   double	len;
   t_vec3	tmp;
 
-  len = tan(c->fov / 2.0 * M_PI / 180.0) * 2.0 / (double)data->width;
+  len = tan(c->fov / 2.0 * M_PI / 180.0) * 2.0 / (double)data->cur_width;
   tmp = vec3_normalize(vec3(c->dir.y, -c->dir.x, 0));
   c->incr_x = mult_vec3(tmp, len);
-  len = tan(c->fov * data->height / data->width / 2.0
-	    * M_PI / 180.0) * 2.0 / data->height;
+  /* len = tan(c->fov * data->cur_width / data->cur_height / 2.0 */
+  /* 	    * M_PI / 180.0) * 2.0 / data->cur_height; */
   tmp = vec3_normalize(cross_vec3(c->dir, tmp));
   c->incr_y = mult_vec3(tmp, len);
   c->origin = add_vec3(c->pos, c->dir);
-  c->origin = sub_vec3(c->origin, mult_vec3(c->incr_x, data->width / 2.0));
-  c->origin = sub_vec3(c->origin, mult_vec3(c->incr_y, data->height / 2.0));
+  c->origin = sub_vec3(c->origin, mult_vec3(c->incr_x,
+					    data->cur_width / 2.0));
+  c->origin = sub_vec3(c->origin, mult_vec3(c->incr_y,
+					    data->cur_height / 2.0));
 }
 
 unsigned int	calc_pixel(t_scene *scene, t_ivec2 *pix)

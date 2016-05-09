@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Apr 27 04:00:25 2016 Antoine Baché
-** Last update Sat May  7 00:35:05 2016 Antoine Baché
+** Last update Sun May  8 05:33:13 2016 Ludovic Petrenko
 */
 
 #include "solver.h"
@@ -27,8 +27,8 @@ double		solver_second_degree(double a, double b, double c)
     {
       tmp[2] = sqrt(det);
       tmp[3] = 2.0 * a;
-      tmp[0] = (-1.0 * b - tmp[2]) / tmp[3];
-      tmp[1] = (-1.0 * b + tmp[2]) / tmp[3];
+      tmp[0] = -(b - tmp[2]) / tmp[3];
+      tmp[1] = -(b + tmp[2]) / tmp[3];
       tmp[0] = CHECK_SOLUTION(tmp[0]);
       tmp[1] = CHECK_SOLUTION(tmp[1]);
       res = check_solution_equation(tmp[0], tmp[1]);

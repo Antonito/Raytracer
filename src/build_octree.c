@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Wed Apr 20 00:59:49 2016 Ludovic Petrenko
-** Last update Sat May  7 06:34:04 2016 Ludovic Petrenko
+** Last update Sun May  8 05:09:58 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -21,12 +21,8 @@ int		get_obj_node(t_node *n, t_obj *obj)
   int		cur;
 
   i = -1;
-  printf("BOOL\n");
   while (++i < 8)
-    {
-      node[i] = get_node[obj->type](n->child[i], obj);
-      printf("node[%d]:%d\n", i, node[i]);
-    }
+    node[i] = get_node[obj->type](n->child[i], obj);
   cur = i = -1;
   while (++i < 8)
     if (cur == -1 && node[i])
@@ -73,9 +69,6 @@ int		build_subnodes(t_node *node)
       node->child[i]->max.x = node->min.x + size.x * (1 + ((i >> 2) & 1));
       node->child[i]->max.y = node->min.y + size.y * (1 + ((i >> 1) & 1));
       node->child[i]->max.z = node->min.z + size.z * (1 + (i & 1));
-      printf("MIN:(%f, %f, %f)\n", node->child[i]->min.x, node->child[i]->min.y, node->child[i]->min.z);
-      printf("MAX:(%f, %f, %f)\n", node->child[i]->max.x, node->child[i]->max.y, node->child[i]->max.z);
-
     }
   return (0);
 }

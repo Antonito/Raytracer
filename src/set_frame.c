@@ -5,10 +5,26 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon May  2 22:15:55 2016 Ludovic Petrenko
-** Last update Sat May  7 00:20:34 2016 Antoine Baché
+** Last update Sun May  8 04:32:16 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
+
+#include <stdio.h>
+
+void		refresh_size(t_data *data, int frame)
+{
+  double	ratio;
+
+  ratio = MINIMUM_FPS / (double)frame;
+  data->cur_width = (int)(data->cur_width / ratio);
+  data->cur_width = (data->cur_width > 0) ? data->cur_width : 1;
+  data->cur_width = (data->cur_width < data->width) ? data->cur_width : data->width;
+  data->cur_height = data->cur_width * data->height / data->width;
+  data->cur_height = (data->cur_height > 0) ? data->cur_height : 1;
+  printf("\r%d %d %f                  ", data->cur_width, data->cur_height, ratio);
+  fflush(stdout);
+}
 
 int		set_frame(t_data *data)
 {
@@ -16,11 +32,9 @@ int		set_frame(t_data *data)
 
   pos[0].x = 0;
   pos[0].y = 0;
-  pos[1].x = data->width;
-  pos[1].y = data->height;
+  pos[1].x = data->cur_width;
+  pos[1].y = data->cur_height;
   set_vectors(data, &data->scene->cam);
   calc_fragment(data, (unsigned int *)data->scene->cache->pixels, pos);
-  bunny_blit(&data->win->buffer, &data->scene->cache->clipable, NULL);
-  bunny_display(data->win);
   return (0);
 }

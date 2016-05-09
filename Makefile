@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sat May  7 06:36:27 2016 Ludovic Petrenko
+## Last update Mon May  9 07:27:48 2016 Ludovic Petrenko
 ##
 
 DEBUG=			yes
@@ -106,7 +106,8 @@ TOOLS_FILES=		memory.c			\
 			my_strncmp.c			\
 			my_gethexa.c			\
 			my_strndup.c			\
-			my_puterr.c
+			my_puterr.c			\
+			blit_scaled.c
 
 SRC=			$(addprefix $(SRC_PREFIX),$(SRC_FILES))
 

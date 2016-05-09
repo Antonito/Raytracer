@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 01:18:58 2016 Ludovic Petrenko
-** Last update Sat May  7 05:48:38 2016 Ludovic Petrenko
+** Last update Mon May  9 06:06:51 2016 Ludovic Petrenko
 */
 
 #ifndef RAY_H_
