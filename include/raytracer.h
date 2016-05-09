@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Mon May  9 10:52:25 2016 Ludovic Petrenko
+** Last update Mon May  9 17:48:14 2016 Antoine Baché
 */
 
 #ifndef	RAYTRACER2_H_
@@ -23,7 +23,7 @@
 # define WIN_NAME		"Ray Ta Soeur"
 # define UNUSED			__attribute__((unused))
 # define MAX_RECURSIVE		50
-# define MINIMUM_FPS		10
+# define MINIMUM_FPS		24
 
 /*
 ** Scopes expected in .ini files
@@ -109,6 +109,12 @@ typedef struct		s_data
   t_config		config;
   t_network		network;
 }			t_data;
+
+typedef struct		s_calc_fragment
+{
+  t_data		*data;
+  t_ivec2		pos[2];
+}			t_calc_fragment;
 
 int			init_data(int ac, char **av, t_data **data);
 int			launch_raytracer(t_data *data);

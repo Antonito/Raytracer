@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Mon May  9 10:51:20 2016 Ludovic Petrenko
+## Last update Mon May  9 11:41:44 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -186,7 +186,6 @@ LIB=			-L/usr/local/lib		\
 			-lsfml-system 			\
 			-lstdc++ 			\
 			-ldl 				\
-			-lOpenCL			\
 			-lpthread			\
 			-lm
 
