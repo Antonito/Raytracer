@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Tue May 10 12:32:12 2016 Antoine Baché
+** Last update Tue May 10 13:04:36 2016 Antoine Baché
 */
 
 #ifndef	RAYTRACER2_H_
@@ -127,6 +127,8 @@ void			calc_fragment(t_data *data, unsigned int *buf,
 				      t_ivec2 *pos);
 unsigned int		calc_ray(t_scene *scene, t_ray *ray, int i);
 void			set_vectors(t_data *data, t_camera *c);
+void			refresh_size(t_data *data, int frame);
+void			blit_scaled(t_bunny_pixelarray *, t_bunny_pixelarray *);
 int			free_raytracer(t_data *data, int ret);
 
 #endif /* RAYTRACER2_H_ */

@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 01:06:07 2016 Ludovic Petrenko
-** Last update Tue May 10 08:29:45 2016 Antoine Baché
+** Last update Tue May 10 13:07:26 2016 Antoine Baché
 */
 
 #include <math.h>
@@ -62,8 +62,7 @@ void	load_mobius(t_obj *obj, const t_bunny_ini_scope *scope)
 
 void	load_klein(t_obj *obj, const t_bunny_ini_scope *scope)
 {
-  char	*tmp;
-
+  (void)scope;
   obj->type = KLEIN;
   obj->get_intersect = &get_intersect_klein;
 }

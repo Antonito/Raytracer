@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May  9 01:15:33 2016 Antoine Baché
-** Last update Tue May 10 06:44:19 2016 Antoine Baché
+** Last update Tue May 10 13:06:48 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -109,7 +109,7 @@ t_intersect		get_intersect_klein(t_obj *obj, t_ray *ray)
   inter.dir = ray->dir;
   inter.mat = obj->mat;
   inter.dist = -1.0;
-  if ((inter.dist = solver_n_degree((double [6]){
+  if ((inter.dist = solver_n_degree((double [7]){
 	  calc_a_klein(ray), calc_b_klein(ray), calc_c_klein(ray),
 	    calc_d_klein(ray), calc_e_klein(ray), calc_f_klein(ray),
 	    calc_g_klein(ray)}, 6)) <= 0.0 ||
@@ -119,6 +119,6 @@ t_intersect		get_intersect_klein(t_obj *obj, t_ray *ray)
       return (inter);
     }
   inter.pos = add_vec3(ray->pos, mult_vec3(ray->dir, inter.dist));
-  calc_normale_klein(&inter, ray);
+  calc_normale_klein(&inter);
   return (inter);
 }

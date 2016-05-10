@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun Apr 17 16:29:27 2016 Antoine Baché
-** Last update Tue May 10 09:50:10 2016 Antoine Baché
+** Last update Tue May 10 13:07:51 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -70,7 +70,6 @@ static int		init_tcp(t_data *data)
 #pragma message("Penser a rm le premier thread (useless)")
 int			init_server(t_data *data)
 {
-  pthread_t		tcp_thread_buff;
   pthread_t		tcp_thread_loop;
 
   if (data->network.max_client == 0)

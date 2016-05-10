@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May 10 06:43:20 2016 Antoine Baché
-** Last update Tue May 10 08:27:35 2016 Antoine Baché
+** Last update Tue May 10 13:05:24 2016 Antoine Baché
 */
 
 #include "engine/intersect.h"
@@ -82,7 +82,7 @@ static void		calc_new_pts_klein(t_vec3 *d, t_vec3 *ori)
   d[2].z = calc_z_derivative(&inter, tmp);
 }
 
-void			calc_normale_klein(t_intersect *inter, t_ray *ray)
+void			calc_normale_klein(t_intersect *inter)
 {
   t_vec3		d[3];
   t_vec3		v[2];
