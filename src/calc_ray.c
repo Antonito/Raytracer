@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 30 23:30:01 2016 Ludovic Petrenko
-** Last update Mon May  9 10:49:28 2016 Ludovic Petrenko
+** Last update Tue May 10 13:25:15 2016 Antoine Baché
 */
 
 #pragma GCC warning "\e[31m\e[1mCommentaires + Norme + Boucle opti!\e[0m"
@@ -79,9 +79,11 @@ unsigned int	calc_ray(t_scene *scene, t_ray *ray, int i)
   refl.mat = NULL;
   node_intersect(&scene->octree, &tmp, &refl);
   tmp.dir = add_vec3(ray->dir,
-		     mult_vec3(inter.norm, 1 / ((ray->src) ?
-					    (((t_obj*)ray->src)->mat) ?
-					    ((t_obj*)ray->src)->mat->fresnel : 1.0 : 1.0) *
+		     mult_vec3(inter.norm,
+			       1 / ((ray->src) ?
+				    (((t_obj*)ray->src)->mat) ?
+				    ((t_obj*)ray->src)->mat->fresnel : 1.0 :
+				    1.0) *
 			       ((inter.mat) ?
 				inter.mat->fresnel : 1.0)));
   node_intersect(&scene->octree, &tmp, &refr);

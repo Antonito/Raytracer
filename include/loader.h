@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 19:09:07 2016 Ludovic Petrenko
-** Last update Tue May 10 08:28:54 2016 Antoine Baché
+** Last update Tue May 10 13:40:44 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -54,3 +54,4 @@ void		load_plane(t_obj *obj, const t_bunny_ini_scope *scope);
 void		load_torus(t_obj *obj, const t_bunny_ini_scope *scope);
 void		load_cone(t_obj *obj, const t_bunny_ini_scope *scope);
 void		load_cylinder(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_hyperbola(t_obj *obj, const t_bunny_ini_scope *scope);
