@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:33:45 2016 Ludovic Petrenko
-** Last update Mon May  9 04:12:06 2016 Antoine Baché
+** Last update Tue May 10 08:29:14 2016 Antoine Baché
 */
 
 #ifndef OBJECT_H_
@@ -42,6 +42,7 @@ typedef enum	e_obj_type
     TORUS,
     MOBIUS,
     VOID_CUBE,
+    KLEIN,
     NB_OBJ_TYPE
   }		t_obj_type;
 
@@ -148,5 +149,6 @@ double		calc_d_klein(t_ray *);
 double		calc_e_klein(t_ray *);
 double		calc_f_klein(t_ray *);
 double		calc_g_klein(t_ray *);
+void		calc_normale_klein(t_intersect *, t_ray *);
 
 #endif /* !OBJECT_H_ */

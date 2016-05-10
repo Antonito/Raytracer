@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May  9 01:15:33 2016 Antoine Baché
-** Last update Mon May  9 05:25:39 2016 Antoine Baché
+** Last update Tue May 10 06:44:19 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -119,5 +119,6 @@ t_intersect		get_intersect_klein(t_obj *obj, t_ray *ray)
       return (inter);
     }
   inter.pos = add_vec3(ray->pos, mult_vec3(ray->dir, inter.dist));
+  calc_normale_klein(&inter, ray);
   return (inter);
 }

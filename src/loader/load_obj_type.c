@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 01:06:07 2016 Ludovic Petrenko
-** Last update Mon May  9 16:06:38 2016 Antoine Baché
+** Last update Tue May 10 09:06:55 2016 Antoine Baché
 */
 
 #include <math.h>
@@ -82,4 +82,5 @@ void	load_cone(t_obj *obj, const t_bunny_ini_scope *scope)
     obj->cone.height = my_getdouble(tmp);
   obj->cone.radius = tan(obj->cone.angle * M_PI / 360.0) *
     obj->cone.height;
+  obj->cone.angle = tan(obj->cone.angle);
 }

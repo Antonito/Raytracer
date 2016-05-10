@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 01:06:07 2016 Ludovic Petrenko
-** Last update Sat May  7 06:06:52 2016 Ludovic Petrenko
+** Last update Tue May 10 08:29:45 2016 Antoine Baché
 */
 
 #include <math.h>
@@ -58,4 +58,12 @@ void	load_mobius(t_obj *obj, const t_bunny_ini_scope *scope)
   obj->get_intersect = &get_intersect_mobius;
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, RADIUS_FIELD, 0)))
     obj->mobius.radius = my_getdouble(tmp);
+}
+
+void	load_klein(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  char	*tmp;
+
+  obj->type = KLEIN;
+  obj->get_intersect = &get_intersect_klein;
 }

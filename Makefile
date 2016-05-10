@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Mon May  9 11:41:44 2016 Antoine Baché
+## Last update Tue May 10 09:34:59 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -17,6 +17,7 @@ SRC_FILES=		init_data.c			\
 			calc_fragment.c			\
 			calc_ray.c			\
 			camera.c			\
+			free.c				\
 			get_dim.c			\
 			get_node.c			\
 			get_node2.c			\
@@ -108,7 +109,8 @@ SHAPE_FILES=		plane.c				\
 			void_cube.c			\
 			klein.c				\
 			klein_coefs.c			\
-			klein_coef_more.c
+			klein_coef_more.c		\
+			klein_normale.c
 
 NET_TOOLS_PREFIX=	src/cluster/
 
@@ -130,7 +132,8 @@ TOOLS_FILES=		memory.c			\
 			my_gethexa.c			\
 			my_strndup.c			\
 			my_puterr.c			\
-			blit_scaled.c
+			blit_scaled.c			\
+			trigo.c
 
 SRC=			$(addprefix $(SRC_PREFIX),$(SRC_FILES))
 

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May  7 18:08:38 2016 Antoine Baché
-** Last update Sun May  8 16:49:48 2016 Antoine Baché
+** Last update Tue May 10 08:34:00 2016 Antoine Baché
 */
 
 #include <stdio.h>
@@ -27,8 +27,9 @@ void		print_camera(t_camera *cam)
 
 void		print_objs(t_obj *objs, int nb)
 {
-  static char	*name[9] = {"light", "sphere", "plane", "cylinder", "cone",
-			    "triangle", "torus", "mobius", "void_cube"};
+  static char	*name[10] = {"light", "sphere", "plane", "cylinder", "cone",
+			     "triangle", "torus", "mobius", "void_cube",
+			     "klein"};
   int		i;
 
   i = 0;

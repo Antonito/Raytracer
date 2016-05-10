@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 16 16:32:45 2016 Ludovic Petrenko
-** Last update Mon May  9 10:48:13 2016 Ludovic Petrenko
+** Last update Tue May 10 09:33:49 2016 Antoine Baché
 */
 
 #include <stdio.h>
@@ -94,13 +94,13 @@ int	launch_raytracer(t_data *data)
   data->cur_height = data->height / 2;
   print_scenes(data->scene);
   if (init_server(data))
-    return (1);
+    return (free_raytracer(data, 1));
   printf("Starting to draw\n");
   bunny_set_loop_main_function((t_bunny_loop)main_loop);
   bunny_set_key_response((t_bunny_key)main_events);
   bunny_set_move_response((t_bunny_move)mouse_response);
   bunny_set_click_response((t_bunny_click)click_response);
   if (bunny_loop(data->win, 120, data) == EXIT_ON_ERROR)
-    return (1);
-  return (0);
+    return (free_raytracer(data, 1));
+  return (free_raytracer(data, 0));
 }

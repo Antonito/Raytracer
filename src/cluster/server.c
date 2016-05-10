@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun Apr 17 16:29:27 2016 Antoine Baché
-** Last update Sun May  8 22:16:05 2016 Antoine Baché
+** Last update Tue May 10 09:50:10 2016 Antoine Baché
 */
 
 #include <unistd.h>
@@ -45,28 +45,26 @@ static void		*tcp_loop(void *data_arg)
   return (NULL);
 }
 
-static void		*tcp_thread(void *data_arg)
+static int		init_tcp(t_data *data)
 {
-  t_data		*data;
   struct sockaddr_in	serv;
 
-  data = data_arg;
   if ((data->network.fd = socket(AF_INET, SOCK_STREAM, 0)) == -1)
     {
       write(2, SOCKET_ERROR, sizeof(SOCKET_ERROR) - 1);
-      return (NULL);
+      return (1);
     }
   if (bind_server(&serv, data->network.fd, data->network.port))
-    return (NULL);
+    return (1);
   if (listen(data->network.fd, 1))
     {
       write(2, LISTEN_ERROR, sizeof(LISTEN_ERROR) - 1);
-      return (NULL);
+      return (1);
     }
   write(1, WAIT_CLIENT, sizeof(WAIT_CLIENT) - 1);
   connect_to_server(data);
   send_scene_all_clients(data);
-  return (NULL);
+  return (0);
 }
 
 #pragma message("Penser a rm le premier thread (useless)")
@@ -75,22 +73,16 @@ int			init_server(t_data *data)
   pthread_t		tcp_thread_buff;
   pthread_t		tcp_thread_loop;
 
+  if (data->network.max_client == 0)
+    return (0);
   data->network.run = true;
   data->network.all_connected = false;
   if (!(data->network.clients =
 	my_malloc(sizeof(int) * data->network.max_client)))
     return (1);
-  my_memset(data->network.clients, sizeof(data->network.clients), -1);
-  if (pthread_create(&tcp_thread_buff, NULL, tcp_thread, (void *)data))
-    {
-      write(2, CREATE_THREAD_ERROR, sizeof(CREATE_THREAD_ERROR) - 1);
-      return (1);
-    }
-  if (pthread_join(tcp_thread_buff, NULL))
-    {
-      write(2, THREAD_ERROR, sizeof(THREAD_ERROR) - 1);
-      return (1);
-    }
+  my_memset(data->network.clients, sizeof(int) * data->network.max_client, -1);
+  if (init_tcp(data))
+    return (1);
   if (pthread_create(&tcp_thread_loop, NULL, tcp_loop, (void *)data))
     return (1);
   return (0);

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Mon May  9 17:48:14 2016 Antoine Baché
+** Last update Tue May 10 09:57:33 2016 Antoine Baché
 */
 
 #ifndef	RAYTRACER2_H_
@@ -23,7 +23,7 @@
 # define WIN_NAME		"Ray Ta Soeur"
 # define UNUSED			__attribute__((unused))
 # define MAX_RECURSIVE		50
-# define MINIMUM_FPS		24
+# define MINIMUM_FPS		3
 
 /*
 ** Scopes expected in .ini files
@@ -127,5 +127,6 @@ void			calc_fragment(t_data *data, unsigned int *buf,
 				      t_ivec2 *pos);
 unsigned int		calc_ray(t_scene *scene, t_ray *ray, int i);
 void			set_vectors(t_data *data, t_camera *c);
+int			free_raytracer(t_data *data, int ret);
 
 #endif /* RAYTRACER2_H_ */

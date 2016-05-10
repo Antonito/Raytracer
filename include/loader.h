@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 19:09:07 2016 Ludovic Petrenko
-** Last update Sat May  7 05:57:47 2016 Ludovic Petrenko
+** Last update Tue May 10 08:28:54 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -45,6 +45,7 @@ int		load_network(t_data *data, const t_bunny_ini *ini);
 /*
 ** Objects
 */
+void		load_klein(t_obj *obj, const t_bunny_ini_scope *scope);
 void		load_mobius(t_obj *obj, const t_bunny_ini_scope *scope);
 void		load_void_cube(t_obj *obj, const t_bunny_ini_scope *scope);
 void		load_triangle(t_obj *obj, const t_bunny_ini_scope *scope);
