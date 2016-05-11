@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 22:54:52 2016 Ludovic Petrenko
-** Last update Wed Apr 27 05:45:35 2016 Antoine Baché
+** Last update Tue May 10 18:21:30 2016 Ludovic Petrenko
 */
 
 #ifndef MEMORY_H_
@@ -16,5 +16,6 @@
 void	*my_malloc(size_t size);
 void	*my_calloc(size_t nmemb, size_t size);
 int	my_free(void *ptr);
+void	swap_double(double *, double *);
 
 #endif /* !MEMORY_H_ */

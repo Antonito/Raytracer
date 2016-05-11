@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 01:18:58 2016 Ludovic Petrenko
-** Last update Mon May  9 06:06:51 2016 Ludovic Petrenko
+** Last update Tue May 10 16:04:22 2016 Ludovic Petrenko
 */
 
 #ifndef RAY_H_
@@ -17,7 +17,9 @@ typedef struct	s_ray
 {
   t_vec3	pos;
   t_vec3	dir;
+  void		*env;
   void		*src;
+  bool		_void;
 }		t_ray;
 
 #endif /* !RAY_H_ */

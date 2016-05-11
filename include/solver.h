@@ -5,13 +5,24 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Apr 27 04:02:18 2016 Antoine Baché
-** Last update Sun May  8 22:05:46 2016 Antoine Baché
+** Last update Tue May 10 16:16:34 2016 Ludovic Petrenko
 */
 
 #ifndef SOLVER_H_
 # define SOLVER_H_
 
 # define NOT_A_SOLUTION		0xFFFFFFFFFFFFFFFF
+# define MAX_ROOT		(1e10)
+
+typedef struct	s_dicho
+{
+  double	l;
+  double	r;
+  double	mid;
+  int		sl;
+  int		sr;
+  int		smid;
+}		t_dicho;
 
 /*
 ** Solver
@@ -39,5 +50,13 @@ double		solver_n_degree(double *coef, int degree);
 double		check_solution_equation(double, double);
 double		quadratic_solution_calc(double *, double);
 void		quadratic_solution_det(double *, double, double, ...);
+
+/*
+** Solver n
+*/
+double		calc_root(double *coeff, int deg, double l, double r);
+double		*solve_first(double *coef, int deg);
+double		*solve_second(double *coef, int deg);
+double		calc_poly(double *coef, int degree, double a);
 
 #endif /* !SOLVER_H_ */

@@ -5,11 +5,13 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:38:13 2016 Antoine Baché
-** Last update Mon May  9 07:55:45 2016 Antoine Baché
+** Last update Wed May 11 03:35:47 2016 Ludovic Petrenko
 */
 
 #include <unistd.h>
 #include "raytracer.h"
+#include "solver.h"
+#include "tools/math.h"
 
 int		main(int ac, char **av, char **env)
 {

@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Mon May  9 10:51:20 2016 Ludovic Petrenko
+## Last update Tue May 10 18:20:53 2016 Ludovic Petrenko
 ##
 
 DEBUG=			yes
@@ -94,6 +94,7 @@ SOLVER_FILES=		second_degree.c			\
 			fourth_degree.c			\
 			fourth_degree_extended.c	\
 			n_degree_solve.c		\
+			n_degree_solvers.c		\
 			check_solution.c
 
 SHAPE_PREFIX=		src/shape/
@@ -130,7 +131,8 @@ TOOLS_FILES=		memory.c			\
 			my_gethexa.c			\
 			my_strndup.c			\
 			my_puterr.c			\
-			blit_scaled.c
+			blit_scaled.c			\
+			swap_double.c
 
 SRC=			$(addprefix $(SRC_PREFIX),$(SRC_FILES))
 

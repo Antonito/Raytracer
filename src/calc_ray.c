@@ -5,10 +5,10 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 30 23:30:01 2016 Ludovic Petrenko
-** Last update Mon May  9 10:49:28 2016 Ludovic Petrenko
+** Last update Tue May 10 16:05:02 2016 Ludovic Petrenko
 */
 
-#pragma GCC warning "\e[31m\e[1mCommentaires + Norme + Boucle opti!\e[0m"
+#pragma GCC warning "\e[31m\e[1mCommentaires + Norme !\e[0m"
 
 #define _ISOC99_SOURCE
 
@@ -53,7 +53,24 @@ unsigned int	mix_colors(t_intersect *i, t_intersect *r,
   return (final.full);
 }
 
+static void	get_reflected_ray(t_intersect *inter, t_ray *i, t_ray *r)
+{
+  r->dir = add_vec3(i->pos, mult_vec3(inter->norm, -2.0 *
+				      dot_vec3(inter->norm, i->dir)));
+  r->pos = inter->pos;
+  r->env = i->env;
+}
 
+static void	get_refracted_ray(t_intersect *inter, t_ray *i, t_ray *r)
+{
+  double	coeff[2];
+
+  coeff[0] = (i->env) ? ((t_material *)i->env)->fresnel : 1.0;
+  coeff[1] = (inter->mat) ? inter->mat->fresnel : 1.0;
+  r->dir = sub_vec3(i->dir, mult_vec3(inter->norm, 1 - coeff[0] / coeff[1]));
+  r->pos = inter->pos;
+  r->env = i->env;
+}
 
 unsigned int	calc_ray(t_scene *scene, t_ray *ray, int i)
 {
@@ -71,19 +88,14 @@ unsigned int	calc_ray(t_scene *scene, t_ray *ray, int i)
   /* inter.norm = mult_vec3(inter.norm, -1.0); */
   /* if (fabs(dot_vec3(vec3_normalize(ray->dir), vec3_normalize(inter.norm))) < 0.3) */
   /*   return (0x00000000); */
-  tmp.dir = add_vec3(ray->dir, mult_vec3(inter.norm,
-					 -2.0 * dot_vec3(inter.norm, ray->dir)));
-  tmp.dir = vec3_normalize(tmp.dir);
-  tmp.pos = inter.pos;
-  tmp.src = inter.obj;
+  /* tmp.dir = add_vec3(ray->dir, mult_vec3(inter.norm, */
+  /* 					 -2.0 * dot_vec3(inter.norm, ray->dir))); */
+  /* tmp.dir = vec3_normalize(tmp.dir); */
+  /* tmp.pos = inter.pos; */
+  /* tmp.src = inter.obj; */
+  get_reflected_ray(&inter, ray, &tmp);
   refl.mat = NULL;
   node_intersect(&scene->octree, &tmp, &refl);
-  tmp.dir = add_vec3(ray->dir,
-		     mult_vec3(inter.norm, 1 / ((ray->src) ?
-					    (((t_obj*)ray->src)->mat) ?
-					    ((t_obj*)ray->src)->mat->fresnel : 1.0 : 1.0) *
-			       ((inter.mat) ?
-				inter.mat->fresnel : 1.0)));
   node_intersect(&scene->octree, &tmp, &refr);
   if (ray->src == refr.obj)
     refr.mat = NULL;
