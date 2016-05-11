@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri May  6 16:20:03 2016 Ludovic Petrenko
-** Last update Tue May 10 09:38:38 2016 Antoine Baché
+** Last update Tue May 10 15:26:54 2016 Antoine Baché
 */
 
 #include <math.h>

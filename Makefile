@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Tue May 10 13:40:11 2016 Antoine Baché
+## Last update Wed May 11 23:49:43 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -111,7 +111,8 @@ SHAPE_FILES=		plane.c				\
 			klein_coefs.c			\
 			klein_coef_more.c		\
 			klein_normale.c			\
-			hyperbola.c
+			hyperbola.c			\
+			ellipsoid.c
 
 NET_TOOLS_PREFIX=	src/cluster/
 
@@ -197,7 +198,7 @@ CFLAGS=			$(HEAD) -W -Wall -Wextra -Ofast
 
 ifeq ($(DEBUG), yes)
 	CFLAGS+=	 -g -D DEBUG
-	LIB+=		-rdynamic #-pg
+	LIB+=		-rdynamic -pg
 else
 	CFLAGS+=	-Werror
 endif

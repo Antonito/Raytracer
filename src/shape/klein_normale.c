@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May 10 06:43:20 2016 Antoine Baché
-** Last update Tue May 10 13:05:24 2016 Antoine Baché
+** Last update Tue May 10 15:36:29 2016 Antoine Baché
 */
 
 #include "engine/intersect.h"
@@ -53,7 +53,7 @@ inline static double	calc_z_derivative(t_intersect *inter, t_vec3 tmp)
 	  16 * inter->pos.x);
 }
 
-static void		calc_new_pts_klein(t_vec3 *d, t_vec3 *ori)
+inline static void	calc_new_pts_klein(t_vec3 *d, t_vec3 *ori)
 {
   t_vec3		tmp;
   t_intersect		inter;

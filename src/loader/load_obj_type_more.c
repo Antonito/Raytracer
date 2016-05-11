@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 01:06:07 2016 Ludovic Petrenko
-** Last update Tue May 10 13:56:14 2016 Antoine Baché
+** Last update Tue May 10 14:57:40 2016 Antoine Baché
 */
 
 #include <math.h>
@@ -76,4 +76,21 @@ void	load_hyperbola(t_obj *obj, const t_bunny_ini_scope *scope)
   obj->hyperbola.length = DEFAULT_HYPERBOLA_HEIGHT;
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, HEIGHT_FIELD, 0)))
     obj->hyperbola.length = my_getdouble(tmp);
+}
+
+void	load_ellipsoid(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  char	*tmp;
+
+  obj->type = ELLIPSOID;
+  obj->get_intersect = &get_intersect_ellipsoid;
+  obj->ellipsoid.height = DEFAULT_ELLIPSOID_HEIGHT;
+  obj->ellipsoid.length = DEFAULT_ELLIPSOID_LENGTH;
+  obj->ellipsoid.width = DEFAULT_ELLIPSOID_WIDTH;
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, HEIGHT_FIELD, 0)))
+    obj->ellipsoid.height = my_getdouble(tmp);
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, LENGTH_FIELD, 0)))
+    obj->ellipsoid.length = my_getdouble(tmp);
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, WIDTH_FIELD, 0)))
+    obj->ellipsoid.width = my_getdouble(tmp);
 }
