@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May  9 01:15:33 2016 Antoine Baché
-** Last update Mon May  9 05:25:39 2016 Antoine Baché
+** Last update Wed May 11 05:07:02 2016 Ludovic Petrenko
 */
 
 #include "solver.h"
@@ -83,7 +83,7 @@ inline static double	calc_b_klein(t_ray *ray)
 	   ray->dir.x));
 }
 
-inline static double	calc_a_klein(t_ray *ray)
+double	calc_a_klein(t_ray *ray)
 {
   double		dirzsquare;
   double		dirysquare;
@@ -92,7 +92,7 @@ inline static double	calc_a_klein(t_ray *ray)
   dirzsquare = ray->dir.z * ray->dir.z;
   dirysquare = ray->dir.y * ray->dir.y;
   dirxsquare = ray->dir.x * ray->dir.x;
-  return (ray ->dir.z * dirzsquare * dirzsquare * ray->dir.z  +
+  return (ray->dir.z * dirzsquare * dirzsquare * ray->dir.z  +
 	  (3 * dirysquare + 3 * dirzsquare) * dirzsquare * dirzsquare +
 	  (3 * dirysquare * dirysquare +
 	   6 * dirxsquare * dirysquare +
@@ -105,19 +105,29 @@ inline static double	calc_a_klein(t_ray *ray)
 t_intersect		get_intersect_klein(t_obj *obj, t_ray *ray)
 {
   t_intersect		inter;
+  double		*coef;
 
   inter.dir = ray->dir;
   inter.mat = obj->mat;
   inter.dist = -1.0;
-  if ((inter.dist = solver_n_degree((double [6]){
-	  calc_a_klein(ray), calc_b_klein(ray), calc_c_klein(ray),
-	    calc_d_klein(ray), calc_e_klein(ray), calc_f_klein(ray),
-	    calc_g_klein(ray)}, 6)) <= 0.0 ||
+  /* if (!(coef = my_malloc(7 * sizeof(double)))) */
+  /*   return (inter); */
+  if ((coef = malloc(7 * sizeof(double))) == NULL)
+    return (inter);
+  coef[0] = calc_a_klein(ray);
+  coef[1] = calc_b_klein(ray);
+  coef[2] = calc_c_klein(ray);
+  coef[3] = calc_d_klein(ray);
+  coef[4] = calc_e_klein(ray);
+  coef[5] = calc_f_klein(ray);
+  coef[6] = calc_g_klein(ray);
+  if ((inter.dist = solver_n_degree(coef, 6)) <= 0.0 ||
     inter.dist == NOT_A_SOLUTION)
     {
       inter.dist = -1.0;
       return (inter);
     }
   inter.pos = add_vec3(ray->pos, mult_vec3(ray->dir, inter.dist));
+  calc_normale_klein(&inter);
   return (inter);
 }

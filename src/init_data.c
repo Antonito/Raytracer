@@ -5,11 +5,12 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 22:32:39 2016 Ludovic Petrenko
-** Last update Sat May  7 22:51:04 2016 Antoine Baché
+** Last update Tue May 10 18:28:46 2016 Antoine Baché
 */
 
 #include "raytracer.h"
 #include "loader.h"
+#include "tools/math.h"
 
 int	init_data(int ac, char **av, t_data **data)
 {
@@ -35,5 +36,7 @@ int	init_data(int ac, char **av, t_data **data)
 						     (*data)->height)) ||
       load_config(*data, CONFIG_FILE))
     return (1);
+  my_sin(0.0, DRAW);
+  my_cos(0.0, DRAW);
   return (0);
 }

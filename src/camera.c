@@ -5,16 +5,17 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri May  6 16:20:03 2016 Ludovic Petrenko
-** Last update Fri May  6 16:39:02 2016 Ludovic Petrenko
+** Last update Tue May 10 15:26:54 2016 Antoine Baché
 */
 
 #include <math.h>
 #include "engine/camera.h"
+#include "tools/math.h"
 
 void	refresh_forward(t_camera *cam)
 {
-  cam->dir.x = -sin(cam->rot_x * M_PI / 180.0);
-  cam->dir.y = cos(cam->rot_x * M_PI / 180.0) *
-    cos(cam->rot_y * M_PI / 180.0);
-  cam->dir.z = sin(cam->rot_y * M_PI / 180.0);
+  cam->dir.x = -my_sin(cam->rot_x * M_PI / 180.0, DRAW);
+  cam->dir.y = my_cos(cam->rot_x * M_PI / 180.0, DRAW) *
+    my_cos(cam->rot_y * M_PI / 180.0, DRAW);
+  cam->dir.z = my_sin(cam->rot_y * M_PI / 180.0, DRAW);
 }

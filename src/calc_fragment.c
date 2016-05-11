@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Thu Apr 21 20:09:40 2016 Ludovic Petrenko
-** Last update Mon May  9 10:49:44 2016 Ludovic Petrenko
+** Last update Wed May 11 04:51:51 2016 Ludovic Petrenko
 */
 
 #pragma GCC warning "\e[31m\e[1mCommentaires + Norme !\e[0m"
@@ -42,26 +42,23 @@ unsigned int	calc_pixel(t_scene *scene, t_ivec2 *pix)
 		     mult_vec3(scene->cam.incr_x, pix->x));
   ray.dir = add_vec3(ray.dir, mult_vec3(scene->cam.incr_y, pix->y));
   ray.dir = vec3_normalize(sub_vec3(ray.dir, ray.pos));
-  ray.src = NULL;
+  ray.env = NULL;
   return (calc_ray(scene, &ray, 0));
 }
 
 void		calc_fragment(t_data *data, unsigned int *buf, t_ivec2 *pos)
 {
   t_ivec2	tmp;
-  int		i;
 
   tmp = pos[0];
-  i = 0;
   while (tmp.y <= pos[1].y)
     {
-      buf[i] = calc_pixel(data->scene, &tmp);
+      buf[tmp.x + data->cur_width * tmp.y] = calc_pixel(data->scene, &tmp);
       /* buf[i + 1] = buf[i]; */
       /* buf[i + pos[1].x] = buf[i]; */
       /* buf[i + pos[1].x + 1] = buf[i]; */
       tmp.x = (tmp.x + 1 < pos[1].x) ? tmp.x + 1 : 0;
       tmp.y += (tmp.x == 0);
-      ++i;
       /* if (tmp.x == 0) */
       /* 	i += pos[1].x; */
     }

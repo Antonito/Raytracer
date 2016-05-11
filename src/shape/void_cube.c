@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May  3 16:58:16 2016 Antoine Baché
-** Last update Wed May  4 19:37:50 2016 Ludovic Petrenko
+** Last update Mon May  9 18:05:56 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -25,18 +25,18 @@ static void	get_dist_void_cube(t_ray *ray, t_intersect *inter)
   sol[2] = 6.0 * ((ray->dir.x * ray->dir.x * ray->pos.x * ray->pos.x) +
 		  (ray->dir.y * ray->dir.y * ray->pos.y * ray->pos.y) +
 		  (ray->dir.z * ray->dir.z * ray->pos.z * ray->pos.z)) -
-    5.0 * (ray->dir.x * ray->dir.x + ray->dir.y * ray->dir.y *
+    5.0 * (ray->dir.x * ray->dir.x + ray->dir.y * ray->dir.y +
 	   ray->dir.z * ray->dir.z);
   sol[3] = 4 * (ray->pos.x * ray->pos.x * ray->pos.x * ray->dir.x +
 		ray->pos.y * ray->pos.y * ray->pos.y * ray->dir.y +
 		ray->pos.z * ray->pos.z * ray->pos.z * ray->dir.z) -
-    10.0 * (ray->dir.x * ray->pos.x + ray->dir.y * ray->pos.y +
-	    ray->dir.z * ray->pos.z);
+    (10.0 * (ray->dir.x * ray->pos.x) + ray->dir.y * ray->pos.y +
+     ray->dir.z * ray->pos.z);
   sol[4] = (ray->pos.x * ray->pos.x * ray->pos.x * ray->pos.x) +
     (ray->pos.y * ray->pos.y * ray->pos.y * ray->pos.y) +
     (ray->pos.z * ray->pos.z * ray->pos.z * ray->pos.z) -
     5.0 * (ray->pos.x * ray->pos.x + ray->pos.y * ray->pos.y +
-	   ray->pos.z * ray->pos.z);
+	   ray->pos.z * ray->pos.z) + 11.8;
   inter->dist = solver_fourth_degree(sol[0], sol[1], sol[2], sol[3], sol[4]);
 }
 

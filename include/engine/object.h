@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:33:45 2016 Ludovic Petrenko
-** Last update Mon May  9 04:12:06 2016 Antoine Baché
+** Last update Tue May 10 14:58:22 2016 Antoine Baché
 */
 
 #ifndef OBJECT_H_
@@ -16,6 +16,10 @@
 # include "intersect.h"
 # include "material.h"
 
+# define DEFAULT_ELLIPSOID_HEIGHT	5.0
+# define DEFAULT_ELLIPSOID_LENGTH	9.0
+# define DEFAULT_ELLIPSOID_WIDTH	3.0
+# define DEFAULT_HYPERBOLA_HEIGHT	3.0
 # define DEFAULT_SPHERE_RADIUS		0.5
 # define DEFAULT_PLANE_NORMALE		vec3(0.0, 0.0, 1.0)
 # define DEFAULT_CYLINDER_RADIUS	0.5
@@ -42,6 +46,9 @@ typedef enum	e_obj_type
     TORUS,
     MOBIUS,
     VOID_CUBE,
+    KLEIN,
+    HYPERBOLA,
+    ELLIPSOID,
     NB_OBJ_TYPE
   }		t_obj_type;
 
@@ -102,6 +109,18 @@ typedef struct	s_mobius
   double	radius;
 }		t_mobius;
 
+typedef struct	s_hyperbola
+{
+  double	length;
+}		t_hyperbola;
+
+typedef struct	s_ellipsoid
+{
+  double	height;
+  double	width;
+  double	length;
+}		t_ellipsoid;
+
 typedef struct	s_obj
 {
   t_obj_type	type;
@@ -120,6 +139,8 @@ typedef struct	s_obj
     t_triangle	triangle;
     t_torus	torus;
     t_mobius	mobius;
+    t_hyperbola	hyperbola;
+    t_ellipsoid	ellipsoid;
   };
 }		t_obj;
 
@@ -140,6 +161,8 @@ t_intersect	get_intersect_cone(t_obj *, t_ray *);
 t_intersect	get_intersect_mobius(t_obj *, t_ray *);
 t_intersect	get_intersect_void_cube(t_obj *, t_ray *);
 t_intersect	get_intersect_klein(t_obj *, t_ray *);
+t_intersect	get_intersect_hyperbola(t_obj *, t_ray *);
+t_intersect	get_intersect_ellipsoid(t_obj *, t_ray *);
 
 /*
 ** Klein specific functions
@@ -148,5 +171,6 @@ double		calc_d_klein(t_ray *);
 double		calc_e_klein(t_ray *);
 double		calc_f_klein(t_ray *);
 double		calc_g_klein(t_ray *);
+void		calc_normale_klein(t_intersect *);
 
 #endif /* !OBJECT_H_ */

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May  2 04:39:20 2016 Antoine Baché
-** Last update Mon May  9 10:45:35 2016 Ludovic Petrenko
+** Last update Wed May 11 04:50:58 2016 Ludovic Petrenko
 */
 
 #include "solver.h"
@@ -38,7 +38,7 @@ t_intersect	get_intersect_sphere(t_obj *obj, t_ray *ray)
 {
   t_intersect	inter;
 
-  if (ray->src == obj)
+  if (ray->env == obj)
     {
       inter.dist = -1.0;
       return (inter);
