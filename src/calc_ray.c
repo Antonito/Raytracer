@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 30 23:30:01 2016 Ludovic Petrenko
-** Last update Wed May 11 04:53:49 2016 Ludovic Petrenko
+** Last update Wed May 11 18:33:10 2016 Ludovic Petrenko
 */
 
 #pragma GCC warning "\e[31m\e[1mCommentaires + Norme !\e[0m"
@@ -88,12 +88,12 @@ unsigned int	calc_ray(t_scene *scene, t_ray *ray, int i)
   /* inter.norm = mult_vec3(inter.norm, -1.0); */
   /* if (fabs(dot_vec3(vec3_normalize(ray->dir), vec3_normalize(inter.norm))) < 0.3) */
   /*   return (0x00000000); */
-  /* tmp.dir = add_vec3(ray->dir, mult_vec3(inter.norm, */
-  /* 					 -2.0 * dot_vec3(inter.norm, ray->dir))); */
-  /* tmp.dir = vec3_normalize(tmp.dir); */
-  /* tmp.pos = inter.pos; */
-  /* tmp.src = inter.obj; */
-  get_reflected_ray(&inter, ray, &tmp);
+  tmp.dir = add_vec3(ray->dir, mult_vec3(inter.norm,
+  					 -2.0 * dot_vec3(inter.norm, ray->dir)));
+  tmp.dir = vec3_normalize(tmp.dir);
+  tmp.pos = inter.pos;
+  tmp.env = inter.obj;
+  /* get_reflected_ray(&inter, ray, &tmp); */
   refl.mat = NULL;
   node_intersect(&scene->octree, &tmp, &refl);
   tmp.dir = add_vec3(ray->dir,
@@ -104,7 +104,7 @@ unsigned int	calc_ray(t_scene *scene, t_ray *ray, int i)
 			       ((inter.mat) ?
 				inter.mat->fresnel : 1.0)));
   node_intersect(&scene->octree, &tmp, &refr);
-  /* if (ray->env == refr.obj) */
-  /*   refr.mat = NULL; */
+  if (ray->env == refr.obj)
+    refr.mat = NULL;
   return (mix_colors(&inter, &refl, &refr));
 }

@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Wed May 11 04:59:32 2016 Ludovic Petrenko
+## Last update Wed May 11 18:33:56 2016 Ludovic Petrenko
 ##
 
 DEBUG=			yes
@@ -200,7 +200,7 @@ CFLAGS=			$(HEAD) -W -Wall -Wextra
 
 ifeq ($(DEBUG), yes)
 	CFLAGS+=	 -g -D DEBUG
-	LIB+=		-rdynamic -pg
+	LIB+=		-rdynamic
 else
 	CFLAGS+=	-Werror
 endif

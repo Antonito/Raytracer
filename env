@@ -1,0 +1,399 @@
+src/shape/mobius.c:20:  sol.x = ray->dir.x * ray->dir.x * ray->dir.y - 4.0 * ray->dir.x *
+src/shape/mobius.c:21:    ray->dir.x * ray->dir.z + ray->dir.y * ray->dir.y * ray->dir.y +
+src/shape/mobius.c:22:    ray->dir.y * ray->dir.z * ray->dir.z;
+src/shape/mobius.c:23:  sol.y = 2.0 * ray->pos.x * ray->dir.x * ray->dir.y - 4.0 * ray->pos.x *
+src/shape/mobius.c:24:    ray->dir.x * ray->dir.z + ray->dir.x * ray->dir.x * ray->pos.y - 4.0 *
+src/shape/mobius.c:25:    ray->dir.x * ray->dir.x * ray->pos.z - 4.0 * ray->dir.x * ray->pos.y *
+src/shape/mobius.c:26:    ray->dir.z - 2.0 * ray->dir.x * ray->dir.z + 3.0 * ray->dir.y *
+src/shape/mobius.c:27:    ray->dir.y * ray->pos.y + 2.0 * ray->dir.y * ray->dir.z * ray->pos.z +
+src/shape/mobius.c:28:    ray->pos.y * ray->dir.z * ray->dir.z;
+src/shape/mobius.c:29:  sol.z = ray->pos.x * ray->pos.x * ray->dir.y - 2.0 * ray->pos.x *
+src/shape/mobius.c:30:    ray->pos.x * ray->dir.z + 2.0 * ray->pos.x * ray->dir.x * ray->pos.y -
+src/shape/mobius.c:31:    4.0 * ray->pos.x * ray->dir.x * ray->pos.z - ray->pos.x * ray->dir.z *
+src/shape/mobius.c:32:    ray->pos.z - 4.0 * ray->dir.x * ray->pos.y * ray->pos.z - 2.0 *
+src/shape/mobius.c:33:    ray->dir.x * ray->pos.z + 3.0 * ray->dir.y * ray->pos.y * ray->pos.y +
+src/shape/mobius.c:34:    ray->dir.y * ray->pos.z * ray->pos.z - 2.0 * ray->pos.y * ray->pos.y *
+src/shape/mobius.c:35:    ray->dir.z + 2.0 * ray->pos.y * ray->dir.z * ray->pos.z;
+src/shape/mobius.c:36:  sol.w = ray->pos.x * ray->pos.x * ray->pos.y - 2.0 * ray->pos.x *
+src/shape/mobius.c:37:    ray->pos.x * ray->pos.z - 2.0 * ray->pos.x * ray->pos.z + ray->pos.y *
+src/shape/mobius.c:38:    ray->pos.y * ray->pos.y - 2.0 * ray->pos.y * ray->pos.y * ray->pos.z +
+src/shape/mobius.c:39:    ray->pos.y * ray->pos.z * ray->pos.z - ray->pos.y;
+src/shape/mobius.c:48:  inter.dir = ray->dir;
+src/shape/mobius.c:57:  inter.pos = add_vec3(mult_vec3(ray->dir, inter.dist), ray->pos);
+src/shape/mobius.c:62:  if (vec3_len(add_vec3(mult_vec3(ray->dir, inter.dist), inter.norm)) <
+src/shape/plane.c:20:  tmp = ray->dir.x * obj->plane.normale.x +
+src/shape/plane.c:21:    ray->dir.y * obj->plane.normale.y +
+src/shape/plane.c:22:    ray->dir.z * obj->plane.normale.z;
+src/shape/plane.c:27:      inter->dist = -((ray->pos.x - obj->pos.x) * obj->plane.normale.x +
+src/shape/plane.c:28:		     (ray->pos.y - obj->pos.y) * obj->plane.normale.y +
+src/shape/plane.c:29:		     (ray->pos.z - obj->pos.z) * obj->plane.normale.z) / tmp;
+src/shape/plane.c:39:  inter.dir = ray->dir;
+src/shape/plane.c:44:  inter.pos = add_vec3(ray->pos, mult_vec3(ray->dir, inter.dist));
+src/shape/klein_coef_more.c:15:  return (ray->pos.z * ray->pos.z * ray->pos.z * ray->pos.z * ray->pos.z *
+src/shape/klein_coef_more.c:16:	  ray->pos.z + (3 * ray->pos.y * ray->pos.y - 2 * ray->pos.y + 3 *
+src/shape/klein_coef_more.c:17:			ray->pos.x * ray->pos.x - 11) * ray->pos.z * ray->pos.z
+src/shape/klein_coef_more.c:18:	  * ray->pos.z * ray->pos.z + 16 * ray->pos.x * ray->pos.z * ray->pos.z
+src/shape/klein_coef_more.c:19:	  * ray->pos.z + (3 * ray->pos.y * ray->pos.y * ray->pos.y * ray->pos.y
+src/shape/klein_coef_more.c:20:			  - 4 * ray->pos.y * ray->pos.y * ray->pos.y +
+src/shape/klein_coef_more.c:21:			  (6 * ray->pos.x * ray->pos.x - 18) * ray->pos.y *
+src/shape/klein_coef_more.c:22:			  ray->pos.y + (-4 * ray->pos.x * ray->pos.x - 12) *
+src/shape/klein_coef_more.c:23:			  ray->pos.y + 3 * ray->pos.x * ray->pos.x * ray->pos.x
+src/shape/klein_coef_more.c:24:			  * ray->pos.x - 14 * ray->pos.x * ray->pos.x + 11));
+src/shape/klein_coef_more.c:29:  return (calc_g_more_klein(ray) * ray->pos.z * ray->pos.z +
+src/shape/klein_coef_more.c:30:	  (16 * ray->pos.x * ray->pos.y * ray->pos.y - 32 * ray->pos.x *
+src/shape/klein_coef_more.c:31:	   ray->pos.y + 16 * ray->pos.x * ray->pos.x * ray->pos.x - 16 *
+src/shape/klein_coef_more.c:32:	   ray->pos.x) * ray->pos.z + ray->pos.y * ray->pos.y * ray->pos.y *
+src/shape/klein_coef_more.c:33:	  ray->pos.y * ray->pos.y * ray->pos.y - 2 * ray->pos.y * ray->pos.y *
+src/shape/klein_coef_more.c:34:	  ray->pos.y * ray->pos.y * ray->pos.y + (3 * ray->pos.x * ray->pos.x -
+src/shape/klein_coef_more.c:35:						  7) * ray->pos.y * ray->pos.y
+src/shape/klein_coef_more.c:36:	  * ray->pos.y * ray->pos.y + (12 - 4 * ray->pos.x * ray->pos.x) *
+src/shape/klein_coef_more.c:37:	  ray->pos.y * ray->pos.y * ray->pos.y +
+src/shape/klein_coef_more.c:38:	  (3 * ray->pos.x * ray->pos.x * ray->pos.x * ray->pos.x - 10 *
+src/shape/klein_coef_more.c:39:	   ray->pos.x * ray->pos.x + 7) * ray->pos.y * ray->pos.y +
+src/shape/klein_coef_more.c:40:	  (-2 * ray->pos.x * ray->pos.x * ray->pos.x * ray->pos.x + 4 *
+src/shape/klein_coef_more.c:41:	   ray->pos.x * ray->pos.x - 2) * ray->pos.y + ray->pos.x * ray->pos.x
+src/shape/klein_coef_more.c:42:	  * ray->pos.x * ray->pos.x * ray->pos.x * ray->pos.x - 3 * ray->pos.x
+src/shape/klein_coef_more.c:43:	  * ray->pos.x * ray->pos.x * ray->pos.x + 3 * ray->pos.x * ray->pos.x
+src/shape/klein_coef_more.c:49:  return (ray->pos.z * ray->pos.z * ray->pos.z * ray->pos.z +
+src/shape/klein_coef_more.c:50:	  (12 * ray->pos.y * ray->pos.y * ray->pos.y - 12 * ray->pos.y *
+src/shape/klein_coef_more.c:51:	   ray->pos.y + (12 * ray->pos.x * ray->pos.x - 36) * ray->pos.y - 4 *
+src/shape/klein_coef_more.c:52:	   ray->pos.x * ray->pos.x - 12) * ray->pos.z * ray->pos.z +
+src/shape/klein_coef_more.c:53:	  (32 * ray->pos.x * ray->pos.y - 32 * ray->pos.x) * ray->pos.z + 6 *
+src/shape/klein_coef_more.c:54:	  ray->pos.y * ray->pos.y * ray->pos.y * ray->pos.y * ray->pos.y -
+src/shape/klein_coef_more.c:55:	  10 * ray->pos.y * ray->pos.y * ray->pos.y * ray->pos.y +
+src/shape/klein_coef_more.c:56:	  (12 * ray->pos.x * ray->pos.x - 28) * ray->pos.y * ray->pos.y *
+src/shape/klein_coef_more.c:57:	  ray->pos.y);
+src/shape/klein_coef_more.c:62:  return ((6 * ray->pos.z * ray->pos.z * ray->pos.z * ray->pos.z * ray->pos.z +
+src/shape/klein_coef_more.c:63:	   (12 * ray->pos.y * ray->pos.y - 8 * ray->pos.y + 12 * ray->pos.x *
+src/shape/klein_coef_more.c:64:	    ray->pos.x - 44) * ray->pos.z * ray->pos.z * ray->pos.z + 48 *
+src/shape/klein_coef_more.c:65:	   ray->pos.x * ray->pos.z * ray->pos.z +
+src/shape/klein_coef_more.c:66:	   (6 * ray->pos.y * ray->pos.y * ray->pos.y * ray->pos.y - 8 *
+src/shape/klein_coef_more.c:67:	    ray->pos.y * ray->pos.y * ray->pos.y +
+src/shape/klein_coef_more.c:68:	    (12 * ray->pos.x * ray->pos.x - 36) * ray->pos.y * ray->pos.y +
+src/shape/klein_coef_more.c:69:	    (-8 * ray->pos.x * ray->pos.x - 24) * ray->pos.y + 6 * ray->pos.x *
+src/shape/klein_coef_more.c:70:	    ray->pos.x * ray->pos.x * ray->pos.x - 28 * ray->pos.x * ray->pos.x
+src/shape/klein_coef_more.c:71:	    + 22) * ray->pos.z + 16 * ray->pos.x * ray->pos.y * ray->pos.y -
+src/shape/klein_coef_more.c:72:	   32 * ray->pos.x * ray->pos.y + 16 * ray->pos.x * ray->pos.x *
+src/shape/klein_coef_more.c:73:	   ray->pos.x - 16 * ray->pos.x) * ray->dir.z);
+src/shape/klein_coef_more.c:78:  return (calc_f_more_klein(ray) + ((6 * ray->pos.y - 2) *
+src/shape/klein_coef_more.c:80:				    (36 - 12 * ray->pos.x * ray->pos.x) *
+src/shape/klein_coef_more.c:81:				    ray->pos.y * ray->pos.y +
+src/shape/klein_coef_more.c:82:				    (6 * ray->pos.x * ray->pos.x * ray->pos.x *
+src/shape/klein_coef_more.c:83:				     ray->pos.x - 20 * ray->pos.x * ray->pos.x
+src/shape/klein_coef_more.c:84:				     + 14) * ray->pos.y - 2 * ray->pos.x *
+src/shape/klein_coef_more.c:85:				    ray->pos.x * ray->pos.x * ray->pos.x + 4 *
+src/shape/klein_coef_more.c:86:				    ray->pos.x * ray->pos.x - 2) * ray->dir.y +
+src/shape/klein_coef_more.c:87:	  (6 * ray->pos.x * ray->pos.z * ray->pos.z * ray->pos.z * ray->pos.z +
+src/shape/klein_coef_more.c:88:	   16 * ray->pos.z * ray->pos.z * ray->pos.z +
+src/shape/klein_coef_more.c:89:	   (12 * ray->pos.x * ray->pos.y * ray->pos.y - 8 * ray->pos.x *
+src/shape/klein_coef_more.c:90:	    ray->pos.y + 12 * ray->pos.x * ray->pos.x * ray->pos.x - 28 *
+src/shape/klein_coef_more.c:91:	    ray->pos.x) * ray->pos.z * ray->pos.z +
+src/shape/klein_coef_more.c:92:	   (16 * ray->pos.y * ray->pos.y - 32 * ray->pos.y + 48 * ray->pos.x *
+src/shape/klein_coef_more.c:93:	    ray->pos.x - 16) * ray->pos.z + 6 * ray->pos.x * ray->pos.y *
+src/shape/klein_coef_more.c:94:	   ray->pos.y * ray->pos.y * ray->pos.y - 8 * ray->pos.x * ray->pos.y *
+src/shape/klein_coef_more.c:95:	   ray->pos.y * ray->pos.y +
+src/shape/klein_coef_more.c:96:	   (12 * ray->pos.x * ray->pos.x * ray->pos.x - 20 * ray->pos.x) *
+src/shape/klein_coef_more.c:97:	   ray->pos.y * ray->pos.y + (8 * ray->pos.x - 8 * ray->pos.x *
+src/shape/klein_coef_more.c:98:				      ray->pos.x * ray->pos.x) * ray->pos.y + 6
+src/shape/klein_coef_more.c:99:	   * ray->pos.x * ray->pos.x * ray->pos.x * ray->pos.x * ray->pos.x -
+src/shape/klein_coef_more.c:100:	   12 * ray->pos.x * ray->pos.x * ray->pos.x + 6 * ray->pos.x) *
+src/shape/klein_coef_more.c:101:	  ray->dir.x);
+src/shape/cylinder.c:21:  if (ray->pos.y * ray->pos.y + ray->pos.z * ray->pos.z <=
+src/shape/cylinder.c:24:      if (ray->pos.x > obj->cylinder.height ||
+src/shape/cylinder.c:25:	  (POSITIVE(ray->pos.x) && ray->pos.x < obj->cylinder.height))
+src/shape/cylinder.c:27:	  t = (obj->cylinder.height - ray->pos.x) / ray->dir.x;
+src/shape/cylinder.c:28:	  inter->pos.y = ray->dir.y * t + ray->pos.y;
+src/shape/cylinder.c:29:	  inter->pos.z = ray->dir.z * t + ray->pos.z;
+src/shape/cylinder.c:31:      else if (ray->pos.x < 0.0)
+src/shape/cylinder.c:33:	  t = -ray->pos.x / ray->dir.x;
+src/shape/cylinder.c:34:	  inter->pos.y = ray->dir.y * t + ray->pos.y;
+src/shape/cylinder.c:35:	  inter->pos.z = ray->dir.z * t + ray->pos.z;
+src/shape/cylinder.c:48:  a = ray->dir.y * ray->dir.y + ray->dir.z * ray->dir.z;
+src/shape/cylinder.c:49:  b = 2.0 * (ray->dir.y * ray->pos.y + ray->dir.z * ray->pos.z);
+src/shape/cylinder.c:50:  c = ray->pos.y * ray->pos.y + ray->pos.z * ray->pos.z -
+src/shape/cylinder.c:60:  inter.dir = ray->dir;
+src/shape/cylinder.c:69:  inter.pos = add_vec3(mult_vec3(ray->dir, inter.dist), ray->pos);
+src/shape/cone.c:24:  a = ray->dir.x * ray->dir.x + ray->dir.y * ray->dir.y -
+src/shape/cone.c:25:    ((ray->dir.z  * ray->dir.z) / (d));
+src/shape/cone.c:26:  b = 2.0 * (ray->pos.x * ray->dir.x + ray->pos.y * ray->dir.y -
+src/shape/cone.c:27:	     ((ray->pos.z * ray->dir.z) / (d)));
+src/shape/cone.c:28:  c = ray->pos.x * ray->pos.x + ray->pos.y * ray->pos.y -
+src/shape/cone.c:29:    ((ray->pos.z * ray->pos.z) / (d));
+src/shape/cone.c:39:  inter.dir = ray->dir;
+src/shape/cone.c:45:  inter.pos = add_vec3(mult_vec3(ray->dir, inter.dist), ray->pos);
+src/shape/cone.c:48:  tmp[0] = 2.0 * (ray->dir.x * inter.pos.x + ray->dir.y *
+src/shape/cone.c:49:		  inter.pos.y + ray->dir.z * inter.pos.z);
+src/shape/cone.c:50:  tmp[1] = 2.0 * (ray->dir.x * ray->dir.x + ray->dir.y * ray->dir.y +
+src/shape/cone.c:51:		  ray->dir.z * ray->dir.z) * obj->cone.angle * obj->cone.angle;
+src/shape/cone.c:52:  inter.norm = sub_vec3(mult_vec3(ray->dir, tmp[0]),
+src/shape/klein_coefs.c:15:  return (((24 * ray->pos.x * ray->pos.y - 8
+src/shape/klein_coefs.c:16:	    * ray->pos.x) * ray->pos.z *
+src/shape/klein_coefs.c:17:	   ray->pos.z +
+src/shape/klein_coefs.c:18:	   (32 * ray->pos.y - 32) *
+src/shape/klein_coefs.c:19:	   ray->pos.z + 24 * ray->pos.x * ray->pos.y * ray->pos.y *
+src/shape/klein_coefs.c:20:	   ray->pos.y - 24 * ray->pos.x * ray->pos.y * ray->pos.y +
+src/shape/klein_coefs.c:21:	   (24 * ray->pos.x * ray->pos.x *
+src/shape/klein_coefs.c:22:	    ray->pos.x - 40 * ray->pos.x) * ray->pos.y - 8 * ray->pos.x *
+src/shape/klein_coefs.c:23:	   ray->pos.x * ray->pos.x + 8 *
+src/shape/klein_coefs.c:24:	   ray->pos.x) * ray->dir.x * ray->dir.y +
+src/shape/klein_coefs.c:25:	  (3 * ray->pos.z *
+src/shape/klein_coefs.c:26:	   ray->pos.z * ray->pos.z * ray->pos.z +
+src/shape/klein_coefs.c:27:	   (6 * ray->pos.y * ray->pos.y - 4 * ray->pos.y + 18 *
+src/shape/klein_coefs.c:28:	    ray->pos.x * ray->pos.x - 14) * ray->pos.z *
+src/shape/klein_coefs.c:29:	   ray->pos.z + 48 * ray->pos.x * ray->pos.z + 3 *
+src/shape/klein_coefs.c:30:	   ray->pos.y * ray->pos.y * ray->pos.y * ray->pos.y - 4 *
+src/shape/klein_coefs.c:31:	   ray->pos.y * ray->pos.y * ray->pos.y +
+src/shape/klein_coefs.c:32:	   (18 * ray->pos.x * ray->pos.x - 10) * ray->pos.y *
+src/shape/klein_coefs.c:33:	   ray->pos.y + (4 - 12 * ray->pos.x * ray->pos.x) *
+src/shape/klein_coefs.c:34:	   ray->pos.y + 15 * ray->pos.x * ray->pos.x * ray->pos.x
+src/shape/klein_coefs.c:35:	   * ray->pos.x - 18 * ray->pos.x * ray->pos.x + 3) *
+src/shape/klein_coefs.c:36:	  ray->dir.x * ray->dir.x);
+src/shape/klein_coefs.c:41:  return ((((24 * ray->pos.y - 8) * ray->pos.z * ray->pos.z *
+src/shape/klein_coefs.c:42:	    ray->pos.z + (24 * ray->pos.y * ray->pos.y * ray->pos.y - 24 *
+src/shape/klein_coefs.c:43:			  ray->pos.y * ray->pos.y +
+src/shape/klein_coefs.c:44:			  (24 * ray->pos.x * ray->pos.x -
+src/shape/klein_coefs.c:45:			   72) * ray->pos.y - 8 *
+src/shape/klein_coefs.c:46:			  ray->pos.x * ray->pos.x - 24) *
+src/shape/klein_coefs.c:47:	    ray->pos.z + 32 * ray->pos.x *
+src/shape/klein_coefs.c:48:	    ray->pos.y - 32 * ray->pos.x) *
+src/shape/klein_coefs.c:49:	   ray->dir.y +
+src/shape/klein_coefs.c:50:	   (24 * ray->pos.x * ray->pos.z * ray->pos.z *
+src/shape/klein_coefs.c:51:	    ray->pos.z + 48 *
+src/shape/klein_coefs.c:52:	    ray->pos.z *
+src/shape/klein_coefs.c:53:	    ray->pos.z +
+src/shape/klein_coefs.c:54:	    (24 * ray->pos.x *
+src/shape/klein_coefs.c:55:	     ray->pos.y * ray->pos.y - 16 *
+src/shape/klein_coefs.c:56:	     ray->pos.x * ray->pos.y + 24 *
+src/shape/klein_coefs.c:57:	     ray->pos.x * ray->pos.x *
+src/shape/klein_coefs.c:58:	     ray->pos.x - 56 * ray->pos.x) *
+src/shape/klein_coefs.c:59:	    ray->pos.z + 16 * ray->pos.y *
+src/shape/klein_coefs.c:60:	    ray->pos.y - 32 * ray->pos.y +
+src/shape/klein_coefs.c:61:	    48 * ray->pos.x * ray->pos.x -
+src/shape/klein_coefs.c:62:	    16) * ray->dir.x) * ray->dir.z);
+src/shape/klein_coefs.c:67:  return ((15 * ray->pos.z * ray->pos.z * ray->pos.z * ray->pos.z +
+src/shape/klein_coefs.c:68:	   (18 * ray->pos.y * ray->pos.y - 12 * ray->pos.y + 18 * ray->pos.x *
+src/shape/klein_coefs.c:69:	    ray->pos.x - 66) * ray->pos.z * ray->pos.z + 48 * ray->pos.x *
+src/shape/klein_coefs.c:70:	   ray->pos.z + 3 * ray->pos.y * ray->pos.y * ray->pos.y * ray->pos.y -
+src/shape/klein_coefs.c:71:	   4 * ray->pos.y * ray->pos.y * ray->pos.y +
+src/shape/klein_coefs.c:72:	   (6 * ray->pos.x * ray->pos.x - 18) * ray->pos.y * ray->pos.y +
+src/shape/klein_coefs.c:73:	   (-4 * ray->pos.x * ray->pos.x - 12) * ray->pos.y + 3 * ray->pos.x *
+src/shape/klein_coefs.c:74:	   ray->pos.x * ray->pos.x * ray->pos.x - 14 * ray->pos.x * ray->pos.x
+src/shape/klein_coefs.c:75:	   + 11) * ray->dir.z * ray->dir.z + calc_e_part_klein(ray) +
+src/shape/klein_coefs.c:76:	  (3 * ray->pos.z * ray->pos.z * ray->pos.z * ray->pos.z +
+src/shape/klein_coefs.c:77:	   (18 * ray->pos.y * ray->pos.y - 12 * ray->pos.y + 6 * ray->pos.x *
+src/shape/klein_coefs.c:78:	    ray->pos.x - 18) * ray->pos.z * ray->pos.z + 16 * ray->pos.x *
+src/shape/klein_coefs.c:79:	   ray->pos.z + 15 * ray->pos.y * ray->pos.y * ray->pos.y * ray->pos.y
+src/shape/klein_coefs.c:80:	   - 20 * ray->pos.y * ray->pos.y * ray->pos.y +
+src/shape/klein_coefs.c:81:	   (18 * ray->pos.x * ray->pos.x - 42) * ray->pos.y * ray->pos.y +
+src/shape/klein_coefs.c:82:	   (36 - 12 * ray->pos.x * ray->pos.x) * ray->pos.y + 3 * ray->pos.x *
+src/shape/klein_coefs.c:83:	   ray->pos.x * ray->pos.x * ray->pos.x - 10 * ray->pos.x * ray->pos.x
+src/shape/klein_coefs.c:84:	   + 7) * ray->dir.y * ray->dir.y + calc_e_part_2_klein(ray));
+src/shape/klein_coefs.c:89:  return (((12 * ray->pos.y - 4) * ray->pos.z * ray->pos.z + 20 * ray->pos.y *
+src/shape/klein_coefs.c:90:	   ray->pos.y * ray->pos.y - 20 * ray->pos.y * ray->pos.y +
+src/shape/klein_coefs.c:91:	   (12 * ray->pos.x * ray->pos.x - 28) * ray->pos.y - 4 * ray->pos.x *
+src/shape/klein_coefs.c:92:	   ray->pos.x + 12) * ray->dir.y * ray->dir.y * ray->dir.y +
+src/shape/klein_coefs.c:93:	  (12 * ray->pos.x * ray->pos.z * ray->pos.z + 16 * ray->pos.z + 36 *
+src/shape/klein_coefs.c:94:	   ray->pos.x * ray->pos.y * ray->pos.y - 24 * ray->pos.x * ray->pos.y
+src/shape/klein_coefs.c:95:	   + 12 * ray->pos.x * ray->pos.x * ray->pos.x - 20 * ray->pos.x) *
+src/shape/klein_coefs.c:96:	  ray->dir.x * ray->dir.y * ray->dir.y + ((12 * ray->pos.y - 4) *
+src/shape/klein_coefs.c:97:						  ray->pos.z * ray->pos.z + 12
+src/shape/klein_coefs.c:98:						  * ray->pos.y * ray->pos.y *
+src/shape/klein_coefs.c:99:						  ray->pos.y - 12 * ray->pos.y
+src/shape/klein_coefs.c:100:						  * ray->pos.y +
+src/shape/klein_coefs.c:101:						  (36 * ray->pos.x * ray->pos.x
+src/shape/klein_coefs.c:102:						   - 20) * ray->pos.y - 12 *
+src/shape/klein_coefs.c:103:						  ray->pos.x * ray->pos.x + 4)
+src/shape/klein_coefs.c:104:	  * ray->dir.x * ray->dir.x * ray->dir.y +
+src/shape/klein_coefs.c:105:	  (12 * ray->pos.x * ray->pos.z * ray->pos.z + 16 * ray->pos.z + 12 *
+src/shape/klein_coefs.c:106:	   ray->pos.x * ray->pos.y * ray->pos.y - 8 * ray->pos.x * ray->pos.y +
+src/shape/klein_coefs.c:107:	   20 * ray->pos.x * ray->pos.x * ray->pos.x - 12 * ray->pos.x) *
+src/shape/klein_coefs.c:108:	  ray->dir.x * ray->dir.x * ray->dir.x);
+src/shape/klein_coefs.c:113:  return ((20 * ray->pos.z * ray->pos.z * ray->pos.z +
+src/shape/klein_coefs.c:114:	   (12 * ray->pos.y * ray->pos.y - 8 * ray->pos.y + 12 * ray->pos.x *
+src/shape/klein_coefs.c:115:	    ray->pos.x - 44) * ray->pos.z + 16 * ray->pos.x) * ray->dir.z *
+src/shape/klein_coefs.c:116:	  ray->dir.z * ray->dir.z + (((36 * ray->pos.y - 12) * ray->pos.z *
+src/shape/klein_coefs.c:117:				      ray->pos.z + 12 * ray->pos.y * ray->pos.y
+src/shape/klein_coefs.c:118:				      * ray->pos.y - 12 * ray->pos.y *
+src/shape/klein_coefs.c:119:				      ray->pos.y +
+src/shape/klein_coefs.c:120:				      (12 * ray->pos.x * ray->pos.x - 36) *
+src/shape/klein_coefs.c:121:				      ray->pos.y - 4 * ray->pos.x * ray->pos.x
+src/shape/klein_coefs.c:122:				      - 12) * ray->dir.y +
+src/shape/klein_coefs.c:123:				     (36 * ray->pos.x * ray->pos.z * ray->pos.z
+src/shape/klein_coefs.c:124:				      + 48 * ray->pos.z + 12 * ray->pos.x *
+src/shape/klein_coefs.c:125:				      ray->pos.y * ray->pos.y - 8 * ray->pos.x
+src/shape/klein_coefs.c:126:				      * ray->pos.y + 12 * ray->pos.x *
+src/shape/klein_coefs.c:127:				      ray->pos.x * ray->pos.x - 28 * ray->pos.x)
+src/shape/klein_coefs.c:128:				     * ray->dir.x) * ray->dir.z * ray->dir.z +
+src/shape/void_cube.c:19:  sol[0] = (ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.x) +
+src/shape/void_cube.c:20:    (ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y) +
+src/shape/void_cube.c:21:    (ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z);
+src/shape/void_cube.c:22:  sol[1] = 4.0 * ((ray->dir.x * ray->dir.x * ray->dir.x * ray->pos.x)
+src/shape/void_cube.c:23:		  + (ray->dir.y * ray->dir.y * ray->dir.y * ray->pos.y)
+src/shape/void_cube.c:24:		  + (ray->dir.z * ray->dir.z * ray->dir.z * ray->pos.z));
+src/shape/void_cube.c:25:  sol[2] = 6.0 * ((ray->dir.x * ray->dir.x * ray->pos.x * ray->pos.x) +
+src/shape/void_cube.c:26:		  (ray->dir.y * ray->dir.y * ray->pos.y * ray->pos.y) +
+src/shape/void_cube.c:27:		  (ray->dir.z * ray->dir.z * ray->pos.z * ray->pos.z)) -
+src/shape/void_cube.c:28:    5.0 * (ray->dir.x * ray->dir.x + ray->dir.y * ray->dir.y +
+src/shape/void_cube.c:29:	   ray->dir.z * ray->dir.z);
+src/shape/void_cube.c:30:  sol[3] = 4 * (ray->pos.x * ray->pos.x * ray->pos.x * ray->dir.x +
+src/shape/void_cube.c:31:		ray->pos.y * ray->pos.y * ray->pos.y * ray->dir.y +
+src/shape/void_cube.c:32:		ray->pos.z * ray->pos.z * ray->pos.z * ray->dir.z) -
+src/shape/void_cube.c:33:    (10.0 * (ray->dir.x * ray->pos.x) + ray->dir.y * ray->pos.y +
+src/shape/void_cube.c:34:     ray->dir.z * ray->pos.z);
+src/shape/void_cube.c:35:  sol[4] = (ray->pos.x * ray->pos.x * ray->pos.x * ray->pos.x) +
+src/shape/void_cube.c:36:    (ray->pos.y * ray->pos.y * ray->pos.y * ray->pos.y) +
+src/shape/void_cube.c:37:    (ray->pos.z * ray->pos.z * ray->pos.z * ray->pos.z) -
+src/shape/void_cube.c:38:    5.0 * (ray->pos.x * ray->pos.x + ray->pos.y * ray->pos.y +
+src/shape/void_cube.c:39:	   ray->pos.z * ray->pos.z) + 11.8;
+src/shape/void_cube.c:47:  inter.dir = ray->dir;
+src/shape/void_cube.c:55:  inter.pos = add_vec3(mult_vec3(ray->dir, inter.dist), ray->pos);
+src/shape/tore.c:23:  a = (ray->dir.x * ray->dir.x + ray->dir.y * ray->dir.y + ray->dir.z *
+src/shape/tore.c:24:       ray->dir.z) *
+src/shape/tore.c:25:    (ray->dir.x * ray->dir.x + ray->dir.y * ray->dir.y + ray->dir.z *
+src/shape/tore.c:26:     ray->dir.z);
+src/shape/tore.c:27:  b = 4.0 * (ray->dir.x * ray->dir.x + ray->dir.y * ray->dir.y +
+src/shape/tore.c:28:	     ray->dir.z * ray->dir.z) *
+src/shape/tore.c:29:    (ray->dir.x * ray->pos.x + ray->dir.y * ray->pos.y + ray->dir.z *
+src/shape/tore.c:30:     ray->pos.z);
+src/shape/tore.c:31:  c = 2.0 * (ray->dir.x * ray->dir.x + ray->dir.y * ray->dir.y + ray->dir.z *
+src/shape/tore.c:32:	     ray->dir.z) * (ray->pos.x * ray->pos.x + ray->pos.y * ray->pos.y +
+src/shape/tore.c:33:			    ray->pos.z * ray->pos.z + obj->torus.radius_hole *
+src/shape/tore.c:36:    4.0 * (ray->pos.x * ray->dir.x + ray->dir.y * ray->pos.y + ray->dir.z *
+src/shape/tore.c:37:	   ray->pos.z) *
+src/shape/tore.c:38:    (ray->pos.x * ray->dir.x + ray->dir.y * ray->pos.y + ray->dir.z *
+src/shape/tore.c:39:     ray->pos.z) - 4.0 * obj->torus.radius_hole * obj->torus.radius_hole *
+src/shape/tore.c:40:    (ray->dir.x * ray->dir.x + ray->dir.y * ray->dir.y);
+src/shape/tore.c:41:  d = 4.0 * (ray->pos.x * ray->dir.x + ray->dir.y * ray->pos.y + ray->dir.z *
+src/shape/tore.c:42:	     ray->pos.z) * (ray->pos.x * ray->pos.x + ray->pos.y * ray->pos.y +
+src/shape/tore.c:43:			    ray->pos.z * ray->pos.z + obj->torus.radius_hole *
+src/shape/tore.c:47:    (ray->dir.x * ray->pos.x + ray->dir.y * ray->pos.y);
+src/shape/tore.c:48:  e = (ray->pos.x * ray->pos.x + ray->pos.y * ray->pos.y +
+src/shape/tore.c:49:       ray->pos.z * ray->pos.z + obj->torus.radius_hole *
+src/shape/tore.c:52:    (ray->pos.x * ray->pos.x + ray->pos.y * ray->pos.y +
+src/shape/tore.c:53:     ray->pos.z * ray->pos.z + obj->torus.radius_hole *
+src/shape/tore.c:56:    obj->torus.radius_hole * (ray->pos.x * ray->pos.x + ray->pos.y *
+src/shape/tore.c:57:			      ray->pos.y);
+src/shape/tore.c:66:  inter.dir = ray->dir;
+src/shape/tore.c:74:  inter.pos = add_vec3(mult_vec3(ray->dir, inter.dist), ray->pos);
+src/shape/klein.c:17:  return ((15 * ray->pos.z * ray->pos.z + 3 * ray->pos.y * ray->pos.y - 2 *
+src/shape/klein.c:18:	   ray->pos.y + 3 * ray->pos.x * ray->pos.x - 11) * ray->dir.z *
+src/shape/klein.c:19:	  ray->dir.z * ray->dir.z * ray->dir.z +
+src/shape/klein.c:20:	  ((24 * ray->pos.y - 8) * ray->pos.z * ray->dir.y +
+src/shape/klein.c:21:	   (24 * ray->pos.x * ray->pos.z + 16) * ray->dir.x) * ray->dir.z *
+src/shape/klein.c:22:	  ray->dir.z * ray->dir.z +
+src/shape/klein.c:23:    	  ((18 * ray->pos.z * ray->pos.z + 18 * ray->pos.y * ray->pos.y - 12 *
+src/shape/klein.c:24:	    ray->pos.y + 6 * ray->pos.x * ray->pos.x - 18) * ray->dir.y *
+src/shape/klein.c:25:	   ray->dir.y + (24 * ray->pos.x * ray->pos.y - 8 * ray->pos.x) *
+src/shape/klein.c:26:	   ray->dir.x * ray->dir.y +
+src/shape/klein.c:27:	   (18 * ray->pos.z * ray->pos.z + 6 * ray->pos.y * ray->pos.y - 4 *
+src/shape/klein.c:28:	    ray->pos.y + 18 * ray->pos.x * ray->pos.x - 14) * ray->dir.x *
+src/shape/klein.c:29:	   ray->dir.x) * ray->dir.z * ray->dir.z);
+src/shape/klein.c:35:	  ((24 * ray->pos.y - 8) *ray->pos.z * ray->dir.y * ray->dir.y *
+src/shape/klein.c:36:	   ray->dir.y + (24 * ray->pos.x * ray->pos.z + 16) * ray->dir.x *
+src/shape/klein.c:37:	   ray->dir.y * ray->dir.y + (24 * ray->pos.y - 8) * ray->pos.z *
+src/shape/klein.c:38:	   ray->dir.x * ray->dir.x * ray->dir.y + (24 * ray->pos.x * ray->pos.z
+src/shape/klein.c:39:						   + 16) * ray->dir.x *
+src/shape/klein.c:40:	   ray->dir.x * ray->dir.x) * ray->dir.z +
+src/shape/klein.c:41:	  (3 * ray->pos.z * ray->pos.z+ 14 * ray->pos.y * ray->pos.y - 10 *
+src/shape/klein.c:42:	   ray->pos.y + 3 * ray->pos.x * ray->pos.x - 7) * ray->dir.y *
+src/shape/klein.c:43:	  ray->dir.y * ray->dir.y * ray->dir.y +
+src/shape/klein.c:44:	  (24 * ray->pos.x * ray->pos.y - 8 * ray->pos.x) * ray->dir.x *
+src/shape/klein.c:45:	  ray->dir.y * ray->dir.y * ray->dir.y + (6 * ray->pos.z * ray->pos.z +
+src/shape/klein.c:46:						  18 * ray->pos.y * ray->pos.y -
+src/shape/klein.c:47:						  12 * ray->pos.y + 18 *
+src/shape/klein.c:48:						  ray->pos.x * ray->pos.x - 10)
+src/shape/klein.c:49:	  * ray->dir.x * ray->dir.x * ray->dir.y * ray->dir.y +
+src/shape/klein.c:50:	  (24 * ray->pos.x * ray->pos.y - 8 * ray->pos.x) * ray->dir.x *
+src/shape/klein.c:51:	  ray->dir.x * ray->dir.x * ray->dir.y +
+src/shape/klein.c:52:	  (3 * ray->pos.z * ray->pos.z *  + 3 * ray->pos.y * ray->pos.y - 2 *
+src/shape/klein.c:53:	   ray->pos.y + 15 * ray->pos.x * ray->pos.x - 3) * ray->dir.x *
+src/shape/klein.c:54:	  ray->dir.x * ray->dir.x * ray->dir.x);
+src/shape/klein.c:63:  dirzsquare = ray->dir.z * ray->dir.z;
+src/shape/klein.c:64:  dirysquare = ray->dir.y * ray->dir.y;
+src/shape/klein.c:65:  dirxsquare = ray->dir.x * ray->dir.x;
+src/shape/klein.c:66:  return (6 * ray->pos.z * dirzsquare * dirzsquare * ray->dir.z +
+src/shape/klein.c:67:	  ((6 * ray->pos.y - 2) * ray->dir.y + 6 * ray->pos.x * ray->dir.x) *
+src/shape/klein.c:69:	  (12 * ray->pos.z * dirysquare + 12 * ray->pos.z * dirxsquare) *
+src/shape/klein.c:70:	  dirzsquare * ray->dir.z +
+src/shape/klein.c:71:	  ((12 * ray->pos.y - 4) * dirysquare * ray->dir.y + 12 *
+src/shape/klein.c:72:	   ray->pos.x * ray->dir.x * dirysquare +
+src/shape/klein.c:73:	   (12 * ray->pos.y - 4 * dirxsquare * ray->dir.y + 12 *
+src/shape/klein.c:74:	    ray->pos.x * dirxsquare * ray->dir.x) * dirzsquare +
+src/shape/klein.c:75:	   (6 * ray->pos.z * dirysquare * dirysquare + 12 *
+src/shape/klein.c:76:	    ray->pos.z * dirxsquare * dirysquare + 6 * ray->pos.z
+src/shape/klein.c:77:	    * dirxsquare * dirxsquare) * ray->dir.z + (6 * ray->pos.y - 2) *
+src/shape/klein.c:78:	   dirysquare * dirysquare * ray->dir.y + 6 * ray->pos.x *
+src/shape/klein.c:79:	   ray->dir.x * dirysquare * dirysquare + (12 * ray->pos.y - 4) *
+src/shape/klein.c:80:	   dirxsquare * ray->dir.y * dirysquare + 12 * ray->pos.x * dirxsquare *
+src/shape/klein.c:81:	   ray->dir.x * dirysquare + (6 * ray->pos.y - 2) * dirxsquare *
+src/shape/klein.c:82:	   dirxsquare * ray->dir.y + 6 * ray->pos.x * dirxsquare * dirxsquare *
+src/shape/klein.c:83:	   ray->dir.x));
+src/shape/klein.c:92:  dirzsquare = ray->dir.z * ray->dir.z;
+src/shape/klein.c:93:  dirysquare = ray->dir.y * ray->dir.y;
+src/shape/klein.c:94:  dirxsquare = ray->dir.x * ray->dir.x;
+src/shape/klein.c:95:  return (ray->dir.z * dirzsquare * dirzsquare * ray->dir.z  +
+src/shape/klein.c:99:	   3 * dirxsquare * dirxsquare) * dirzsquare + dirysquare * ray->dir.y *
+src/shape/klein.c:100:	  dirysquare * ray->dir.y + 3 * dirxsquare * dirysquare * dirysquare +
+src/shape/klein.c:101:	  3 * ray->dir.x * dirxsquare * ray->dir.x * dirysquare +
+src/shape/klein.c:110:  inter.dir = ray->dir;
+src/shape/klein.c:130:  inter.pos = add_vec3(ray->pos, mult_vec3(ray->dir, inter.dist));
+src/shape/triangle.c:27:  det_tmp = cross_vec3(ray->dir, edge[1]);
+src/shape/triangle.c:35:  v = dot_vec3(ray->dir, tmp) * inv_det;
+src/shape/triangle.c:48:  inter.dir = ray->dir;
+src/shape/triangle.c:59:  inter.pos = add_vec3(mult_vec3(ray->dir, inter.dist), ray->pos);
+src/shape/ellipsoid.c:22:  a = ((ray->dir.x * ray->dir.x) / obj->ellipsoid.height) -
+src/shape/ellipsoid.c:23:    ((ray->dir.y * ray->dir.y) / obj->ellipsoid.width) +
+src/shape/ellipsoid.c:24:    ((ray->dir.z * ray->dir.z) / obj->ellipsoid.width);
+src/shape/ellipsoid.c:25:  b = ((2.0 * ray->dir.x * ray->pos.x) / obj->ellipsoid.height) -
+src/shape/ellipsoid.c:26:    ((2.0 * ray->pos.y * ray->dir.y) / obj->ellipsoid.width) +
+src/shape/ellipsoid.c:27:    ((2.0 * ray->pos.z * ray->dir.z) / obj->ellipsoid.width);
+src/shape/ellipsoid.c:28:  c = ((ray->pos.x * ray->pos.x) / obj->ellipsoid.height) -
+src/shape/ellipsoid.c:29:    ((ray->pos.y * ray->pos.y) / obj->ellipsoid.width) +
+src/shape/ellipsoid.c:30:    ((ray->pos.z * ray->pos.z) / obj->ellipsoid.width) - 1.0;
+src/shape/ellipsoid.c:39:  inter.dir = ray->dir;
+src/shape/ellipsoid.c:45:  inter.pos = add_vec3(mult_vec3(ray->dir, inter.dist), ray->pos);
+src/shape/sphere.c:23:  a = ray->dir.x * ray->dir.x + ray->dir.y * ray->dir.y +
+src/shape/sphere.c:24:    ray->dir.z * ray->dir.z;
+src/shape/sphere.c:25:  tmp = sub_vec3(ray->pos, obj->pos);
+src/shape/sphere.c:26:  b = 2.0 * (ray->dir.x * tmp.x +
+src/shape/sphere.c:27:	     ray->dir.y * tmp.y +
+src/shape/sphere.c:28:	     ray->dir.z * tmp.z);
+src/shape/sphere.c:41:  if (ray->env == obj)
+src/shape/sphere.c:46:  inter.dir = ray->dir;
+src/shape/sphere.c:52:  /* inter.pos = add_vec3(ray->pos, mult_vec3(ray->dir, inter.dist)); */
+src/shape/sphere.c:53:  inter.pos.x = ray->pos.x + ray->dir.x * inter.dist;
+src/shape/sphere.c:54:  inter.pos.y = ray->pos.y + ray->dir.y * inter.dist;
+src/shape/sphere.c:55:  inter.pos.z = ray->pos.z + ray->dir.z * inter.dist;
+src/shape/sphere.c:60:  /* if (dot_vec3(inter.dir, inter.norm) >= 0.0 && ray->src == obj) */
+src/shape/hyperbola.c:22:  a = ((ray->dir.x * ray->dir.x) / 4.0) - ((ray->dir.y * ray->dir.y) / 3.0) +
+src/shape/hyperbola.c:23:    (ray->dir.z * ray->dir.z);
+src/shape/hyperbola.c:24:  b = ((2.0 * ray->dir.x * ray->pos.x) / 4.0) -
+src/shape/hyperbola.c:25:    ((2.0 * ray->pos.y * ray->dir.y) / 3.0) + (2.0 * ray->pos.z * ray->dir.z);
+src/shape/hyperbola.c:26:  c = ((ray->pos.x * ray->pos.x) / 4.0) - ((ray->pos.y * ray->pos.y) / 3.0) +
+src/shape/hyperbola.c:27:    ray->pos.z * ray->pos.z - 1.0;
+src/shape/hyperbola.c:36:  inter.dir = ray->dir;
+src/shape/hyperbola.c:42:  inter.pos = add_vec3(mult_vec3(ray->dir, inter.dist), ray->pos);
+src/node_intersect.c:38:	  t = get_x(ray, (ray->dir.x > 0.0) ? node->child[i]->min.x
+src/node_intersect.c:42:	  t = get_y(ray, (ray->dir.y > 0.0) ? node->child[i]->min.y
+src/node_intersect.c:46:	  t = get_z(ray, (ray->dir.z > 0.0) ? node->child[i]->min.z
+src/node_intersect.c:88:  cur->src = ray->env;
+src/node_intersect2.c:34:  if (ray->dir.x == 0.0)
+src/node_intersect2.c:39:  t.w = (x - ray->pos.x) / ray->dir.x;
+src/node_intersect2.c:41:  t.y = ray->dir.y * t.w + ray->pos.y;
+src/node_intersect2.c:42:  t.z = ray->dir.z * t.w + ray->pos.z;
+src/node_intersect2.c:50:  if (ray->dir.y == 0.0)
+src/node_intersect2.c:55:  t.w = (y - ray->pos.y) / ray->dir.y;
+src/node_intersect2.c:56:  t.x = ray->dir.x * t.w + ray->pos.x;
+src/node_intersect2.c:58:  t.z = ray->dir.z * t.w + ray->pos.z;
+src/node_intersect2.c:66:  if (ray->dir.z == 0.0)
+src/node_intersect2.c:71:  t.w = (z - ray->pos.z) / ray->dir.z;
+src/node_intersect2.c:72:  t.x = ray->dir.x * t.w + ray->pos.x;
+src/node_intersect2.c:73:  t.y = ray->dir.y * t.w + ray->pos.y;
+src/calc_ray.c:89:  /* if (fabs(dot_vec3(vec3_normalize(ray->dir), vec3_normalize(inter.norm))) < 0.3) */
+src/calc_ray.c:91:  /* tmp.dir = add_vec3(ray->dir, mult_vec3(inter.norm, */
+src/calc_ray.c:92:  /* 					 -2.0 * dot_vec3(inter.norm, ray->dir))); */
+src/calc_ray.c:99:  tmp.dir = add_vec3(ray->dir,
+src/calc_ray.c:101:			       1 / ((ray->env) ?
+src/calc_ray.c:102:				    (((t_obj*)ray->env)->mat) ?
+src/calc_ray.c:103:				    ((t_obj*)ray->env)->mat->fresnel : 1.0 : 1.0) *
+src/calc_ray.c:107:  /* if (ray->env == refr.obj) */

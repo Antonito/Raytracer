@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May  9 01:15:33 2016 Antoine Baché
-** Last update Wed May 11 05:07:02 2016 Ludovic Petrenko
+** Last update Wed May 11 17:19:26 2016 Ludovic Petrenko
 */
 
 #include "solver.h"
@@ -112,7 +112,7 @@ t_intersect		get_intersect_klein(t_obj *obj, t_ray *ray)
   inter.dist = -1.0;
   /* if (!(coef = my_malloc(7 * sizeof(double)))) */
   /*   return (inter); */
-  if ((coef = malloc(7 * sizeof(double))) == NULL)
+  if (!(coef = malloc(7 * sizeof(double))))
     return (inter);
   coef[0] = calc_a_klein(ray);
   coef[1] = calc_b_klein(ray);

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun May  8 21:44:20 2016 Antoine Baché
-** Last update Wed May 11 05:06:35 2016 Ludovic Petrenko
+** Last update Wed May 11 17:43:20 2016 Ludovic Petrenko
 */
 
 #include "solver.h"
@@ -108,7 +108,7 @@ double		solver_n_degree(double *coef, int degree)
     if (sols[i] > 0.0)
       {
 	sol = sols[i];
-	/* my_free(sol); */
+	my_free(sols);
 	return (sol);
       }
   return (-1.0);
