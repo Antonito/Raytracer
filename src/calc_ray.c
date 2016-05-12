@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 30 23:30:01 2016 Ludovic Petrenko
-** Last update Wed May 11 18:33:10 2016 Ludovic Petrenko
+** Last update Thu May 12 03:46:33 2016 Ludovic Petrenko
 */
 
 #pragma GCC warning "\e[31m\e[1mCommentaires + Norme !\e[0m"
@@ -92,9 +92,9 @@ unsigned int	calc_ray(t_scene *scene, t_ray *ray, int i)
   					 -2.0 * dot_vec3(inter.norm, ray->dir)));
   tmp.dir = vec3_normalize(tmp.dir);
   tmp.pos = inter.pos;
-  tmp.env = inter.obj;
+  tmp.env = ray->env;
   /* get_reflected_ray(&inter, ray, &tmp); */
-  refl.mat = NULL;
+  /* refl.mat = NULL; */
   node_intersect(&scene->octree, &tmp, &refl);
   tmp.dir = add_vec3(ray->dir,
 		     mult_vec3(inter.norm,
@@ -103,8 +103,9 @@ unsigned int	calc_ray(t_scene *scene, t_ray *ray, int i)
 				    ((t_obj*)ray->env)->mat->fresnel : 1.0 : 1.0) *
 			       ((inter.mat) ?
 				inter.mat->fresnel : 1.0)));
+  tmp.env = inter.obj;
   node_intersect(&scene->octree, &tmp, &refr);
-  if (ray->env == refr.obj)
-    refr.mat = NULL;
+  /* if (ray->env == refr.obj) */
+  /*   refr.mat = NULL; */
   return (mix_colors(&inter, &refl, &refr));
 }

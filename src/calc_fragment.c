@@ -5,10 +5,12 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Thu Apr 21 20:09:40 2016 Ludovic Petrenko
-** Last update Wed May 11 04:51:51 2016 Ludovic Petrenko
+** Last update Thu May 12 05:27:50 2016 Ludovic Petrenko
 */
 
 #pragma GCC warning "\e[31m\e[1mCommentaires + Norme !\e[0m"
+
+#include <stdio.h>
 
 #include <math.h>
 #include "raytracer.h"
@@ -36,12 +38,24 @@ void		set_vectors(t_data *data, t_camera *c)
 unsigned int	calc_pixel(t_scene *scene, t_ivec2 *pix)
 {
   t_ray		ray;
+  double	len;
 
   ray.pos = scene->cam.pos;
-  ray.dir = add_vec3(scene->cam.origin,
-		     mult_vec3(scene->cam.incr_x, pix->x));
-  ray.dir = add_vec3(ray.dir, mult_vec3(scene->cam.incr_y, pix->y));
+  /* ray.dir = add_vec3(scene->cam.origin, */
+  /* 		     mult_vec3(scene->cam.incr_x, pix->x)); */
+  /* ray.dir = add_vec3(ray.dir, mult_vec3(scene->cam.incr_y, pix->y)); */
   ray.dir = vec3_normalize(sub_vec3(ray.dir, ray.pos));
+  ray.dir.x = scene->cam.origin.x + scene->cam.incr_x.x * pix->x +
+    scene->cam.incr_y.x * pix->y - ray.pos.x;
+  ray.dir.y = scene->cam.origin.y + scene->cam.incr_x.y * pix->x +
+    scene->cam.incr_y.y * pix->y - ray.pos.y;
+  ray.dir.z = scene->cam.origin.z + scene->cam.incr_x.z * pix->x +
+    scene->cam.incr_y.z * pix->y - ray.pos.z;
+  len = sqrt(ray.dir.x * ray.dir.x + ray.dir.y *
+	     ray.dir.y + ray.dir.z * ray.dir.z);
+  ray.dir.x /= len;
+  ray.dir.y /= len;
+  ray.dir.z /= len;
   ray.env = NULL;
   return (calc_ray(scene, &ray, 0));
 }
@@ -49,6 +63,8 @@ unsigned int	calc_pixel(t_scene *scene, t_ivec2 *pix)
 void		calc_fragment(t_data *data, unsigned int *buf, t_ivec2 *pos)
 {
   t_ivec2	tmp;
+  int		size = data->cur_width * data->cur_height;
+  int		i = 0;
 
   tmp = pos[0];
   while (tmp.y <= pos[1].y)
@@ -59,7 +75,13 @@ void		calc_fragment(t_data *data, unsigned int *buf, t_ivec2 *pos)
       /* buf[i + pos[1].x + 1] = buf[i]; */
       tmp.x = (tmp.x + 1 < pos[1].x) ? tmp.x + 1 : 0;
       tmp.y += (tmp.x == 0);
+      if (tmp.x == 0)
+	{
+	  printf("\r%.2f%%   ", 100.0 * i / size);
+	  fflush(stdout);
+	}
       /* if (tmp.x == 0) */
       /* 	i += pos[1].x; */
+      ++i;
     }
 }

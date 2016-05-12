@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun May  8 21:44:20 2016 Antoine Baché
-** Last update Wed May 11 17:43:20 2016 Ludovic Petrenko
+** Last update Thu May 12 04:04:34 2016 Ludovic Petrenko
 */
 
 #include "solver.h"
@@ -36,7 +36,6 @@ static double	*get_dcoef(double *coef, int deg)
   int		i;
   double	*dcoef;
 
-  --deg;
   if (!(dcoef = my_malloc(deg * sizeof(double))))
     return (NULL);
   i = -1;
