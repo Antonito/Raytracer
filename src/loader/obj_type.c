@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon Apr 18 23:15:28 2016 Ludovic Petrenko
-** Last update Tue May 10 14:54:40 2016 Antoine Baché
+** Last update Fri May 13 15:56:28 2016 Luka Boulagnon
 */
 
 #include "raytracer.h"
@@ -33,7 +33,7 @@ void		load_obj_spec(t_obj *obj, const t_bunny_ini_scope *scope)
 	  loader[i](obj, scope);
 	  return ;
 	}
-      i++;
+      ++i;
     }
   loader[0](obj, scope);
 }
@@ -57,7 +57,7 @@ void	        load_light_spec(t_obj *obj, const t_bunny_ini_scope *scope)
 	  loader[i](obj, scope);
 	  return ;
 	}
-      i++;
+      ++i;
     }
   loader[0](obj, scope);
 }

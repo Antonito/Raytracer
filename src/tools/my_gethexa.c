@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 18:00:04 2016 Ludovic Petrenko
-** Last update Tue Apr 19 22:41:00 2016 Ludovic Petrenko
+** Last update Fri May 13 15:58:07 2016 Luka Boulagnon
 */
 
 #include <stdlib.h>
@@ -19,7 +19,7 @@ unsigned int	my_gethexa(const char *s)
   if (s == NULL || my_strlen(s) < 2)
     return (0);
   if (s[0] == '#')
-    s++;
+    ++s;
   else if (s[0] == '0' && s[1] == 'x')
     s += 2;
   else
@@ -34,7 +34,7 @@ unsigned int	my_gethexa(const char *s)
 	res = 16 * res + *s - 'a' + 10;
       else
 	return (0);
-      s++;
+      ++s;
     }
   return (res);
 }

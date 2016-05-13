@@ -5,12 +5,20 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 22:32:39 2016 Ludovic Petrenko
-** Last update Fri May 13 14:28:51 2016 Antoine Baché
+** Last update Fri May 13 17:27:21 2016 Antoine Baché
 */
 
 #include "raytracer.h"
 #include "loader.h"
 #include "tools/math.h"
+
+static void	set_fields(t_data *data)
+{
+  data->width = DEFAULT_WIDTH;
+  data->height = DEFAULT_HEIGHT;
+  data->fullscreen = false;
+  data->minimum_fps = MINIMUM_FPS;
+}
 
 int	init_data(int ac, char **av, t_data **data)
 {

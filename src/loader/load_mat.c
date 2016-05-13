@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon Apr 18 19:28:33 2016 Ludovic Petrenko
-** Last update Tue May  3 05:05:09 2016 Ludovic Petrenko
+** Last update Fri May 13 15:56:45 2016 Luka Boulagnon
 */
 
 #include "raytracer.h"
@@ -46,7 +46,7 @@ int			load_mat(t_material *mat, const t_bunny_ini *ini)
 	{
 	  mat[i].name = scope_name;
 	  load_mat_data(mat + i, ini);
-	  i++;
+	  ++i;
 	}
     }
   return (0);

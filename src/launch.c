@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 16 16:32:45 2016 Ludovic Petrenko
-** Last update Fri May 13 15:10:16 2016 Antoine Baché
+** Last update Fri May 13 17:24:03 2016 Antoine Baché
 */
 
 #include <stdio.h>
@@ -20,14 +20,18 @@ t_bunny_response	events(t_data *data)
 
   if (!keys)
     keys = bunny_get_keyboard();
-  if (keys[BKS_ESCAPE])
+  else if (keys[BKS_ESCAPE])
     return (EXIT_ON_SUCCESS);
-  if (keys[BKS_Z])
+  else if (keys[BKS_Z])
     data->scene->cam.pos = add_vec3(data->scene->cam.pos,
 				    mult_vec3(data->scene->cam.dir, 0.2));
-  if (keys[BKS_S])
+  else if (keys[BKS_S])
     data->scene->cam.pos = sub_vec3(data->scene->cam.pos,
 				    mult_vec3(data->scene->cam.dir, 0.2));
+  else if (keys[BKS_PAGEUP])
+    ++data->minimum_fps;
+  else if (keys[BKS_PAGEDOWN])
+    --data->minimum_fps;
   return (GO_ON);
 }
 
@@ -78,7 +82,7 @@ t_bunny_response	main_loop(t_data *data)
       fps = 0;
     }
   else
-    fps++;
+    ++fps;
   if (events(data) != GO_ON)
     return (EXIT_ON_SUCCESS);
   set_frame(data);

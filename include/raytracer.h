@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Fri May 13 16:42:27 2016 Antoine Baché
+** Last update Fri May 13 17:27:31 2016 Antoine Baché
 */
 
 #ifndef	RAYTRACER2_H_
@@ -109,6 +109,7 @@ typedef struct		s_data
   int			height;
   int			cur_width;
   int			cur_height;
+  int			minimum_fps;
   bool			fullscreen;
   t_scene		*scene;
   t_config		config;
