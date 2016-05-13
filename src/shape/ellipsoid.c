@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May  4 03:24:31 2016 Antoine Baché
-** Last update Tue May 10 15:22:31 2016 Antoine Baché
+** Last update Fri May 13 01:54:06 2016 Antoine Baché
 */
 
 #include <math.h>
@@ -18,16 +18,18 @@ static void	get_dist_ellipsoid(t_ray *ray, t_intersect *inter, t_obj *obj)
   double	a;
   double	b;
   double	c;
+  t_vec3	tmp;
 
+  tmp = sub_vec3(ray->pos, obj->pos);
   a = ((ray->dir.x * ray->dir.x) / obj->ellipsoid.height) -
     ((ray->dir.y * ray->dir.y) / obj->ellipsoid.width) +
     ((ray->dir.z * ray->dir.z) / obj->ellipsoid.width);
-  b = ((2.0 * ray->dir.x * ray->pos.x) / obj->ellipsoid.height) -
-    ((2.0 * ray->pos.y * ray->dir.y) / obj->ellipsoid.width) +
-    ((2.0 * ray->pos.z * ray->dir.z) / obj->ellipsoid.width);
-  c = ((ray->pos.x * ray->pos.x) / obj->ellipsoid.height) -
-    ((ray->pos.y * ray->pos.y) / obj->ellipsoid.width) +
-    ((ray->pos.z * ray->pos.z) / obj->ellipsoid.width) - 1.0;
+  b = ((2.0 * ray->dir.x * tmp.x) / obj->ellipsoid.height) -
+    ((2.0 * tmp.y * ray->dir.y) / obj->ellipsoid.width) +
+    ((2.0 * tmp.z * ray->dir.z) / obj->ellipsoid.width);
+  c = ((tmp.x * tmp.x) / obj->ellipsoid.height) -
+    ((tmp.y * tmp.y) / obj->ellipsoid.width) +
+    ((tmp.z * tmp.z) / obj->ellipsoid.width) - 1.0;
   if ((inter->dist = solver_second_degree(a, b, c)) == NOT_A_SOLUTION)
     inter->dist = -1.0;
 }

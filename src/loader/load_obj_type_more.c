@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 01:06:07 2016 Ludovic Petrenko
-** Last update Tue May 10 14:57:40 2016 Antoine Baché
+** Last update Fri May 13 03:56:25 2016 Antoine Baché
 */
 
 #include <math.h>
@@ -16,31 +16,31 @@
 
 void	load_triangle(t_obj *obj, const t_bunny_ini_scope *scope)
 {
-  /* char	*tmp; */
+  char	*tmp;
 
-  /* obj->type = TRIANGLE; */
-  /* obj->get_intersect = &get_intersect_triangle; */
-  /* obj->triangle.poly[0] = DEFAULT_POLY_VEC0; */
-  /* obj->triangle.poly[1] = DEFAULT_POLY_VEC1; */
-  /* obj->triangle.poly[2] = DEFAULT_POLY_VEC2; */
-  /* if ((tmp = (char *)bunny_ini_scope_get_field(scope, VECTOR_TRIANGLE0, 0))) */
-  /*   obj->triangle.poly[0].x = my_getdouble(tmp); */
-  /* if ((tmp = (char *)bunny_ini_scope_get_field(scope, VECTOR_TRIANGLE0, 1))) */
-  /*   obj->triangle.poly[0].y = my_getdouble(tmp); */
-  /* if ((tmp = (char *)bunny_ini_scope_get_field(scope, VECTOR_TRIANGLE0, 2))) */
-  /*   obj->triangle.poly[0].z = my_getdouble(tmp); */
-  /* if ((tmp = (char *)bunny_ini_scope_get_field(scope, VECTOR_TRIANGLE1, 0))) */
-  /*   obj->triangle.poly[1].x = my_getdouble(tmp); */
-  /* if ((tmp = (char *)bunny_ini_scope_get_field(scope, VECTOR_TRIANGLE1, 1))) */
-  /*   obj->triangle.poly[1].y = my_getdouble(tmp); */
-  /* if ((tmp = (char *)bunny_ini_scope_get_field(scope, VECTOR_TRIANGLE1, 2))) */
-  /*   obj->triangle.poly[1].z = my_getdouble(tmp); */
-  /* if ((tmp = (char *)bunny_ini_scope_get_field(scope, VECTOR_TRIANGLE2, 0))) */
-  /*   obj->triangle.poly[2].x = my_getdouble(tmp); */
-  /* if ((tmp = (char *)bunny_ini_scope_get_field(scope, VECTOR_TRIANGLE2, 1))) */
-  /*   obj->triangle.poly[2].y = my_getdouble(tmp); */
-  /* if ((tmp = (char *)bunny_ini_scope_get_field(scope, VECTOR_TRIANGLE2, 2))) */
-  /*   obj->triangle.poly[2].z = my_getdouble(tmp); */
+  obj->type = TRIANGLE;
+  obj->get_intersect = &get_intersect_triangle;
+  obj->triangle.pts[0] = DEFAULT_POLY_PTS0;
+  obj->triangle.pts[1] = DEFAULT_POLY_PTS1;
+  obj->triangle.pts[2] = DEFAULT_POLY_PTS2;
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, POLY_PTS_A, 0)))
+    obj->triangle.pts[0].x = my_getdouble(tmp);
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, POLY_PTS_A, 1)))
+    obj->triangle.pts[0].y = my_getdouble(tmp);
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, POLY_PTS_A, 2)))
+    obj->triangle.pts[0].z = my_getdouble(tmp);
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, POLY_PTS_B, 0)))
+    obj->triangle.pts[1].x = my_getdouble(tmp);
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, POLY_PTS_B, 1)))
+    obj->triangle.pts[1].y = my_getdouble(tmp);
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, POLY_PTS_B, 2)))
+    obj->triangle.pts[1].z = my_getdouble(tmp);
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, POLY_PTS_C, 0)))
+    obj->triangle.pts[2].x = my_getdouble(tmp);
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, POLY_PTS_C, 1)))
+    obj->triangle.pts[2].y = my_getdouble(tmp);
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, POLY_PTS_C, 2)))
+    obj->triangle.pts[2].z = my_getdouble(tmp);
 }
 
 void	load_void_cube(t_obj *obj, const t_bunny_ini_scope *scope)

@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Thu May 12 07:31:10 2016 Ludovic Petrenko
+## Last update Fri May 13 02:30:06 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -28,6 +28,7 @@ SRC_FILES=		init_data.c			\
 			set_frame.c			\
 			vector.c			\
 			vector_add.c			\
+			vector_tools.c			\
 			vector_op.c			\
 			obj_vector.c			\
 			obj_vector_op.c
