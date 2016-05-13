@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:33:45 2016 Ludovic Petrenko
-** Last update Fri May 13 03:50:55 2016 Antoine Baché
+** Last update Fri May 13 09:17:42 2016 Antoine Baché
 */
 
 #ifndef OBJECT_H_
@@ -16,8 +16,8 @@
 # include "intersect.h"
 # include "material.h"
 
-# define DEFAULT_POLY_PTS0		vec3(0.0, 0.0, 0.0);
-# define DEFAULT_POLY_PTS1		vec3(0.0, 0.0, 0.0);
+# define DEFAULT_POLY_PTS0		vec3(-1.0, 3.0, 0.0);
+# define DEFAULT_POLY_PTS1		vec3(1.0, 3.0, 0.0);
 # define DEFAULT_POLY_PTS2		vec3(0.0, 0.0, 0.0);
 # define DEFAULT_ELLIPSOID_HEIGHT	5.0
 # define DEFAULT_ELLIPSOID_LENGTH	9.0
@@ -170,10 +170,10 @@ t_intersect	get_intersect_ellipsoid(t_obj *, t_ray *);
 /*
 ** Klein specific functions
 */
-double		calc_d_klein(t_ray *, t_vec3 *, t_vec3, t_vec3);
-double		calc_e_klein(t_ray *, t_vec3 *, t_vec3, t_vec3);
-double		calc_f_klein(t_ray *, t_vec3 *, t_vec3);
-double		calc_g_klein(t_ray *, t_vec3 *, t_vec3);
+double		calc_d_klein(t_ray *, t_vec3, t_vec3, t_vec3);
+double		calc_e_klein(t_ray *, t_vec3, t_vec3, t_vec3);
+double		calc_f_klein(t_ray *, t_vec3, t_vec3);
+double		calc_g_klein(t_ray *, t_vec3, t_vec3);
 void		calc_normale_klein(t_intersect *);
 
 #endif /* !OBJECT_H_ */

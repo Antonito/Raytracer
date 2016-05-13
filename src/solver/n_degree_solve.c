@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun May  8 21:44:20 2016 Antoine Baché
-** Last update Fri May 13 02:17:13 2016 Antoine Baché
+** Last update Fri May 13 06:16:25 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -72,14 +72,12 @@ double	*solve_n(double *coef, int deg)
   int		j;
   double	tmp;
 
-  if (coef == NULL)
-    return (NULL);
-  if (reduce_coef(&coef, &deg))
+  if (!coef || reduce_coef(&coef, &deg))
     return (NULL);
   if (deg == 1)
-    return (solve_first(coef, deg));
+    return (solve_first(coef));
   else if (deg == 2)
-    return (solve_second(coef, deg));
+    return (solve_second(coef));
   if (!(dcoef = get_dcoef(coef, deg)) || !(dsol = solve_n(dcoef, deg - 1))
       || !(sol = my_malloc((deg + 2) * sizeof(double))))
     return (NULL);
@@ -108,7 +106,7 @@ double		solver_n_degree(double *coef, int degree)
       {
 	sol = sols[i];
 	my_free(sols);
-	return ((sol != MAX_ROOT) ? : -1.0);
+	return ((sol != MAX_ROOT) ? sol : -1.0);
       }
   return (-1.0);
 }
