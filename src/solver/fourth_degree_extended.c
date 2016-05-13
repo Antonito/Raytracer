@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Apr 27 16:52:24 2016 Antoine Baché
-** Last update Mon May  2 04:21:44 2016 Antoine Baché
+** Last update Mon May  9 07:54:28 2016 Antoine Baché
 */
 
 #include <stdarg.h>
@@ -39,8 +39,6 @@ double		quadratic_solution_calc(double *tmp, double s)
   x[1] = tmp[0] - s - tmp[1];
   x[2] = tmp[0] + s + tmp[2];
   x[3] = tmp[0] + s - tmp[2];
-  printf("x0 = %f x1 = %f\n", x[0], x[1]);
-  printf("x2 = %f x3 = %f\n", x[2], x[3]);
   x[0] = CHECK_SOLUTION(x[0]);
   x[1] = CHECK_SOLUTION(x[1]);
   x[0] = check_solution_equation(x[0], x[1]);

@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Thu Apr 21 18:10:40 2016 Ludovic Petrenko
-** Last update Sun Apr 24 19:40:15 2016 Arthur ARNAUD
+** Last update Fri May 13 17:49:56 2016 Arthur ARNAUD
 */
 
 #include "tools/str.h"
@@ -25,7 +25,7 @@ char	**str_to_wordtab(char *s, char c)
     if (i && s[i] == c && s[i - 1] != c && s[i - 1])
       {
 	s[i] = 0;
-	n++;
+	++n;
       }
   if (!(tab = my_malloc((n + 1) * sizeof(char *))))
     return (NULL);

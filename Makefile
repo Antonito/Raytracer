@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Mon May  2 17:44:03 2016 Arthur ARNAUD
+## Last update Fri May 13 17:51:42 2016 Arthur ARNAUD
 ##
 
 DEBUG=			yes
@@ -14,11 +14,24 @@ SRC_PREFIX=		src/
 
 SRC_FILES=		init_data.c			\
 			build_octree.c			\
+			calc_fragment.c			\
+			calc_ray.c			\
+			camera.c			\
+			free.c				\
+			get_dim.c			\
 			get_node.c			\
+			get_node2.c			\
 			launch.c			\
 			main.c				\
+			node_intersect.c		\
+			node_intersect2.c		\
+			set_frame.c			\
 			vector.c			\
-			vector_op.c
+			vector_add.c			\
+			vector_tools.c			\
+			vector_op.c			\
+			obj_vector.c			\
+			obj_vector_op.c
 
 NOISE_PREFIX=		src/noise/
 
@@ -45,14 +58,25 @@ NOISE_FILES=		perlin.c			\
 
 NETWORK_PREFIX=		src/cluster/
 
-NETWORK_FILES=		connection.c			\
-			packet.c			\
+NETWORK_FILES=		camera.c			\
+			connection.c			\
+			lights.c			\
+			materials.c			\
+			objects.c			\
+			scene.c				\
 			server.c
 
 CLIENT_PREFIX=		src/client/
 
-CLIENT_FILES=		main.c				\
-			loop.c
+CLIENT_FILES=		camera.c			\
+			debug.c				\
+			light.c				\
+			loop.c				\
+			main.c				\
+			materials.c			\
+			objects.c			\
+			scene.c				\
+			specs.c
 
 LOADER_PREFIX=		src/loader/
 
@@ -63,6 +87,8 @@ LOADER_FILES=		count.c				\
 			load_mat.c			\
 			load_obj.c			\
 			load_obj_type.c			\
+			load_obj_type_more.c		\
+			load_polygons.c			\
 			load_scene.c			\
 			obj_type.c
 
@@ -72,16 +98,39 @@ SOLVER_FILES=		second_degree.c			\
 			third_degree.c			\
 			fourth_degree.c			\
 			fourth_degree_extended.c	\
+			n_degree_solve.c		\
+			n_degree_solvers.c		\
 			check_solution.c
 
 SHAPE_PREFIX=		src/shape/
 
-SHAPE_FILES=		sphere.c
+SHAPE_FILES=		plane.c				\
+			cylinder.c			\
+			sphere.c			\
+			tore.c				\
+			triangle.c			\
+			cone.c				\
+			mobius.c			\
+			void_cube.c			\
+			klein.c				\
+			klein_coefs.c			\
+			klein_coef_more.c		\
+			klein_normale.c			\
+			hyperbola.c			\
+			ellipsoid.c
+
+NET_TOOLS_PREFIX=	src/cluster/
+
+NET_TOOLS_FILES=	messages.c			\
+			numbers.c			\
+			packet.c
 
 TOOLS_PREFIX=		src/tools/
 
 TOOLS_FILES=		memory.c			\
 			fast_sqrt.c			\
+			my_bzero.c			\
+			my_memset.c			\
 			my_strlen.c			\
 			my_getnbr.c			\
 			my_getdouble.c			\
@@ -91,7 +140,10 @@ TOOLS_FILES=		memory.c			\
 			my_puterr.c			\
 			my_strndup.c			\
 			str_to_wordtab.c		\
-			get_next_line.c
+			get_next_line.c			\
+			blit_scaled.c			\
+			swap_double.c			\
+			trigo.c
 
 PLY_PREFIX=		src/ply/
 
@@ -118,6 +170,8 @@ SRC_SHAPE=		$(addprefix $(SHAPE_PREFIX),$(SHAPE_FILES))
 
 SRC_SOLVER=		$(addprefix $(SOLVER_PREFIX),$(SOLVER_FILES))
 
+SRC_NET_TOOLS=		$(addprefix $(NET_TOOLS_PREFIX),$(NET_TOOLS_FILES))
+
 SRC_TOOLS=		$(addprefix $(TOOLS_PREFIX),$(TOOLS_FILES))
 
 SRC_PLY=		$(addprefix $(PLY_PREFIX),$(PLY_FILES))
@@ -136,7 +190,13 @@ SRC+=			$(SRC_SHAPE)
 
 SRC+=			$(SRC_SOLVER)
 
+SRC+=			$(SRC_NET_TOOLS)
+
+SRC+=			src/client/debug.c
+
 SRC_CLIENT+=		$(SRC_TOOLS)
+
+SRC_CLIENT+=		$(SRC_NET_TOOLS)
 
 NAME=			raytracer2
 
@@ -154,13 +214,14 @@ LIB=			-L/usr/local/lib		\
 			-lsfml-system 			\
 			-lstdc++ 			\
 			-ldl 				\
-			-lOpenCL			\
 			-lpthread			\
 			-lm
 
 CFLAGS=			$(HEAD) -W -Wall -Wextra
+
 ifeq ($(DEBUG), yes)
-	CFLAGS+=	-ansi -pedantic -g -D DEBUG
+	CFLAGS+=	 -g -D DEBUG
+	LIB+=		-rdynamic
 else
 	CFLAGS+=	-Werror
 endif

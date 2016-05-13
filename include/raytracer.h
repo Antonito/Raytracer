@@ -5,14 +5,14 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Sun Apr 24 19:50:49 2016 Arthur ARNAUD
+** Last update Fri May 13 17:50:55 2016 Arthur ARNAUD
 */
 
 #ifndef	RAYTRACER2_H_
 # define RAYTRACER2_H_
 
-# include <lapin.h>
 # include <stdbool.h>
+# include "lapin.h"
 # include "engine/scene.h"
 # include "config.h"
 # include "events.h"
@@ -23,16 +23,23 @@
 # define DEFAULT_HEIGHT		720
 # define WIN_NAME		"Ray Ta Soeur"
 # define UNUSED			__attribute__((unused))
+# define MAX_RECURSIVE		5
+# define MINIMUM_FPS		7
 
 /*
 ** Scopes expected in .ini files
 */
+# define POLY_PTS_A		"point_a"
+# define POLY_PTS_B		"point_b"
+# define POLY_PTS_C		"point_c"
 # define SCOPE_NETWORK		"network"
 # define PORT_NETWORK		"port"
 # define CLIENT_NETWORK		"max_client"
 # define RADIUS_FIELD		"radius"
 # define NORMALE_FIELD		"normale"
 # define HEIGHT_FIELD		"height"
+# define LENGTH_FIELD		"length"
+# define WIDTH_FIELD		"width"
 # define COLOR_FIELD		"color"
 # define POWER_FIELD		"power"
 # define DIR_FIELD		"direction"
@@ -52,20 +59,23 @@
 # define MAT_PREFIX		"mat_"
 # define OBJ_PREFIX		"obj_"
 # define LIGHT_PREFIX		"light_"
+# define RADIUS_TORE_FIELD	"radius_hole"
+# define RADIUS_TORE_FIELD2	"radius_solid"
 
 /*
 ** Default configuration
 */
+# define CONFIG_FILE		"config.ini"
 # define SCENE_DEFAULT		"scenes/default.ini"
 # define MAX_CLIENT_DEFAULT	"42"
 
 /*
 ** Error messages
 */
-# define MISSING_PORT_ERROR    	"Missing port in config.ini\n"
+# define MISSING_PORT_ERROR	"Missing port in config.ini\n"
 # define INVALID_PORT_ERROR	"Invalid port in config.ini\n"
-# define CHOOSE_PORT_ERROR     	"Choose a port between 0 and 65535\n"
-# define MAX_CLIENT_ERROR    	"Invalid max_client in config.ini\n"
+# define CHOOSE_PORT_ERROR	"Choose a port between 0 and 65535\n"
+# define MAX_CLIENT_ERROR	"Invalid max_client in config.ini\n"
 # define NEW_CLIENT_ERROR	"Error: Cannot accept new client\n"
 # define MAX_CLIENT_REACHED	"Max number of client reached\n"
 # define INIT_SERVER_ERROR	"Error: Cannot start server\n"
@@ -89,6 +99,7 @@ typedef struct		s_network
   int			*clients;
   bool			run;
   bool			all_connected;
+  bool			draw;
 }			t_network;
 
 typedef struct		s_data
@@ -97,11 +108,20 @@ typedef struct		s_data
   t_bunny_pixelarray	*render;
   int			width;
   int			height;
+  int			cur_width;
+  int			cur_height;
+  int			minimum_fps;
   bool			fullscreen;
   t_scene		*scene;
   t_config		config;
   t_network		network;
 }			t_data;
+
+typedef struct		s_calc_fragment
+{
+  t_data		*data;
+  t_ivec2		pos[2];
+}			t_calc_fragment;
 
 int			init_data(int ac, char **av, t_data **data);
 int			launch_raytracer(t_data *data);
@@ -110,5 +130,12 @@ t_bunny_response	main_events(UNUSED t_bunny_event_state s,
 				    t_data *data);
 t_bunny_response	main_loop(t_data *data);
 int			set_frame(t_data *data);
+void			calc_fragment(t_data *data, unsigned int *buf,
+				      t_ivec2 *pos);
+t_intersect		calc_ray(t_scene *scene, t_ray *ray, int i);
+void			set_vectors(t_data *data, t_camera *c);
+void			refresh_size(t_data *data, int frame);
+void			blit_scaled(t_bunny_pixelarray *, t_bunny_pixelarray *);
+int			free_raytracer(t_data *data, int ret);
 
 #endif /* RAYTRACER2_H_ */
