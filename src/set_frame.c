@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon May  2 22:15:55 2016 Ludovic Petrenko
-** Last update Thu May 12 05:34:49 2016 Ludovic Petrenko
+** Last update Thu May 12 08:40:24 2016 Ludovic Petrenko
 */
 
 #include <stdio.h>
@@ -16,15 +16,15 @@ void			refresh_size(t_data *data, int frame)
 {
   double		ratio;
 
-  /* ratio = MINIMUM_FPS / (double)frame; */
-  /* data->cur_width = (int)(data->cur_width / ratio); */
-  /* data->cur_width = (data->cur_width > 0) ? data->cur_width : 1; */
-  /* data->cur_width = (data->cur_width < data->width) ? data->cur_width : */
-  /*   data->width; */
-  /* data->cur_height = data->cur_width * data->height / data->width; */
-  /* data->cur_height = (data->cur_height > 0) ? data->cur_height : 1; */
-  data->cur_width = data->width;
-  data->cur_height = data->height;
+  ratio = MINIMUM_FPS / (double)frame;
+  data->cur_width = (int)(data->cur_width / ratio);
+  data->cur_width = (data->cur_width > 0) ? data->cur_width : 1;
+  data->cur_width = (data->cur_width < data->width) ? data->cur_width :
+    data->width;
+  data->cur_height = data->cur_width * data->height / data->width;
+  data->cur_height = (data->cur_height > 0) ? data->cur_height : 1;
+  /* data->cur_width = data->width; */
+  /* data->cur_height = data->height; */
   /* printf("\r%d %d %f                  ", data->cur_width, data->cur_height, */
   /* 	 ratio); */
   /* fflush(stdout); */
