@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 16 16:32:45 2016 Ludovic Petrenko
-** Last update Fri May 13 15:54:41 2016 Luka Boulagnon
+** Last update Fri May 13 15:58:19 2016 Luka Boulagnon
 */
 
 #include <stdio.h>
@@ -82,7 +82,7 @@ t_bunny_response	main_loop(t_data *data)
       fps = 0;
     }
   else
-    fps++;
+    ++fps;
   if (events(data) != GO_ON)
     return (EXIT_ON_SUCCESS);
   set_frame(data);

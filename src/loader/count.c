@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon Apr 18 16:26:35 2016 Ludovic Petrenko
-** Last update Tue Apr 19 21:43:58 2016 Ludovic Petrenko
+** Last update Fri May 13 15:56:38 2016 Luka Boulagnon
 */
 
 #include "raytracer.h"
@@ -25,7 +25,7 @@ int			ini_count_prefix(const t_bunny_ini *ini,
     {
       scope_name = (char *)bunny_ini_scope_name(ini, scope);
       if (scope_name && !my_strncmp(scope_name, prefix, my_strlen(prefix)))
-	nb++;
+	++nb;
     }
   return (nb);
 }
