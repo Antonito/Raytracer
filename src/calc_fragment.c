@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Thu Apr 21 20:09:40 2016 Ludovic Petrenko
-** Last update Thu May 12 08:19:02 2016 Antoine Baché
+** Last update Fri May 13 13:24:16 2016 Antoine Baché
 */
 
 #pragma GCC warning "\e[31m\e[1mCommentaires + Norme !\e[0m"
@@ -44,7 +44,7 @@ unsigned int	calc_pixel(t_scene *scene, t_ivec2 *pix)
   /* ray.dir = add_vec3(scene->cam.origin, */
   /* 		     mult_vec3(scene->cam.incr_x, pix->x)); */
   /* ray.dir = add_vec3(ray.dir, mult_vec3(scene->cam.incr_y, pix->y)); */
-  ray.dir = vec3_normalize(sub_vec3(ray.dir, ray.pos));
+  /* ray.dir = vec3_normalize(sub_vec3(ray.dir, ray.pos)); */
   ray.dir.x = scene->cam.origin.x + scene->cam.incr_x.x * pix->x +
     scene->cam.incr_y.x * pix->y - ray.pos.x;
   ray.dir.y = scene->cam.origin.y + scene->cam.incr_x.y * pix->x +
@@ -57,7 +57,7 @@ unsigned int	calc_pixel(t_scene *scene, t_ivec2 *pix)
   ray.dir.y /= len;
   ray.dir.z /= len;
   ray.env = NULL;
-  return (calc_ray(scene, &ray, 0));
+  return ((calc_ray(scene, &ray, 0)).color.full);
 }
 
 void		calc_fragment(t_data *data, unsigned int *buf, t_ivec2 *pos)
@@ -78,8 +78,8 @@ void		calc_fragment(t_data *data, unsigned int *buf, t_ivec2 *pos)
       tmp.y += (tmp.x == 0);
       if (tmp.x == 0)
 	{
-	  printf("\r%.2f%%   ", 100.0 * i / size);
-	  fflush(stdout);
+	  /* printf("\r%.2f%%   ", 100.0 * i / size); */
+	  /* fflush(stdout); */
 	}
       /* if (tmp.x == 0) */
       /* 	i += pos[1].x; */

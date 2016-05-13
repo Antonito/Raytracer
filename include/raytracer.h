@@ -5,14 +5,14 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Fri May 13 12:03:50 2016 Antoine Baché
+** Last update Fri May 13 14:19:09 2016 Antoine Baché
 */
 
 #ifndef	RAYTRACER2_H_
 # define RAYTRACER2_H_
 
-# include <lapin.h>
 # include <stdbool.h>
+# include "lapin.h"
 # include "engine/scene.h"
 # include "config.h"
 # include "events.h"
@@ -22,8 +22,8 @@
 # define DEFAULT_HEIGHT		720
 # define WIN_NAME		"Ray Ta Soeur"
 # define UNUSED			__attribute__((unused))
-# define MAX_RECURSIVE		500
-# define MINIMUM_FPS		0.1
+# define MAX_RECURSIVE		50
+# define MINIMUM_FPS		4
 
 /*
 ** Scopes expected in .ini files
@@ -71,10 +71,10 @@
 /*
 ** Error messages
 */
-# define MISSING_PORT_ERROR    	"Missing port in config.ini\n"
+# define MISSING_PORT_ERROR	"Missing port in config.ini\n"
 # define INVALID_PORT_ERROR	"Invalid port in config.ini\n"
-# define CHOOSE_PORT_ERROR     	"Choose a port between 0 and 65535\n"
-# define MAX_CLIENT_ERROR    	"Invalid max_client in config.ini\n"
+# define CHOOSE_PORT_ERROR	"Choose a port between 0 and 65535\n"
+# define MAX_CLIENT_ERROR	"Invalid max_client in config.ini\n"
 # define NEW_CLIENT_ERROR	"Error: Cannot accept new client\n"
 # define MAX_CLIENT_REACHED	"Max number of client reached\n"
 # define INIT_SERVER_ERROR	"Error: Cannot start server\n"
@@ -130,7 +130,7 @@ t_bunny_response	main_loop(t_data *data);
 int			set_frame(t_data *data);
 void			calc_fragment(t_data *data, unsigned int *buf,
 				      t_ivec2 *pos);
-unsigned int		calc_ray(t_scene *scene, t_ray *ray, int i);
+t_intersect		calc_ray(t_scene *scene, t_ray *ray, int i);
 void			set_vectors(t_data *data, t_camera *c);
 void			refresh_size(t_data *data, int frame);
 void			blit_scaled(t_bunny_pixelarray *, t_bunny_pixelarray *);

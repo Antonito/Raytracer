@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon May  2 22:15:55 2016 Ludovic Petrenko
-** Last update Thu May 12 08:44:39 2016 Antoine Baché
+** Last update Fri May 13 13:24:50 2016 Antoine Baché
 */
 
 #include <stdio.h>
@@ -24,10 +24,9 @@ void			refresh_size(t_data *data, int frame)
   data->cur_height = data->cur_width * data->height / data->width;
   data->cur_height = (data->cur_height > 0) ? data->cur_height : 1;
   /* data->cur_width = data->width; */
-  /* data->cur_height = data->height; */
-  printf("\r%d %d %f                  ", data->cur_width, data->cur_height,
-  	 ratio);
-  fflush(stdout);
+  /* printf("\r%d %d %f                  ", data->cur_width, data->cur_height, */
+  /* 	 ratio); */
+  /* fflush(stdout); */
 }
 
 static void		*call_thread(void *arg)

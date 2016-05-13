@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May  2 04:39:20 2016 Antoine Baché
-** Last update Fri May 13 01:50:57 2016 Antoine Baché
+** Last update Fri May 13 13:25:05 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -38,11 +38,6 @@ t_intersect	get_intersect_sphere(t_obj *obj, t_ray *ray)
 {
   t_intersect	inter;
 
-  if (ray->env == obj)
-    {
-      inter.dist = -1.0;
-      return (inter);
-    }
   inter.dir = ray->dir;
   inter.mat = obj->mat;
   inter.dist = -1.0;
@@ -57,9 +52,13 @@ t_intersect	get_intersect_sphere(t_obj *obj, t_ray *ray)
   inter.norm.x = (inter.pos.x - obj->pos.x) / obj->sphere.radius;
   inter.norm.y = (inter.pos.y - obj->pos.y) / obj->sphere.radius;
   inter.norm.z = (inter.pos.z - obj->pos.z) / obj->sphere.radius;
+
+  inter.pos.x = obj->pos.x + (obj->sphere.radius + 0.001) * inter.norm.x;
+  inter.pos.y = obj->pos.y + (obj->sphere.radius + 0.001) * inter.norm.y;
+  inter.pos.z = obj->pos.z + (obj->sphere.radius + 0.001) * inter.norm.z;
   /* if (dot_vec3(inter.dir, inter.norm) >= 0.0 && ray->src == obj) */
   /*   inter.dist = -1.0; */
   /* else */
-    inter.obj = obj;
+    /* inter.obj = obj; */
   return (inter);
 }
