@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May  4 03:24:31 2016 Antoine Baché
-** Last update Tue May 10 09:08:16 2016 Antoine Baché
+** Last update Fri May 13 01:53:17 2016 Antoine Baché
 */
 
 #include <math.h>
@@ -19,14 +19,15 @@ static void	get_dist_cone(t_ray *ray, t_intersect *inter, t_obj *obj)
   double	b;
   double	c;
   double	d;
+  t_vec3	tmp;
 
+  tmp = sub_vec3(ray->pos, obj->pos);
   d = obj->cone.angle * obj->cone.angle;
   a = ray->dir.x * ray->dir.x + ray->dir.y * ray->dir.y -
     ((ray->dir.z  * ray->dir.z) / (d));
-  b = 2.0 * (ray->pos.x * ray->dir.x + ray->pos.y * ray->dir.y -
-	     ((ray->pos.z * ray->dir.z) / (d)));
-  c = ray->pos.x * ray->pos.x + ray->pos.y * ray->pos.y -
-    ((ray->pos.z * ray->pos.z) / (d));
+  b = 2.0 * (tmp.x * ray->dir.x + tmp.y * ray->dir.y -
+	     ((tmp.z * ray->dir.z) / (d)));
+  c = tmp.x * tmp.x + tmp.y * tmp.y - ((tmp.z * tmp.z) / (d));
   if ((inter->dist = solver_second_degree(a, b, c)) == NOT_A_SOLUTION)
     inter->dist = -1.0;
 }
