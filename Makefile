@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Mon May  2 14:38:31 2016 Arthur ARNAUD
+## Last update Mon May  2 17:44:03 2016 Arthur ARNAUD
 ##
 
 DEBUG=			yes
@@ -66,9 +66,22 @@ LOADER_FILES=		count.c				\
 			load_scene.c			\
 			obj_type.c
 
+SOLVER_PREFIX=		src/solver/
+
+SOLVER_FILES=		second_degree.c			\
+			third_degree.c			\
+			fourth_degree.c			\
+			fourth_degree_extended.c	\
+			check_solution.c
+
+SHAPE_PREFIX=		src/shape/
+
+SHAPE_FILES=		sphere.c
+
 TOOLS_PREFIX=		src/tools/
 
 TOOLS_FILES=		memory.c			\
+			fast_sqrt.c			\
 			my_strlen.c			\
 			my_getnbr.c			\
 			my_getdouble.c			\
@@ -101,6 +114,10 @@ SRC_CLIENT=		$(addprefix $(CLIENT_PREFIX),$(CLIENT_FILES))
 
 SRC_LOADER=		$(addprefix $(LOADER_PREFIX),$(LOADER_FILES))
 
+SRC_SHAPE=		$(addprefix $(SHAPE_PREFIX),$(SHAPE_FILES))
+
+SRC_SOLVER=		$(addprefix $(SOLVER_PREFIX),$(SOLVER_FILES))
+
 SRC_TOOLS=		$(addprefix $(TOOLS_PREFIX),$(TOOLS_FILES))
 
 SRC_PLY=		$(addprefix $(PLY_PREFIX),$(PLY_FILES))
@@ -114,6 +131,10 @@ SRC+=			$(SRC_TOOLS)
 SRC+=			$(SRC_LOADER)
 
 SRC+=			$(SRC_PLY)
+
+SRC+=			$(SRC_SHAPE)
+
+SRC+=			$(SRC_SOLVER)
 
 SRC_CLIENT+=		$(SRC_TOOLS)
 
