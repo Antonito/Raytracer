@@ -5,14 +5,14 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Fri May 13 05:54:34 2016 Ludovic Petrenko
+** Last update Fri May 13 11:30:54 2016 Luka Boulagnon
 */
 
 #ifndef	RAYTRACER2_H_
 # define RAYTRACER2_H_
 
-# include <lapin.h>
 # include <stdbool.h>
+# include "lapin.h"
 # include "engine/scene.h"
 # include "config.h"
 # include "events.h"
@@ -68,10 +68,10 @@
 /*
 ** Error messages
 */
-# define MISSING_PORT_ERROR    	"Missing port in config.ini\n"
+# define MISSING_PORT_ERROR	"Missing port in config.ini\n"
 # define INVALID_PORT_ERROR	"Invalid port in config.ini\n"
-# define CHOOSE_PORT_ERROR     	"Choose a port between 0 and 65535\n"
-# define MAX_CLIENT_ERROR    	"Invalid max_client in config.ini\n"
+# define CHOOSE_PORT_ERROR	"Choose a port between 0 and 65535\n"
+# define MAX_CLIENT_ERROR	"Invalid max_client in config.ini\n"
 # define NEW_CLIENT_ERROR	"Error: Cannot accept new client\n"
 # define MAX_CLIENT_REACHED	"Max number of client reached\n"
 # define INIT_SERVER_ERROR	"Error: Cannot start server\n"

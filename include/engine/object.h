@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:33:45 2016 Ludovic Petrenko
-** Last update Tue May 10 14:58:22 2016 Antoine Baché
+** Last update Fri May 13 11:31:25 2016 Luka Boulagnon
 */
 
 #ifndef OBJECT_H_
@@ -62,10 +62,10 @@ typedef enum	e_light_type
 
 typedef struct	s_light
 {
-  t_light_type  type;
+  t_light_type	type;
   unsigned int	color;
-  double        radius;
-  double        power;
+  double	radius;
+  double	power;
   t_vec3	dir;
   double	angle;
 }		t_light;
@@ -149,7 +149,7 @@ typedef struct	s_obj
 */
 void		light_dim(t_obj *, t_vec3 *);
 void		sphere_dim(t_obj *, t_vec3 *);
-void	        cylinder_dim(t_obj *, t_vec3 *);
+void		cylinder_dim(t_obj *, t_vec3 *);
 void		cone_dim(t_obj *, t_vec3 *);
 void		torus_dim(t_obj *, t_vec3 *);
 t_intersect	get_intersect_sphere(t_obj *, t_ray *);

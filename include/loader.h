@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 19:09:07 2016 Ludovic Petrenko
-** Last update Tue May 10 14:55:37 2016 Antoine Baché
+** Last update Fri May 13 11:29:33 2016 Luka Boulagnon
 */
 
 #include "raytracer.h"
@@ -17,7 +17,7 @@ int		load_config(t_data *data, const char *file);
 int		ini_count_prefix(const t_bunny_ini *ini, const char *prefix);
 void		load_camera(t_camera *c, const t_bunny_ini *ini);
 void		load_directionnal(t_obj *obj, const t_bunny_ini_scope *scope);
-void	        load_light_spec(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_light_spec(t_obj *obj, const t_bunny_ini_scope *scope);
 void		load_obj_basics(t_obj *obj, const t_bunny_ini_scope *s);
 void		load_obj_data(t_scene *scene, t_obj *o,
 			      const t_bunny_ini_scope *s);
