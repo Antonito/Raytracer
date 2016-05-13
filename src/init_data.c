@@ -5,21 +5,27 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 22:32:39 2016 Ludovic Petrenko
-** Last update Tue May 10 18:28:46 2016 Antoine Baché
+** Last update Fri May 13 15:45:58 2016 Luka Boulagnon
 */
 
 #include "raytracer.h"
 #include "loader.h"
 #include "tools/math.h"
 
+static void	set_fields(t_data *data)
+{
+  data->width = DEFAULT_WIDTH;
+  data->height = DEFAULT_HEIGHT;
+  data->fullscreen = false;
+  data->minimum_fps = MINIMUM_FPS;
+}
+
 int	init_data(int ac, char **av, t_data **data)
 {
-  set_max_heap_size(4000);
+  set_max_heap_size(2000);
   if (!(*data = my_calloc(1, sizeof(t_data))))
     return (1);
-  (*data)->width = DEFAULT_WIDTH;
-  (*data)->height = DEFAULT_HEIGHT;
-  (*data)->fullscreen = false;
+  set_fields(*data);
   if (!((*data)->win = bunny_start((*data)->width, (*data)->height,
 				   (*data)->fullscreen, WIN_NAME)) ||
       !((*data)->render = bunny_new_pixelarray((*data)->width,

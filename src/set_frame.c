@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon May  2 22:15:55 2016 Ludovic Petrenko
-** Last update Thu May 12 08:40:24 2016 Ludovic Petrenko
+** Last update Fri May 13 15:48:06 2016 Luka Boulagnon
 */
 
 #include <stdio.h>
@@ -16,7 +16,7 @@ void			refresh_size(t_data *data, int frame)
 {
   double		ratio;
 
-  ratio = MINIMUM_FPS / (double)frame;
+  ratio = data->minimum_fps / (double)frame;
   data->cur_width = (int)(data->cur_width / ratio);
   data->cur_width = (data->cur_width > 0) ? data->cur_width : 1;
   data->cur_width = (data->cur_width < data->width) ? data->cur_width :
