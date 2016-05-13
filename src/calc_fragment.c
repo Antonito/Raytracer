@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Thu Apr 21 20:09:40 2016 Ludovic Petrenko
-** Last update Fri May 13 13:24:16 2016 Antoine Baché
+** Last update Fri May 13 15:15:06 2016 Antoine Baché
 */
 
 #pragma GCC warning "\e[31m\e[1mCommentaires + Norme !\e[0m"
@@ -78,8 +78,8 @@ void		calc_fragment(t_data *data, unsigned int *buf, t_ivec2 *pos)
       tmp.y += (tmp.x == 0);
       if (tmp.x == 0)
 	{
-	  /* printf("\r%.2f%%   ", 100.0 * i / size); */
-	  /* fflush(stdout); */
+	  printf("\r%.2f%%   ", 100.0 * i / size);
+	  fflush(stdout);
 	}
       /* if (tmp.x == 0) */
       /* 	i += pos[1].x; */
