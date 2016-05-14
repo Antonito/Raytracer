@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May  2 08:11:21 2016 Antoine Baché
-** Last update Mon May  9 10:08:37 2016 Antoine Baché
+** Last update Fri May 13 14:47:39 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -19,42 +19,39 @@ static void	get_dist_tore(t_ray *ray, t_intersect *inter, t_obj *obj)
   double	c;
   double	d;
   double	e;
+  t_vec3	tmp;
 
+  tmp = sub_vec3(ray->pos, obj->pos);
   a = (ray->dir.x * ray->dir.x + ray->dir.y * ray->dir.y + ray->dir.z *
        ray->dir.z) *
     (ray->dir.x * ray->dir.x + ray->dir.y * ray->dir.y + ray->dir.z *
      ray->dir.z);
   b = 4.0 * (ray->dir.x * ray->dir.x + ray->dir.y * ray->dir.y +
 	     ray->dir.z * ray->dir.z) *
-    (ray->dir.x * ray->pos.x + ray->dir.y * ray->pos.y + ray->dir.z *
-     ray->pos.z);
+    (ray->dir.x * tmp.x + ray->dir.y * tmp.y + ray->dir.z * tmp.z);
   c = 2.0 * (ray->dir.x * ray->dir.x + ray->dir.y * ray->dir.y + ray->dir.z *
-	     ray->dir.z) * (ray->pos.x * ray->pos.x + ray->pos.y * ray->pos.y +
-			    ray->pos.z * ray->pos.z + obj->torus.radius_hole *
+	     ray->dir.z) * (tmp.x * tmp.x + tmp.y * tmp.y +
+			    tmp.z * tmp.z + obj->torus.radius_hole *
 			    obj->torus.radius_hole - obj->torus.radius_solid *
 			    obj->torus.radius_solid) +
-    4.0 * (ray->pos.x * ray->dir.x + ray->dir.y * ray->pos.y + ray->dir.z *
-	   ray->pos.z) *
-    (ray->pos.x * ray->dir.x + ray->dir.y * ray->pos.y + ray->dir.z *
-     ray->pos.z) - 4.0 * obj->torus.radius_hole * obj->torus.radius_hole *
+    4.0 * (tmp.x * ray->dir.x + ray->dir.y * tmp.y + ray->dir.z * tmp.z) *
+    (tmp.x * ray->dir.x + ray->dir.y * tmp.y + ray->dir.z *
+     tmp.z) - 4.0 * obj->torus.radius_hole * obj->torus.radius_hole *
     (ray->dir.x * ray->dir.x + ray->dir.y * ray->dir.y);
-  d = 4.0 * (ray->pos.x * ray->dir.x + ray->dir.y * ray->pos.y + ray->dir.z *
-	     ray->pos.z) * (ray->pos.x * ray->pos.x + ray->pos.y * ray->pos.y +
-			    ray->pos.z * ray->pos.z + obj->torus.radius_hole *
+  d = 4.0 * (tmp.x * ray->dir.x + ray->dir.y * tmp.y + ray->dir.z *
+	     tmp.z) * (tmp.x * tmp.x + tmp.y * tmp.y +
+			    tmp.z * tmp.z + obj->torus.radius_hole *
 			    obj->torus.radius_hole - obj->torus.radius_solid *
 			    obj->torus.radius_solid) -
     8.0 * obj->torus.radius_hole * obj->torus.radius_hole *
-    (ray->dir.x * ray->pos.x + ray->dir.y * ray->pos.y);
-  e = (ray->pos.x * ray->pos.x + ray->pos.y * ray->pos.y +
-       ray->pos.z * ray->pos.z + obj->torus.radius_hole *
+    (ray->dir.x * tmp.x + ray->dir.y * tmp.y);
+  e = (tmp.x * tmp.x + tmp.y * tmp.y + tmp.z * tmp.z + obj->torus.radius_hole *
        obj->torus.radius_hole - obj->torus.radius_solid *
        obj->torus.radius_solid) *
-    (ray->pos.x * ray->pos.x + ray->pos.y * ray->pos.y +
-     ray->pos.z * ray->pos.z + obj->torus.radius_hole *
+    (tmp.x * tmp.x + tmp.y * tmp.y + tmp.z * tmp.z + obj->torus.radius_hole *
      obj->torus.radius_hole - obj->torus.radius_solid *
      obj->torus.radius_solid) - 4.0 * obj->torus.radius_hole *
-    obj->torus.radius_hole * (ray->pos.x * ray->pos.x + ray->pos.y *
-			      ray->pos.y);
+    obj->torus.radius_hole * (tmp.x * tmp.x + tmp.y * tmp.y);
   inter->dist = solver_fourth_degree(a, b, c, d, e);
 }
 

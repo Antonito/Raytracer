@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 30 23:30:01 2016 Ludovic Petrenko
-** Last update Fri May 13 06:21:36 2016 Ludovic Petrenko
+** Last update Fri May 13 15:39:36 2016 Antoine Baché
 */
 
 #pragma GCC warning "\e[31m\e[1mCommentaires + Norme !\e[0m"
@@ -94,8 +94,9 @@ t_intersect	calc_ray(t_scene *scene, t_ray *ray, int i)
   /* inter.norm = mult_vec3(inter.norm, -1.0); */
   /* if (fabs(dot_vec3(vec3_normalize(ray->dir), vec3_normalize(inter.norm))) < 0.3) */
   /*   return (0x00000000); */
-  tmp.dir = add_vec3(ray->dir, mult_vec3(inter.norm,
-  					 -2.0 * dot_vec3(inter.norm, ray->dir)));
+  tmp.dir = add_vec3(ray->dir,
+		     mult_vec3(inter.norm,
+			       -2.0 * dot_vec3(inter.norm, ray->dir)));
   tmp.dir = vec3_normalize(tmp.dir);
   tmp.pos = inter.pos;
   tmp.env = NULL;

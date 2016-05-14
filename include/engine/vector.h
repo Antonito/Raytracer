@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:30:38 2016 Ludovic Petrenko
-** Last update Fri May 13 11:31:57 2016 Luka Boulagnon
+** Last update Fri May 13 13:22:29 2016 Antoine Baché
 */
 
 #ifndef VECTOR_H_
@@ -58,5 +58,6 @@ double		dot_vec3(t_vec3 a, t_vec3 b);
 t_vec3		vec3_min(t_vec3 u, t_vec3 v);
 t_vec3		vec3_max(t_vec3 u, t_vec3 v);
 double		vec3_len(t_vec3 v);
+t_vec3		square_vec3(t_vec3 a);
 
 #endif /* !VECTOR_H_ */

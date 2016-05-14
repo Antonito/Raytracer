@@ -1,0 +1,15 @@
+.\"Manpage for raytracer
+.\"Contact arnaud_e, bache_a, boulag_l, or petren_l to correct errors or typos.
+.TH man 7 "22 May 2016" "1.0" "raytracer man page"
+.SH NAME
+raytracer - A liblapin raytracing software
+.SH SYNOPSIS
+raytracer [scene_file.ini]
+.SH DESCRIPTION
+Il faut mettre la description que l'on souhaite ici
+.SH OPTIONS
+Toutes les options dispos sur notre RT
+.SH BUGS
+No known bugs.
+.SH AUTHORS
+Athur Arnaud, Antoine Baché, Luka Boulagnon, Ludovic Petrenko

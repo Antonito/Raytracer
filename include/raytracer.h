@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Fri May 13 15:46:00 2016 Luka Boulagnon
+** Last update Fri May 13 17:27:31 2016 Antoine Baché
 */
 
 #ifndef	RAYTRACER2_H_
@@ -22,12 +22,15 @@
 # define DEFAULT_HEIGHT		720
 # define WIN_NAME		"Ray Ta Soeur"
 # define UNUSED			__attribute__((unused))
-# define MAX_RECURSIVE		50
-# define MINIMUM_FPS		2
+# define MAX_RECURSIVE		5
+# define MINIMUM_FPS		7
 
 /*
 ** Scopes expected in .ini files
 */
+# define POLY_PTS_A		"point_a"
+# define POLY_PTS_B		"point_b"
+# define POLY_PTS_C		"point_c"
 # define SCOPE_NETWORK		"network"
 # define PORT_NETWORK		"port"
 # define CLIENT_NETWORK		"max_client"

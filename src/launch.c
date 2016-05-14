@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 16 16:32:45 2016 Ludovic Petrenko
-** Last update Fri May 13 15:58:19 2016 Luka Boulagnon
+** Last update Fri May 13 17:24:03 2016 Antoine Baché
 */
 
 #include <stdio.h>
@@ -35,12 +35,12 @@ t_bunny_response	events(t_data *data)
   return (GO_ON);
 }
 
-t_bunny_response	main_events(UNUSED t_bunny_event_state s,
-				    UNUSED t_bunny_keysym k,
+t_bunny_response	main_events(t_bunny_event_state s,
+				    t_bunny_keysym k,
 				    UNUSED t_data *data)
 {
   if (s == GO_DOWN && k == BKS_ESCAPE)
-    return (EXIT_ON_ERROR);
+    return (EXIT_ON_SUCCESS);
   return (GO_ON);
 }
 

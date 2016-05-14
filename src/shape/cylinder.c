@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May  3 02:16:26 2016 Antoine Baché
-** Last update Mon May  9 17:53:42 2016 Antoine Baché
+** Last update Fri May 13 03:04:53 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -44,10 +44,12 @@ static void	get_dist_cylinder(t_obj *obj, t_ray *ray, t_intersect *inter)
   double	a;
   double	b;
   double	c;
+  t_vec3	tmp;
 
+  tmp = sub_vec3(ray->pos, obj->pos);
   a = ray->dir.y * ray->dir.y + ray->dir.z * ray->dir.z;
-  b = 2.0 * (ray->dir.y * ray->pos.y + ray->dir.z * ray->pos.z);
-  c = ray->pos.y * ray->pos.y + ray->pos.z * ray->pos.z -
+  b = 2.0 * (ray->dir.y * tmp.y + ray->dir.z * tmp.z);
+  c = tmp.y * tmp.y + tmp.z * tmp.z -
     obj->cylinder.radius * obj->cylinder.radius;
   if ((inter->dist = solver_second_degree(a, b, c)) == NOT_A_SOLUTION)
     inter->dist = -1.0;
@@ -71,5 +73,6 @@ t_intersect	get_intersect_cylinder(t_obj *obj, t_ray *ray)
   if (inter.pos.x > obj->cylinder.height ||
       inter.pos.x < -obj->cylinder.height)
     get_dist_cylinder_face(obj, ray, &inter);
+  inter.norm = vec3(inter.pos.x, inter.pos.y, 0.0);
   return (inter);
 }

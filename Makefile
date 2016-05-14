@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sat May 14 17:40:53 2016 Antoine Baché
+## Last update Sat May 14 18:20:24 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -28,6 +28,7 @@ SRC_FILES=		init_data.c			\
 			set_frame.c			\
 			vector.c			\
 			vector_add.c			\
+			vector_tools.c			\
 			vector_op.c			\
 			obj_vector.c			\
 			obj_vector_op.c
@@ -87,6 +88,7 @@ LOADER_FILES=		count.c				\
 			load_obj.c			\
 			load_obj_type.c			\
 			load_obj_type_more.c		\
+			load_polygons.c			\
 			load_scene.c			\
 			obj_type.c
 
