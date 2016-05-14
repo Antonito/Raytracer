@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May  9 01:15:33 2016 Antoine Baché
-** Last update Sat May 14 21:30:33 2016 Antoine Baché
+** Last update Sat May 14 21:37:50 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -47,12 +47,12 @@ t_intersect		get_intersect_klein(t_obj *obj, t_ray *ray)
   coef[4] = calc_e_klein(ray, tmp, square_vec3(ray->dir), square_vec3(tmp));
   coef[5] = calc_f_klein(ray, tmp, square_vec3(tmp));
   coef[6] = calc_g_klein(ray, tmp, square_vec3(tmp));
-  if ((inter.dist = solver_n_degree(coef, 6)) <= 0.0)
+  if ((inter.dist = solver_n_degree(coef, 6)) < 0.0)
     {
       inter.dist = -1.0;
       return (inter);
     }
   inter.pos = add_vec3(ray->pos, mult_vec3(ray->dir, inter.dist));
-  calc_normale_klein(&inter);
+  //calc_normale_klein(&inter);
   return (inter);
 }

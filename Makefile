@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sat May 14 20:56:56 2016 Antoine Baché
+## Last update Sat May 14 22:43:16 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -120,7 +120,10 @@ SHAPE_FILES=		plane.c				\
 			ellipsoid.c			\
 			boy.c				\
 			cassini.c			\
-			chair.c
+			chair.c				\
+			kusner.c			\
+			tritrumpet.c			\
+			whitney.c
 
 NET_TOOLS_PREFIX=	src/cluster/
 

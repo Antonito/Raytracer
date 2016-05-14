@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:33:45 2016 Ludovic Petrenko
-** Last update Sat May 14 20:33:50 2016 Antoine Baché
+** Last update Sat May 14 22:41:44 2016 Antoine Baché
 */
 
 #ifndef OBJECT_H_
@@ -55,6 +55,9 @@ typedef enum	e_obj_type
     BOY,
     CASSINI,
     CHAIR,
+    KUSNER,
+    TRITRUMPET,
+    WHITNEY,
     NB_OBJ_TYPE
   }		t_obj_type;
 
@@ -172,6 +175,9 @@ t_intersect	get_intersect_ellipsoid(t_obj *, t_ray *);
 t_intersect	get_intersect_boy(t_obj *, t_ray *);
 t_intersect	get_intersect_cassini(t_obj *, t_ray *);
 t_intersect	get_intersect_chair(t_obj *, t_ray *);
+t_intersect	get_intersect_kusner(t_obj *, t_ray *);
+t_intersect	get_intersect_tritrumpet(t_obj *, t_ray *);
+t_intersect	get_intersect_whitney(t_obj *, t_ray *);
 
 /*
 ** Klein specific functions
