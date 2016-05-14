@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 01:06:07 2016 Ludovic Petrenko
-** Last update Tue May 10 14:57:40 2016 Antoine Baché
+** Last update Sat May 14 17:40:32 2016 Antoine Baché
 */
 
 #include <math.h>
@@ -93,4 +93,11 @@ void	load_ellipsoid(t_obj *obj, const t_bunny_ini_scope *scope)
     obj->ellipsoid.length = my_getdouble(tmp);
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, WIDTH_FIELD, 0)))
     obj->ellipsoid.width = my_getdouble(tmp);
+}
+
+void	load_boy(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = BOY;
+  obj->get_intersect = &get_intersect_boy;
 }
