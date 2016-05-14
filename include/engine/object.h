@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:33:45 2016 Ludovic Petrenko
-** Last update Fri May 13 13:22:20 2016 Antoine Baché
+** Last update Fri May 13 18:35:18 2016 Antoine Baché
 */
 
 #ifndef OBJECT_H_
@@ -13,6 +13,7 @@
 
 # include "vector.h"
 # include "ray.h"
+# include "ply.h"
 # include "intersect.h"
 # include "material.h"
 
@@ -52,6 +53,7 @@ typedef enum	e_obj_type
     KLEIN,
     HYPERBOLA,
     ELLIPSOID,
+    PLY,
     NB_OBJ_TYPE
   }		t_obj_type;
 
@@ -124,6 +126,11 @@ typedef struct	s_ellipsoid
   double	length;
 }		t_ellipsoid;
 
+typedef struct	s_ply_load
+{
+  t_ply		*ply;
+}		t_ply_load;
+
 typedef struct	s_obj
 {
   t_obj_type	type;
@@ -144,6 +151,7 @@ typedef struct	s_obj
     t_mobius	mobius;
     t_hyperbola	hyperbola;
     t_ellipsoid	ellipsoid;
+    t_ply_load	ply;
   };
 }		t_obj;
 
@@ -166,6 +174,7 @@ t_intersect	get_intersect_void_cube(t_obj *, t_ray *);
 t_intersect	get_intersect_klein(t_obj *, t_ray *);
 t_intersect	get_intersect_hyperbola(t_obj *, t_ray *);
 t_intersect	get_intersect_ellipsoid(t_obj *, t_ray *);
+t_intersect	get_intersect_ply(t_obj *, t_ray *);
 
 /*
 ** Klein specific functions

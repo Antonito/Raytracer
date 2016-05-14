@@ -5,10 +5,11 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri May 13 06:44:05 2016 Antoine Baché
-** Last update Fri May 13 06:44:27 2016 Antoine Baché
+** Last update Fri May 13 18:30:50 2016 Antoine Baché
 */
 
 #include "raytracer.h"
+#include "ply.h"
 #include "tools/str.h"
 #include "engine/vector.h"
 #include "engine/object.h"
@@ -40,4 +41,16 @@ void	load_triangle(t_obj *obj, const t_bunny_ini_scope *scope)
     obj->triangle.pts[2].y = my_getdouble(tmp);
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, POLY_PTS_C, 2)))
     obj->triangle.pts[2].z = my_getdouble(tmp);
+}
+
+void	load_ply(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  t_ply	*ply;
+  char	*tmp;
+
+  obj->type = PLY;
+  obj->get_intersect = &get_intersect_ply;
+  obj->ply.ply = NULL;
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, FILE_PATH, 0)))
+    obj->ply.ply = get_ply((!tmp) ? "" : tmp);
 }

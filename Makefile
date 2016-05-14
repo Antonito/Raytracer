@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Fri May 13 17:51:42 2016 Arthur ARNAUD
+## Last update Fri May 13 18:31:35 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -117,7 +117,8 @@ SHAPE_FILES=		plane.c				\
 			klein_coef_more.c		\
 			klein_normale.c			\
 			hyperbola.c			\
-			ellipsoid.c
+			ellipsoid.c			\
+			ply.c
 
 NET_TOOLS_PREFIX=	src/cluster/
 

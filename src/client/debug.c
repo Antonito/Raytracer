@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May  7 18:08:38 2016 Antoine Baché
-** Last update Tue May 10 13:38:38 2016 Antoine Baché
+** Last update Fri May 13 18:43:18 2016 Antoine Baché
 */
 
 #include <stdio.h>
@@ -29,7 +29,8 @@ void		print_objs(t_obj *objs, int nb)
 {
   static char	*name[NB_OBJ_TYPE] =
     {"light", "sphere", "plane", "cylinder", "cone",
-     "triangle", "torus", "mobius", "void_cube", "klein", "hyperbola"};
+     "triangle", "torus", "mobius", "void_cube", "klein", "hyperbola",
+     "ellipsoid", "ply"};
   int		i;
 
   i = 0;
