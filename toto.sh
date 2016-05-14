@@ -18,5 +18,5 @@ do
 		res=$(echo $res | sed -r "s/([^ ]*) \^ $k/\1 × \1 ^ $j/g")
 	done
 	echo "==============="
-	echo "$res" | sed 's/ \^ 1 / /g'
+	echo "$res" | sed -r 's/ \^ 1 / /g;s/([0-9]+)/\1.0/g'
 done
