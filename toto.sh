@@ -1,5 +1,5 @@
 echo "============"
-res=$(echo "$1" | sed 's/\+/\n\+/g;s/-/\n-/g' | rev | grep -v "^t" | sort | rev | sed ':a;N;$!ba;s/\n//g' | sed 's/\+/ \+ /g' | sed 's/-/ - /g' | sed 's/\// \/ /g' | sed "s/\*/ × /g" | sed "s/\^/ \^ /g" | sed 's/a/ray->pos.x/g' | sed 's/b/ray->pos.y/g' | sed 's/c/ray->pos.z/g' | sed 's/k/ray->dir.x/g' | sed 's/l/ray->dir.y/g' | sed 's/m/ray->dir.z/g')
+res=$(echo "$1" | sed 's/\+/\n\+/g;s/-/\n-/g' | rev | grep -v "t" | sort | rev | sed ':a;N;$!ba;s/\n//g' | sed 's/\+/ \+ /g' | sed 's/-/ - /g' | sed 's/\// \/ /g' | sed "s/\*/ × /g" | sed "s/\^/ \^ /g" | sed 's/a/ray->pos.x/g' | sed 's/b/ray->pos.y/g' | sed 's/c/ray->pos.z/g' | sed 's/k/ray->dir.x/g' | sed 's/l/ray->dir.y/g' | sed 's/m/ray->dir.z/g')
 for k in {100..2}
 do
 	let "j=$k-1"
