@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sat May 14 18:20:24 2016 Antoine Baché
+## Last update Sat May 14 18:36:41 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -118,7 +118,8 @@ SHAPE_FILES=		plane.c				\
 			klein_normale.c			\
 			hyperbola.c			\
 			ellipsoid.c			\
-			boy.c
+			boy.c				\
+			cassini.c
 
 NET_TOOLS_PREFIX=	src/cluster/
 

@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:33:45 2016 Ludovic Petrenko
-** Last update Sat May 14 18:20:39 2016 Antoine Baché
+** Last update Sat May 14 18:36:31 2016 Antoine Baché
 */
 
 #ifndef OBJECT_H_
@@ -53,6 +53,7 @@ typedef enum	e_obj_type
     HYPERBOLA,
     ELLIPSOID,
     BOY,
+    CASSINI,
     NB_OBJ_TYPE
   }		t_obj_type;
 
@@ -168,6 +169,7 @@ t_intersect	get_intersect_klein(t_obj *, t_ray *);
 t_intersect	get_intersect_hyperbola(t_obj *, t_ray *);
 t_intersect	get_intersect_ellipsoid(t_obj *, t_ray *);
 t_intersect	get_intersect_boy(t_obj *, t_ray *);
+t_intersect	get_intersect_cassini(t_obj *, t_ray *);
 
 /*
 ** Klein specific functions

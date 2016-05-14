@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 19:09:07 2016 Ludovic Petrenko
-** Last update Sat May 14 17:39:03 2016 Antoine Baché
+** Last update Sat May 14 18:36:13 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -57,3 +57,4 @@ void		load_cylinder(t_obj *obj, const t_bunny_ini_scope *scope);
 void		load_hyperbola(t_obj *obj, const t_bunny_ini_scope *scope);
 void		load_ellipsoid(t_obj *obj, const t_bunny_ini_scope *scope);
 void		load_boy(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_cassini(t_obj *obj, const t_bunny_ini_scope *scope);
