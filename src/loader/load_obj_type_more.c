@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 01:06:07 2016 Ludovic Petrenko
-** Last update Sat May 14 22:43:02 2016 Antoine Baché
+** Last update Sat May 14 23:03:52 2016 Antoine Baché
 */
 
 #include <math.h>
@@ -106,4 +106,18 @@ void	load_whitney(t_obj *obj, const t_bunny_ini_scope *scope)
   (void)scope;
   obj->type = WHITNEY;
   obj->get_intersect = &get_intersect_whitney;
+}
+
+void	load_tetrahedral(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = TETRAHEDRAL;
+  obj->get_intersect = &get_intersect_tetrahedral;
+}
+
+void	load_barth_sextic(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = BARTH_SEXTIC;
+  obj->get_intersect = &get_intersect_barth_sextic;
 }

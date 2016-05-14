@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 19:09:07 2016 Ludovic Petrenko
-** Last update Sat May 14 22:41:58 2016 Antoine Baché
+** Last update Sat May 14 23:03:07 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -62,3 +62,5 @@ void		load_chair(t_obj *obj, const t_bunny_ini_scope *scope);
 void		load_kusner(t_obj *obj, const t_bunny_ini_scope *scope);
 void		load_tritrumpet(t_obj *obj, const t_bunny_ini_scope *scope);
 void		load_whitney(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_tetrahedral(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_barth_sextic(t_obj *obj, const t_bunny_ini_scope *scope);

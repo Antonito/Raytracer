@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May  7 18:08:38 2016 Antoine Baché
-** Last update Sat May 14 22:42:20 2016 Antoine Baché
+** Last update Sat May 14 23:03:22 2016 Antoine Baché
 */
 
 #include <stdio.h>
@@ -31,7 +31,7 @@ void		print_objs(t_obj *objs, int nb)
     {"light", "sphere", "plane", "cylinder", "cone",
      "triangle", "torus", "mobius", "void_cube", "klein", "hyperbola",
      "ellipsoid", "boy", "cassini", "chair", "kusner", "tritrumpet",
-     "whitney"};
+     "whitney", "tetrahedral", "barth_sextic"};
   int		i;
 
   i = 0;
