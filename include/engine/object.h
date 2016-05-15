@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:33:45 2016 Ludovic Petrenko
-** Last update Fri May 13 18:35:18 2016 Antoine Baché
+** Last update Sun May 15 14:49:04 2016 Antoine Baché
 */
 
 #ifndef OBJECT_H_
@@ -54,6 +54,25 @@ typedef enum	e_obj_type
     HYPERBOLA,
     ELLIPSOID,
     PLY,
+    BOY,
+    CASSINI,
+    CHAIR,
+    KUSNER,
+    TRITRUMPET,
+    WHITNEY,
+    TETRAHEDRAL,
+    BARTH_SEXTIC,
+    BIFOLIA,
+    DUPLIN,
+    CUSHION,
+    DOUBLE_SPHERE,
+    TOOTH,
+    HEART,
+    HUNT,
+    MITER,
+    KISS,
+    KUMMER,
+    ENNEPER,
     NB_OBJ_TYPE
   }		t_obj_type;
 
@@ -175,6 +194,25 @@ t_intersect	get_intersect_klein(t_obj *, t_ray *);
 t_intersect	get_intersect_hyperbola(t_obj *, t_ray *);
 t_intersect	get_intersect_ellipsoid(t_obj *, t_ray *);
 t_intersect	get_intersect_ply(t_obj *, t_ray *);
+t_intersect	get_intersect_boy(t_obj *, t_ray *);
+t_intersect	get_intersect_cassini(t_obj *, t_ray *);
+t_intersect	get_intersect_chair(t_obj *, t_ray *);
+t_intersect	get_intersect_kusner(t_obj *, t_ray *);
+t_intersect	get_intersect_tritrumpet(t_obj *, t_ray *);
+t_intersect	get_intersect_whitney(t_obj *, t_ray *);
+t_intersect	get_intersect_tetrahedral(t_obj *, t_ray *);
+t_intersect	get_intersect_barth_sextic(t_obj *, t_ray *);
+t_intersect	get_intersect_bifolia(t_obj *, t_ray *);
+t_intersect	get_intersect_duplin(t_obj *, t_ray *);
+t_intersect	get_intersect_cushion(t_obj *, t_ray *);
+t_intersect	get_intersect_double_sphere(t_obj *, t_ray *);
+t_intersect	get_intersect_tooth(t_obj *, t_ray *);
+t_intersect	get_intersect_heart(t_obj *, t_ray *);
+t_intersect	get_intersect_hunt(t_obj *, t_ray *);
+t_intersect	get_intersect_miter(t_obj *, t_ray *);
+t_intersect	get_intersect_kiss(t_obj *, t_ray *);
+t_intersect	get_intersect_kummer(t_obj *, t_ray *);
+t_intersect	get_intersect_enneper(t_obj *, t_ray *);
 
 /*
 ** Klein specific functions

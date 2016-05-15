@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May  7 18:08:38 2016 Antoine Baché
-** Last update Fri May 13 18:43:18 2016 Antoine Baché
+** Last update Sun May 15 14:50:00 2016 Antoine Baché
 */
 
 #include <stdio.h>
@@ -30,7 +30,10 @@ void		print_objs(t_obj *objs, int nb)
   static char	*name[NB_OBJ_TYPE] =
     {"light", "sphere", "plane", "cylinder", "cone",
      "triangle", "torus", "mobius", "void_cube", "klein", "hyperbola",
-     "ellipsoid", "ply"};
+     "ellipsoid", "ply", "boy", "cassini", "chair", "kusner", "tritrumpet",
+     "whitney", "tetrahedral", "barth_sextic", "bifolia", "duplin",
+     "cushion", "double_sphere", "tooth", "heart", "hunt", "miter", "kiss",
+     "kummer", "enneper"};
   int		i;
 
   i = 0;
