@@ -5,14 +5,17 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Wed Apr 20 10:22:11 2016 Arthur ARNAUD
-** Last update Mon May  2 17:24:49 2016 Arthur ARNAUD
+** Last update Sun May 15 16:03:41 2016 Antoine Baché
 */
 
 #include "ply.h"
+#include "tools/str.h"
+#include "tools/memory.h"
+#include "tools/get_next_line.h"
 
-int	is_in_tab(char *str, char **tab)
+int		is_in_tab(char *str, char **tab)
 {
-  int	i;
+  int		i;
 
   i = -1;
   while (tab[++i])
@@ -21,9 +24,9 @@ int	is_in_tab(char *str, char **tab)
   return (-1);
 }
 
-int	check_format(int fd)
+static int	check_format(int fd)
 {
-  char	*str;
+  char		*str;
 
   if (((str = get_next_line(fd)) != NULL && my_strcmp(str, TYPE_FILE)) ||
       my_free(str) ||
@@ -33,7 +36,7 @@ int	check_format(int fd)
   return (0);
 }
 
-int		check_key(int key, char **components, t_ply_info *info)
+static int	check_key(int key, char **components, t_ply_info *info)
 {
   static int	element = NO_ELEM;
   static int	nb_prop = 0;
@@ -46,11 +49,11 @@ int		check_key(int key, char **components, t_ply_info *info)
 
 }
 
-int	read_header(int fd, t_ply_info *info)
+int		read_header(int fd, t_ply_info *info)
 {
-  char	*str;
-  int	key;
-  char	**components;
+  char		*str;
+  int		key;
+  char		**components;
 
   if (check_format(fd))
     return (1);

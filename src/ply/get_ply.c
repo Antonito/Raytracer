@@ -5,11 +5,14 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Wed Apr 20 09:34:34 2016 Arthur ARNAUD
-** Last update Mon May  2 17:40:31 2016 Arthur ARNAUD
+** Last update Sun May 15 15:16:49 2016 Antoine Baché
 */
 
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 #include "ply.h"
-#include <stdio.h>
+#include "tools/memory.h"
 
 t_ply	*get_ply(char *name)
 {

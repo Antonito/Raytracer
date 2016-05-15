@@ -5,14 +5,16 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Thu Apr 21 17:05:08 2016 Arthur ARNAUD
-** Last update Mon May  2 17:36:46 2016 Arthur ARNAUD
+** Last update Sun May 15 15:24:35 2016 Antoine Baché
 */
 
 #include "ply.h"
+#include "tools/str.h"
+#include "tools/memory.h"
 
-int	set_tab(int *tab, int size)
+static int	set_tab(int *tab, int size)
 {
-  int	i;
+  int		i;
 
   i = -1;
   while (++i < size)
@@ -20,9 +22,9 @@ int	set_tab(int *tab, int size)
   return (0);
 }
 
-int	init_info(t_ply_info *info)
+int		init_info(t_ply_info *info)
 {
-  char	*tmp;
+  char		*tmp;
 
   if (set_tab(info->vertex_prop, NB_V_VAR) ||
       set_tab(info->face_prop, NB_F_VAR) ||
@@ -38,7 +40,7 @@ int	init_info(t_ply_info *info)
   return (0);
 }
 
-int	init_ply(t_ply *ply, t_ply_info *info)
+int		init_ply(t_ply *ply, t_ply_info *info)
 {
   ply->nb_vertex = info->nb_vertex;
   ply->nb_face = info->nb_face;

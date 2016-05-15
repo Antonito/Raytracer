@@ -5,32 +5,26 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Wed Apr 20 09:57:10 2016 Arthur ARNAUD
-** Last update Mon May  2 14:35:05 2016 Arthur ARNAUD
+** Last update Sun May 15 15:34:13 2016 Antoine Baché
 */
 
 #ifndef PLY_H_
 # define PLY_H_
 
-# include <sys/types.h>
-# include <sys/stat.h>
-#include <fcntl.h>
-# include "tools/types.h"
-# include "tools/str.h"
-# include "tools/memory.h"
-# include "tools/get_next_line.h"
+# include <lapin.h>
 # include "engine/vector.h"
 
-# define LIST_ELEM "no_elem vertex face"
-# define LIST_V_VAR "x y z red green blue alpha confidence intensity"
-# define COORD_TYPE "float"
-# define COLOR_TYPE "uchar"
-# define LIST_F_VAR1 "vertex_indices texcoord "
-# define LIST_F_VAR2 "texnumber red green blue alpha"
-# define LIST_F_VAR LIST_F_VAR1 LIST_F_VAR2
-# define LIST_KEY "comment property element"
-# define TYPE_FILE "ply"
-# define FORMAT "format ascii 1.0"
-# define END_HEADER "end_header"
+# define LIST_ELEM		"no_elem vertex face"
+# define LIST_V_VAR		"x y z red green blue alpha confidence intensity"
+# define COORD_TYPE		"float"
+# define COLOR_TYPE		"uchar"
+# define LIST_F_VAR1		"vertex_indices texcoord "
+# define LIST_F_VAR2		"texnumber red green blue alpha"
+# define LIST_F_VAR		LIST_F_VAR1 LIST_F_VAR2
+# define LIST_KEY		"comment property element"
+# define TYPE_FILE		"ply"
+# define FORMAT			"format ascii 1.0"
+# define END_HEADER		"end_header"
 
 typedef enum	e_key
 {
@@ -115,28 +109,25 @@ typedef struct	s_ply
   t_face	*list_face;
 }		t_ply;
 
-t_ply	*get_ply(char *);
-int	add_element(char **, int *, int *, t_ply_info *);
-int	add_property(char **, int, int *, t_ply_info *);
-int	check_vertex_var(char **, char **);
-int	check_face_var(char **, char **, int);
-int	init_info(t_ply_info *);
-int	init_ply(t_ply *, t_ply_info *);
-int	is_in_tab(char *, char **);
-int	check_format(int);
-int	check_key(int, char **, t_ply_info *);
-int	read_header(int, t_ply_info *);
-int	count_tab(char **);
-int	count_prop(int *, int);
-int	fill_face(t_ply *, t_ply_info *, int);
-int	fill_vertex(t_ply *, t_ply_info *, int);
-int	fill_ply(t_ply *, t_ply_info *, int);
-int	*add_list_face(char **, int *, int *, int);
-double	*add_list_texcoord(char **, int *, int *, int);
-int	parse_color_face(t_color *, char **, int *, int);
-int	parse_color_vertex(t_color *, char **, int *);
-void	free_tab(char **tab);
-void	free_ply_info(t_ply_info *info);
-void	free_ply(t_ply *ply);
+t_ply		*get_ply(char *);
+int		add_element(char **, int *, int *, t_ply_info *);
+int		add_property(char **, int, int *, t_ply_info *);
+int		check_vertex_var(char **, char **);
+int		check_face_var(char **, char **, int);
+int		count_prop(const int * const, int);
+int		init_info(t_ply_info *);
+int		init_ply(t_ply *, t_ply_info *);
+int		is_in_tab(char *, char **);
+int		read_header(int, t_ply_info *);
+int		fill_face(t_ply *, t_ply_info *, int);
+int		fill_vertex(t_ply *, t_ply_info *, int);
+int		fill_ply(t_ply *, t_ply_info *, int);
+int		*add_list_face(char **, int *, int *, int);
+double		*add_list_texcoord(char **, int *, int *, int);
+int		parse_color_face(t_color *, char **, int *, int);
+int		parse_color_vertex(t_color *, char **, int *);
+void		free_tab(char **tab);
+void		free_ply_info(t_ply_info *info);
+void		free_ply(t_ply *ply);
 
 #endif /* !PLY_H_ */

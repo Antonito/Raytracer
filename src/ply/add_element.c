@@ -5,10 +5,11 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Wed Apr 20 19:14:10 2016 Arthur ARNAUD
-** Last update Sun Apr 24 23:44:54 2016 Arthur ARNAUD
+** Last update Sun May 15 15:20:54 2016 Antoine Baché
 */
 
 #include "ply.h"
+#include "tools/str.h"
 
 int	add_element(char **components,
 		    int *elem,

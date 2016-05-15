@@ -5,24 +5,27 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Mon Apr 25 00:37:50 2016 Arthur ARNAUD
-** Last update Mon May  2 17:40:17 2016 Arthur ARNAUD
+** Last update Sun May 15 18:07:03 2016 Antoine Baché
 */
 
 #include "ply.h"
+#include "tools/get_next_line.h"
+#include "tools/str.h"
+#include "tools/memory.h"
 
-int	count_tab(char **tab)
+static int	count_tab(char **tab)
 {
-  int	i;
+  int		i;
 
   i = -1;
   while (tab[++i]);
   return (i);
 }
 
-int	count_prop(int *list_prop, int nb)
+int		count_prop(const int * const list_prop, int nb)
 {
-  int	i;
-  int	j;
+  int		i;
+  int		j;
 
   j = 0;
   i = -1;
@@ -32,20 +35,18 @@ int	count_prop(int *list_prop, int nb)
   return (j);
 }
 
-int	fill_face(t_ply *ply,
-		  t_ply_info *info,
-		  int fd)
+int		fill_face(t_ply *ply, t_ply_info *info, int fd)
 {
-  int	i;
-  int	j;
-  int	count;
-  int	size;
-  char	*str;
-  char	**tab;
+  int		i;
+  int		j;
+  int		count;
+  int		size;
+  char		*str;
+  char		**tab;
 
   i = -1;
   count = count_prop(info->face_prop, NB_F_VAR);
-  while ((str = get_next_line(fd)) != NULL && ++i < info->nb_face)
+  while (++i < info->nb_face && (str = get_next_line(fd)))
     {
       j = 0;
       if (!(tab = str_to_wordtab(str, ' ')) || (size = count_tab(tab)) < count)
@@ -61,7 +62,6 @@ int	fill_face(t_ply *ply,
       my_free(tab);
       my_free(str);
     }
-  my_free(str);
   return (0);
 }
 
@@ -74,7 +74,7 @@ int	fill_vertex(t_ply *ply,
   char	**tab;
 
   i = -1;
-  while ((str = get_next_line(fd)) != NULL && ++i < info->nb_vertex)
+  while (++i < info->nb_vertex && (str = get_next_line(fd)))
     {
       if (!(tab = str_to_wordtab(str, ' ')) ||
 	  count_tab(tab) < count_prop(info->vertex_prop, NB_V_VAR))
@@ -91,7 +91,6 @@ int	fill_vertex(t_ply *ply,
       my_free(tab);
       my_free(str);
     }
-  my_free(str);
   return (0);
 }
 

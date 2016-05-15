@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri May 13 18:26:44 2016 Antoine Baché
-** Last update Fri May 13 19:22:26 2016 Antoine Baché
+** Last update Sun May 15 17:43:15 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -24,11 +24,11 @@ static void	get_dist_ply(t_intersect *inter, t_ply *ply, t_ray *ray)
       if (ply->list_face[i].nb_face != 3)
 	return ;
       obj.triangle.pts[0] =
-	div_vec3(ply->list_vertex[ply->list_face[i].face[0]].vec, 100);
+	div_vec3(ply->list_vertex[ply->list_face[i].face[0]].vec, 2);
       obj.triangle.pts[1] =
-	div_vec3(ply->list_vertex[ply->list_face[i].face[0]].vec, 100);
+	div_vec3(ply->list_vertex[ply->list_face[i].face[1]].vec, 2);;
       obj.triangle.pts[2] =
-	div_vec3(ply->list_vertex[ply->list_face[i].face[0]].vec, 100);
+	div_vec3(ply->list_vertex[ply->list_face[i].face[2]].vec, 2);
       (*inter) = get_intersect_triangle(&obj, ray);
       if (IS_ZERO(inter->dist))
 	return ;

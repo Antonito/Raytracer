@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Fri May 13 19:18:15 2016 Antoine Baché
+** Last update Sun May 15 16:27:00 2016 Antoine Baché
 */
 
 #ifndef	RAYTRACER2_H_
@@ -24,7 +24,7 @@
 # define WIN_NAME		"Ray Ta Soeur"
 # define UNUSED			__attribute__((unused))
 # define MAX_RECURSIVE		5
-# define MINIMUM_FPS		15
+# define MINIMUM_FPS		3
 
 /*
 ** Scopes expected in .ini files

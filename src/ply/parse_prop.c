@@ -5,10 +5,12 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Tue Apr 26 15:35:12 2016 Arthur ARNAUD
-** Last update Mon May  2 15:01:02 2016 Arthur ARNAUD
+** Last update Sun May 15 15:17:56 2016 Antoine Baché
 */
 
 #include "ply.h"
+#include "tools/str.h"
+#include "tools/memory.h"
 
 int	*add_list_face(char **tab, int *j, int *nb, int count)
 {

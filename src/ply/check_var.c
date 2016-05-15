@@ -5,10 +5,11 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Fri Apr 22 13:20:37 2016 Arthur ARNAUD
-** Last update Mon Apr 25 00:18:44 2016 Arthur ARNAUD
+** Last update Sun May 15 15:20:12 2016 Antoine Baché
 */
 
 #include "ply.h"
+#include "tools/str.h"
 
 int	check_vertex_var(char **components, char **list)
 {

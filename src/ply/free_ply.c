@@ -5,10 +5,11 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Thu Apr 28 09:55:44 2016 Arthur ARNAUD
-** Last update Mon May  2 17:09:50 2016 Arthur ARNAUD
+** Last update Sun May 15 15:20:01 2016 Antoine Baché
 */
 
 #include "ply.h"
+#include "tools/memory.h"
 
 void	free_ply_info(t_ply_info *info)
 {
