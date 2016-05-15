@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sun May 15 03:07:59 2016 Antoine Baché
+## Last update Sun May 15 03:22:55 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -131,7 +131,8 @@ SHAPE_FILES=		plane.c				\
 			cushion.c			\
 			double_sphere.c			\
 			tooth.c				\
-			heart.c
+			heart.c				\
+			hunt.c
 
 NET_TOOLS_PREFIX=	src/cluster/
 

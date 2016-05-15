@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 01:06:07 2016 Ludovic Petrenko
-** Last update Sun May 15 03:16:02 2016 Antoine Baché
+** Last update Sun May 15 03:24:07 2016 Antoine Baché
 */
 
 #include <math.h>
@@ -166,4 +166,11 @@ void	load_heart(t_obj *obj, const t_bunny_ini_scope *scope)
   (void)scope;
   obj->type = HEART;
   obj->get_intersect = &get_intersect_heart;
+}
+
+void	load_hunt(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = HEART;
+  obj->get_intersect = &get_intersect_hunt;
 }
