@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sat May 14 23:04:33 2016 Antoine Baché
+## Last update Sun May 15 03:07:59 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -125,7 +125,13 @@ SHAPE_FILES=		plane.c				\
 			tritrumpet.c			\
 			whitney.c			\
 			tetrahedral.c			\
-			barth_sextic.c
+			barth_sextic.c			\
+			bifolia.c			\
+			duplin.c			\
+			cushion.c			\
+			double_sphere.c			\
+			tooth.c				\
+			heart.c
 
 NET_TOOLS_PREFIX=	src/cluster/
 

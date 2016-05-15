@@ -5,39 +5,30 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May  4 07:24:31 2016 Antoine Baché
-** Last update Sat May  7 06:13:12 2016 Ludovic Petrenko
+** Last update Sun May 15 02:16:06 2016 Antoine Baché
 */
 
 #include <math.h>
 #include "solver.h"
 #include "engine/intersect.h"
 #include "engine/object.h"
+#include "tools/memory.h"
 
-static void	get_dist_mobius(t_obj *obj, t_ray *ray, t_intersect *inter)
+static void	get_dist_mobius(t_obj *obj, t_ray *ray, t_intersect *inter,
+				t_vec3 tmp)
 {
-  t_vec4	sol;
+  double	*s;
 
-  sol.x = ray->dir.x * ray->dir.x * ray->dir.y - 4.0 * ray->dir.x *
-    ray->dir.x * ray->dir.z + ray->dir.y * ray->dir.y * ray->dir.y +
-    ray->dir.y * ray->dir.z * ray->dir.z;
-  sol.y = 2.0 * ray->pos.x * ray->dir.x * ray->dir.y - 4.0 * ray->pos.x *
-    ray->dir.x * ray->dir.z + ray->dir.x * ray->dir.x * ray->pos.y - 4.0 *
-    ray->dir.x * ray->dir.x * ray->pos.z - 4.0 * ray->dir.x * ray->pos.y *
-    ray->dir.z - 2.0 * ray->dir.x * ray->dir.z + 3.0 * ray->dir.y *
-    ray->dir.y * ray->pos.y + 2.0 * ray->dir.y * ray->dir.z * ray->pos.z +
-    ray->pos.y * ray->dir.z * ray->dir.z;
-  sol.z = ray->pos.x * ray->pos.x * ray->dir.y - 2.0 * ray->pos.x *
-    ray->pos.x * ray->dir.z + 2.0 * ray->pos.x * ray->dir.x * ray->pos.y -
-    4.0 * ray->pos.x * ray->dir.x * ray->pos.z - ray->pos.x * ray->dir.z *
-    ray->pos.z - 4.0 * ray->dir.x * ray->pos.y * ray->pos.z - 2.0 *
-    ray->dir.x * ray->pos.z + 3.0 * ray->dir.y * ray->pos.y * ray->pos.y +
-    ray->dir.y * ray->pos.z * ray->pos.z - 2.0 * ray->pos.y * ray->pos.y *
-    ray->dir.z + 2.0 * ray->pos.y * ray->dir.z * ray->pos.z;
-  sol.w = ray->pos.x * ray->pos.x * ray->pos.y - 2.0 * ray->pos.x *
-    ray->pos.x * ray->pos.z - 2.0 * ray->pos.x * ray->pos.z + ray->pos.y *
-    ray->pos.y * ray->pos.y - 2.0 * ray->pos.y * ray->pos.y * ray->pos.z +
-    ray->pos.y * ray->pos.z * ray->pos.z - ray->pos.y;
-  inter->dist = solver_third_degree(sol.x, sol.y, sol.z, sol.w);
+  if (!(s = my_malloc(sizeof(double) * 4)))
+    return ;
+  s[0] = ray->dir.y * ray->dir.z * ray->dir.z + ray->dir.y * ray->dir.y *
+    ray->dir.y + ray->dir.x * ray->dir.x * ray->dir.y - 2.0 * ray->dir.x *
+    ray->dir.x * ray->dir.z - 2.0 * ray->dir.y * ray->dir.y * ray->dir.z;
+  s[1] = tmp.y * ray->dir.x * ray->dir.x - 2.0 * tmp.z * ray->dir.x * ray->dir.x + 3.0 * tmp.y * ray->dir.y * ray->dir.y - 2.0 * tmp.z * ray->dir.y * ray->dir.y + tmp.y * ray->dir.z * ray->dir.z + 2.0 * tmp.x * ray->dir.x * ray->dir.y - 4.0 * tmp.x * ray->dir.x * ray->dir.z - 2.0 * obj->mobius.radius * ray->dir.x * ray->dir.z - 4.0 * tmp.y * ray->dir.y * ray->dir.z + 2.0 * tmp.z * ray->dir.y * ray->dir.z;
+  s[2] = 2.0 * tmp.x * tmp.y * ray->dir.x - 4.0 * tmp.x * tmp.z * ray->dir.x - 2.0 * obj->mobius.radius * tmp.z * ray->dir.x + tmp.x * tmp.x * ray->dir.y + 3.0 * tmp.y * tmp.y * ray->dir.y + tmp.z * tmp.z * ray->dir.y - obj->mobius.radius * obj->mobius.radius * ray->dir.y - 4.0 * tmp.y * tmp.z * ray->dir.y - 2.0 * tmp.x * tmp.x * ray->dir.z - 2.0 * tmp.y * tmp.y * ray->dir.z - 2.0 * obj->mobius.radius * tmp.x * ray->dir.z + 2.0 * tmp.y * tmp.z * ray->dir.z;
+  s[3] = tmp.y * tmp.z * tmp.z + tmp.y * tmp.y * tmp.y + tmp.x * tmp.x * tmp.y - obj->mobius.radius * obj->mobius.radius * tmp.y - 2.0 * tmp.x * tmp.x * tmp.z - 2.0 * tmp.y * tmp.y * tmp.z - 2.0 * obj->mobius.radius * tmp.x * tmp.z;
+  if ((inter->dist = solver_n_degree(s, 3)) == NOT_A_SOLUTION)
+      inter->dist = -1.0;
 }
 
 t_intersect	get_intersect_mobius(t_obj *obj, t_ray *ray)
@@ -48,7 +39,7 @@ t_intersect	get_intersect_mobius(t_obj *obj, t_ray *ray)
   inter.dir = ray->dir;
   inter.mat = obj->mat;
   inter.dist = -1.0;
-  get_dist_mobius(obj, ray, &inter);
+  get_dist_mobius(obj, ray, &inter, sub_vec3(ray->pos, obj->pos));
   if (inter.dist == -1.0)
     {
       inter.dist = -1.0;

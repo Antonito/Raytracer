@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 01:06:07 2016 Ludovic Petrenko
-** Last update Sat May 14 23:03:52 2016 Antoine Baché
+** Last update Sun May 15 03:16:02 2016 Antoine Baché
 */
 
 #include <math.h>
@@ -120,4 +120,50 @@ void	load_barth_sextic(t_obj *obj, const t_bunny_ini_scope *scope)
   (void)scope;
   obj->type = BARTH_SEXTIC;
   obj->get_intersect = &get_intersect_barth_sextic;
+}
+
+void	load_bifolia(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = BIFOLIA;
+  obj->get_intersect = &get_intersect_bifolia;
+}
+
+void	load_duplin(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = DUPLIN;
+  obj->get_intersect = &get_intersect_duplin;
+}
+
+void	load_cushion(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = DUPLIN;
+  obj->get_intersect = &get_intersect_cushion;
+}
+
+void	load_double_sphere(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  char	*tmp;
+
+  obj->type = DOUBLE_SPHERE;
+  obj->sphere.radius = DEFAULT_SPHERE_RADIUS;
+  obj->get_intersect = &get_intersect_double_sphere;
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, RADIUS_FIELD, 0)))
+    obj->sphere.radius = my_getdouble(tmp);
+}
+
+void	load_tooth(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = TOOTH;
+  obj->get_intersect = &get_intersect_tooth;
+}
+
+void	load_heart(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = HEART;
+  obj->get_intersect = &get_intersect_heart;
 }
