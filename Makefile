@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sun May 15 14:48:22 2016 Antoine Baché
+## Last update Sun May 15 14:52:39 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -118,7 +118,7 @@ SHAPE_FILES=		plane.c				\
 			klein_normale.c			\
 			hyperbola.c			\
 			ellipsoid.c			\
-			ply.c
+			ply.c				\
 			boy.c				\
 			cassini.c			\
 			chair.c				\
