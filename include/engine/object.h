@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:33:45 2016 Ludovic Petrenko
-** Last update Sun May 15 03:21:53 2016 Antoine Baché
+** Last update Sun May 15 04:27:30 2016 Antoine Baché
 */
 
 #ifndef OBJECT_H_
@@ -67,6 +67,10 @@ typedef enum	e_obj_type
     TOOTH,
     HEART,
     HUNT,
+    MITER,
+    KISS,
+    KUMMER,
+    ENNEPER,
     NB_OBJ_TYPE
   }		t_obj_type;
 
@@ -196,6 +200,10 @@ t_intersect	get_intersect_double_sphere(t_obj *, t_ray *);
 t_intersect	get_intersect_tooth(t_obj *, t_ray *);
 t_intersect	get_intersect_heart(t_obj *, t_ray *);
 t_intersect	get_intersect_hunt(t_obj *, t_ray *);
+t_intersect	get_intersect_miter(t_obj *, t_ray *);
+t_intersect	get_intersect_kiss(t_obj *, t_ray *);
+t_intersect	get_intersect_kummer(t_obj *, t_ray *);
+t_intersect	get_intersect_enneper(t_obj *, t_ray *);
 
 /*
 ** Klein specific functions

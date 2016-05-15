@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 19:09:07 2016 Ludovic Petrenko
-** Last update Sun May 15 03:22:09 2016 Antoine Baché
+** Last update Sun May 15 04:27:56 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -71,3 +71,7 @@ void		load_double_sphere(t_obj *obj, const t_bunny_ini_scope *scope);
 void		load_tooth(t_obj *obj, const t_bunny_ini_scope *scope);
 void		load_heart(t_obj *obj, const t_bunny_ini_scope *scope);
 void		load_hunt(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_miter(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_kiss(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_kummer(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_enneper(t_obj *obj, const t_bunny_ini_scope *scope);

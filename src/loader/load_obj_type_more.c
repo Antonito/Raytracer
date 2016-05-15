@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 01:06:07 2016 Ludovic Petrenko
-** Last update Sun May 15 03:24:07 2016 Antoine Baché
+** Last update Sun May 15 04:30:54 2016 Antoine Baché
 */
 
 #include <math.h>
@@ -171,6 +171,34 @@ void	load_heart(t_obj *obj, const t_bunny_ini_scope *scope)
 void	load_hunt(t_obj *obj, const t_bunny_ini_scope *scope)
 {
   (void)scope;
-  obj->type = HEART;
+  obj->type = HUNT;
   obj->get_intersect = &get_intersect_hunt;
+}
+
+void	load_miter(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = MITER;
+  obj->get_intersect = &get_intersect_miter;
+}
+
+void	load_kiss(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = KISS;
+  obj->get_intersect = &get_intersect_kiss;
+}
+
+void	load_kummer(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = KUMMER;
+  obj->get_intersect = &get_intersect_kummer;
+}
+
+void	load_enneper(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = ENNEPER;
+  obj->get_intersect = &get_intersect_enneper;
 }
