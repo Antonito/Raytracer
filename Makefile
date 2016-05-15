@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Fri May 13 13:21:55 2016 Antoine Baché
+## Last update Sun May 15 04:28:09 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -117,7 +117,26 @@ SHAPE_FILES=		plane.c				\
 			klein_coef_more.c		\
 			klein_normale.c			\
 			hyperbola.c			\
-			ellipsoid.c
+			ellipsoid.c			\
+			boy.c				\
+			cassini.c			\
+			chair.c				\
+			kusner.c			\
+			tritrumpet.c			\
+			whitney.c			\
+			tetrahedral.c			\
+			barth_sextic.c			\
+			bifolia.c			\
+			duplin.c			\
+			cushion.c			\
+			double_sphere.c			\
+			tooth.c				\
+			heart.c				\
+			hunt.c				\
+			miter.c				\
+			kiss.c				\
+			kummer.c			\
+			enneper.c
 
 NET_TOOLS_PREFIX=	src/cluster/
 
