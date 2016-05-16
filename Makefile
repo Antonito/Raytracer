@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Fri May 13 13:21:55 2016 Antoine Baché
+## Last update Mon May 16 16:26:44 2016 Luka Boulagnon
 ##
 
 DEBUG=			yes
@@ -13,6 +13,7 @@ DEBUG=			yes
 SRC_PREFIX=		src/
 
 SRC_FILES=		init_data.c			\
+			joystick.c			\
 			build_octree.c			\
 			calc_fragment.c			\
 			calc_ray.c			\

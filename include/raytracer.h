@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Fri May 13 17:27:31 2016 Antoine Baché
+** Last update Mon May 16 19:54:50 2016 Luka Boulagnon
 */
 
 #ifndef	RAYTRACER2_H_
@@ -101,19 +101,29 @@ typedef struct		s_network
   bool			draw;
 }			t_network;
 
+typedef struct		s_joy_move
+{
+  double		hor;
+  double		lat;
+  double		lon;
+  double		ver;
+  int			needed_fps;
+}			t_joy_move;
+
 typedef struct		s_data
 {
-  t_bunny_window	*win;
-  t_bunny_pixelarray	*render;
-  int			width;
-  int			height;
-  int			cur_width;
-  int			cur_height;
-  int			minimum_fps;
   bool			fullscreen;
-  t_scene		*scene;
+  int			cur_height;
+  int			cur_width;
+  int			height;
+  int			minimum_fps;
+  int			width;
+  t_bunny_pixelarray	*render;
+  t_bunny_window	*win;
   t_config		config;
+  t_joy_move		joy;
   t_network		network;
+  t_scene		*scene;
 }			t_data;
 
 typedef struct		s_calc_fragment
@@ -136,5 +146,11 @@ void			set_vectors(t_data *data, t_camera *c);
 void			refresh_size(t_data *data, int frame);
 void			blit_scaled(t_bunny_pixelarray *, t_bunny_pixelarray *);
 int			free_raytracer(t_data *data, int ret);
+t_bunny_response	joystick_axises(int, t_bunny_axis, float, t_data *);
+t_bunny_response	joystick_buttons(t_bunny_event_state, int, int,
+					 t_data *);
+t_bunny_response	joystick_connected(t_bunny_event_state, int,
+					   const t_bunny_joystick, void *);
+void			joy_preceed_moves(t_data *);
 
 #endif /* RAYTRACER2_H_ */
