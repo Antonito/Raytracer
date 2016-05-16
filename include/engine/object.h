@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:33:45 2016 Ludovic Petrenko
-** Last update Mon May 16 02:48:02 2016 Antoine Baché
+** Last update Mon May 16 14:15:17 2016 Antoine Baché
 */
 
 #ifndef OBJECT_H_
@@ -25,6 +25,8 @@
 # define DEFAULT_ELLIPSOID_WIDTH	3.0
 # define DEFAULT_HYPERBOLA_HEIGHT	3.0
 # define DEFAULT_SPHERE_RADIUS		0.5
+# define DEFAULT_SPHEROID_RADIUS	DEFAULT_SPHERE_RADIUS
+# define DEFAULT_SPHEROID_HEIGHT	1.0
 # define DEFAULT_PLANE_NORMALE		vec3(0.0, 0.0, 1.0)
 # define DEFAULT_CYLINDER_RADIUS	0.5
 # define DEFAULT_CYLINDER_HEIGHT	5.0
@@ -78,6 +80,8 @@ typedef enum	e_obj_type
     C8,
     CHUBS,
     DEVIL,
+    QUARTIC_CYLINDER,
+    SPHEROID,
     NB_OBJ_TYPE
   }		t_obj_type;
 
@@ -155,6 +159,12 @@ typedef struct	s_ply_load
   t_ply		*ply;
 }		t_ply_load;
 
+typedef struct	s_spheroid
+{
+  double	height;
+  double	radius;
+}		t_spheroid;
+
 typedef struct	s_obj
 {
   t_obj_type	type;
@@ -176,6 +186,7 @@ typedef struct	s_obj
     t_hyperbola	hyperbola;
     t_ellipsoid	ellipsoid;
     t_ply_load	ply;
+    t_spheroid	spheroid;
   };
 }		t_obj;
 
@@ -223,6 +234,8 @@ t_intersect	get_intersect_bohemian_star(t_obj *, t_ray *);
 t_intersect	get_intersect_c8(t_obj *, t_ray *);
 t_intersect	get_intersect_chubs(t_obj *, t_ray *);
 t_intersect	get_intersect_devil(t_obj *, t_ray *);
+t_intersect	get_intersect_quartic_cylinder(t_obj *, t_ray *);
+t_intersect	get_intersect_spheroid(t_obj *, t_ray *);
 
 /*
 ** Klein specific functions

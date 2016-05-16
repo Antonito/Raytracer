@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Mon May 16 02:48:08 2016 Antoine Baché
+## Last update Mon May 16 14:04:26 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -142,7 +142,9 @@ SHAPE_FILES=		plane.c				\
 			bohemian_star.c			\
 			c8.c				\
 			chubs.c				\
-			devil.c
+			devil.c				\
+			quartic_cylinder.c		\
+			spheroid.c
 
 NET_TOOLS_PREFIX=	src/cluster/
 

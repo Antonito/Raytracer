@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 01:06:07 2016 Ludovic Petrenko
-** Last update Mon May 16 02:50:01 2016 Antoine Baché
+** Last update Mon May 16 14:16:24 2016 Antoine Baché
 */
 
 #include <math.h>
@@ -236,4 +236,25 @@ void	load_devil(t_obj *obj, const t_bunny_ini_scope *scope)
   (void)scope;
   obj->type = DEVIL;
   obj->get_intersect = &get_intersect_devil;
+}
+
+void	load_quartic_cylinder(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = QUARTIC_CYLINDER;
+  obj->get_intersect = &get_intersect_quartic_cylinder;
+}
+
+void	load_spheroid(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  char	*tmp;
+
+  obj->type = SPHEROID;
+  obj->spheroid.radius = DEFAULT_SPHEROID_RADIUS;
+  obj->spheroid.height = DEFAULT_SPHEROID_HEIGHT;
+  obj->get_intersect = &get_intersect_double_spheroid;
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, RADIUS_FIELD, 0)))
+    obj->spheroid.radius = my_getdouble(tmp);
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, RADIUS_FIELD, 0)))
+    obj->spheroid.height = my_getdouble(tmp);
 }
