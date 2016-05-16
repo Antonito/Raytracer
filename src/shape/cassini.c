@@ -5,15 +5,14 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May 14 18:31:54 2016 Antoine Baché
-** Last update Sat May 14 20:23:58 2016 Antoine Baché
+** Last update Mon May 16 01:37:26 2016 Antoine Baché
 */
 
 #include "solver.h"
 #include "engine/intersect.h"
 #include "engine/object.h"
 
-static void	get_dist_cassini(t_obj *obj, t_ray *ray, t_intersect *inter,
-				 t_vec3 tmp)
+static void	get_dist_cassini(t_ray *ray, t_intersect *inter, t_vec3 tmp)
 {
   double	t[5];
 
@@ -48,7 +47,7 @@ t_intersect	get_intersect_cassini(t_obj *obj, t_ray *ray)
   inter.dir = ray->dir;
   inter.mat = obj->mat;
   inter.dist = -1.0;
-  get_dist_cassini(obj, ray, &inter, sub_vec3(ray->pos, obj->pos));
+  get_dist_cassini(ray, &inter, sub_vec3(ray->pos, obj->pos));
   if (inter.dist <= 0.0)
     return (inter);
   return (inter);

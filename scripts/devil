@@ -1,0 +1,10 @@
+============
+- 0.36 * tmp.x * tmp.x + 0.25 * tmp.y * tmp.y + 2.0 * tmp.x * tmp.x * tmp.z * tmp.z + tmp.x * tmp.x * tmp.x * tmp.x - tmp.y * tmp.y * tmp.y * tmp.y + tmp.z * tmp.z * tmp.z * tmp.z ^ 1
+============
++ t * (4.0 * tmp.x * tmp.z * tmp.z * ray->dir.x + 4.0 * tmp.x * tmp.x * tmp.x * ray->dir.x - 0.72 * tmp.x * ray->dir.x - 4.0 * tmp.y * tmp.y * tmp.y * ray->dir.y + 0.5 * tmp.y * ray->dir.y + 4.0 * tmp.z * tmp.z * tmp.z * ray->dir.z + 4.0 * tmp.x * tmp.x * tmp.z * ray->dir.z)
+===============
++ t * t * (6.0 * tmp.x * tmp.x * ray->dir.x * ray->dir.x + 2.0 * tmp.z * tmp.z * ray->dir.x * ray->dir.x - 0.36 * ray->dir.x * ray->dir.x - 6.0 * tmp.y * tmp.y * ray->dir.y * ray->dir.y + 0.25 * ray->dir.y * ray->dir.y + 2.0 * tmp.x * tmp.x * ray->dir.z * ray->dir.z + 6.0 * tmp.z * tmp.z * ray->dir.z * ray->dir.z + 8.0 * tmp.x * tmp.z * ray->dir.x * ray->dir.z)
+===============
++ t * t * t * (4.0 * tmp.x * ray->dir.x * ray->dir.z * ray->dir.z + 4.0 * tmp.x * ray->dir.x * ray->dir.x * ray->dir.x - 4.0 * tmp.y * ray->dir.y * ray->dir.y * ray->dir.y + 4.0 * tmp.z * ray->dir.z * ray->dir.z * ray->dir.z + 4.0 * tmp.z * ray->dir.x * ray->dir.x * ray->dir.z)
+===============
++ t * t * t * t * (2.0 * ray->dir.x * ray->dir.x * ray->dir.z * ray->dir.z + ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.x - ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y + ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z)

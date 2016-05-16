@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:33:45 2016 Ludovic Petrenko
-** Last update Sun May 15 14:49:04 2016 Antoine Baché
+** Last update Mon May 16 02:48:02 2016 Antoine Baché
 */
 
 #ifndef OBJECT_H_
@@ -73,6 +73,11 @@ typedef enum	e_obj_type
     KISS,
     KUMMER,
     ENNEPER,
+    BOHEMIAN_DOME,
+    BOHEMIAN_STAR,
+    C8,
+    CHUBS,
+    DEVIL,
     NB_OBJ_TYPE
   }		t_obj_type;
 
@@ -213,6 +218,11 @@ t_intersect	get_intersect_miter(t_obj *, t_ray *);
 t_intersect	get_intersect_kiss(t_obj *, t_ray *);
 t_intersect	get_intersect_kummer(t_obj *, t_ray *);
 t_intersect	get_intersect_enneper(t_obj *, t_ray *);
+t_intersect	get_intersect_bohemian_dome(t_obj *, t_ray *);
+t_intersect	get_intersect_bohemian_star(t_obj *, t_ray *);
+t_intersect	get_intersect_c8(t_obj *, t_ray *);
+t_intersect	get_intersect_chubs(t_obj *, t_ray *);
+t_intersect	get_intersect_devil(t_obj *, t_ray *);
 
 /*
 ** Klein specific functions

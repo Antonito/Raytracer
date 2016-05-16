@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May 14 22:13:54 2016 Antoine Baché
-** Last update Sat May 14 22:18:52 2016 Antoine Baché
+** Last update Mon May 16 01:49:27 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -13,8 +13,7 @@
 #include "engine/object.h"
 #include "tools/memory.h"
 
-static void	get_dist_tritrumpet(t_obj *obj, t_ray *ray, t_intersect *inter,
-			       t_vec3 tmp)
+static void	get_dist_tritrumpet(t_ray *ray, t_intersect *inter, t_vec3 tmp)
 {
   double	*s;
 
@@ -41,7 +40,7 @@ t_intersect	get_intersect_tritrumpet(t_obj *obj, t_ray *ray)
   inter.dir = ray->dir;
   inter.mat = obj->mat;
   inter.dist = -1.0;
-  get_dist_tritrumpet(obj, ray, &inter, sub_vec3(ray->pos, obj->pos));
+  get_dist_tritrumpet(ray, &inter, sub_vec3(ray->pos, obj->pos));
   if (inter.dist <= 0.0)
     return (inter);
   return (inter);

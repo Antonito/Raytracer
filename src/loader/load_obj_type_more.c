@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 01:06:07 2016 Ludovic Petrenko
-** Last update Sun May 15 04:30:54 2016 Antoine Baché
+** Last update Mon May 16 02:50:01 2016 Antoine Baché
 */
 
 #include <math.h>
@@ -201,4 +201,39 @@ void	load_enneper(t_obj *obj, const t_bunny_ini_scope *scope)
   (void)scope;
   obj->type = ENNEPER;
   obj->get_intersect = &get_intersect_enneper;
+}
+
+void	load_bohemian_dome(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = BOHEMIAN_DOME;
+  obj->get_intersect = &get_intersect_bohemian_dome;
+}
+
+void	load_bohemian_star(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = BOHEMIAN_DOME;
+  obj->get_intersect = &get_intersect_bohemian_star;
+}
+
+void	load_c8(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = C8;
+  obj->get_intersect = &get_intersect_c8;
+}
+
+void	load_chubs(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = CHUBS;
+  obj->get_intersect = &get_intersect_chubs;
+}
+
+void	load_devil(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = DEVIL;
+  obj->get_intersect = &get_intersect_devil;
 }

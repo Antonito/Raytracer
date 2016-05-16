@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 16 16:32:45 2016 Ludovic Petrenko
-** Last update Sun May 15 17:45:35 2016 Antoine Baché
+** Last update Mon May 16 01:34:52 2016 Antoine Baché
 */
 
 #include <stdio.h>
@@ -112,7 +112,6 @@ void	print_ply(t_ply *ply)
   while (i < ply->nb_face)
     {
       j = 0;
-      printf("ply->list_face.nb_face = %d\n", ply->list_face[i].nb_face);
       while (j < ply->list_face[i].nb_face)
 	{
 	  printf("Face %d : %d\n", i, ply->list_face[i].face[j]);
@@ -127,8 +126,8 @@ int	launch_raytracer(t_data *data)
   data->cur_width = data->width / 2;
   data->cur_height = data->height / 2;
   print_scenes(data->scene);
-  printf("Objs[1]Type = %d\n", data->scene->objs[1].type);
-  print_ply(data->scene->objs[1].ply.ply);
+  /* printf("Objs[1]Type = %d\n", data->scene->objs[1].type); */
+  /* print_ply(data->scene->objs[1].ply.ply); */
   if (init_server(data))
     return (free_raytracer(data, 1));
   printf("Starting to draw\n");

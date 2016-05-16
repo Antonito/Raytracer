@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 19:09:07 2016 Ludovic Petrenko
-** Last update Sun May 15 14:49:24 2016 Antoine Baché
+** Last update Mon May 16 02:48:26 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -76,3 +76,8 @@ void		load_miter(t_obj *obj, const t_bunny_ini_scope *scope);
 void		load_kiss(t_obj *obj, const t_bunny_ini_scope *scope);
 void		load_kummer(t_obj *obj, const t_bunny_ini_scope *scope);
 void		load_enneper(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_bohemian_dome(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_bohemian_star(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_c8(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_chubs(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_devil(t_obj *obj, const t_bunny_ini_scope *scope);

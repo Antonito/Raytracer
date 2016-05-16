@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sun May 15 14:52:39 2016 Antoine Baché
+## Last update Mon May 16 02:48:08 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -137,7 +137,12 @@ SHAPE_FILES=		plane.c				\
 			miter.c				\
 			kiss.c				\
 			kummer.c			\
-			enneper.c
+			enneper.c			\
+			bohemian_dome.c			\
+			bohemian_star.c			\
+			c8.c				\
+			chubs.c				\
+			devil.c
 
 NET_TOOLS_PREFIX=	src/cluster/
 
