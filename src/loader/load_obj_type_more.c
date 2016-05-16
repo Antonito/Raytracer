@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 01:06:07 2016 Ludovic Petrenko
-** Last update Fri May 13 06:44:49 2016 Antoine Baché
+** Last update Sun May 15 04:30:54 2016 Antoine Baché
 */
 
 #include <math.h>
@@ -64,4 +64,141 @@ void	load_ellipsoid(t_obj *obj, const t_bunny_ini_scope *scope)
     obj->ellipsoid.length = my_getdouble(tmp);
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, WIDTH_FIELD, 0)))
     obj->ellipsoid.width = my_getdouble(tmp);
+}
+
+void	load_boy(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = BOY;
+  obj->get_intersect = &get_intersect_boy;
+}
+
+void	load_cassini(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = CASSINI;
+  obj->get_intersect = &get_intersect_cassini;
+}
+
+void	load_chair(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = CHAIR;
+  obj->get_intersect = &get_intersect_chair;
+}
+
+void	load_kusner(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = KUSNER;
+  obj->get_intersect = &get_intersect_kusner;
+}
+
+void	load_tritrumpet(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = TRITRUMPET;
+  obj->get_intersect = &get_intersect_tritrumpet;
+}
+
+void	load_whitney(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = WHITNEY;
+  obj->get_intersect = &get_intersect_whitney;
+}
+
+void	load_tetrahedral(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = TETRAHEDRAL;
+  obj->get_intersect = &get_intersect_tetrahedral;
+}
+
+void	load_barth_sextic(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = BARTH_SEXTIC;
+  obj->get_intersect = &get_intersect_barth_sextic;
+}
+
+void	load_bifolia(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = BIFOLIA;
+  obj->get_intersect = &get_intersect_bifolia;
+}
+
+void	load_duplin(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = DUPLIN;
+  obj->get_intersect = &get_intersect_duplin;
+}
+
+void	load_cushion(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = DUPLIN;
+  obj->get_intersect = &get_intersect_cushion;
+}
+
+void	load_double_sphere(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  char	*tmp;
+
+  obj->type = DOUBLE_SPHERE;
+  obj->sphere.radius = DEFAULT_SPHERE_RADIUS;
+  obj->get_intersect = &get_intersect_double_sphere;
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, RADIUS_FIELD, 0)))
+    obj->sphere.radius = my_getdouble(tmp);
+}
+
+void	load_tooth(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = TOOTH;
+  obj->get_intersect = &get_intersect_tooth;
+}
+
+void	load_heart(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = HEART;
+  obj->get_intersect = &get_intersect_heart;
+}
+
+void	load_hunt(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = HUNT;
+  obj->get_intersect = &get_intersect_hunt;
+}
+
+void	load_miter(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = MITER;
+  obj->get_intersect = &get_intersect_miter;
+}
+
+void	load_kiss(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = KISS;
+  obj->get_intersect = &get_intersect_kiss;
+}
+
+void	load_kummer(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = KUMMER;
+  obj->get_intersect = &get_intersect_kummer;
+}
+
+void	load_enneper(t_obj *obj, const t_bunny_ini_scope *scope)
+{
+  (void)scope;
+  obj->type = ENNEPER;
+  obj->get_intersect = &get_intersect_enneper;
 }

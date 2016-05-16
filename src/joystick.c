@@ -5,7 +5,7 @@
 ** Login   <boulag_l@epitech.net>
 ** 
 ** Started on  Mon May 16 16:16:01 2016 Luka Boulagnon
-** Last update Mon May 16 19:56:22 2016 Luka Boulagnon
+** Last update Mon May 16 21:47:47 2016 Luka Boulagnon
 */
 
 #include <sys/time.h>
@@ -33,9 +33,9 @@ t_bunny_response	joystick_axises(int UNUSED joyid, t_bunny_axis axis,
   else if (axis == 1)
     data->joy.lon = -value / -20000000.0;
   else if (axis == 2)
-    data->joy.hor = value / -3200000.0;
+    data->joy.hor = value / 3200000.0;
   else if (axis == 3)
-    data->joy.ver = value / -3200000.0;
+    data->joy.ver = value / 3200000.0;
   return (GO_ON);
 }
 

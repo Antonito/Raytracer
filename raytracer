@@ -4,11 +4,410 @@
 .SH NAME
 raytracer - A liblapin raytracing software
 .SH SYNOPSIS
-raytracer [scene_file.ini]
+raytracer [
+.I scene_file.ini
+]
 .SH DESCRIPTION
 Il faut mettre la description que l'on souhaite ici
-.SH OPTIONS
-Toutes les options dispos sur notre RT
+.SH SCENES
+
+[This_is_a_scope]
+.br
+parameter1=0
+.br
+parameter2=0.1,0.5,200.0
+.br
+parameter3="FooFoo", "BarBar"
+
+This is an example of a
+.I scope.
+Each parameter has 1 or more index.
+The data type is not important, but has to be valid.
+.br
+(ex: if we wait a number,
+.B "Hello"
+is not valid)
+
+
+The color parameters use
+.I hexadecimal
+notation:
+.br
+0xAABBGGRR or 0xBBGGRR
+.br
+(A -> Alpha | B -> Blue | G -> Green | R -> Red)
+
+The position/direction parameters are points in space or 3D vectors:
+x,y,z
+.br
+You can either use
+.I integer
+or
+.I floating-point
+values.
+
+Rotation has the same notation (x,y,z) but is different:
+It's the rotation angle applied on axis x, y, and z for that object, in this precise order.
+Those angles are in
+.I degree.
+
+
+The
+.B scopes:
+
+[scene]
+.br
+width=1920
+.br
+height=1080
+.br
+background_color=0xFF00AA
+
+If you use this scope, the name should always be "
+.I scene
+".
+The parameters are all optionnals, if you don't use it, default values will be used.
+
+
+[camera]
+.br
+position=-5.0,0.1,0.3
+.br
+direction=0,0,0
+.br
+focale=0.1
+.br
+fov=90
+
+If you use this scope, the name should always be "scene".
+The parameters are all
+.I optionnals
+, if you don't use them,
+.I default values
+will be used.
+
+
+[mat_glass]
+.br
+color=0xFF00AA
+.br
+opacity=0.3
+.br
+reflectivity=0.4
+.br
+fresnel=0.8
+
+This is a
+.I material.
+The name should always begin with "
+.I mat_
+".
+.br
+They will be applied on the objects.
+Those are visual properties.
+You can have more than one material.
+.br
+The parameters are all
+.I optionnals
+, if you don't use them,
+.I default values
+will be used.
+
+
+[light_1]
+.br
+type=point
+.br
+position=0,3,5
+.br
+color=0xFFFFFF
+.br
+radius=0.5
+.br
+power=9.3
+
+[light_2]
+.br
+type=directionnal
+.br
+position=0,3,5
+.br
+direction=3,2.5,1
+.br
+color=0xFFFF00
+.br
+power=5
+
+[light_3]
+.br
+type=spot
+.br
+position=0,3,5
+.br
+direction=3,2.5,1
+.br
+color=0xFF00FF
+.br
+radius=0.9
+.br
+power=10
+
+Those are
+.I lights.
+The name should always begin with "
+.I light_
+".
+.br
+You can choose the type between [
+.B point
+|
+.B directionnal
+|
+.B spot
+].
+.br
+The parameters are all
+.I optionnals
+, if you don't use them,
+.I default values
+will be used.
+
+
+[obj_1]
+.br
+type=sphere
+.br
+position=0,0,0
+.br
+rotation=0,0,0
+.br
+material=mat_glass
+.br
+radius=3.0
+
+[obj_002]
+.br
+type=plane
+.br
+position=3,0,0
+.br
+rotation=0,0,30
+.br
+material=mat_glass
+.br
+normale=1,0,2
+
+[obj_example]
+.br
+type=cylinder
+.br
+position=3,6,0
+.br
+rotation=20,0,0
+.br
+material=mat_glass
+.br
+radius=2.0
+.br
+height=9
+
+[obj_cone]
+.br
+type=cone
+.br
+position=0,2,2
+.br
+rotation=0,90,0
+.br
+material=mat_glass
+.br
+angle=45
+.br
+height=5
+
+Those are
+.I objects.
+The name should always begin with "
+.I obj_
+".
+.br
+You can choose the type between
+.br
+[
+. B sphere
+|
+. B plane
+|
+.B cylinder
+|
+.B cone
+|
+.B triangle
+|
+.B torus
+|
+.B mobius
+|
+.B void_cube
+|
+.B klein
+|
+.B hyperbola
+|
+.B ellipsoid
+|
+.B boy
+|
+.B cassini
+|
+.B chair
+|
+.B kusner
+|
+.B tritrumpet
+|
+.B whitney
+|
+.B tetrahedral
+|
+.B barth_sextic
+].
+.br
+You can also choose the material with his
+.I scope name.
+.br
+The parameters are all
+.I optionnals
+, if you don't use it,
+.I default values
+will be used.
+
+.SH OBJECTS
+Each object has its own
+.I parameters.
+.br
+.B Sphere:
+You can specify the
+.I radius
+of the sphere
+.br
+.B Plane:
+You can specify the
+.I normal
+vector in
+.B x
+,
+.B y
+,
+.B z
+coordonates.
+.br
+.B Cylinder:
+You can specify the
+.I radius
+of the cylinder, and also its
+.I height
+.br
+.B Cone:
+You can specify the
+.I radius
+of the cone, and also its
+.I height
+.br
+.B Triangle:
+No specific parameters.
+.br
+.B Torus:
+You can specify the
+.I radius of the hole
+(
+.B radius_hole
+) and the
+.I radius of the solid part
+(
+.B radius_solid
+).
+.br
+.B Mobius:
+No specific parameters.
+.br
+.B Void_cube:
+No specific parameters.
+.br
+.B Klein:
+No specific parameters.
+.br
+.B Hyperbola:
+No specific parameters.
+.br
+.B Ellipsoid:
+You can specify the
+.I height
+, the
+.I length
+and the
+.I width
+of the ellipsoid.
+.br
+.B Boy:
+No specific parameters.
+.br
+.B Cassini:
+No specific parameters.
+.br
+.B Chair:
+No specific parameters.
+.br
+.B Kusner:
+No specific parameters.
+.br
+.B Tritrumpet:
+No specific parameters.
+.br
+.B Whitney:
+No specific parameters.
+.br
+.B Tetrahedral:
+No specific parameters.
+.br
+.B Barth_sextic:
+No specific parameters.
+
+.SH SCRIPTS
+.B before_expand.sh
+script replaces all the
+.I x
+,
+.I y
+and
+.I z
+in an equation by, respectivly,
+.I (a+k*t)
+,
+.I (b+l*t)
+and
+.I (z+m*t)
+
+Once you developped your expression, you can turn it into a polynomial equation thanks to
+.B toto.sh
+, which will look like this :
+
+.I A
+* x^4 +
+.I B
+* x^3 +
+.I C
+* x^2 +
+.I D
+* x +
+.I E
+= 0
+
+The script's output starts with
+.I E
+and ends with
+.I A
+
 .SH BUGS
 No known bugs.
 .SH AUTHORS

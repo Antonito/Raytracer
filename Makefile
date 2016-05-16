@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Mon May 16 16:26:44 2016 Luka Boulagnon
+## Last update Mon May 16 21:47:12 2016 Luka Boulagnon
 ##
 
 DEBUG=			yes
@@ -65,7 +65,8 @@ NETWORK_FILES=		camera.c			\
 			materials.c			\
 			objects.c			\
 			scene.c				\
-			server.c
+			server.c			\
+			select.c
 
 CLIENT_PREFIX=		src/client/
 
@@ -118,7 +119,26 @@ SHAPE_FILES=		plane.c				\
 			klein_coef_more.c		\
 			klein_normale.c			\
 			hyperbola.c			\
-			ellipsoid.c
+			ellipsoid.c			\
+			boy.c				\
+			cassini.c			\
+			chair.c				\
+			kusner.c			\
+			tritrumpet.c			\
+			whitney.c			\
+			tetrahedral.c			\
+			barth_sextic.c			\
+			bifolia.c			\
+			duplin.c			\
+			cushion.c			\
+			double_sphere.c			\
+			tooth.c				\
+			heart.c				\
+			hunt.c				\
+			miter.c				\
+			kiss.c				\
+			kummer.c			\
+			enneper.c
 
 NET_TOOLS_PREFIX=	src/cluster/
 
