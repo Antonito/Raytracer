@@ -271,6 +271,44 @@ You can choose the type between
 .B tetrahedral
 |
 .B barth_sextic
+|
+.B bifolia
+|
+.B duplin
+|
+.B cushion
+|
+.B double_sphere
+|
+.B tooth
+|
+.B heart
+|
+.B hunt
+|
+.B miter
+|
+.B kiss
+|
+.B kummer
+|
+.B enneper
+|
+.B bohemian_dome
+|
+.B bohemian_star
+|
+.B c8
+|
+.B chubs
+|
+.B devil
+|
+.B quartic_cylinder
+|
+.B spheroid
+|
+.B ply
 ].
 .br
 You can also choose the material with his
@@ -372,6 +410,65 @@ No specific parameters.
 .br
 .B Barth_sextic:
 No specific parameters.
+.br
+.B Bifolia:
+No specific parameters.
+.br
+.B Duplin:
+No specific parameters.
+.br
+.B Cushion:
+No specific parameters.
+.br
+.B Double Sphere:
+No specific parameters.
+.br
+.B Tooth:
+No specific parameters.
+.br
+.B Heart:
+No specific parameters.
+.br
+.B Hunt:
+No specific parameters.
+.br
+.B Miter:
+No specific parameters.
+.br
+.B Kiss:
+No specific parameters.
+.br
+.B Kummer:
+No specific parameters.
+.br
+.B Enneper:
+No specific parameters.
+.br
+.B Bohemian Dome:
+No specific parameters.
+.br
+.B Bohemian Star:
+No specific parameters.
+.br
+.B C8:
+No specific parameters.
+.br
+.B Chubs:
+No specific parameters.
+.br
+.B Devil:
+No specific parameters.
+.br
+.B Quartic Cylinder:
+No specific parameters.
+.br
+.B Spheroid:
+No specific parameters.
+.br
+.B Ply:
+You can specify the path (
+.I file="path/file.ply"
+) of the file you want to load.
 
 .SH SCRIPTS
 .B before_expand.sh

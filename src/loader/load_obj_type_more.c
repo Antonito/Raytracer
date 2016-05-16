@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 01:06:07 2016 Ludovic Petrenko
-** Last update Mon May 16 14:16:24 2016 Antoine Baché
+** Last update Mon May 16 14:46:18 2016 Antoine Baché
 */
 
 #include <math.h>
@@ -245,6 +245,7 @@ void	load_quartic_cylinder(t_obj *obj, const t_bunny_ini_scope *scope)
   obj->get_intersect = &get_intersect_quartic_cylinder;
 }
 
+#pragma message("Spheroid a implementer")
 void	load_spheroid(t_obj *obj, const t_bunny_ini_scope *scope)
 {
   char	*tmp;
@@ -252,7 +253,7 @@ void	load_spheroid(t_obj *obj, const t_bunny_ini_scope *scope)
   obj->type = SPHEROID;
   obj->spheroid.radius = DEFAULT_SPHEROID_RADIUS;
   obj->spheroid.height = DEFAULT_SPHEROID_HEIGHT;
-  obj->get_intersect = &get_intersect_double_spheroid;
+  obj->get_intersect = &get_intersect_spheroid;
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, RADIUS_FIELD, 0)))
     obj->spheroid.radius = my_getdouble(tmp);
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, RADIUS_FIELD, 0)))
