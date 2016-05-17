@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Mon May 16 14:49:37 2016 Antoine Baché
+## Last update Tue May 17 17:57:12 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -152,6 +152,13 @@ NET_TOOLS_FILES=	messages.c			\
 			numbers.c			\
 			packet.c
 
+THREADPOOL_PREFIX=	src/threadpool/
+
+THREADPOOL_FILES=	init.c				\
+			pool.c				\
+			queue.c				\
+			task.c
+
 TOOLS_PREFIX=		src/tools/
 
 TOOLS_FILES=		memory.c			\
@@ -181,7 +188,9 @@ PLY_FILES=		add_element.c			\
 			fill_ply.c			\
 			parse_prop.c			\
 			free_ply.c			\
-			read_header.c
+			read_header.c			\
+			resize.c			\
+			build_obj.c
 
 SRC=			$(addprefix $(SRC_PREFIX),$(SRC_FILES))
 
@@ -199,6 +208,8 @@ SRC_SOLVER=		$(addprefix $(SOLVER_PREFIX),$(SOLVER_FILES))
 
 SRC_NET_TOOLS=		$(addprefix $(NET_TOOLS_PREFIX),$(NET_TOOLS_FILES))
 
+SRC_THREADPOOL=		$(addprefix $(THREADPOOL_PREFIX),$(THREADPOOL_FILES))
+
 SRC_TOOLS=		$(addprefix $(TOOLS_PREFIX),$(TOOLS_FILES))
 
 SRC_PLY=		$(addprefix $(PLY_PREFIX),$(PLY_FILES))
@@ -206,6 +217,8 @@ SRC_PLY=		$(addprefix $(PLY_PREFIX),$(PLY_FILES))
 SRC+=			$(SRC_NOISE)
 
 SRC+=			$(SRC_NETWORK)
+
+SRC+=			$(SRC_THREADPOOL)
 
 SRC+=			$(SRC_TOOLS)
 

@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Wed Apr 20 09:57:10 2016 Arthur ARNAUD
-** Last update Sun May 15 15:34:13 2016 Antoine Baché
+** Last update Tue May 17 17:54:53 2016 Antoine Baché
 */
 
 #ifndef PLY_H_
@@ -129,5 +129,6 @@ int		parse_color_vertex(t_color *, char **, int *);
 void		free_tab(char **tab);
 void		free_ply_info(t_ply_info *info);
 void		free_ply(t_ply *ply);
+void		resize_ply(t_ply *ply, double ratio);
 
 #endif /* !PLY_H_ */

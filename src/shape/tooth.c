@@ -5,14 +5,14 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun May 15 02:56:04 2016 Antoine Baché
-** Last update Sun May 15 03:02:30 2016 Antoine Baché
+** Last update Mon May 16 15:04:14 2016 Antoine Baché
 */
 
 #include "solver.h"
 #include "engine/intersect.h"
 #include "engine/object.h"
 
-static void	get_dist_tooth(t_obj *obj, t_ray *ray, t_intersect *inter,
+static void	get_dist_tooth(t_ray *ray, t_intersect *inter,
 			       t_vec3 tmp)
 {
   double	s[5];
@@ -44,7 +44,7 @@ t_intersect	get_intersect_tooth(t_obj *obj, t_ray *ray)
   inter.dir = ray->dir;
   inter.mat = obj->mat;
   inter.dist = -1.0;
-  get_dist_tooth(obj, ray, &inter, sub_vec3(ray->pos, obj->pos));
+  get_dist_tooth(ray, &inter, sub_vec3(ray->pos, obj->pos));
   if (inter.dist <= 0.0)
     return (inter);
   return (inter);

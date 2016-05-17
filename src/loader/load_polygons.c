@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri May 13 06:44:05 2016 Antoine Baché
-** Last update Sun May 15 15:10:52 2016 Antoine Baché
+** Last update Tue May 17 17:55:46 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -14,9 +14,9 @@
 #include "engine/vector.h"
 #include "engine/object.h"
 
-void	load_triangle(t_obj *obj, const t_bunny_ini_scope *scope)
+void		load_triangle(t_obj *obj, const t_bunny_ini_scope *scope)
 {
-  char	*tmp;
+  char		*tmp;
 
   obj->type = TRIANGLE;
   obj->get_intersect = &get_intersect_triangle;
@@ -43,14 +43,20 @@ void	load_triangle(t_obj *obj, const t_bunny_ini_scope *scope)
     obj->triangle.pts[2].z = my_getdouble(tmp);
 }
 
-void	load_ply(t_obj *obj, const t_bunny_ini_scope *scope)
+void		load_ply(t_obj *obj, const t_bunny_ini_scope *scope)
 {
-  t_ply	*ply;
-  char	*tmp;
+  char		*tmp;
+  double	ratio;
 
   obj->type = PLY;
   obj->get_intersect = &get_intersect_ply;
   obj->ply.ply = NULL;
+  ratio = 1.0;
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, FILE_PATH, 0)))
     obj->ply.ply = get_ply((!tmp) ? "" : tmp);
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, RATIO_FIELD, 0)))
+    ratio = my_getdouble(tmp);
+  if (ratio != 1.0 && ratio != 0.0)
+    resize_ply(obj->ply.ply, ratio);
+  build_ply_obj(obj);
 }

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun May 15 00:07:30 2016 Antoine Baché
-** Last update Sun May 15 01:00:43 2016 Antoine Baché
+** Last update Mon May 16 15:05:46 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -42,8 +42,8 @@ inline static double	calc_b_bifolia(t_ray *ray, t_vec3 tmp)
 	  ray->dir.z);
 }
 
-static void	get_dist_bifolia(t_obj *obj, t_ray *ray, t_intersect *inter,
-			       t_vec3 tmp)
+static void	get_dist_bifolia(t_ray *ray, t_intersect *inter,
+				 t_vec3 tmp)
 {
   double	s[5];
 
@@ -78,7 +78,7 @@ t_intersect	get_intersect_bifolia(t_obj *obj, t_ray *ray)
   inter.dir = ray->dir;
   inter.mat = obj->mat;
   inter.dist = -1.0;
-  get_dist_bifolia(obj, ray, &inter, sub_vec3(ray->pos, obj->pos));
+  get_dist_bifolia(ray, &inter, sub_vec3(ray->pos, obj->pos));
   if (inter.dist <= 0.0)
     return (inter);
   return (inter);

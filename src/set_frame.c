@@ -5,12 +5,13 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon May  2 22:15:55 2016 Ludovic Petrenko
-** Last update Sun May 15 16:28:01 2016 Antoine Baché
+** Last update Tue May 17 17:35:21 2016 Antoine Baché
 */
 
 #include <stdio.h>
 #include <pthread.h>
 #include "raytracer.h"
+#include "threadpool.h"
 
 void			refresh_size(t_data *data, int frame)
 {
@@ -30,15 +31,13 @@ void			refresh_size(t_data *data, int frame)
   /* fflush(stdout); */
 }
 
-static void		*call_thread(void *arg)
+void			call_thread(void *arg)
 {
-
   t_calc_fragment	*args;
 
   args = arg;
   calc_fragment(args->data, (unsigned int *)args->data->scene->cache->pixels,
 		args->pos);
-  return (NULL);
 }
 
 static void		set_pos(t_calc_fragment *thread_calc, t_data *data)
@@ -71,6 +70,10 @@ int			set_frame(t_data *data)
   /* while (++i < 4) */
   /*   thread_calc[i].data = data; */
   /* set_pos(thread_calc, data); */
+  /* threadpool_exec(call_thread, &thread_calc[0]); */
+  /* threadpool_exec(call_thread, &thread_calc[1]); */
+  /* threadpool_exec(call_thread, &thread_calc[2]); */
+  /* threadpool_exec(call_thread, &thread_calc[3]); */
   /* set_vectors(data, &data->scene->cam); */
   /* if (pthread_create(&thread[0], NULL, call_thread, &thread_calc[0]) || */
   /*     pthread_create(&thread[1], NULL, call_thread, &thread_calc[1]) || */

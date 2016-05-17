@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May 14 22:32:12 2016 Antoine Baché
-** Last update Sat May 14 22:46:40 2016 Antoine Baché
+** Last update Mon May 16 15:33:57 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -13,8 +13,8 @@
 #include "engine/object.h"
 #include "tools/memory.h"
 
-static void	get_dist_whitney(t_obj *obj, t_ray *ray, t_intersect *inter,
-			       t_vec3 tmp)
+static void	get_dist_whitney(t_ray *ray, t_intersect *inter,
+				 t_vec3 tmp)
 {
   double	*s;
 
@@ -36,7 +36,7 @@ t_intersect	get_intersect_whitney(t_obj *obj, t_ray *ray)
   inter.dir = ray->dir;
   inter.mat = obj->mat;
   inter.dist = -1.0;
-  get_dist_whitney(obj, ray, &inter, sub_vec3(ray->pos, obj->pos));
+  get_dist_whitney(ray, &inter, sub_vec3(ray->pos, obj->pos));
   if (inter.dist <= 0.0)
     return (inter);
   return (inter);

@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 19:09:07 2016 Ludovic Petrenko
-** Last update Mon May 16 14:04:06 2016 Antoine Baché
+** Last update Tue May 17 17:55:29 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -83,3 +83,8 @@ void		load_chubs(t_obj *obj, const t_bunny_ini_scope *scope);
 void		load_devil(t_obj *obj, const t_bunny_ini_scope *scope);
 void		load_quartic_cylinder(t_obj *obj, const t_bunny_ini_scope *);
 void		load_spheroid(t_obj *obj, const t_bunny_ini_scope *scope);
+
+/*
+** Ply functions
+*/
+void		build_ply_obj(t_obj *ply);
