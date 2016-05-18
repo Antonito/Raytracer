@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 16 16:32:45 2016 Ludovic Petrenko
-** Last update Mon May 16 01:34:52 2016 Antoine Baché
+** Last update Wed May 18 04:15:27 2016 Antoine Baché
 */
 
 #include <stdio.h>
@@ -86,6 +86,7 @@ t_bunny_response	main_loop(t_data *data)
   if (events(data) != GO_ON)
     return (EXIT_ON_SUCCESS);
   set_frame(data);
+  joy_proceed_moves(data);
   data->scene->cache->clipable.clip_width = data->cur_width;
   data->scene->cache->clipable.clip_height = data->cur_height;
   blit_scaled(data->scene->cache, data->render);
@@ -135,6 +136,9 @@ int	launch_raytracer(t_data *data)
   bunny_set_key_response((t_bunny_key)main_events);
   bunny_set_move_response((t_bunny_move)mouse_response);
   bunny_set_click_response((t_bunny_click)click_response);
+  bunny_set_joy_axis_response((t_bunny_joy_axis)joystick_axises);
+  bunny_set_joy_button_response((t_bunny_joy_button)joystick_buttons);
+  bunny_set_joy_connect_response((t_bunny_joy_connect)joystick_connected);
   if (bunny_loop(data->win, 120, data) == EXIT_ON_ERROR)
     return (free_raytracer(data, 1));
   return (free_raytracer(data, 0));

@@ -31,5 +31,10 @@ vgcore*
 *.dSYM/
 .#*
 *~
+
 #ctags vim/emacs
 tags
+
+# Vim
+.ycm*
+*.swp

@@ -5,9 +5,10 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun Apr 17 17:25:46 2016 Antoine Baché
-** Last update Sun May  8 17:08:48 2016 Antoine Baché
+** Last update Mon May 16 21:17:29 2016 Luka Boulagnon
 */
 
+#include <sys/select.h>
 #include <unistd.h>
 #include <time.h>
 #include "raytracer.h"
@@ -28,6 +29,18 @@ static int		accept_client(int fd)
     }
   write(1, NEW_CLIENT, sizeof(NEW_CLIENT) - 1);
   return (new_client);
+}
+
+int			new_connection(fd_set *clients, int fd, int *maxfd)
+{
+  int			new_client;
+
+  new_client = accept_client(fd);
+  if (new_client == -1)
+    return (-1);
+  *maxfd = new_client;
+  FD_SET(new_client, clients);
+  return (0);
 }
 
 void			connect_to_server(t_data *data)

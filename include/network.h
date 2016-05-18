@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun Apr 17 14:38:13 2016 Antoine Baché
-** Last update Sat May  7 17:48:01 2016 Antoine Baché
+** Last update Mon May 16 21:41:31 2016 Luka Boulagnon
 */
 
 #ifndef NETWORK_H_
@@ -13,15 +13,14 @@
 
 # define		CONNECTION_DELAY	15
 
-# ifdef _WIN32
-#  include <windows.h>
-#  include <winsock2.h>
-# endif /* _WIN32 */
 # include <netdb.h>
+# include <sys/select.h>
 # include <arpa/inet.h>
 # include <sys/socket.h>
 # include "tools/types.h"
 # include "raytracer.h"
+
+typedef void		*(*t_thread)(void *);
 
 int			init_server(t_data *);
 
@@ -38,6 +37,8 @@ void			read_packet(char *, t_bunny_pixelarray *, const int);
 ** connection.c
 */
 void			connect_to_server(t_data *);
+int			new_connection(fd_set *, int, int *);
+void			*tcp_loop(t_data *);
 
 /*
 ** Send scene

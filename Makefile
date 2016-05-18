@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Tue May 17 17:57:12 2016 Antoine Baché
+## Last update Wed May 18 04:16:17 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -13,6 +13,7 @@ DEBUG=			yes
 SRC_PREFIX=		src/
 
 SRC_FILES=		init_data.c			\
+			joystick.c			\
 			build_octree.c			\
 			calc_fragment.c			\
 			calc_ray.c			\
@@ -64,7 +65,8 @@ NETWORK_FILES=		camera.c			\
 			materials.c			\
 			objects.c			\
 			scene.c				\
-			server.c
+			server.c			\
+			select.c
 
 CLIENT_PREFIX=		src/client/
 
