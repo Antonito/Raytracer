@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May 18 12:36:29 2016 Antoine Baché
-** Last update Wed May 18 18:20:31 2016 Antoine Baché
+** Last update Wed May 18 18:36:54 2016 Antoine Baché
 */
 
 #ifndef EFFECT_H_
@@ -25,7 +25,8 @@ typedef enum		e_effect
     MAX_FILER,
     RETRO,
     WATERCOLOR,
-    SOLARIZED
+    SOLARIZED,
+    ROTATE
   }			t_effect;
 
 void			apply_effect(t_bunny_pixelarray *, t_effect, int, int);
@@ -43,5 +44,6 @@ void			max_filter_effect(t_color *, int, int);
 void			retro_effect(t_color *, int, int);
 void			watercolor_effect(t_color *, int, int);
 void			solarized_effect(t_color *, int, int);
+void			rotate_effect(t_color *, int, int);
 
 #endif /* !EFFECT_H_  */
