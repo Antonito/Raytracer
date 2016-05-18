@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May 14 22:32:12 2016 Antoine Baché
-** Last update Mon May 16 15:33:57 2016 Antoine Baché
+** Last update Wed May 18 03:47:10 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -19,6 +19,7 @@ static void	get_dist_whitney(t_ray *ray, t_intersect *inter,
   double	*s;
 
   if (!(s = my_malloc(sizeof(double) * 4)))
+    return ;
   s[0] = ray->dir.x * ray->dir.x * ray->dir.z;
   s[1] = tmp.z * ray->dir.x * ray->dir.x - ray->dir.y * ray->dir.y +
     2.0 * tmp.x * ray->dir.x * ray->dir.z;

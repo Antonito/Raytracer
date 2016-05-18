@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:33:45 2016 Ludovic Petrenko
-** Last update Tue May 17 18:21:06 2016 Antoine Baché
+** Last update Wed May 18 01:21:30 2016 Antoine Baché
 */
 
 #ifndef OBJECT_H_
@@ -184,6 +184,7 @@ typedef struct		s_obj
     {
       t_ply		*ply;
       struct s_obj	*objs;
+      void		*node;
       int		nb_obj;
     }			ply;
     t_spheroid		spheroid;
@@ -194,6 +195,7 @@ typedef struct		s_ply_load
 {
   t_ply			*ply;
   t_obj			*objs;
+  void			*node;
   int			nb_obj;
 }			t_ply_load;
 

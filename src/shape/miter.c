@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun May 15 03:43:18 2016 Antoine Baché
-** Last update Mon May 16 15:04:43 2016 Antoine Baché
+** Last update Wed May 18 03:45:00 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -14,7 +14,8 @@
 
 inline static double	calc_c_miter(t_ray *ray, t_vec3 tmp)
 {
-  return (24.0 * tmp.x * tmp.x * ray->dir.x * ray->dir.x + 4.0 * tmp.y * tmp.y *
+  return (24.0 * tmp.x * tmp.x * ray->dir.x * ray->dir.x + 4.0 * tmp.y * tmp.y
+	  *
 	  ray->dir.x * ray->dir.x + 4.0 * tmp.z * tmp.z * ray->dir.x *
 	  ray->dir.x -
 	  ray->dir.y * ray->dir.y + 4.0 * tmp.x * tmp.x * ray->dir.y *

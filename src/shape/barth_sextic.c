@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May 14 23:04:44 2016 Antoine Baché
-** Last update Sat May 14 23:09:14 2016 Antoine Baché
+** Last update Wed May 18 03:45:21 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -20,13 +20,175 @@ static void	get_dist_barth_sextic(t_obj *obj, t_ray *ray, t_intersect *inter,
 
   if (!(s = my_malloc(sizeof(double) * 7)))
     return ;
-  s[1] = 27.41640789 * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.y * ray->dir.y + 67.77708776 * ray->dir.x * ray->dir.x * ray->dir.y * ray->dir.y * ray->dir.z * ray->dir.z + 10.47213596 * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.z * ray->dir.z - 27.41640789 * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.z * ray->dir.z + 10.47213596 * ray->dir.x * ray->dir.x * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y - 27.41640789 * ray->dir.x * ray->dir.x * ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z + 10.47213596 * ray->dir.y * ray->dir.y * ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z;
-  s[1] = -109.66563156 * tmp.x * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.y * ray->dir.y + 135.55417552 * tmp.x * ray->dir.x * ray->dir.y * ray->dir.y * ray->dir.z * ray->dir.z + 41.88854384 * tmp.x * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.z * ray->dir.z - 109.66563156 * tmp.y * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.z * ray->dir.z + 135.55417552 * tmp.y * ray->dir.x * ray->dir.x * ray->dir.y * ray->dir.z * ray->dir.z + 41.88854384 * tmp.y * ray->dir.x * ray->dir.x * ray->dir.y * ray->dir.y * ray->dir.y - 109.66563156 * tmp.z * ray->dir.x * ray->dir.x * ray->dir.z * ray->dir.z * ray->dir.z + 41.88854384 * tmp.z * ray->dir.y * ray->dir.y * ray->dir.z * ray->dir.z * ray->dir.z + 20.94427192 * tmp.x * ray->dir.x * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y - 54.83281578 * tmp.x * ray->dir.x * ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z + 20.94427192 * tmp.y * ray->dir.y * ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z - 54.83281578 * tmp.y * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.y + 135.55417552 * tmp.z * ray->dir.x * ray->dir.x * ray->dir.y * ray->dir.y * ray->dir.z + 20.94427192 * tmp.z * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.z - 54.83281578 * tmp.z * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.z;
-  s[2] = -164.49844734 * tmp.x * tmp.x * ray->dir.x * ray->dir.x * ray->dir.y * ray->dir.y + 62.83281576 * tmp.y * tmp.y * ray->dir.x * ray->dir.x * ray->dir.y * ray->dir.y + 67.77708776 * tmp.z * tmp.z * ray->dir.x * ray->dir.x * ray->dir.y * ray->dir.y - 8.472135956 * ray->dir.x * ray->dir.x * ray->dir.y * ray->dir.y + 62.83281576 * tmp.x * tmp.x * ray->dir.x * ray->dir.x * ray->dir.z * ray->dir.z + 67.77708776 * tmp.y * tmp.y * ray->dir.x * ray->dir.x * ray->dir.z * ray->dir.z - 164.49844734 * tmp.z * tmp.z * ray->dir.x * ray->dir.x * ray->dir.z * ray->dir.z - 8.472135956 * ray->dir.x * ray->dir.x * ray->dir.z * ray->dir.z + 67.77708776 * tmp.x * tmp.x * ray->dir.y * ray->dir.y * ray->dir.z * ray->dir.z - 164.49844734 * tmp.y * tmp.y * ray->dir.y * ray->dir.y * ray->dir.z * ray->dir.z + 62.83281576 * tmp.z * tmp.z * ray->dir.y * ray->dir.y * ray->dir.z * ray->dir.z - 8.472135956 * ray->dir.y * ray->dir.y * ray->dir.z * ray->dir.z + 271.10835104 * tmp.x * tmp.y * ray->dir.x * ray->dir.y * ray->dir.z * ray->dir.z + 83.77708768 * tmp.x * tmp.y * ray->dir.x * ray->dir.y * ray->dir.y * ray->dir.y - 219.33126312 * tmp.x * tmp.z * ray->dir.x * ray->dir.z * ray->dir.z * ray->dir.z + 83.77708768 * tmp.y * tmp.z * ray->dir.y * ray->dir.z * ray->dir.z * ray->dir.z - 27.41640789 * tmp.y * tmp.y * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.x + 10.47213596 * tmp.z * tmp.z * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.x - 4.236067978 * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.x + 10.47213596 * tmp.x * tmp.x * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y - 27.41640789 * tmp.z * tmp.z * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y - 4.236067978 * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y - 27.41640789 * tmp.x * tmp.x * ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z + 10.47213596 * tmp.y * tmp.y * ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z - 4.236067978 * ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z - 219.33126312 * tmp.x * tmp.y * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.y + 271.10835104 * tmp.x * tmp.z * ray->dir.x * ray->dir.y * ray->dir.y * ray->dir.z + 83.77708768 * tmp.x * tmp.z * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.z - 219.33126312 * tmp.y * tmp.z * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.z + 271.10835104 * tmp.y * tmp.z * ray->dir.x * ray->dir.x * ray->dir.y * ray->dir.z;
-  s[3] = 125.66563152 * tmp.x * tmp.y * tmp.y * ray->dir.x * ray->dir.y * ray->dir.y + 135.55417552 * tmp.x * tmp.z * tmp.z * ray->dir.x * ray->dir.y * ray->dir.y - 109.66563156 * tmp.x * tmp.x * tmp.x * ray->dir.x * ray->dir.y * ray->dir.y - 16.944271912 * tmp.x * ray->dir.x * ray->dir.y * ray->dir.y + 135.55417552 * tmp.x * tmp.y * tmp.y * ray->dir.x * ray->dir.z * ray->dir.z - 328.99689468 * tmp.x * tmp.z * tmp.z * ray->dir.x * ray->dir.z * ray->dir.z + 41.88854384 * tmp.x * tmp.x * tmp.x * ray->dir.x * ray->dir.z * ray->dir.z - 16.944271912 * tmp.x * ray->dir.x * ray->dir.z * ray->dir.z + 125.66563152 * tmp.y * tmp.z * tmp.z * ray->dir.y * ray->dir.z * ray->dir.z - 109.66563156 * tmp.y * tmp.y * tmp.y * ray->dir.y * ray->dir.z * ray->dir.z - 16.944271912 * tmp.y * ray->dir.y * ray->dir.z * ray->dir.z + 135.55417552 * tmp.x * tmp.x * tmp.y * ray->dir.y * ray->dir.z * ray->dir.z - 109.66563156 * tmp.x * tmp.y * tmp.y * ray->dir.x * ray->dir.x * ray->dir.x + 41.88854384 * tmp.x * tmp.z * tmp.z * ray->dir.x * ray->dir.x * ray->dir.x - 16.944271912 * tmp.x * ray->dir.x * ray->dir.x * ray->dir.x - 109.66563156 * tmp.y * tmp.z * tmp.z * ray->dir.y * ray->dir.y * ray->dir.y - 16.944271912 * tmp.y * ray->dir.y * ray->dir.y * ray->dir.y + 41.88854384 * tmp.x * tmp.x * tmp.y * ray->dir.y * ray->dir.y * ray->dir.y - 16.944271912 * tmp.z * ray->dir.z * ray->dir.z * ray->dir.z - 109.66563156 * tmp.x * tmp.x * tmp.z * ray->dir.z * ray->dir.z * ray->dir.z + 41.88854384 * tmp.y * tmp.y * tmp.z * ray->dir.z * ray->dir.z * ray->dir.z + 135.55417552 * tmp.y * tmp.z * tmp.z * ray->dir.x * ray->dir.x * ray->dir.y + 41.88854384 * tmp.y * tmp.y * tmp.y * ray->dir.x * ray->dir.x * ray->dir.y - 16.944271912 * tmp.y * ray->dir.x * ray->dir.x * ray->dir.y - 328.99689468 * tmp.x * tmp.x * tmp.y * ray->dir.x * ray->dir.x * ray->dir.y - 109.66563156 * tmp.z * tmp.z * tmp.z * ray->dir.x * ray->dir.x * ray->dir.z - 16.944271912 * tmp.z * ray->dir.x * ray->dir.x * ray->dir.z + 125.66563152 * tmp.x * tmp.x * tmp.z * ray->dir.x * ray->dir.x * ray->dir.z + 135.55417552 * tmp.y * tmp.y * tmp.z * ray->dir.x * ray->dir.x * ray->dir.z + 41.88854384 * tmp.z * tmp.z * tmp.z * ray->dir.y * ray->dir.y * ray->dir.z - 16.944271912 * tmp.z * ray->dir.y * ray->dir.y * ray->dir.z + 135.55417552 * tmp.x * tmp.x * tmp.z * ray->dir.y * ray->dir.y * ray->dir.z - 328.99689468 * tmp.y * tmp.y * tmp.z * ray->dir.y * ray->dir.y * ray->dir.z + 542.21670208 * tmp.x * tmp.y * tmp.z * ray->dir.x * ray->dir.y * ray->dir.z;
-  s[4] = -25.416407868 * tmp.x * tmp.x * ray->dir.x * ray->dir.x - 164.49844734 * tmp.x * tmp.x * tmp.y * tmp.y * ray->dir.x * ray->dir.x - 8.472135956 * tmp.y * tmp.y * ray->dir.x * ray->dir.x + 62.83281576 * tmp.x * tmp.x * tmp.z * tmp.z * ray->dir.x * ray->dir.x + 67.77708776 * tmp.y * tmp.y * tmp.z * tmp.z * ray->dir.x * ray->dir.x - 8.472135956 * tmp.z * tmp.z * ray->dir.x * ray->dir.x + 10.47213596 * tmp.y * tmp.y * tmp.y * tmp.y * ray->dir.x * ray->dir.x - 27.41640789 * tmp.z * tmp.z * tmp.z * tmp.z * ray->dir.x * ray->dir.x + 8.472135956 * ray->dir.x * ray->dir.x - 8.472135956 * tmp.x * tmp.x * ray->dir.y * ray->dir.y + 62.83281576 * tmp.x * tmp.x * tmp.y * tmp.y * ray->dir.y * ray->dir.y - 25.416407868 * tmp.y * tmp.y * ray->dir.y * ray->dir.y + 67.77708776 * tmp.x * tmp.x * tmp.z * tmp.z * ray->dir.y * ray->dir.y - 164.49844734 * tmp.y * tmp.y * tmp.z * tmp.z * ray->dir.y * ray->dir.y - 8.472135956 * tmp.z * tmp.z * ray->dir.y * ray->dir.y - 27.41640789 * tmp.x * tmp.x * tmp.x * tmp.x * ray->dir.y * ray->dir.y + 10.47213596 * tmp.z * tmp.z * tmp.z * tmp.z * ray->dir.y * ray->dir.y + 8.472135956 * ray->dir.y * ray->dir.y - 8.472135956 * tmp.x * tmp.x * ray->dir.z * ray->dir.z + 67.77708776 * tmp.x * tmp.x * tmp.y * tmp.y * ray->dir.z * ray->dir.z - 8.472135956 * tmp.y * tmp.y * ray->dir.z * ray->dir.z - 164.49844734 * tmp.x * tmp.x * tmp.z * tmp.z * ray->dir.z * ray->dir.z + 62.83281576 * tmp.y * tmp.y * tmp.z * tmp.z * ray->dir.z * ray->dir.z - 25.416407868 * tmp.z * tmp.z * ray->dir.z * ray->dir.z + 10.47213596 * tmp.x * tmp.x * tmp.x * tmp.x * ray->dir.z * ray->dir.z - 27.41640789 * tmp.y * tmp.y * tmp.y * tmp.y * ray->dir.z * ray->dir.z + 8.472135956 * ray->dir.z * ray->dir.z + 271.10835104 * tmp.x * tmp.y * tmp.z * tmp.z * ray->dir.x * ray->dir.y + 83.77708768 * tmp.x * tmp.y * tmp.y * tmp.y * ray->dir.x * ray->dir.y - 219.33126312 * tmp.x * tmp.x * tmp.x * tmp.y * ray->dir.x * ray->dir.y - 33.888543824 * tmp.x * tmp.y * ray->dir.x * ray->dir.y - 219.33126312 * tmp.x * tmp.z * tmp.z * tmp.z * ray->dir.x * ray->dir.z + 271.10835104 * tmp.x * tmp.y * tmp.y * tmp.z * ray->dir.x * ray->dir.z + 83.77708768 * tmp.x * tmp.x * tmp.x * tmp.z * ray->dir.x * ray->dir.z - 33.888543824 * tmp.x * tmp.z * ray->dir.x * ray->dir.z + 83.77708768 * tmp.y * tmp.z * tmp.z * tmp.z * ray->dir.y * ray->dir.z - 219.33126312 * tmp.y * tmp.y * tmp.y * tmp.z * ray->dir.y * ray->dir.z + 271.10835104 * tmp.x * tmp.x * tmp.y * tmp.z * ray->dir.y * ray->dir.z - 33.888543824 * tmp.y * tmp.z * ray->dir.y * ray->dir.z;
-  s[5] = -109.66563156 * tmp.x * tmp.x * tmp.x * tmp.y * tmp.y * ray->dir.x - 16.944271912 * tmp.x * tmp.y * tmp.y * ray->dir.x + 135.55417552 * tmp.x * tmp.y * tmp.y * tmp.z * tmp.z * ray->dir.x + 41.88854384 * tmp.x * tmp.x * tmp.x * tmp.z * tmp.z * ray->dir.x - 16.944271912 * tmp.x * tmp.z * tmp.z * ray->dir.x - 16.944271912 * tmp.x * tmp.x * tmp.x * ray->dir.x + 20.94427192 * tmp.x * tmp.y * tmp.y * tmp.y * tmp.y * ray->dir.x - 54.83281578 * tmp.x * tmp.z * tmp.z * tmp.z * tmp.z * ray->dir.x + 16.944271912 * tmp.x * ray->dir.x - 109.66563156 * tmp.y * tmp.y * tmp.y * tmp.z * tmp.z * ray->dir.y - 16.944271912 * tmp.y * tmp.z * tmp.z * ray->dir.y + 135.55417552 * tmp.x * tmp.x * tmp.y * tmp.z * tmp.z * ray->dir.y - 16.944271912 * tmp.y * tmp.y * tmp.y * ray->dir.y + 41.88854384 * tmp.x * tmp.x * tmp.y * tmp.y * tmp.y * ray->dir.y + 20.94427192 * tmp.y * tmp.z * tmp.z * tmp.z * tmp.z * ray->dir.y + 16.944271912 * tmp.y * ray->dir.y - 16.944271912 * tmp.x * tmp.x * tmp.y * ray->dir.y - 54.83281578 * tmp.x * tmp.x * tmp.x * tmp.x * tmp.y * ray->dir.y - 16.944271912 * tmp.z * tmp.z * tmp.z * ray->dir.z - 109.66563156 * tmp.x * tmp.x * tmp.z * tmp.z * tmp.z * ray->dir.z + 41.88854384 * tmp.y * tmp.y * tmp.z * tmp.z * tmp.z * ray->dir.z + 16.944271912 * tmp.z * ray->dir.z - 16.944271912 * tmp.x * tmp.x * tmp.z * ray->dir.z - 16.944271912 * tmp.y * tmp.y * tmp.z * ray->dir.z + 135.55417552 * tmp.x * tmp.x * tmp.y * tmp.y * tmp.z * ray->dir.z + 20.94427192 * tmp.x * tmp.x * tmp.x * tmp.x * tmp.z * ray->dir.z - 54.83281578 * tmp.y * tmp.y * tmp.y * tmp.y * tmp.z * ray->dir.z;
-  s[6] = 8.472135956 * tmp.x * tmp.x - 8.472135956 * tmp.x * tmp.x * tmp.y * tmp.y - 27.41640789 * tmp.x * tmp.x * tmp.x * tmp.x * tmp.y * tmp.y + 8.472135956 * tmp.y * tmp.y - 8.472135956 * tmp.x * tmp.x * tmp.z * tmp.z + 67.77708776 * tmp.x * tmp.x * tmp.y * tmp.y * tmp.z * tmp.z - 8.472135956 * tmp.y * tmp.y * tmp.z * tmp.z + 10.47213596 * tmp.x * tmp.x * tmp.x * tmp.x * tmp.z * tmp.z - 27.41640789 * tmp.y * tmp.y * tmp.y * tmp.y * tmp.z * tmp.z + 8.472135956 * tmp.z * tmp.z - 4.236067978 * tmp.x * tmp.x * tmp.x * tmp.x + 10.47213596 * tmp.x * tmp.x * tmp.y * tmp.y * tmp.y * tmp.y - 4.236067978 * tmp.y * tmp.y * tmp.y * tmp.y - 27.41640789 * tmp.x * tmp.x * tmp.z * tmp.z * tmp.z * tmp.z + 10.47213596 * tmp.y * tmp.y * tmp.z * tmp.z * tmp.z * tmp.z - 4.236067978 * tmp.z * tmp.z * tmp.z * tmp.z - 4.236067978;
+  s[0] = 27.41640789 * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.x *
+    ray->dir.y * ray->dir.y + 67.77708776 * ray->dir.x * ray->dir.x *
+    ray->dir.y * ray->dir.y * ray->dir.z * ray->dir.z + 10.47213596 *
+    ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.z * ray->dir.z
+    - 27.41640789 * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y *
+    ray->dir.z * ray->dir.z + 10.47213596 * ray->dir.x * ray->dir.x *
+    ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y - 27.41640789 *
+    ray->dir.x * ray->dir.x * ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z
+    + 10.47213596 * ray->dir.y * ray->dir.y * ray->dir.z * ray->dir.z *
+    ray->dir.z * ray->dir.z;
+  s[1] = -109.66563156 * tmp.x * ray->dir.x * ray->dir.x * ray->dir.x *
+    ray->dir.y * ray->dir.y + 135.55417552 * tmp.x * ray->dir.x * ray->dir.y *
+    ray->dir.y * ray->dir.z * ray->dir.z + 41.88854384 * tmp.x * ray->dir.x *
+    ray->dir.x * ray->dir.x * ray->dir.z * ray->dir.z - 109.66563156 * tmp.y *
+    ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.z * ray->dir.z +
+    135.55417552 * tmp.y * ray->dir.x * ray->dir.x * ray->dir.y * ray->dir.z *
+    ray->dir.z + 41.88854384 * tmp.y * ray->dir.x * ray->dir.x * ray->dir.y *
+    ray->dir.y * ray->dir.y - 109.66563156 * tmp.z * ray->dir.x * ray->dir.x *
+    ray->dir.z * ray->dir.z * ray->dir.z + 41.88854384 * tmp.z * ray->dir.y *
+    ray->dir.y * ray->dir.z * ray->dir.z * ray->dir.z + 20.94427192 * tmp.x *
+    ray->dir.x * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y - 54.83281578
+    * tmp.x * ray->dir.x * ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z +
+    20.94427192 * tmp.y * ray->dir.y * ray->dir.z * ray->dir.z * ray->dir.z *
+    ray->dir.z - 54.83281578 * tmp.y * ray->dir.x * ray->dir.x * ray->dir.x *
+    ray->dir.x * ray->dir.y + 135.55417552 * tmp.z * ray->dir.x * ray->dir.x *
+    ray->dir.y * ray->dir.y * ray->dir.z + 20.94427192 * tmp.z * ray->dir.x *
+    ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.z - 54.83281578 * tmp.z *
+    ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.z;
+  s[2] = -164.49844734 * tmp.x * tmp.x * ray->dir.x * ray->dir.x * ray->dir.y *
+    ray->dir.y + 62.83281576 * tmp.y * tmp.y * ray->dir.x * ray->dir.x *
+    ray->dir.y * ray->dir.y + 67.77708776 * tmp.z * tmp.z * ray->dir.x *
+    ray->dir.x * ray->dir.y * ray->dir.y - 8.472135956 * ray->dir.x *
+    ray->dir.x * ray->dir.y * ray->dir.y + 62.83281576 * tmp.x * tmp.x *
+    ray->dir.x * ray->dir.x * ray->dir.z * ray->dir.z + 67.77708776 * tmp.y *
+    tmp.y * ray->dir.x * ray->dir.x * ray->dir.z * ray->dir.z - 164.49844734 *
+    tmp.z * tmp.z * ray->dir.x * ray->dir.x * ray->dir.z * ray->dir.z -
+    8.472135956 * ray->dir.x * ray->dir.x * ray->dir.z * ray->dir.z +
+    67.77708776 * tmp.x * tmp.x * ray->dir.y * ray->dir.y * ray->dir.z *
+    ray->dir.z - 164.49844734 * tmp.y * tmp.y * ray->dir.y * ray->dir.y *
+    ray->dir.z * ray->dir.z + 62.83281576 * tmp.z * tmp.z * ray->dir.y *
+    ray->dir.y * ray->dir.z * ray->dir.z - 8.472135956 * ray->dir.y *
+    ray->dir.y * ray->dir.z * ray->dir.z + 271.10835104 * tmp.x * tmp.y *
+    ray->dir.x * ray->dir.y * ray->dir.z * ray->dir.z + 83.77708768 * tmp.x *
+    tmp.y * ray->dir.x * ray->dir.y * ray->dir.y * ray->dir.y - 219.33126312 *
+    tmp.x * tmp.z * ray->dir.x * ray->dir.z * ray->dir.z * ray->dir.z +
+    83.77708768 * tmp.y * tmp.z * ray->dir.y * ray->dir.z * ray->dir.z *
+    ray->dir.z - 27.41640789 * tmp.y * tmp.y * ray->dir.x * ray->dir.x *
+    ray->dir.x * ray->dir.x + 10.47213596 * tmp.z * tmp.z * ray->dir.x *
+    ray->dir.x * ray->dir.x * ray->dir.x - 4.236067978 * ray->dir.x *
+    ray->dir.x * ray->dir.x * ray->dir.x + 10.47213596 * tmp.x * tmp.x *
+    ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y - 27.41640789 * tmp.z *
+    tmp.z * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y - 4.236067978 *
+    ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y - 27.41640789 * tmp.x *
+    tmp.x * ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z + 10.47213596 *
+    tmp.y * tmp.y * ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z -
+    4.236067978 * ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z -
+    219.33126312 * tmp.x * tmp.y * ray->dir.x * ray->dir.x * ray->dir.x *
+    ray->dir.y + 271.10835104 * tmp.x * tmp.z * ray->dir.x * ray->dir.y *
+    ray->dir.y * ray->dir.z + 83.77708768 * tmp.x * tmp.z * ray->dir.x *
+    ray->dir.x * ray->dir.x * ray->dir.z - 219.33126312 * tmp.y * tmp.z *
+    ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.z + 271.10835104 * tmp.y *
+    tmp.z * ray->dir.x * ray->dir.x * ray->dir.y * ray->dir.z;
+  s[3] = 125.66563152 * tmp.x * tmp.y * tmp.y * ray->dir.x * ray->dir.y *
+    ray->dir.y + 135.55417552 * tmp.x * tmp.z * tmp.z * ray->dir.x * ray->dir.y
+    * ray->dir.y - 109.66563156 * tmp.x * tmp.x * tmp.x * ray->dir.x *
+    ray->dir.y * ray->dir.y - 16.944271912 * tmp.x * ray->dir.x * ray->dir.y *
+    ray->dir.y + 135.55417552 * tmp.x * tmp.y * tmp.y * ray->dir.x * ray->dir.z
+    * ray->dir.z - 328.99689468 * tmp.x * tmp.z * tmp.z * ray->dir.x *
+    ray->dir.z * ray->dir.z + 41.88854384 * tmp.x * tmp.x * tmp.x * ray->dir.x
+    * ray->dir.z * ray->dir.z - 16.944271912 * tmp.x * ray->dir.x * ray->dir.z
+    * ray->dir.z + 125.66563152 * tmp.y * tmp.z * tmp.z * ray->dir.y *
+    ray->dir.z * ray->dir.z - 109.66563156 * tmp.y * tmp.y * tmp.y * ray->dir.y
+    * ray->dir.z * ray->dir.z - 16.944271912 * tmp.y * ray->dir.y * ray->dir.z
+    * ray->dir.z + 135.55417552 * tmp.x * tmp.x * tmp.y * ray->dir.y *
+    ray->dir.z * ray->dir.z - 109.66563156 * tmp.x * tmp.y * tmp.y * ray->dir.x
+    * ray->dir.x * ray->dir.x + 41.88854384 * tmp.x * tmp.z * tmp.z *
+    ray->dir.x
+    * ray->dir.x * ray->dir.x - 16.944271912 * tmp.x * ray->dir.x * ray->dir.x
+    * ray->dir.x - 109.66563156 * tmp.y * tmp.z * tmp.z * ray->dir.y *
+    ray->dir.y * ray->dir.y - 16.944271912 * tmp.y * ray->dir.y * ray->dir.y *
+    ray->dir.y + 41.88854384 * tmp.x * tmp.x * tmp.y * ray->dir.y * ray->dir.y
+    * ray->dir.y - 16.944271912 * tmp.z * ray->dir.z * ray->dir.z * ray->dir.z
+    - 109.66563156 * tmp.x * tmp.x * tmp.z * ray->dir.z * ray->dir.z *
+    ray->dir.z + 41.88854384 * tmp.y * tmp.y * tmp.z * ray->dir.z * ray->dir.z
+    * ray->dir.z + 135.55417552 * tmp.y * tmp.z * tmp.z * ray->dir.x *
+    ray->dir.x * ray->dir.y + 41.88854384 * tmp.y * tmp.y * tmp.y * ray->dir.x
+    * ray->dir.x * ray->dir.y - 16.944271912 * tmp.y * ray->dir.x * ray->dir.x
+    * ray->dir.y - 328.99689468 * tmp.x * tmp.x * tmp.y * ray->dir.x *
+    ray->dir.x * ray->dir.y - 109.66563156 * tmp.z * tmp.z * tmp.z *
+    ray->dir.x * ray->dir.x * ray->dir.z - 16.944271912 * tmp.z * ray->dir.x *
+    ray->dir.x * ray->dir.z + 125.66563152 * tmp.x * tmp.x * tmp.z *
+    ray->dir.x * ray->dir.x * ray->dir.z + 135.55417552 * tmp.y * tmp.y *
+    tmp.z * ray->dir.x * ray->dir.x * ray->dir.z + 41.88854384 * tmp.z * tmp.z
+    * tmp.z * ray->dir.y * ray->dir.y * ray->dir.z - 16.944271912 * tmp.z *
+    ray->dir.y * ray->dir.y * ray->dir.z + 135.55417552 * tmp.x * tmp.x *
+    tmp.z * ray->dir.y * ray->dir.y * ray->dir.z - 328.99689468 * tmp.y *
+    tmp.y * tmp.z * ray->dir.y * ray->dir.y * ray->dir.z + 542.21670208 *
+    tmp.x * tmp.y * tmp.z * ray->dir.x * ray->dir.y * ray->dir.z;
+  s[4] = -25.416407868 * tmp.x * tmp.x * ray->dir.x * ray->dir.x -
+    164.49844734 * tmp.x * tmp.x * tmp.y * tmp.y * ray->dir.x * ray->dir.x -
+    8.472135956 * tmp.y * tmp.y * ray->dir.x * ray->dir.x + 62.83281576 *
+    tmp.x * tmp.x * tmp.z * tmp.z * ray->dir.x * ray->dir.x + 67.77708776 *
+    tmp.y * tmp.y * tmp.z * tmp.z * ray->dir.x * ray->dir.x - 8.472135956 *
+    tmp.z * tmp.z * ray->dir.x * ray->dir.x + 10.47213596 * tmp.y * tmp.y *
+    tmp.y * tmp.y * ray->dir.x * ray->dir.x - 27.41640789 * tmp.z * tmp.z *
+    tmp.z * tmp.z * ray->dir.x * ray->dir.x + 8.472135956 * ray->dir.x *
+    ray->dir.x - 8.472135956 * tmp.x * tmp.x * ray->dir.y * ray->dir.y +
+    62.83281576 * tmp.x * tmp.x * tmp.y * tmp.y * ray->dir.y * ray->dir.y -
+    25.416407868 * tmp.y * tmp.y * ray->dir.y * ray->dir.y + 67.77708776 *
+    tmp.x * tmp.x * tmp.z * tmp.z * ray->dir.y * ray->dir.y - 164.49844734 *
+    tmp.y * tmp.y * tmp.z * tmp.z * ray->dir.y * ray->dir.y - 8.472135956 *
+    tmp.z * tmp.z * ray->dir.y * ray->dir.y - 27.41640789 * tmp.x * tmp.x *
+    tmp.x * tmp.x * ray->dir.y * ray->dir.y + 10.47213596 * tmp.z * tmp.z *
+    tmp.z * tmp.z * ray->dir.y * ray->dir.y + 8.472135956 * ray->dir.y *
+    ray->dir.y - 8.472135956 * tmp.x * tmp.x * ray->dir.z * ray->dir.z +
+    67.77708776 * tmp.x * tmp.x * tmp.y * tmp.y * ray->dir.z * ray->dir.z -
+    8.472135956 * tmp.y * tmp.y * ray->dir.z * ray->dir.z - 164.49844734 *
+    tmp.x * tmp.x * tmp.z * tmp.z * ray->dir.z * ray->dir.z + 62.83281576 *
+    tmp.y * tmp.y * tmp.z * tmp.z * ray->dir.z * ray->dir.z - 25.416407868 *
+    tmp.z * tmp.z * ray->dir.z * ray->dir.z + 10.47213596 * tmp.x * tmp.x *
+    tmp.x * tmp.x * ray->dir.z * ray->dir.z - 27.41640789 * tmp.y * tmp.y *
+    tmp.y * tmp.y * ray->dir.z * ray->dir.z + 8.472135956 * ray->dir.z *
+    ray->dir.z + 271.10835104 * tmp.x * tmp.y * tmp.z * tmp.z * ray->dir.x *
+    ray->dir.y + 83.77708768 * tmp.x * tmp.y * tmp.y * tmp.y * ray->dir.x *
+    ray->dir.y - 219.33126312 * tmp.x * tmp.x * tmp.x * tmp.y * ray->dir.x *
+    ray->dir.y - 33.888543824 * tmp.x * tmp.y * ray->dir.x * ray->dir.y -
+    219.33126312 * tmp.x * tmp.z * tmp.z * tmp.z * ray->dir.x * ray->dir.z +
+    271.10835104 * tmp.x * tmp.y * tmp.y * tmp.z * ray->dir.x * ray->dir.z +
+    83.77708768 * tmp.x * tmp.x * tmp.x * tmp.z * ray->dir.x * ray->dir.z -
+    33.888543824 * tmp.x * tmp.z * ray->dir.x * ray->dir.z + 83.77708768 *
+    tmp.y * tmp.z * tmp.z * tmp.z * ray->dir.y * ray->dir.z - 219.33126312 *
+    tmp.y * tmp.y * tmp.y * tmp.z * ray->dir.y * ray->dir.z + 271.10835104 *
+    tmp.x * tmp.x * tmp.y * tmp.z * ray->dir.y * ray->dir.z - 33.888543824 *
+    tmp.y * tmp.z * ray->dir.y * ray->dir.z;
+  s[5] = -109.66563156 * tmp.x * tmp.x * tmp.x * tmp.y * tmp.y * ray->dir.x -
+    16.944271912 * tmp.x * tmp.y * tmp.y * ray->dir.x + 135.55417552 * tmp.x *
+    tmp.y * tmp.y * tmp.z * tmp.z * ray->dir.x + 41.88854384 * tmp.x * tmp.x *
+    tmp.x * tmp.z * tmp.z * ray->dir.x - 16.944271912 * tmp.x * tmp.z * tmp.z *
+    ray->dir.x - 16.944271912 * tmp.x * tmp.x * tmp.x * ray->dir.x +
+    20.94427192 * tmp.x * tmp.y * tmp.y * tmp.y * tmp.y * ray->dir.x -
+    54.83281578 * tmp.x * tmp.z * tmp.z * tmp.z * tmp.z * ray->dir.x +
+    16.944271912 * tmp.x * ray->dir.x - 109.66563156 * tmp.y * tmp.y * tmp.y *
+    tmp.z * tmp.z * ray->dir.y - 16.944271912 * tmp.y * tmp.z * tmp.z *
+    ray->dir.y + 135.55417552 * tmp.x * tmp.x * tmp.y * tmp.z * tmp.z *
+    ray->dir.y - 16.944271912 * tmp.y * tmp.y * tmp.y * ray->dir.y +
+    41.88854384 * tmp.x * tmp.x * tmp.y * tmp.y * tmp.y * ray->dir.y +
+    20.94427192 * tmp.y * tmp.z * tmp.z * tmp.z * tmp.z * ray->dir.y +
+    16.944271912 * tmp.y * ray->dir.y - 16.944271912 * tmp.x * tmp.x * tmp.y *
+    ray->dir.y - 54.83281578 * tmp.x * tmp.x * tmp.x * tmp.x * tmp.y *
+    ray->dir.y - 16.944271912 * tmp.z * tmp.z * tmp.z * ray->dir.z -
+    109.66563156 * tmp.x * tmp.x * tmp.z * tmp.z * tmp.z * ray->dir.z +
+    41.88854384 * tmp.y * tmp.y * tmp.z * tmp.z * tmp.z * ray->dir.z +
+    16.944271912 * tmp.z * ray->dir.z - 16.944271912 * tmp.x * tmp.x * tmp.z *
+    ray->dir.z - 16.944271912 * tmp.y * tmp.y * tmp.z * ray->dir.z +
+    135.55417552 * tmp.x * tmp.x * tmp.y * tmp.y * tmp.z * ray->dir.z +
+    20.94427192 * tmp.x * tmp.x * tmp.x * tmp.x * tmp.z * ray->dir.z -
+    54.83281578 * tmp.y * tmp.y * tmp.y * tmp.y * tmp.z * ray->dir.z;
+  s[6] = 8.472135956 * tmp.x * tmp.x - 8.472135956 * tmp.x * tmp.x * tmp.y *
+    tmp.y - 27.41640789 * tmp.x * tmp.x * tmp.x * tmp.x * tmp.y * tmp.y +
+    8.472135956 * tmp.y * tmp.y - 8.472135956 * tmp.x * tmp.x * tmp.z * tmp.z +
+    67.77708776 * tmp.x * tmp.x * tmp.y * tmp.y * tmp.z * tmp.z - 8.472135956 *
+    tmp.y * tmp.y * tmp.z * tmp.z + 10.47213596 * tmp.x * tmp.x * tmp.x * tmp.x
+    * tmp.z * tmp.z - 27.41640789 * tmp.y * tmp.y * tmp.y * tmp.y * tmp.z *
+    tmp.z + 8.472135956 * tmp.z * tmp.z - 4.236067978 * tmp.x * tmp.x * tmp.x *
+    tmp.x + 10.47213596 * tmp.x * tmp.x * tmp.y * tmp.y * tmp.y * tmp.y -
+    4.236067978 * tmp.y * tmp.y * tmp.y * tmp.y - 27.41640789 * tmp.x * tmp.x *
+    tmp.z * tmp.z * tmp.z * tmp.z + 10.47213596 * tmp.y * tmp.y * tmp.z * tmp.z
+    * tmp.z * tmp.z - 4.236067978 * tmp.z * tmp.z * tmp.z * tmp.z -
+    4.236067978;
   if ((inter->dist = solver_n_degree(s, 6)) == NOT_A_SOLUTION)
     inter->dist = -1.0;
 }
