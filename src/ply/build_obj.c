@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May 17 17:56:10 2016 Antoine Baché
-** Last update Wed May 18 12:25:12 2016 Antoine Baché
+** Last update Wed May 18 18:08:36 2016 Antoine Baché
 */
 
 #include "engine/object.h"
@@ -48,34 +48,28 @@ static void	fill_obj_ply(t_obj *obj, t_obj *objs, t_ply *ply, int nb_face)
   int		i;
   int		j;
 
-  i = 0;
-  j = 0;
-  while (j < nb_face)
+  i = -1;
+  j = -1;
+  while (++j < nb_face)
     {
-      objs[i].type = TRIANGLE;
+      objs[++i].type = TRIANGLE;
       objs[i].get_intersect = &get_intersect_triangle;
       if (ply->list_face[j].nb_face == 3 ||
 	  ply->list_face[j].nb_face == 4)
 	fill_obj_ply_3(objs, i, j, ply);
       if (ply->list_face[j].nb_face == 4)
 	{
-	  objs[i].pos = obj->pos;
-	  objs[i].rot = obj->rot;
+	  objs[i].rot = objs[i].pos = vec3(0, 0, 0);
 	  objs[i].mat = obj->mat;
 	  objs[i].next = &objs[i + 1];
-	  ++i;
-	  objs[i].type = TRIANGLE;
+	  objs[++i].type = TRIANGLE;
 	  objs[i].get_intersect = &get_intersect_triangle;
 	  fill_obj_ply_4(objs, i, j, ply);
 	}
-      objs[i].pos = obj->pos;
-      objs[i].rot = obj->rot;
+      objs[i].rot = objs[i].pos = vec3(0, 0, 0);
       objs[i].mat = obj->mat;
-      objs[i].next = &objs[i + 1];
-      ++j;
-      ++i;
+      objs[i].next = (j + 1 == nb_face) ? NULL : &objs[i + 1];
     }
-  objs[i - 1].next = NULL;
 }
 
 void		build_ply_obj(t_obj *obj)

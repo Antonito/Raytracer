@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 22:32:39 2016 Ludovic Petrenko
-** Last update Wed May 18 17:40:26 2016 Antoine Baché
+** Last update Wed May 18 18:22:48 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -18,7 +18,7 @@ static void	set_fields(t_data *data)
   data->height = DEFAULT_HEIGHT;
   data->fullscreen = false;
   data->minimum_fps = MINIMUM_FPS;
-  data->effect = NO_EFFECT;
+  data->effect = SOLARIZED;
   data->joy.lon = 0;
   data->joy.lat = 0;
   data->joy.hor = 0;
