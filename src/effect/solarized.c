@@ -5,12 +5,13 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May 18 18:22:04 2016 Antoine Baché
-** Last update Wed May 18 18:31:15 2016 Antoine Baché
+** Last update Wed May 18 23:40:21 2016 Antoine Baché
 */
 
-#include <lapin.h>
+#include "raytracer.h"
 
-void		solarized_effect(t_color *pix, int height, int width)
+void		solarized_effect(t_color *pix, int height, int width,
+				 t_config *conf)
 {
   int		i;
   int		j;
@@ -23,12 +24,12 @@ void		solarized_effect(t_color *pix, int height, int width)
       while (j < width)
 	{
 	  cur = i * width + j;
-	  pix[cur].argb[0] = (pix[cur].argb[0] < 152) ? 255 - pix[cur].argb[0]
-	    : pix[cur].argb[0];
-	  pix[cur].argb[1] = (pix[cur].argb[1] < 116) ? 255 - pix[cur].argb[1]
-	    : pix[cur].argb[1];
-	  pix[cur].argb[2] = (pix[cur].argb[2] < 124) ? 255 - pix[cur].argb[2]
-	    : pix[cur].argb[2];
+	  pix[cur].argb[0] = (pix[cur].argb[0] < conf->solarized.max_r) ?
+	    255 - pix[cur].argb[0] : pix[cur].argb[0];
+	  pix[cur].argb[1] = (pix[cur].argb[1] < conf->solarized.max_g) ?
+	    255 - pix[cur].argb[1] : pix[cur].argb[1];
+	  pix[cur].argb[2] = (pix[cur].argb[2] < conf->solarized.max_b) ?
+	    255 - pix[cur].argb[2] : pix[cur].argb[2];
 	  ++j;
 	}
       ++i;

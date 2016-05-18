@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 16 16:32:45 2016 Ludovic Petrenko
-** Last update Wed May 18 19:46:46 2016 Antoine Baché
+** Last update Wed May 18 23:28:47 2016 Antoine Baché
 */
 
 #include <stdio.h>
@@ -92,8 +92,7 @@ t_bunny_response	main_loop(t_data *data)
   data->scene->cache->clipable.clip_height = data->cur_height;
   blit_scaled(data->scene->cache, data->render);
   if (data->effect != NO_EFFECT)
-    apply_effect(data->render, data->effect, data->height,
-		 data->width);
+    apply_effect(data->render, data->effect, data);
   bunny_blit(&data->win->buffer, &data->render->clipable, NULL);
   bunny_display(data->win);
   return (GO_ON);

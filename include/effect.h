@@ -5,11 +5,19 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May 18 12:36:29 2016 Antoine Baché
-** Last update Wed May 18 20:23:46 2016 Antoine Baché
+** Last update Wed May 18 23:28:30 2016 Antoine Baché
 */
 
 #ifndef EFFECT_H_
 # define EFFECT_H_
+
+# define CONTRAST_DEFAULT	200.0
+# define ANGLE_R_DEFAULT	1.0
+# define ANGLE_G_DEFAULT	1.3
+# define ANGLE_B_DEFAULT	1.5
+# define MAX_R_DEFAULT 		152
+# define MAX_G_DEFAULT 		116
+# define MAX_B_DEFAULT 		124
 
 # include <lapin.h>
 
@@ -22,30 +30,52 @@ typedef enum		e_effect
     BAYER,
     SEPIA,
     EIGHT_BIT,
-    MAX_FILER,
+    MAX_FILTER,
     RETRO,
     WATERCOLOR,
     SOLARIZED,
     ROTATE,
-    CONTRAST
+    CONTRAST,
+    NB_EFFECT
   }			t_effect;
 
-void			apply_effect(t_bunny_pixelarray *, t_effect, int, int);
+typedef struct		s_solarized
+{
+  int			max_r;
+  int			max_g;
+  int			max_b;
+}			t_solarized;
+
+typedef struct		s_rotate
+{
+  double		angle_r;
+  double		angle_g;
+  double		angle_b;
+}			t_rotate;
+
+typedef struct		s_contrast
+{
+  int			value;
+}			t_contrast;
+
+# include "config.h"
+
+void			apply_effect(t_bunny_pixelarray *, t_effect, void *);
 
 /*
 ** Effects
 */
-void			black_and_white_effect(t_color *, int, int);
-void			pastel_effect(t_color *, int, int);
-void			negative_effect(t_color *, int, int);
-void			bayer_effect(t_color *, int, int);
-void			sepia_effect(t_color *, int, int);
-void			eight_bit_effect(t_color *, int, int);
-void			max_filter_effect(t_color *, int, int);
-void			retro_effect(t_color *, int, int);
-void			watercolor_effect(t_color *, int, int);
-void			solarized_effect(t_color *, int, int);
-void			rotate_effect(t_color *, int, int);
-void			contrast_effect(t_color *, int, int);
+void			black_and_white_effect(t_color *, int, int, t_config *);
+void			pastel_effect(t_color *, int, int, t_config *);
+void			negative_effect(t_color *, int, int, t_config *);
+void			bayer_effect(t_color *, int, int, t_config *);
+void			sepia_effect(t_color *, int, int, t_config *);
+void			eight_bit_effect(t_color *, int, int, t_config *);
+void			max_filter_effect(t_color *, int, int, t_config *);
+void			retro_effect(t_color *, int, int, t_config *);
+void			watercolor_effect(t_color *, int, int, t_config *);
+void			solarized_effect(t_color *, int, int, t_config *);
+void			rotate_effect(t_color *, int, int, t_config *);
+void			contrast_effect(t_color *, int, int, t_config *);
 
 #endif /* !EFFECT_H_  */

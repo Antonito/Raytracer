@@ -5,19 +5,20 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May 18 13:30:09 2016 Antoine Baché
-** Last update Wed May 18 14:37:12 2016 Antoine Baché
+** Last update Wed May 18 23:37:03 2016 Antoine Baché
 */
 
-#include <lapin.h>
+#include "raytracer.h"
 
 #pragma message("Not implemented")
-void		bayer_effect(t_color *pix, int height, int width)
+void		bayer_effect(t_color *pix, int height, int width, t_config *conf)
 {
   int		i;
   int		j;
   int		cur;
 
   i = 0;
+  (void)conf;
   while (i < height)
     {
       j = 0;

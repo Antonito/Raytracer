@@ -5,19 +5,21 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May 18 14:23:04 2016 Antoine Baché
-** Last update Wed May 18 17:08:33 2016 Antoine Baché
+** Last update Wed May 18 23:37:51 2016 Antoine Baché
 */
 
-#include <lapin.h>
+#include "raytracer.h"
 
 #pragma message("Not implemented")
-void		eight_bit_effect(t_color *pix, int height, int width)
+void		eight_bit_effect(t_color *pix, int height, int width,
+				 t_config *conf)
 {
   int		i;
   int		j;
   int		cur;
 
   i = 0;
+  (void)conf;
   while (i < height)
     {
       j = 0;

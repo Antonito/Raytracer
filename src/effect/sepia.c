@@ -5,12 +5,13 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May 18 13:36:40 2016 Antoine Baché
-** Last update Wed May 18 13:45:46 2016 Antoine Baché
+** Last update Wed May 18 23:39:29 2016 Antoine Baché
 */
 
-#include <lapin.h>
+#include "raytracer.h"
 
-void		sepia_effect(t_color *pix, int height, int width)
+void		sepia_effect(t_color *pix, int height, int width,
+			     t_config *conf)
 {
   int		i;
   int		j;
@@ -18,9 +19,9 @@ void		sepia_effect(t_color *pix, int height, int width)
   int		tmp;
 
   i = -1;
-  while (++i < height)
+  (void)conf;
+  while (++i < height && (j = -1))
     {
-      j = -1;
       while (++j < width && (cur = i * width + j) >= 0)
 	{
 	  tmp = ((double)pix[cur].argb[0] * 0.393) +

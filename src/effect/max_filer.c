@@ -5,13 +5,14 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May 18 17:22:59 2016 Antoine Baché
-** Last update Wed May 18 17:34:23 2016 Antoine Baché
+** Last update Wed May 18 23:18:10 2016 Antoine Baché
 */
 
-#include <lapin.h>
+#include "raytracer.h"
 
 #pragma message("Not implemented")
-void		max_filter_effect(t_color *pix, int height, int width)
+void		max_filter_effect(t_color *pix, int height, int width,
+				  t_config *conf)
 {
   return ;
 }

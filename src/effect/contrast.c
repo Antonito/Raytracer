@@ -5,12 +5,13 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May 18 20:25:05 2016 Antoine Baché
-** Last update Wed May 18 20:37:57 2016 Antoine Baché
+** Last update Wed May 18 23:37:35 2016 Antoine Baché
 */
 
-#include <lapin.h>
+#include "raytracer.h"
 
-void		contrast_effect(t_color *pix, int height, int width)
+void		contrast_effect(t_color *pix, int height, int width,
+				t_config *conf)
 {
   int		i;
   int		j;
@@ -19,7 +20,7 @@ void		contrast_effect(t_color *pix, int height, int width)
   int		cur;
 
   i = -1;
-  contrast = (200.0 / 100.0) * (200.0 / 100.0);
+  contrast = (conf->contrast.value / 100.0) * (conf->contrast.value / 100.0);
   while (++i < height && (j = -1))
     while (++j < width)
       {

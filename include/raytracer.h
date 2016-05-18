@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Wed May 18 17:57:38 2016 Antoine Baché
+** Last update Wed May 18 23:28:22 2016 Antoine Baché
 */
 
 #ifndef	RAYTRACER2_H_
@@ -13,8 +13,8 @@
 
 # include <stdbool.h>
 # include "lapin.h"
-# include "effect.h"
 # include "engine/scene.h"
+# include "effect.h"
 # include "config.h"
 # include "events.h"
 # include "tools/memory.h"
@@ -30,10 +30,19 @@
 /*
 ** Scopes expected in .ini files
 */
+# define VALUE			"value"
+# define ANGLE_R		"angle_r"
+# define ANGLE_G		"angle_g"
+# define ANGLE_B		"angle_b"
+# define MAX_R			"max_r"
+# define MAX_G			"max_g"
+# define MAX_B			"max_b"
+# define TYPE_FIELD		"type"
 # define FILE_PATH		"file"
 # define POLY_PTS_A		"point_a"
 # define POLY_PTS_B		"point_b"
 # define POLY_PTS_C		"point_c"
+# define SCOPE_EFFECT		"effect"
 # define SCOPE_NETWORK		"network"
 # define PORT_NETWORK		"port"
 # define CLIENT_NETWORK		"max_client"
@@ -86,6 +95,8 @@
 # define LISTEN_ERROR		"Error: Cannot listen\n"
 # define CREATE_THREAD_ERROR	"Error: Cannot create the TCP thread\n"
 # define THREAD_ERROR		"Error: In TCP thread\n"
+# define MISSING_EFFECT_SCOPE	"Missing effect scope in config.ini\n"
+# define ERROR_CONFIG_FILE	"Missing config.ini file, check the man\n"
 
 /*
 ** Dhiver messages
@@ -146,7 +157,8 @@ t_bunny_response	main_loop(t_data *data);
 int			set_frame(t_data *data);
 void			calc_fragment(t_data *data, unsigned int *buf,
 				      t_ivec2 *pos);
-void			calc_ray(t_scene *scene, t_ray *ray, int i, t_intersect *inter);
+void			calc_ray(t_scene *scene, t_ray *ray, int i,
+				 t_intersect *inter);
 void			set_vectors(t_data *data, t_camera *c);
 void			refresh_size(t_data *data, int frame);
 void			blit_scaled(t_bunny_pixelarray *, t_bunny_pixelarray *);

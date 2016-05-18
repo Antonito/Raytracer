@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May 18 18:36:22 2016 Antoine Baché
-** Last update Wed May 18 20:02:50 2016 Antoine Baché
+** Last update Wed May 18 23:38:49 2016 Antoine Baché
 */
 
 #include <math.h>
@@ -54,7 +54,8 @@ static void	rotate_fill_effect(t_color *pix, t_color *new, int h, int w)
   my_free(new);
 }
 
-void		rotate_effect(t_color *pix, int height, int width)
+void		rotate_effect(t_color *pix, int height, int width,
+			      t_config *conf)
 {
   int		i;
   int		j;
@@ -71,11 +72,11 @@ void		rotate_effect(t_color *pix, int height, int width)
     while (++j < width && (cur = i * width + j) >= 0)
       {
 	new[0] = rotate_effect_new_pos((t_ivec2){j, i}, height / 2, width / 2,
-				       1.0 * M_PI / 180.0);
+				       conf->rotate.angle_r * M_PI / 180.0);
 	new[1] = rotate_effect_new_pos((t_ivec2){j, i}, height / 2, width / 2,
-				       1.3 * M_PI / 180.0);
+				       conf->rotate.angle_g * M_PI / 180.0);
 	new[2] = rotate_effect_new_pos((t_ivec2){j, i}, height / 2, width / 2,
-				       1.5 * M_PI / 180.0);
+				       conf->rotate.angle_b * M_PI / 180.0);
 	new_color[cur].argb[0] = pix[(new[0] > 0) ? new[0] % max : cur].argb[0];
 	new_color[cur].argb[1] = pix[(new[1] > 0) ? new[1] % max : cur].argb[1];
 	new_color[cur].argb[2] = pix[(new[2] > 0) ? new[2] % max : cur].argb[2];

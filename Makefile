@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Wed May 18 20:24:12 2016 Antoine Baché
+## Last update Wed May 18 22:44:14 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -99,6 +99,7 @@ LOADER_PREFIX=		src/loader/
 LOADER_FILES=		count.c				\
 			get_material.c			\
 			load_config.c			\
+			load_effect.c			\
 			load_light_type.c		\
 			load_mat.c			\
 			load_obj.c			\

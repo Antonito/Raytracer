@@ -470,6 +470,114 @@ You can specify the path (
 .I file="path/file.ply"
 ) of the file you want to load.
 
+.SH CONFIG
+The
+.I config.ini
+file contains
+.I general
+configuration, such as
+.I network
+settings or
+.I effects
+settings.
+.br
+
+The
+.B [network]
+scope contains the
+.I port
+and the number of
+.I max_client
+that the server should accept.
+.br
+
+The
+.B [effect]
+scope contains the effect
+.I type
+and its
+.I parameters.
+Please, refer to the
+.I post-render effect section
+of the man to get more informations about this.
+
+Here is an exemple of correct config.ini.
+
+
+[network]
+.br
+port=12345
+.br
+max_client=0
+.br
+
+[effect]
+.br
+type=contrast
+.br
+value=142
+
+.SH POST-RENDER EFFECTS
+The possible post-render effects are
+.br
+[
+.B black_and_white
+|
+.B pastel
+|
+.B negative
+|
+.B bayer
+|
+.B sepia
+|
+.B eight_bit
+|
+.B max_filter
+|
+.B retro
+|
+.B watercolor
+|
+.B solarized
+|
+.B rotate
+|
+.B contrast
+]
+.br
+Here are the possible parameters for the various effects, if an effect is not listed here it means it has no parameters:
+
+
+.B rotate :
+.br
+angle_r=
+.br
+angle_g=
+.br
+angle_b=
+.br
+The value of these parameters should be an angle in degree.
+
+.B solarized :
+.br
+max_r=
+.br
+max_g=
+.br
+max_b=
+.br
+The value of these parameters should be the pixel cap.
+
+
+.B contrast :
+.br
+value=
+.br
+The value should be the contrast value. A higher value will give you a higher contrast.
+
+If one of those parameters is missing, a default value will replace it.
+
 .SH SCRIPTS
 .B before_expand.sh
 script replaces all the
