@@ -5,124 +5,108 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May  9 01:15:33 2016 Antoine Baché
-** Last update Wed May 11 17:19:26 2016 Ludovic Petrenko
+** Last update Mon May 16 15:26:37 2016 Antoine Baché
 */
 
 #include "solver.h"
 #include "engine/intersect.h"
 #include "engine/object.h"
+#include "tools/memory.h"
 
-inline static double	calc_c_klein_more(t_ray *ray)
+inline static double	calc_c_more_klein(t_ray *ray, t_vec3 tmp, t_vec3 dir)
 {
-  return ((15 * ray->pos.z * ray->pos.z + 3 * ray->pos.y * ray->pos.y - 2 *
-	   ray->pos.y + 3 * ray->pos.x * ray->pos.x - 11) * ray->dir.z *
-	  ray->dir.z * ray->dir.z * ray->dir.z +
-	  ((24 * ray->pos.y - 8) * ray->pos.z * ray->dir.y +
-	   (24 * ray->pos.x * ray->pos.z + 16) * ray->dir.x) * ray->dir.z *
-	  ray->dir.z * ray->dir.z +
-    	  ((18 * ray->pos.z * ray->pos.z + 18 * ray->pos.y * ray->pos.y - 12 *
-	    ray->pos.y + 6 * ray->pos.x * ray->pos.x - 18) * ray->dir.y *
-	   ray->dir.y + (24 * ray->pos.x * ray->pos.y - 8 * ray->pos.x) *
-	   ray->dir.x * ray->dir.y +
-	   (18 * ray->pos.z * ray->pos.z + 6 * ray->pos.y * ray->pos.y - 4 *
-	    ray->pos.y + 18 * ray->pos.x * ray->pos.x - 14) * ray->dir.x *
-	   ray->dir.x) * ray->dir.z * ray->dir.z);
+  return (-2.0 * dir.x * dir.y + 18.0 * tmp.x * tmp.x * dir.x * dir.y + 18.0 *
+	  tmp.y * tmp.y * dir.x * dir.y + 6.0 * tmp.z * tmp.z * dir.x * dir.y +
+	  12.0 * tmp.y * dir.x * dir.y - 10.0 * dir.x * dir.z + 18.0 * tmp.x *
+	  tmp.x * dir.x * dir.z + 6.0 * tmp.y * tmp.y * dir.x * dir.z + 18.0 *
+	  tmp.z * tmp.z * dir.x * dir.z + 4.0 * tmp.y * dir.x * dir.z - 10.0 *
+	  dir.y * dir.z + 6.0 * tmp.x * tmp.x * dir.y * dir.z + 18.0 * tmp.y *
+	  tmp.y * dir.y * dir.z + 18.0 * tmp.z * tmp.z * dir.y * dir.z + 12.0 *
+	  tmp.y * dir.y * dir.z + 8.0 * tmp.x * ray->dir.x * ray->dir.y * dir.z
+	  + 24.0 * tmp.x * tmp.y * ray->dir.x * ray->dir.y * dir.z + 8.0 *
+	  tmp.x * ray->dir.x * dir.y * ray->dir.y + 24.0 * tmp.x * tmp.y *
+	  ray->dir.x * dir.y * ray->dir.y + 16.0 * ray->dir.x * dir.z *
+	  ray->dir.z);
 }
 
-inline static double	calc_c_klein(t_ray *ray)
+inline static double	calc_c_klein(t_ray *ray, t_vec3 tmp, t_vec3 dir)
 {
-  return (calc_c_klein_more(ray) +
-	  ((24 * ray->pos.y - 8) *ray->pos.z * ray->dir.y * ray->dir.y *
-	   ray->dir.y + (24 * ray->pos.x * ray->pos.z + 16) * ray->dir.x *
-	   ray->dir.y * ray->dir.y + (24 * ray->pos.y - 8) * ray->pos.z *
-	   ray->dir.x * ray->dir.x * ray->dir.y + (24 * ray->pos.x * ray->pos.z
-						   + 16) * ray->dir.x *
-	   ray->dir.x * ray->dir.x) * ray->dir.z +
-	  (3 * ray->pos.z * ray->pos.z+ 14 * ray->pos.y * ray->pos.y - 10 *
-	   ray->pos.y + 3 * ray->pos.x * ray->pos.x - 7) * ray->dir.y *
-	  ray->dir.y * ray->dir.y * ray->dir.y +
-	  (24 * ray->pos.x * ray->pos.y - 8 * ray->pos.x) * ray->dir.x *
-	  ray->dir.y * ray->dir.y * ray->dir.y + (6 * ray->pos.z * ray->pos.z +
-						  18 * ray->pos.y * ray->pos.y -
-						  12 * ray->pos.y + 18 *
-						  ray->pos.x * ray->pos.x - 10)
-	  * ray->dir.x * ray->dir.x * ray->dir.y * ray->dir.y +
-	  (24 * ray->pos.x * ray->pos.y - 8 * ray->pos.x) * ray->dir.x *
-	  ray->dir.x * ray->dir.x * ray->dir.y +
-	  (3 * ray->pos.z * ray->pos.z *  + 3 * ray->pos.y * ray->pos.y - 2 *
-	   ray->pos.y + 15 * ray->pos.x * ray->pos.x - 3) * ray->dir.x *
-	  ray->dir.x * ray->dir.x * ray->dir.x);
+  return (calc_c_more_klein(ray, tmp, dir)
+	  + 24.0 * tmp.x * tmp.z * ray->dir.x * dir.z * ray->dir.z +
+	  8.0 * tmp.z * ray->dir.y * dir.z * ray->dir.z + 24.0 * tmp.y * tmp.z
+	  * ray->dir.y * dir.z * ray->dir.z - dir.x * dir.x + 15.0 * tmp.x *
+	  tmp.x * dir.x * dir.x + 3.0 * tmp.y * tmp.y * dir.x * dir.x + 3.0 *
+	  tmp.z * tmp.z * dir.x * dir.x + 2.0 * tmp.y * dir.x * dir.x - dir.y *
+	  dir.y + 3.0 * tmp.x * tmp.x * dir.y * dir.y + 15.0 * tmp.y * tmp.y *
+	  dir.y * dir.y + 3.0 * tmp.z * tmp.z * dir.y * dir.y + 10.0 * tmp.y *
+	  dir.y * dir.y + 3.0 * tmp.x * tmp.x * dir.z * dir.z + 3.0 * tmp.y *
+	  tmp.y * dir.z * dir.z + 15.0 * tmp.z * tmp.z * dir.z * dir.z - 9.0 *
+	  dir.z * dir.z + 2.0 * tmp.y * dir.z * dir.z + 8.0 * tmp.x * dir.x *
+	  ray->dir.x * ray->dir.y + 24.0 * tmp.x * tmp.y * dir.x * ray->dir.x *
+	  ray->dir.y + 16.0 * ray->dir.x * dir.y * ray->dir.z + 24.0 * tmp.x *
+	  tmp.z * ray->dir.x * dir.y * ray->dir.z + 16.0 * dir.x * ray->dir.x *
+	  ray->dir.z + 24.0 * tmp.x * tmp.z * dir.x * ray->dir.x * ray->dir.z +
+	  8.0 * tmp.z * dir.y * ray->dir.y * ray->dir.z + 24.0 * tmp.y * tmp.z
+	  * dir.y * ray->dir.y * ray->dir.z + 8.0 * tmp.z * dir.x * ray->dir.y
+	  * ray->dir.z + 24.0 * tmp.y * tmp.z * dir.x * ray->dir.y * ray->dir.z);
 }
 
-inline static double	calc_b_klein(t_ray *ray)
+inline static double	calc_b_klein(t_ray *ray, t_vec3 tmp, t_vec3 dir)
 {
-  double		dirzsquare;
-  double		dirysquare;
-  double		dirxsquare;
-
-  dirzsquare = ray->dir.z * ray->dir.z;
-  dirysquare = ray->dir.y * ray->dir.y;
-  dirxsquare = ray->dir.x * ray->dir.x;
-  return (6 * ray->pos.z * dirzsquare * dirzsquare * ray->dir.z +
-	  ((6 * ray->pos.y - 2) * ray->dir.y + 6 * ray->pos.x * ray->dir.x) *
-	  dirzsquare *  dirzsquare +
-	  (12 * ray->pos.z * dirysquare + 12 * ray->pos.z * dirxsquare) *
-	  dirzsquare * ray->dir.z +
-	  ((12 * ray->pos.y - 4) * dirysquare * ray->dir.y + 12 *
-	   ray->pos.x * ray->dir.x * dirysquare +
-	   (12 * ray->pos.y - 4 * dirxsquare * ray->dir.y + 12 *
-	    ray->pos.x * dirxsquare * ray->dir.x) * dirzsquare +
-	   (6 * ray->pos.z * dirysquare * dirysquare + 12 *
-	    ray->pos.z * dirxsquare * dirysquare + 6 * ray->pos.z
-	    * dirxsquare * dirxsquare) * ray->dir.z + (6 * ray->pos.y - 2) *
-	   dirysquare * dirysquare * ray->dir.y + 6 * ray->pos.x *
-	   ray->dir.x * dirysquare * dirysquare + (12 * ray->pos.y - 4) *
-	   dirxsquare * ray->dir.y * dirysquare + 12 * ray->pos.x * dirxsquare *
-	   ray->dir.x * dirysquare + (6 * ray->pos.y - 2) * dirxsquare *
-	   dirxsquare * ray->dir.y + 6 * ray->pos.x * dirxsquare * dirxsquare *
-	   ray->dir.x));
+  return (12.0 * tmp.x * dir.x * ray->dir.x * dir.y + 12.0 * tmp.x * ray->dir.x
+	  * dir.y * dir.z + 12.0 * tmp.x * dir.x * ray->dir.x * dir.z + 4.0 *
+	  dir.y * ray->dir.y * dir.z + 12.0 * tmp.y * dir.y * ray->dir.y *
+	  dir.z + 4.0 * dir.x * ray->dir.y * dir.z + 12.0 * tmp.y * dir.x *
+	  ray->dir.y * dir.z + 4.0 * dir.x * dir.y * ray->dir.y + 12.0 * tmp.y
+	  * dir.x * dir.y * ray->dir.y + 12.0 * tmp.z * dir.x * dir.z *
+	  ray->dir.z + 12.0 * tmp.z * dir.y * dir.z * ray->dir.z + 6.0 * tmp.x
+	  * ray->dir.x * dir.y * dir.y + 6.0 * tmp.x * ray->dir.x * dir.z *
+	  dir.z + 2.0 * ray->dir.y * dir.z * dir.z + 6.0 * tmp.y * ray->dir.y *
+	  dir.z * dir.z + 6.0 * tmp.x * dir.x * dir.x * ray->dir.x + 2.0 *
+	  dir.y * dir.y * ray->dir.y + 6.0 * tmp.y * dir.y * dir.y * ray->dir.y
+	  + 6.0 * tmp.z * dir.z * dir.z * ray->dir.z + 2.0 * dir.x * dir.x *
+	  ray->dir.y +
+	  6.0 * tmp.y * dir.x * dir.x * ray->dir.y + 12.0 * tmp.z * dir.x *
+	  dir.y * ray->dir.z + 6.0 * tmp.z * dir.x * dir.x * ray->dir.z + 6.0 *
+	  tmp.z * dir.y * dir.y * ray->dir.z);
 }
 
-double	calc_a_klein(t_ray *ray)
+inline static double	calc_a_klein(t_ray *ray)
 {
-  double		dirzsquare;
-  double		dirysquare;
-  double		dirxsquare;
-
-  dirzsquare = ray->dir.z * ray->dir.z;
-  dirysquare = ray->dir.y * ray->dir.y;
-  dirxsquare = ray->dir.x * ray->dir.x;
-  return (ray->dir.z * dirzsquare * dirzsquare * ray->dir.z  +
-	  (3 * dirysquare + 3 * dirzsquare) * dirzsquare * dirzsquare +
-	  (3 * dirysquare * dirysquare +
-	   6 * dirxsquare * dirysquare +
-	   3 * dirxsquare * dirxsquare) * dirzsquare + dirysquare * ray->dir.y *
-	  dirysquare * ray->dir.y + 3 * dirxsquare * dirysquare * dirysquare +
-	  3 * ray->dir.x * dirxsquare * ray->dir.x * dirysquare +
-	  dirxsquare * dirxsquare * dirxsquare);
+  return (3.0 * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.y
+	  * ray->dir.y + 6.0 * ray->dir.x * ray->dir.x * ray->dir.y * ray->dir.y
+	  * ray->dir.z * ray->dir.z + 3.0 * ray->dir.x * ray->dir.x * ray->dir.x
+	  * ray->dir.x * ray->dir.z * ray->dir.z + 3.0 * ray->dir.y * ray->dir.y
+	  * ray->dir.y * ray->dir.y * ray->dir.z * ray->dir.z + 3.0 * ray->dir.x
+	  * ray->dir.x * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y + 3.0
+	  * ray->dir.x * ray->dir.x * ray->dir.z * ray->dir.z * ray->dir.z *
+	  ray->dir.z + 3.0 * ray->dir.y * ray->dir.y * ray->dir.z * ray->dir.z
+	  * ray->dir.z * ray->dir.z + ray->dir.x * ray->dir.x * ray->dir.x *
+	  ray->dir.x * ray->dir.x * ray->dir.x + ray->dir.y * ray->dir.y *
+	  ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y + ray->dir.z *
+	  ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z);
 }
 
 t_intersect		get_intersect_klein(t_obj *obj, t_ray *ray)
 {
   t_intersect		inter;
   double		*coef;
+  t_vec3		tmp;
 
+  tmp = sub_vec3(ray->pos, obj->pos);
   inter.dir = ray->dir;
   inter.mat = obj->mat;
   inter.dist = -1.0;
-  /* if (!(coef = my_malloc(7 * sizeof(double)))) */
-  /*   return (inter); */
-  if (!(coef = malloc(7 * sizeof(double))))
+  if (!(coef = my_malloc(7 * sizeof(double))))
     return (inter);
   coef[0] = calc_a_klein(ray);
-  coef[1] = calc_b_klein(ray);
-  coef[2] = calc_c_klein(ray);
-  coef[3] = calc_d_klein(ray);
-  coef[4] = calc_e_klein(ray);
-  coef[5] = calc_f_klein(ray);
-  coef[6] = calc_g_klein(ray);
-  if ((inter.dist = solver_n_degree(coef, 6)) <= 0.0 ||
-    inter.dist == NOT_A_SOLUTION)
+  coef[1] = calc_b_klein(ray, tmp, square_vec3(ray->dir));
+  coef[2] = calc_c_klein(ray, tmp, square_vec3(ray->dir));
+  coef[3] = calc_d_klein(ray, tmp, square_vec3(ray->dir), square_vec3(tmp));
+  coef[4] = calc_e_klein(ray, tmp, square_vec3(ray->dir), square_vec3(tmp));
+  coef[5] = calc_f_klein(ray, tmp, square_vec3(tmp));
+  coef[6] = calc_g_klein(ray, tmp, square_vec3(tmp));
+  if ((inter.dist = solver_n_degree(coef, 6)) < 0.0)
     {
       inter.dist = -1.0;
       return (inter);

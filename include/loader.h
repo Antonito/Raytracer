@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 19:09:07 2016 Ludovic Petrenko
-** Last update Tue May 10 14:55:37 2016 Antoine Baché
+** Last update Tue May 17 17:55:29 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -17,7 +17,7 @@ int		load_config(t_data *data, const char *file);
 int		ini_count_prefix(const t_bunny_ini *ini, const char *prefix);
 void		load_camera(t_camera *c, const t_bunny_ini *ini);
 void		load_directionnal(t_obj *obj, const t_bunny_ini_scope *scope);
-void	        load_light_spec(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_light_spec(t_obj *obj, const t_bunny_ini_scope *scope);
 void		load_obj_basics(t_obj *obj, const t_bunny_ini_scope *s);
 void		load_obj_data(t_scene *scene, t_obj *o,
 			      const t_bunny_ini_scope *s);
@@ -56,3 +56,35 @@ void		load_cone(t_obj *obj, const t_bunny_ini_scope *scope);
 void		load_cylinder(t_obj *obj, const t_bunny_ini_scope *scope);
 void		load_hyperbola(t_obj *obj, const t_bunny_ini_scope *scope);
 void		load_ellipsoid(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_ply(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_boy(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_cassini(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_chair(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_kusner(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_tritrumpet(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_whitney(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_tetrahedral(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_barth_sextic(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_bifolia(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_duplin(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_cushion(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_double_sphere(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_tooth(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_heart(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_hunt(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_miter(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_kiss(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_kummer(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_enneper(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_bohemian_dome(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_bohemian_star(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_c8(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_chubs(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_devil(t_obj *obj, const t_bunny_ini_scope *scope);
+void		load_quartic_cylinder(t_obj *obj, const t_bunny_ini_scope *);
+void		load_spheroid(t_obj *obj, const t_bunny_ini_scope *scope);
+
+/*
+** Ply functions
+*/
+void		build_ply_obj(t_obj *ply);

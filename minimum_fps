@@ -1,0 +1,115 @@
+src/free.c:22:  tmp = data->scene;
+src/set_frame.c:25:  if (data->minimum_fps > 0)
+src/set_frame.c:27:      r = (double)data->width / (double)data->height;
+src/set_frame.c:28:      ratio = (double)frame / (data->minimum_fps /* + data->joy.needed_fps */);
+src/set_frame.c:29:      a = data->cur_width * data->cur_height;
+src/set_frame.c:30:      data->cur_width = (int)sqrt(a * ratio * r);
+src/set_frame.c:31:      data->cur_width = (data->cur_width > 0) ? data->cur_width : 1;
+src/set_frame.c:32:      data->cur_width = (data->cur_width < data->width) ? data->cur_width :
+src/set_frame.c:33:	data->width;
+src/set_frame.c:34:      data->cur_height = (int)(data->cur_width / r);
+src/set_frame.c:35:      data->cur_height = (data->cur_height > 0) ? data->cur_height : 1;
+src/set_frame.c:36:      printf("\r\t\t%d x %d\t", data->cur_width, data->cur_height);
+src/set_frame.c:40:      data->cur_width = data->width;
+src/set_frame.c:41:      data->cur_height = data->height;
+src/set_frame.c:50:  calc_fragment(args->data, (unsigned int *)args->data->scene->cache->pixels,
+src/set_frame.c:58:  thread_calc[0].pos[1].x = data->cur_width / 2;
+src/set_frame.c:59:  thread_calc[0].pos[1].y = data->cur_height / 2;
+src/set_frame.c:60:  thread_calc[1].pos[0].x = data->cur_width / 2;
+src/set_frame.c:62:  thread_calc[1].pos[1].x = data->cur_width;
+src/set_frame.c:63:  thread_calc[1].pos[1].y = data->cur_height / 2;
+src/set_frame.c:65:  thread_calc[2].pos[0].y = data->cur_height / 2;
+src/set_frame.c:66:  thread_calc[2].pos[1].x = data->cur_width / 2;
+src/set_frame.c:67:  thread_calc[2].pos[1].y = data->cur_height;
+src/set_frame.c:68:  thread_calc[3].pos[0].x = data->cur_width / 2;
+src/set_frame.c:69:  thread_calc[3].pos[0].y = data->cur_height / 2;
+src/set_frame.c:70:  thread_calc[3].pos[1].x = data->cur_width;
+src/set_frame.c:71:  thread_calc[3].pos[1].y = data->cur_height;
+src/set_frame.c:88:  /* set_vectors(data, &data->scene->cam); */
+src/set_frame.c:100:  pos[1].x = data->cur_width;
+src/set_frame.c:101:  pos[1].y = data->cur_height;
+src/set_frame.c:102:  set_vectors(data, &data->scene->cam);
+src/set_frame.c:103:  calc_fragment(data, (unsigned int *)data->scene->cache->pixels, pos);
+src/calc_fragment.c:24:  len = tan(c->fov / 2.0 * M_PI / 180.0) * 2.0 / (double)data->cur_width;
+src/calc_fragment.c:27:  /* len = tan(c->fov * data->cur_width / data->cur_height / 2.0 */
+src/calc_fragment.c:28:  /* 	    * M_PI / 180.0) * 2.0 / data->cur_height; */
+src/calc_fragment.c:33:					    data->cur_width / 2.0));
+src/calc_fragment.c:35:					    data->cur_height / 2.0));
+src/calc_fragment.c:72:  size = data->cur_width * data->cur_height;
+src/calc_fragment.c:75:      buf[tmp.x + data->cur_width * tmp.y] = calc_pixel(data->scene, &tmp);
+src/joystick.c:30:  data->joy.needed_fps = value / 10;
+src/joystick.c:32:    data->joy.lat = value / -20000000.0;
+src/joystick.c:34:    data->joy.lon = -value / -20000000.0;
+src/joystick.c:36:    data->joy.hor = value / 3200000.0;
+src/joystick.c:38:    data->joy.ver = value / 3200000.0;
+src/joystick.c:60:  cam = data->scene->cam.dir;
+src/joystick.c:66:  data->scene->cam.pos = add_vec3(data->scene->cam.pos,
+src/joystick.c:67:				  mult_vec3(cam, data->joy.lon * lost_time));
+src/joystick.c:68:  data->scene->cam.pos = add_vec3(data->scene->cam.pos,
+src/joystick.c:70:					    data->joy.lat * lost_time));
+src/joystick.c:71:  data->scene->cam.rot_x += data->joy.hor * lost_time;
+src/joystick.c:72:  data->scene->cam.rot_y += data->joy.ver * lost_time;
+src/joystick.c:73:  data->scene->cam.rot_y = MAX(data->scene->cam.rot_y, -90.0);
+src/joystick.c:74:  data->scene->cam.rot_y = MIN(data->scene->cam.rot_y, 90.0);
+src/joystick.c:75:  refresh_forward(&data->scene->cam);
+src/cluster/scene.c:64:  while (data->network.clients[i] != -1)
+src/cluster/scene.c:66:      tmp = data->scene;
+src/cluster/scene.c:67:      count_scenes(data->network.clients[i], tmp);
+src/cluster/scene.c:70:	  if (send_camera(data->network.clients[i], &tmp->cam) ||
+src/cluster/scene.c:71:	      send_objs(data->network.clients[i], tmp->objs, tmp->nb_obj) ||
+src/cluster/scene.c:72:	      send_lights(data->network.clients[i], tmp->lights,
+src/cluster/scene.c:74:	      send_materials(data->network.clients[i], tmp->mat,
+src/cluster/scene.c:76:	      send_specs(data->network.clients[i], &tmp->spec))
+src/cluster/scene.c:78:	      data->network.clients[i] = -1;
+src/cluster/select.c:28:  else if (fd != data->network.fd && step)
+src/cluster/select.c:34:  else if (fd == data->network.fd && !step)
+src/cluster/select.c:35:    if (new_connection(clients, data->network.fd, max) == -1)
+src/cluster/select.c:59:  FD_SET(data->network.fd, &clients);
+src/cluster/select.c:71:  maxfd = data->network.fd;
+src/cluster/select.c:72:  if (data->network.clients[0] == -1)
+src/cluster/select.c:74:  while (data->network.run)
+src/cluster/connection.c:60:      if (nb_clients == data->network.max_client)
+src/cluster/connection.c:65:      if ((tmp = accept_client(data->network.fd)) != -1 && tmp != 0)
+src/cluster/connection.c:67:	  data->network.clients[nb_clients] = tmp;
+src/cluster/connection.c:72:  data->network.all_connected = true;
+src/cluster/server.c:35:  if ((data->network.fd = socket(AF_INET, SOCK_STREAM, 0)) == -1)
+src/cluster/server.c:40:  if (bind_server(&serv, data->network.fd, data->network.port))
+src/cluster/server.c:42:  if (listen(data->network.fd, 1))
+src/cluster/server.c:58:  if (data->network.max_client == 0)
+src/cluster/server.c:60:  data->network.run = true;
+src/cluster/server.c:61:  data->network.all_connected = false;
+src/cluster/server.c:62:  if (!(data->network.clients =
+src/cluster/server.c:63:	my_malloc(sizeof(int) * data->network.max_client)))
+src/cluster/server.c:65:  my_memset(data->network.clients, sizeof(int) * data->network.max_client, -1);
+src/loader/load_config.c:24:  if ((data->network.port = my_getnbr(tmp)) > 65535 || data->network.port < 0)
+src/loader/load_config.c:32:  if ((data->network.max_client = my_getnbr(tmp)) < 0)
+src/launch.c:26:    data->scene->cam.pos = add_vec3(data->scene->cam.pos,
+src/launch.c:27:				    mult_vec3(data->scene->cam.dir, 0.2));
+src/launch.c:29:    data->scene->cam.pos = sub_vec3(data->scene->cam.pos,
+src/launch.c:30:				    mult_vec3(data->scene->cam.dir, 0.2));
+src/launch.c:32:    ++data->minimum_fps;
+src/launch.c:34:    --data->minimum_fps;
+src/launch.c:55:      data->scene->cam.rot_x += rel->x / 5.0;
+src/launch.c:56:      data->scene->cam.rot_y += rel->y / 5.0;
+src/launch.c:57:      data->scene->cam.rot_y = MAX(data->scene->cam.rot_y, -90.0);
+src/launch.c:58:      data->scene->cam.rot_y = MIN(data->scene->cam.rot_y, 90.0);
+src/launch.c:59:      refresh_forward(&data->scene->cam);
+src/launch.c:90:  data->scene->cache->clipable.clip_width = data->cur_width;
+src/launch.c:91:  data->scene->cache->clipable.clip_height = data->cur_height;
+src/launch.c:92:  blit_scaled(data->scene->cache, data->render);
+src/launch.c:93:  bunny_blit(&data->win->buffer, &data->render->clipable, NULL);
+src/launch.c:94:  bunny_display(data->win);
+src/launch.c:127:  data->cur_width = data->width / 2;
+src/launch.c:128:  data->cur_height = data->height / 2;
+src/launch.c:129:  print_scenes(data->scene);
+src/launch.c:130:  /* printf("Objs[1]Type = %d\n", data->scene->objs[1].type); */
+src/launch.c:131:  /* print_ply(data->scene->objs[1].ply.ply); */
+src/launch.c:142:  if (bunny_loop(data->win, 120, data) == EXIT_ON_ERROR)
+src/init_data.c:17:  data->width = DEFAULT_WIDTH;
+src/init_data.c:18:  data->height = DEFAULT_HEIGHT;
+src/init_data.c:19:  data->fullscreen = false;
+src/init_data.c:20:  data->minimum_fps = MINIMUM_FPS;
+src/init_data.c:21:  data->joy.lon = 0;
+src/init_data.c:22:  data->joy.lat = 0;
+src/init_data.c:23:  data->joy.hor = 0;
+src/init_data.c:24:  data->joy.ver = 0;

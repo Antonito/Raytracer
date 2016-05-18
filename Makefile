@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Tue May 17 13:54:35 2016 Ludovic Petrenko
+## Last update Wed May 18 06:22:28 2016 Ludovic Petrenko
 ##
 
 DEBUG=			yes
@@ -13,6 +13,7 @@ DEBUG=			yes
 SRC_PREFIX=		src/
 
 SRC_FILES=		init_data.c			\
+			joystick.c			\
 			build_octree.c			\
 			calc_fragment.c			\
 			calc_ray.c			\
@@ -28,6 +29,7 @@ SRC_FILES=		init_data.c			\
 			set_frame.c			\
 			vector.c			\
 			vector_add.c			\
+			vector_tools.c			\
 			vector_op.c			\
 			obj_vector.c			\
 			obj_vector_op.c			\
@@ -64,7 +66,8 @@ NETWORK_FILES=		camera.c			\
 			materials.c			\
 			objects.c			\
 			scene.c				\
-			server.c
+			server.c			\
+			select.c
 
 CLIENT_PREFIX=		src/client/
 
@@ -88,6 +91,7 @@ LOADER_FILES=		count.c				\
 			load_obj.c			\
 			load_obj_type.c			\
 			load_obj_type_more.c		\
+			load_polygons.c			\
 			load_scene.c			\
 			obj_type.c
 
@@ -116,13 +120,47 @@ SHAPE_FILES=		plane.c				\
 			klein_coef_more.c		\
 			klein_normale.c			\
 			hyperbola.c			\
-			ellipsoid.c
+			ellipsoid.c			\
+			ply.c				\
+			boy.c				\
+			cassini.c			\
+			chair.c				\
+			kusner.c			\
+			tritrumpet.c			\
+			whitney.c			\
+			tetrahedral.c			\
+			barth_sextic.c			\
+			bifolia.c			\
+			duplin.c			\
+			cushion.c			\
+			double_sphere.c			\
+			tooth.c				\
+			heart.c				\
+			hunt.c				\
+			miter.c				\
+			kiss.c				\
+			kummer.c			\
+			enneper.c			\
+			bohemian_dome.c			\
+			bohemian_star.c			\
+			c8.c				\
+			chubs.c				\
+			devil.c				\
+			quartic_cylinder.c		\
+			spheroid.c
 
 NET_TOOLS_PREFIX=	src/cluster/
 
 NET_TOOLS_FILES=	messages.c			\
 			numbers.c			\
 			packet.c
+
+THREADPOOL_PREFIX=	src/threadpool/
+
+THREADPOOL_FILES=	init.c				\
+			pool.c				\
+			queue.c				\
+			task.c
 
 TOOLS_PREFIX=		src/tools/
 
@@ -136,11 +174,26 @@ TOOLS_FILES=		memory.c			\
 			my_strcmp.c			\
 			my_strncmp.c			\
 			my_gethexa.c			\
-			my_strndup.c			\
 			my_puterr.c			\
+			my_strndup.c			\
+			str_to_wordtab.c		\
+			get_next_line.c			\
 			blit_scaled.c			\
 			swap_double.c			\
 			trigo.c
+
+PLY_PREFIX=		src/ply/
+
+PLY_FILES=		add_element.c			\
+			check_var.c			\
+			get_ply.c			\
+			init.c				\
+			fill_ply.c			\
+			parse_prop.c			\
+			free_ply.c			\
+			read_header.c			\
+			resize.c			\
+			build_obj.c
 
 SRC=			$(addprefix $(SRC_PREFIX),$(SRC_FILES))
 
@@ -158,15 +211,23 @@ SRC_SOLVER=		$(addprefix $(SOLVER_PREFIX),$(SOLVER_FILES))
 
 SRC_NET_TOOLS=		$(addprefix $(NET_TOOLS_PREFIX),$(NET_TOOLS_FILES))
 
+SRC_THREADPOOL=		$(addprefix $(THREADPOOL_PREFIX),$(THREADPOOL_FILES))
+
 SRC_TOOLS=		$(addprefix $(TOOLS_PREFIX),$(TOOLS_FILES))
+
+SRC_PLY=		$(addprefix $(PLY_PREFIX),$(PLY_FILES))
 
 SRC+=			$(SRC_NOISE)
 
 SRC+=			$(SRC_NETWORK)
 
+SRC+=			$(SRC_THREADPOOL)
+
 SRC+=			$(SRC_TOOLS)
 
 SRC+=			$(SRC_LOADER)
+
+SRC+=			$(SRC_PLY)
 
 SRC+=			$(SRC_SHAPE)
 

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Apr 27 04:02:18 2016 Antoine Baché
-** Last update Tue May 10 16:16:34 2016 Ludovic Petrenko
+** Last update Sat May 14 21:48:38 2016 Antoine Baché
 */
 
 #ifndef SOLVER_H_
@@ -50,13 +50,9 @@ double		solver_n_degree(double *coef, int degree);
 double		check_solution_equation(double, double);
 double		quadratic_solution_calc(double *, double);
 void		quadratic_solution_det(double *, double, double, ...);
-
-/*
-** Solver n
-*/
 double		calc_root(double *coeff, int deg, double l, double r);
-double		*solve_first(double *coef, int deg);
-double		*solve_second(double *coef, int deg);
+double		*solve_first(double *coef);
+double		*solve_second(double *coef);
 double		calc_poly(double *coef, int degree, double a);
 
 #endif /* !SOLVER_H_ */

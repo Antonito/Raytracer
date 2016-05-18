@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun Apr 17 16:29:27 2016 Antoine Baché
-** Last update Tue May 10 13:07:51 2016 Antoine Baché
+** Last update Mon May 16 21:41:33 2016 Luka Boulagnon
 */
 
 #include <unistd.h>
@@ -26,23 +26,6 @@ static int		bind_server(struct sockaddr_in *serv, int fd, int port)
     }
   write(1, NEW_CLIENT_CONNECTED, sizeof(NEW_CLIENT_CONNECTED) - 1);
   return (0);
-}
-
-static void		*tcp_loop(void *data_arg)
-{
-  t_data		*data;
-
-  data = data_arg;
-  if (data->network.clients[0] == -1)
-    return (NULL);
-  while (data->network.run)
-    {
-      /**
-       ** Do calculations here
-       */
-      ;
-    }
-  return (NULL);
 }
 
 static int		init_tcp(t_data *data)
@@ -82,7 +65,7 @@ int			init_server(t_data *data)
   my_memset(data->network.clients, sizeof(int) * data->network.max_client, -1);
   if (init_tcp(data))
     return (1);
-  if (pthread_create(&tcp_thread_loop, NULL, tcp_loop, (void *)data))
+  if (pthread_create(&tcp_thread_loop, NULL, (t_thread)tcp_loop, (void *)data))
     return (1);
   return (0);
 }

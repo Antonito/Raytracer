@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sun Apr 17 00:24:50 2016 Ludovic Petrenko
-** Last update Sat May  7 06:34:22 2016 Ludovic Petrenko
+** Last update Fri May 13 11:31:37 2016 Luka Boulagnon
 */
 
 #ifndef OCTREE_H_
@@ -34,7 +34,7 @@ bool		sphere_node(t_node *node, t_obj *obj);
 bool		plane_node(t_node *node, t_obj *obj);
 bool		cylinder_node(t_node *node, t_obj *obj);
 bool		cone_node(t_node *node, t_obj *obj);
-bool	        torus_node(t_node *node, t_obj *obj);
+bool		torus_node(t_node *node, t_obj *obj);
 int		build_octree(t_node *node, int level);
 
 #endif /* !OCTREE_H_ */

@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon Apr 18 20:37:43 2016 Ludovic Petrenko
-** Last update Tue May 17 17:06:06 2016 Ludovic Petrenko
+** Last update Wed May 18 06:19:10 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -60,13 +60,13 @@ void			load_objs(t_scene *scene, t_obj *obj,
       {
 	load_obj_basics(obj + i, scope);
 	load_obj_data(scene, obj + i, scope);
-	i++;
+	++i;
       }
     else if (scope_name && !my_strncmp(scope_name, LIGHT_PREFIX, 6))
       {
 	load_obj_basics(obj + i, scope);
 	load_light_spec(obj + i, scope);
-	i++;
+	++i;
       }
   if (i)
     obj[i - 1].next = NULL;

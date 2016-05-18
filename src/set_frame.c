@@ -5,13 +5,16 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon May  2 22:15:55 2016 Ludovic Petrenko
-** Last update Wed May 18 04:08:33 2016 Ludovic Petrenko
+** Last update Wed May 18 06:35:53 2016 Ludovic Petrenko
 */
 
 #include <stdio.h>
 #include <pthread.h>
 #include <math.h>
 #include "raytracer.h"
+#include "threadpool.h"
+
+#pragma message "comment"
 
 void			refresh_size(t_data *data, int frame)
 {
@@ -19,10 +22,10 @@ void			refresh_size(t_data *data, int frame)
   double		r;
   double		a;
 
-  if (MINIMUM_FPS)
+  if (MINIMUM_FPS > 0)
     {
       r = (double)data->width / (double)data->height;
-      ratio = (double)frame / (double)MINIMUM_FPS;
+      ratio = (double)frame / (double)(MINIMUM_FPS /* + data->joy.needed_fps */);
       a = data->cur_width * data->cur_height;
       data->cur_width = (int)sqrt(a * ratio * r);
       data->cur_width = (data->cur_width > 0) ? data->cur_width : 1;
@@ -39,15 +42,13 @@ void			refresh_size(t_data *data, int frame)
     }
 }
 
-static void		*call_thread(void *arg)
+void			call_thread(void *arg)
 {
-
   t_calc_fragment	*args;
 
   args = arg;
   calc_fragment(args->data, (unsigned int *)args->data->scene->cache->pixels,
 		args->pos);
-  return (NULL);
 }
 
 static void		set_pos(t_calc_fragment *thread_calc, t_data *data)
@@ -80,6 +81,10 @@ int			set_frame(t_data *data)
   /* while (++i < 4) */
   /*   thread_calc[i].data = data; */
   /* set_pos(thread_calc, data); */
+  /* threadpool_exec(call_thread, &thread_calc[0]); */
+  /* threadpool_exec(call_thread, &thread_calc[1]); */
+  /* threadpool_exec(call_thread, &thread_calc[2]); */
+  /* threadpool_exec(call_thread, &thread_calc[3]); */
   /* set_vectors(data, &data->scene->cam); */
   /* if (pthread_create(&thread[0], NULL, call_thread, &thread_calc[0]) || */
   /*     pthread_create(&thread[1], NULL, call_thread, &thread_calc[1]) || */

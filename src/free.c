@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May 10 09:31:47 2016 Antoine Baché
-** Last update Tue May 10 10:10:28 2016 Antoine Baché
+** Last update Tue May 17 18:28:31 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -13,6 +13,7 @@
 #include "tools/memory.h"
 
 #pragma message("Free data here !")
+#pragma message("/!\ Ply obj !!")
 int		free_raytracer(t_data *data, int ret)
 {
   t_scene	*tmp;

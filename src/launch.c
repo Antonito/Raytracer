@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 16 16:32:45 2016 Ludovic Petrenko
-** Last update Wed May 11 03:40:55 2016 Ludovic Petrenko
+** Last update Wed May 18 06:32:01 2016 Ludovic Petrenko
 */
 
 #include <stdio.h>
@@ -20,23 +20,28 @@ t_bunny_response	events(t_data *data)
 
   if (!keys)
     keys = bunny_get_keyboard();
-  if (keys[BKS_ESCAPE])
+  else if (keys[BKS_ESCAPE])
     return (EXIT_ON_SUCCESS);
-  if (keys[BKS_Z])
+  else if (keys[BKS_Z])
     data->scene->cam.pos = add_vec3(data->scene->cam.pos,
 				    mult_vec3(data->scene->cam.dir, 0.2));
-  if (keys[BKS_S])
+  else if (keys[BKS_S])
     data->scene->cam.pos = sub_vec3(data->scene->cam.pos,
 				    mult_vec3(data->scene->cam.dir, 0.2));
+  else if (keys[BKS_PAGEUP])
+    ++data->minimum_fps;
+  else if (keys[BKS_PAGEDOWN])
+    --data->minimum_fps;
+  data->minimum_fps = (data->minimum_fps > 0) ? : 0;
   return (GO_ON);
 }
 
-t_bunny_response	main_events(UNUSED t_bunny_event_state s,
-				    UNUSED t_bunny_keysym k,
+t_bunny_response	main_events(t_bunny_event_state s,
+				    t_bunny_keysym k,
 				    UNUSED t_data *data)
 {
   if (s == GO_DOWN && k == BKS_ESCAPE)
-    return (EXIT_ON_ERROR);
+    return (EXIT_ON_SUCCESS);
   return (GO_ON);
 }
 
@@ -78,10 +83,11 @@ t_bunny_response	main_loop(t_data *data)
       fps = 0;
     }
   else
-    fps++;
+    ++fps;
   if (events(data) != GO_ON)
     return (EXIT_ON_SUCCESS);
   set_frame(data);
+  joy_proceed_moves(data);
   data->scene->cache->clipable.clip_width = data->cur_width;
   data->scene->cache->clipable.clip_height = data->cur_height;
   blit_scaled(data->scene->cache, data->render);
@@ -90,11 +96,40 @@ t_bunny_response	main_loop(t_data *data)
   return (GO_ON);
 }
 
+void	print_ply(t_ply *ply)
+{
+  printf("=============================\n");
+  printf("              PLY\n");
+  printf("=============================\n");
+  printf("Nb_vertex: %d\n", ply->nb_vertex);
+  printf("Nb_face: %d\n", ply->nb_face);
+  int	i = 0;
+  while (i < ply->nb_vertex)
+    {
+      printf("Vertex %d : %f %f %f\n", i, ply->list_vertex[i].vec.x, ply->list_vertex[i].vec.y, ply->list_vertex[i].vec.z);
+      ++i;
+    }
+  i = 0;
+  int	j;
+  while (i < ply->nb_face)
+    {
+      j = 0;
+      while (j < ply->list_face[i].nb_face)
+	{
+	  printf("Face %d : %d\n", i, ply->list_face[i].face[j]);
+	  ++j;
+	}
+      ++i;
+    }
+}
+
 int	launch_raytracer(t_data *data)
 {
   data->cur_width = data->width / 2;
   data->cur_height = data->height / 2;
   print_scenes(data->scene);
+  /* printf("Objs[1]Type = %d\n", data->scene->objs[1].type); */
+  /* print_ply(data->scene->objs[1].ply.ply); */
   if (init_server(data))
     return (free_raytracer(data, 1));
   printf("Starting to draw\n");
@@ -102,6 +137,9 @@ int	launch_raytracer(t_data *data)
   bunny_set_key_response((t_bunny_key)main_events);
   bunny_set_move_response((t_bunny_move)mouse_response);
   bunny_set_click_response((t_bunny_click)click_response);
+  bunny_set_joy_axis_response((t_bunny_joy_axis)joystick_axises);
+  bunny_set_joy_button_response((t_bunny_joy_button)joystick_buttons);
+  bunny_set_joy_connect_response((t_bunny_joy_connect)joystick_connected);
   if (bunny_loop(data->win, 120, data) == EXIT_ON_ERROR)
     return (free_raytracer(data, 1));
   return (free_raytracer(data, 0));

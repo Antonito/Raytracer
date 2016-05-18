@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon May  9 23:20:33 2016 Ludovic Petrenko
-** Last update Thu May 12 04:04:51 2016 Ludovic Petrenko
+** Last update Fri May 13 06:13:45 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -14,7 +14,7 @@
 
 #pragma message("Solveur non fini")
 
-double		*solve_first(double *coef, int deg)
+double		*solve_first(double *coef)
 {
   double	*sol;
 
@@ -26,7 +26,7 @@ double		*solve_first(double *coef, int deg)
   return (sol);
 }
 
-double		*solve_second(double *coef, int deg)
+double		*solve_second(double *coef)
 {
   double	*sol;
   double	det;

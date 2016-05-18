@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Apr 18 11:13:21 2016 Antoine Baché
-** Last update Thu May  5 17:28:57 2016 Ludovic Petrenko
+** Last update Fri May 13 17:50:14 2016 Arthur ARNAUD
 */
 
 #include "tools/memory.h"
@@ -36,7 +36,7 @@ static void	remove_comma(const char *str, char *tmp)
   while (tmp[i] != '\0')
     {
       tmp[i] = tmp[i + 1];
-      i++;
+      ++i;
     }
 }
 

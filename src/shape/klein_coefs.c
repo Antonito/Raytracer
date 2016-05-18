@@ -5,126 +5,132 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May  9 03:28:07 2016 Antoine Baché
-** Last update Mon May  9 05:00:22 2016 Antoine Baché
+** Last update Wed May 18 03:37:28 2016 Antoine Baché
 */
 
 #include "engine/intersect.h"
 
-static double			calc_e_part_2_klein(t_ray *ray)
+double	calc_e_klein(t_ray *ray, t_vec3 tmp, t_vec3 dir, t_vec3 pos)
 {
-  return (((24 * ray->pos.x * ray->pos.y - 8
-	    * ray->pos.x) * ray->pos.z *
-	   ray->pos.z +
-	   (32 * ray->pos.y - 32) *
-	   ray->pos.z + 24 * ray->pos.x * ray->pos.y * ray->pos.y *
-	   ray->pos.y - 24 * ray->pos.x * ray->pos.y * ray->pos.y +
-	   (24 * ray->pos.x * ray->pos.x *
-	    ray->pos.x - 40 * ray->pos.x) * ray->pos.y - 8 * ray->pos.x *
-	   ray->pos.x * ray->pos.x + 8 *
-	   ray->pos.x) * ray->dir.x * ray->dir.y +
-	  (3 * ray->pos.z *
-	   ray->pos.z * ray->pos.z * ray->pos.z +
-	   (6 * ray->pos.y * ray->pos.y - 4 * ray->pos.y + 18 *
-	    ray->pos.x * ray->pos.x - 14) * ray->pos.z *
-	   ray->pos.z + 48 * ray->pos.x * ray->pos.z + 3 *
-	   ray->pos.y * ray->pos.y * ray->pos.y * ray->pos.y - 4 *
-	   ray->pos.y * ray->pos.y * ray->pos.y +
-	   (18 * ray->pos.x * ray->pos.x - 10) * ray->pos.y *
-	   ray->pos.y + (4 - 12 * ray->pos.x * ray->pos.x) *
-	   ray->pos.y + 15 * ray->pos.x * ray->pos.x * ray->pos.x
-	   * ray->pos.x - 18 * ray->pos.x * ray->pos.x + 3) *
-	  ray->dir.x * ray->dir.x);
+  return (-6.0 * tmp.x * tmp.x * ray->dir.x * ray->dir.x - 2.0 * tmp.y * tmp.y
+	  * ray->dir.x * ray->dir.x + 18.0 * tmp.x * tmp.x * tmp.y * tmp.y *
+	  ray->dir.x * ray->dir.x - 10.0 * tmp.z * tmp.z * ray->dir.x *
+	  ray->dir.x + 18.0 * tmp.x * tmp.x * tmp.z * tmp.z * ray->dir.x *
+	  ray->dir.x + 6.0 * tmp.y * tmp.y * tmp.z * tmp.z * ray->dir.x *
+	  ray->dir.x + 4.0 * tmp.y * tmp.z * tmp.z * ray->dir.x * ray->dir.x +
+	  4.0 * tmp.y * tmp.y * tmp.y * ray->dir.x * ray->dir.x + 15.0 * tmp.x
+	  * tmp.x * tmp.x * tmp.x * ray->dir.x * ray->dir.x + 3.0 * tmp.y *
+	  tmp.y * tmp.y * tmp.y * ray->dir.x * ray->dir.x + 3.0 * tmp.z * tmp.z
+	  * tmp.z * tmp.z * ray->dir.x * ray->dir.x + 12.0 * tmp.x * tmp.x *
+	  tmp.y * ray->dir.x * ray->dir.x + 48.0 * tmp.x * tmp.z * ray->dir.x *
+	  ray->dir.x - 2.0 * tmp.x * tmp.x * ray->dir.y * ray->dir.y + 18.0 *
+	  tmp.x * tmp.x * tmp.y * tmp.y * ray->dir.y * ray->dir.y - 6.0 * tmp.y
+	  * tmp.y * ray->dir.y * ray->dir.y - 10.0 * tmp.z * tmp.z * ray->dir.y
+	  * ray->dir.y + 6.0 * tmp.x * tmp.x * tmp.z * tmp.z * ray->dir.y *
+	  ray->dir.y + 18.0 * tmp.y * tmp.y * tmp.z * tmp.z * ray->dir.y *
+	  ray->dir.y + 12.0 * tmp.y * tmp.z * tmp.z * ray->dir.y * ray->dir.y +
+	  20.0 * tmp.y * tmp.y * tmp.y * ray->dir.y * ray->dir.y + 3.0 * tmp.x
+	  * tmp.x * tmp.x * tmp.x * ray->dir.y * ray->dir.y + 15.0 * tmp.y *
+	  tmp.y * tmp.y * tmp.y * ray->dir.y * ray->dir.y + 3.0 * tmp.z * tmp.z
+	  * tmp.z * tmp.z * ray->dir.y * ray->dir.y + 12.0 * tmp.x * tmp.x *
+	  tmp.y * ray->dir.y * ray->dir.y + 16.0 * tmp.x * tmp.z * ray->dir.y *
+	  ray->dir.y - 10.0 * tmp.x * tmp.x * ray->dir.z * ray->dir.z - 10.0 *
+	  tmp.y * tmp.y * ray->dir.z * ray->dir.z + 6.0 * tmp.x * tmp.x * tmp.y
+	  * tmp.y * ray->dir.z * ray->dir.z + 18.0 * tmp.x * tmp.x * tmp.z *
+	  tmp.z * ray->dir.z * ray->dir.z + 18.0 * tmp.y * tmp.y * tmp.z *
+	  tmp.z * ray->dir.z * ray->dir.z - 54.0 * tmp.z * tmp.z * ray->dir.z *
+	  ray->dir.z + 12.0 * tmp.y * tmp.z * tmp.z * ray->dir.z * ray->dir.z +
+	  4.0 * tmp.y * tmp.y * tmp.y * ray->dir.z * ray->dir.z + 3.0 * tmp.x *
+	  tmp.x * tmp.x * tmp.x * ray->dir.z * ray->dir.z + 3.0 * tmp.y * tmp.y
+	  * tmp.y * tmp.y * ray->dir.z * ray->dir.z + 15.0 * tmp.z * tmp.z *
+	  tmp.z * tmp.z * ray->dir.z * ray->dir.z + 8.0 * ray->dir.z *
+	  ray->dir.z + 4.0 * tmp.x * tmp.x * tmp.y * ray->dir.z * ray->dir.z -
+	  16.0 * tmp.y * ray->dir.z * ray->dir.z + 48.0 * tmp.x * tmp.z *
+	  ray->dir.z * ray->dir.z + 24.0 * tmp.x * tmp.y * tmp.y * ray->dir.x *
+	  ray->dir.y + 8.0 * tmp.x * tmp.z * tmp.z * ray->dir.x * ray->dir.y +
+	  24.0 * tmp.x * tmp.y * tmp.z * tmp.z * ray->dir.x * ray->dir.y + 8.0
+	  * tmp.x * tmp.x * tmp.x * ray->dir.x * ray->dir.y + 24.0 * tmp.x *
+	  tmp.y * tmp.y * tmp.y * ray->dir.x * ray->dir.y + 24.0 * tmp.x *
+	  tmp.x * tmp.x * tmp.y * ray->dir.x * ray->dir.y - 8.0 * tmp.x * tmp.y
+	  * ray->dir.x * ray->dir.y - 32.0 * tmp.z * ray->dir.x * ray->dir.y +
+	  32.0 * tmp.y * tmp.z * ray->dir.x * ray->dir.y + 48.0 * tmp.x * tmp.x
+	  * ray->dir.x * ray->dir.z + 16.0 * tmp.y * tmp.y * ray->dir.x *
+	  ray->dir.z + 48.0 * tmp.z * tmp.z * ray->dir.x * ray->dir.z + 24.0 *
+	  tmp.x * tmp.z * tmp.z * tmp.z * ray->dir.x * ray->dir.z - 16.0 *
+	  ray->dir.x * ray->dir.z - 32.0 * tmp.y * ray->dir.x * ray->dir.z +
+	  24.0 * tmp.x * tmp.y * tmp.y * tmp.z * ray->dir.x * ray->dir.z + 24.0
+	  * tmp.x * tmp.x * tmp.x * tmp.z * ray->dir.x * ray->dir.z - 40.0 *
+	  tmp.x * tmp.z * ray->dir.x * ray->dir.z + 16.0 * tmp.x * tmp.y *
+	  tmp.z * ray->dir.x * ray->dir.z + 8.0 * tmp.z * tmp.z * tmp.z *
+	  ray->dir.y * ray->dir.z + 24.0 * tmp.y * tmp.z * tmp.z * tmp.z *
+	  ray->dir.y * ray->dir.z - 32.0 * tmp.x * ray->dir.y * ray->dir.z +
+	  32.0 * tmp.x * tmp.y * ray->dir.y * ray->dir.z - 32.0 * tmp.z *
+	  ray->dir.y * ray->dir.z + 8.0 * tmp.x * tmp.x * tmp.z * ray->dir.y *
+	  ray->dir.z + 24.0 * tmp.y * tmp.y * tmp.z * ray->dir.y * ray->dir.z +
+	  24.0 * tmp.y * tmp.y * tmp.y * tmp.z * ray->dir.y * ray->dir.z - 40.0
+	  * tmp.y * tmp.z * ray->dir.y * ray->dir.z + 24.0 * tmp.x * tmp.x *
+	  tmp.y * tmp.z * ray->dir.y * ray->dir.z);
 }
 
-static double			calc_e_part_klein(t_ray *ray)
+double	calc_d_klein(t_ray *ray, t_vec3 tmp, t_vec3 dir, t_vec3 pos)
 {
-  return ((((24 * ray->pos.y - 8) * ray->pos.z * ray->pos.z *
-	    ray->pos.z + (24 * ray->pos.y * ray->pos.y * ray->pos.y - 24 *
-			  ray->pos.y * ray->pos.y +
-			  (24 * ray->pos.x * ray->pos.x -
-			   72) * ray->pos.y - 8 *
-			  ray->pos.x * ray->pos.x - 24) *
-	    ray->pos.z + 32 * ray->pos.x *
-	    ray->pos.y - 32 * ray->pos.x) *
-	   ray->dir.y +
-	   (24 * ray->pos.x * ray->pos.z * ray->pos.z *
-	    ray->pos.z + 48 *
-	    ray->pos.z *
-	    ray->pos.z +
-	    (24 * ray->pos.x *
-	     ray->pos.y * ray->pos.y - 16 *
-	     ray->pos.x * ray->pos.y + 24 *
-	     ray->pos.x * ray->pos.x *
-	     ray->pos.x - 56 * ray->pos.x) *
-	    ray->pos.z + 16 * ray->pos.y *
-	    ray->pos.y - 32 * ray->pos.y +
-	    48 * ray->pos.x * ray->pos.x -
-	    16) * ray->dir.x) * ray->dir.z);
-}
-
-double				calc_e_klein(t_ray *ray)
-{
-  return ((15 * ray->pos.z * ray->pos.z * ray->pos.z * ray->pos.z +
-	   (18 * ray->pos.y * ray->pos.y - 12 * ray->pos.y + 18 * ray->pos.x *
-	    ray->pos.x - 66) * ray->pos.z * ray->pos.z + 48 * ray->pos.x *
-	   ray->pos.z + 3 * ray->pos.y * ray->pos.y * ray->pos.y * ray->pos.y -
-	   4 * ray->pos.y * ray->pos.y * ray->pos.y +
-	   (6 * ray->pos.x * ray->pos.x - 18) * ray->pos.y * ray->pos.y +
-	   (-4 * ray->pos.x * ray->pos.x - 12) * ray->pos.y + 3 * ray->pos.x *
-	   ray->pos.x * ray->pos.x * ray->pos.x - 14 * ray->pos.x * ray->pos.x
-	   + 11) * ray->dir.z * ray->dir.z + calc_e_part_klein(ray) +
-	  (3 * ray->pos.z * ray->pos.z * ray->pos.z * ray->pos.z +
-	   (18 * ray->pos.y * ray->pos.y - 12 * ray->pos.y + 6 * ray->pos.x *
-	    ray->pos.x - 18) * ray->pos.z * ray->pos.z + 16 * ray->pos.x *
-	   ray->pos.z + 15 * ray->pos.y * ray->pos.y * ray->pos.y * ray->pos.y
-	   - 20 * ray->pos.y * ray->pos.y * ray->pos.y +
-	   (18 * ray->pos.x * ray->pos.x - 42) * ray->pos.y * ray->pos.y +
-	   (36 - 12 * ray->pos.x * ray->pos.x) * ray->pos.y + 3 * ray->pos.x *
-	   ray->pos.x * ray->pos.x * ray->pos.x - 10 * ray->pos.x * ray->pos.x
-	   + 7) * ray->dir.y * ray->dir.y + calc_e_part_2_klein(ray));
-}
-
-inline static double		calc_d_part_klein(t_ray *ray)
-{
-  return (((12 * ray->pos.y - 4) * ray->pos.z * ray->pos.z + 20 * ray->pos.y *
-	   ray->pos.y * ray->pos.y - 20 * ray->pos.y * ray->pos.y +
-	   (12 * ray->pos.x * ray->pos.x - 28) * ray->pos.y - 4 * ray->pos.x *
-	   ray->pos.x + 12) * ray->dir.y * ray->dir.y * ray->dir.y +
-	  (12 * ray->pos.x * ray->pos.z * ray->pos.z + 16 * ray->pos.z + 36 *
-	   ray->pos.x * ray->pos.y * ray->pos.y - 24 * ray->pos.x * ray->pos.y
-	   + 12 * ray->pos.x * ray->pos.x * ray->pos.x - 20 * ray->pos.x) *
-	  ray->dir.x * ray->dir.y * ray->dir.y + ((12 * ray->pos.y - 4) *
-						  ray->pos.z * ray->pos.z + 12
-						  * ray->pos.y * ray->pos.y *
-						  ray->pos.y - 12 * ray->pos.y
-						  * ray->pos.y +
-						  (36 * ray->pos.x * ray->pos.x
-						   - 20) * ray->pos.y - 12 *
-						  ray->pos.x * ray->pos.x + 4)
-	  * ray->dir.x * ray->dir.x * ray->dir.y +
-	  (12 * ray->pos.x * ray->pos.z * ray->pos.z + 16 * ray->pos.z + 12 *
-	   ray->pos.x * ray->pos.y * ray->pos.y - 8 * ray->pos.x * ray->pos.y +
-	   20 * ray->pos.x * ray->pos.x * ray->pos.x - 12 * ray->pos.x) *
-	  ray->dir.x * ray->dir.x * ray->dir.x);
-}
-
-double				calc_d_klein(t_ray *ray)
-{
-  return ((20 * ray->pos.z * ray->pos.z * ray->pos.z +
-	   (12 * ray->pos.y * ray->pos.y - 8 * ray->pos.y + 12 * ray->pos.x *
-	    ray->pos.x - 44) * ray->pos.z + 16 * ray->pos.x) * ray->dir.z *
-	  ray->dir.z * ray->dir.z + (((36 * ray->pos.y - 12) * ray->pos.z *
-				      ray->pos.z + 12 * ray->pos.y * ray->pos.y
-				      * ray->pos.y - 12 * ray->pos.y *
-				      ray->pos.y +
-				      (12 * ray->pos.x * ray->pos.x - 36) *
-				      ray->pos.y - 4 * ray->pos.x * ray->pos.x
-				      - 12) * ray->dir.y +
-				     (36 * ray->pos.x * ray->pos.z * ray->pos.z
-				      + 48 * ray->pos.z + 12 * ray->pos.x *
-				      ray->pos.y * ray->pos.y - 8 * ray->pos.x
-				      * ray->pos.y + 12 * ray->pos.x *
-				      ray->pos.x * ray->pos.x - 28 * ray->pos.x)
-				     * ray->dir.x) * ray->dir.z * ray->dir.z +
-	  calc_d_part_klein(ray));
+  return (36.0 * tmp.x * tmp.y * tmp.y * ray->dir.x * ray->dir.y * ray->dir.y +
+	  12.0 * tmp.x * tmp.z * tmp.z * ray->dir.x * ray->dir.y * ray->dir.y +
+	  12.0 * tmp.x * tmp.x * tmp.x * ray->dir.x * ray->dir.y * ray->dir.y -
+	  4.0 * tmp.x * ray->dir.x * ray->dir.y * ray->dir.y + 24.0 * tmp.x *
+	  tmp.y * ray->dir.x * ray->dir.y * ray->dir.y + 16.0 * tmp.z *
+	  ray->dir.x * ray->dir.y * ray->dir.y + 12.0 * tmp.x * tmp.y * tmp.y *
+	  ray->dir.x * ray->dir.z * ray->dir.z + 36.0 * tmp.x * tmp.z * tmp.z *
+	  ray->dir.x * ray->dir.z * ray->dir.z + 12.0 * tmp.x * tmp.x * tmp.x *
+	  ray->dir.x * ray->dir.z * ray->dir.z - 20.0 * tmp.x * ray->dir.x *
+	  ray->dir.z * ray->dir.z + 8.0 * tmp.x * tmp.y * ray->dir.x *
+	  ray->dir.z * ray->dir.z + 48.0 * tmp.z * ray->dir.x * ray->dir.z *
+	  ray->dir.z + 4.0 * tmp.x * tmp.x * ray->dir.y * ray->dir.z *
+	  ray->dir.z + 12.0 * tmp.y * tmp.y * ray->dir.y * ray->dir.z *
+	  ray->dir.z + 12.0 * tmp.z * tmp.z * ray->dir.y * ray->dir.z *
+	  ray->dir.z + 36.0 * tmp.y * tmp.z * tmp.z * ray->dir.y * ray->dir.z *
+	  ray->dir.z + 12.0 * tmp.y * tmp.y * tmp.y * ray->dir.y * ray->dir.z *
+	  ray->dir.z - 16.0 * ray->dir.y * ray->dir.z * ray->dir.z - 20.0 *
+	  tmp.y * ray->dir.y * ray->dir.z * ray->dir.z + 12.0 * tmp.x * tmp.x *
+	  tmp.y * ray->dir.y * ray->dir.z * ray->dir.z + 12.0 * tmp.x * tmp.y *
+	  tmp.y * ray->dir.x * ray->dir.x * ray->dir.x + 12.0 * tmp.x * tmp.z *
+	  tmp.z * ray->dir.x * ray->dir.x * ray->dir.x + 20.0 * tmp.x * tmp.x *
+	  tmp.x * ray->dir.x * ray->dir.x * ray->dir.x - 4.0 * tmp.x *
+	  ray->dir.x * ray->dir.x * ray->dir.x + 8.0 * tmp.x * tmp.y *
+	  ray->dir.x * ray->dir.x * ray->dir.x + 16.0 * tmp.z * ray->dir.x *
+	  ray->dir.x * ray->dir.x + 4.0 * tmp.x * tmp.x * ray->dir.y *
+	  ray->dir.y * ray->dir.y + 20.0 * tmp.y * tmp.y * ray->dir.y *
+	  ray->dir.y * ray->dir.y + 4.0 * tmp.z * tmp.z * ray->dir.y *
+	  ray->dir.y * ray->dir.y + 12.0 * tmp.y * tmp.z * tmp.z * ray->dir.y
+	  * ray->dir.y * ray->dir.y + 20.0 * tmp.y * tmp.y * tmp.y *
+	  ray->dir.y * ray->dir.y * ray->dir.y + 12.0 * tmp.x * tmp.x * tmp.y
+	  * ray->dir.y * ray->dir.y * ray->dir.y - 4.0 * tmp.y * ray->dir.y *
+	  ray->dir.y * ray->dir.y + 20.0 * tmp.z * tmp.z * tmp.z * ray->dir.z
+	  * ray->dir.z * ray->dir.z + 16.0 * tmp.x * ray->dir.z * ray->dir.z *
+	  ray->dir.z + 12.0 * tmp.x * tmp.x * tmp.z * ray->dir.z * ray->dir.z
+	  * ray->dir.z + 12.0 * tmp.y * tmp.y * tmp.z * ray->dir.z *
+	  ray->dir.z * ray->dir.z - 36.0 * tmp.z * ray->dir.z * ray->dir.z *
+	  ray->dir.z + 8.0 * tmp.y * tmp.z * ray->dir.z * ray->dir.z *
+	  ray->dir.z + 12.0 * tmp.x * tmp.x * ray->dir.x * ray->dir.x *
+	  ray->dir.y + 12.0 * tmp.y * tmp.y * ray->dir.x * ray->dir.x *
+	  ray->dir.y + 4.0 * tmp.z * tmp.z * ray->dir.x * ray->dir.x *
+	  ray->dir.y + 12.0 * tmp.y * tmp.z * tmp.z * ray->dir.x * ray->dir.x
+	  * ray->dir.y + 12.0 * tmp.y * tmp.y * tmp.y * ray->dir.x *
+	  ray->dir.x * ray->dir.y + 36.0 * tmp.x * tmp.x * tmp.y * ray->dir.x
+	  * ray->dir.x * ray->dir.y - 4.0 * tmp.y * ray->dir.x * ray->dir.x *
+	  ray->dir.y + 12.0 * tmp.z * tmp.z * tmp.z * ray->dir.x * ray->dir.x
+	  * ray->dir.z + 48.0 * tmp.x * ray->dir.x * ray->dir.x * ray->dir.z -
+	  20.0 * tmp.z * ray->dir.x * ray->dir.x * ray->dir.z + 36.0 * tmp.x *
+	  tmp.x * tmp.z * ray->dir.x * ray->dir.x * ray->dir.z + 12.0 * tmp.y
+	  * tmp.y * tmp.z * ray->dir.x * ray->dir.x * ray->dir.z + 8.0 * tmp.y
+	  * tmp.z * ray->dir.x * ray->dir.x * ray->dir.z + 12.0 * tmp.z *
+	  tmp.z * tmp.z * ray->dir.y * ray->dir.y * ray->dir.z + 16.0 * tmp.x
+	  * ray->dir.y * ray->dir.y * ray->dir.z - 20.0 * tmp.z * ray->dir.y *
+	  ray->dir.y * ray->dir.z + 12.0 * tmp.x * tmp.x * tmp.z * ray->dir.y
+	  * ray->dir.y * ray->dir.z + 36.0 * tmp.y * tmp.y * tmp.z * ray->dir.y
+	  * ray->dir.y * ray->dir.z + 24.0 * tmp.y * tmp.z * ray->dir.y *
+	  ray->dir.y * ray->dir.z - 32.0 * ray->dir.x * ray->dir.y *
+	  ray->dir.z + 32.0 * tmp.y * ray->dir.x * ray->dir.y * ray->dir.z +
+	  16.0 * tmp.x * tmp.z * ray->dir.x * ray->dir.y * ray->dir.z + 48.0 *
+	  tmp.x * tmp.y * tmp.z * ray->dir.x * ray->dir.y * ray->dir.z);
 }

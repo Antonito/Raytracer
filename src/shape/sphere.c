@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May  2 04:39:20 2016 Antoine Baché
-** Last update Wed May 18 04:24:56 2016 Ludovic Petrenko
+** Last update Wed May 18 06:17:45 2016 Ludovic Petrenko
 */
 
 #include "solver.h"

@@ -5,29 +5,34 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Wed May 18 04:11:15 2016 Ludovic Petrenko
+** Last update Wed May 18 07:00:24 2016 Ludovic Petrenko
 */
 
 #ifndef	RAYTRACER2_H_
 # define RAYTRACER2_H_
 
-# include <lapin.h>
 # include <stdbool.h>
+# include "lapin.h"
 # include "engine/scene.h"
 # include "config.h"
 # include "events.h"
 # include "tools/memory.h"
+# include "ply.h"
 
-# define DEFAULT_WIDTH		1280
-# define DEFAULT_HEIGHT		720
+# define DEFAULT_WIDTH		(1280 / 4)
+# define DEFAULT_HEIGHT		(720 / 4)
 # define WIN_NAME		"Ray Ta Soeur"
 # define UNUSED			__attribute__((unused))
-# define MAX_RECURSIVE		5
-# define MINIMUM_FPS		3
+# define MAX_RECURSIVE		2
+# define MINIMUM_FPS		0
 
 /*
 ** Scopes expected in .ini files
 */
+# define FILE_PATH		"file"
+# define POLY_PTS_A		"point_a"
+# define POLY_PTS_B		"point_b"
+# define POLY_PTS_C		"point_c"
 # define SCOPE_NETWORK		"network"
 # define PORT_NETWORK		"port"
 # define CLIENT_NETWORK		"max_client"
@@ -55,6 +60,7 @@
 # define MAT_PREFIX		"mat_"
 # define OBJ_PREFIX		"obj_"
 # define LIGHT_PREFIX		"light_"
+# define RATIO_FIELD		"ratio"
 # define RADIUS_TORE_FIELD	"radius_hole"
 # define RADIUS_TORE_FIELD2	"radius_solid"
 
@@ -68,10 +74,10 @@
 /*
 ** Error messages
 */
-# define MISSING_PORT_ERROR    	"Missing port in config.ini\n"
+# define MISSING_PORT_ERROR	"Missing port in config.ini\n"
 # define INVALID_PORT_ERROR	"Invalid port in config.ini\n"
-# define CHOOSE_PORT_ERROR     	"Choose a port between 0 and 65535\n"
-# define MAX_CLIENT_ERROR    	"Invalid max_client in config.ini\n"
+# define CHOOSE_PORT_ERROR	"Choose a port between 0 and 65535\n"
+# define MAX_CLIENT_ERROR	"Invalid max_client in config.ini\n"
 # define NEW_CLIENT_ERROR	"Error: Cannot accept new client\n"
 # define MAX_CLIENT_REACHED	"Max number of client reached\n"
 # define INIT_SERVER_ERROR	"Error: Cannot start server\n"
@@ -98,18 +104,29 @@ typedef struct		s_network
   bool			draw;
 }			t_network;
 
+typedef struct		s_joy_move
+{
+  double		hor;
+  double		lat;
+  double		lon;
+  double		ver;
+  int			needed_fps;
+}			t_joy_move;
+
 typedef struct		s_data
 {
-  t_bunny_window	*win;
-  t_bunny_pixelarray	*render;
-  int			width;
-  int			height;
-  int			cur_width;
-  int			cur_height;
   bool			fullscreen;
-  t_scene		*scene;
+  int			cur_height;
+  int			cur_width;
+  int			height;
+  int			minimum_fps;
+  int			width;
+  t_bunny_pixelarray	*render;
+  t_bunny_window	*win;
   t_config		config;
+  t_joy_move		joy;
   t_network		network;
+  t_scene		*scene;
 }			t_data;
 
 typedef struct		s_calc_fragment
@@ -132,5 +149,11 @@ void			set_vectors(t_data *data, t_camera *c);
 void			refresh_size(t_data *data, int frame);
 void			blit_scaled(t_bunny_pixelarray *, t_bunny_pixelarray *);
 int			free_raytracer(t_data *data, int ret);
+t_bunny_response	joystick_axises(int, t_bunny_axis, float, t_data *);
+t_bunny_response	joystick_buttons(t_bunny_event_state, int, int,
+					 t_data *);
+t_bunny_response	joystick_connected(t_bunny_event_state, int,
+					   const t_bunny_joystick, void *);
+void			joy_preceed_moves(t_data *);
 
 #endif /* RAYTRACER2_H_ */

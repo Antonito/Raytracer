@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 30 23:30:01 2016 Ludovic Petrenko
-** Last update Wed May 18 06:13:20 2016 Ludovic Petrenko
+** Last update Wed May 18 06:37:22 2016 Ludovic Petrenko
 */
 
 #pragma GCC warning "\e[31m\e[1mCommentaires + Norme !\e[0m"
@@ -34,7 +34,7 @@ unsigned int	mix_colors(t_scene *s, t_intersect *i,
     refr = MAX(MIN(refr / t->dist * 50, 1.0), 0.0);
   coef = MIN(1.0, MAX(dot_vec3(vec3_normalize(i->norm),
   			       vec3_normalize(vec3(0,-1,1))), 0.1));
-  coef = 1.0;
+  /* coef = 1.0; */
   /* light = get_light(s, i); */
   j = -1;
   while (++j < 4)

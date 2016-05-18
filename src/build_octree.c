@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Wed Apr 20 00:59:49 2016 Ludovic Petrenko
-** Last update Mon May  9 10:50:01 2016 Ludovic Petrenko
+** Last update Fri May 13 16:00:46 2016 Luka Boulagnon
 */
 
 #pragma message("WARNING Enlever printf")
@@ -47,8 +47,8 @@ int	push_obj_to_subnode(t_obj *obj, t_node *node, int subnode)
     cur = cur->next;
   cur->next = obj;
   obj->next = NULL;
-  node->child[subnode]->nb_obj++;
-  node->nb_obj--;
+  ++node->child[subnode]->nb_obj;
+  --node->nb_obj;
   return (0);
 }
 
