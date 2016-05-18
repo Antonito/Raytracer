@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Fri May 13 05:47:55 2016 Ludovic Petrenko
+## Last update Tue May 17 13:54:35 2016 Ludovic Petrenko
 ##
 
 DEBUG=			yes
@@ -30,7 +30,8 @@ SRC_FILES=		init_data.c			\
 			vector_add.c			\
 			vector_op.c			\
 			obj_vector.c			\
-			obj_vector_op.c
+			obj_vector_op.c			\
+			move_ray.c
 
 NOISE_PREFIX=		src/noise/
 

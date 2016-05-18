@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Wed Apr 27 05:31:16 2016 Ludovic Petrenko
-** Last update Fri May 13 06:44:07 2016 Ludovic Petrenko
+** Last update Wed May 18 05:24:12 2016 Ludovic Petrenko
 */
 
 #define _ISOC99_SOURCE
@@ -79,19 +79,24 @@ void	node_intersect(t_node *node, t_ray *ray, t_intersect *cur)
 {
   t_intersect	tmp;
   t_obj		*obj;
+  t_ray		rotated;
 
   cur->dist = INFINITY;
   obj = &node->obj_list;
   while ((obj = obj->next))
     {
+      move_ray(obj, ray, &rotated);
       tmp.mat = obj->mat;
-      tmp = obj->get_intersect(obj, ray);
-      if (tmp.dist > 0.0 && tmp.dist < cur->dist)
+      tmp = obj->get_intersect(obj, &rotated);
+      if (tmp.dist > 0.00001 && tmp.dist < cur->dist + 0.00001)
 	{
 	  tmp.color.full = (tmp.mat) ? (tmp.mat->color) : DEFAULT_MAT_COLOR;
 	  tmp.obj = obj;
 	  *cur = tmp;
 	}
     }
-  subnode_intersect(node, ray, cur);
+  unmove_intersect(cur, cur->obj);
+  cur->dir = ray->dir;
+  cur->pos = add_vec3(ray->pos, mult_vec3(ray->dir, cur->dist));
+  /* subnode_intersect(node, ray, cur); */
 }

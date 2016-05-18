@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May  2 04:39:20 2016 Antoine Baché
-** Last update Fri May 13 06:37:13 2016 Ludovic Petrenko
+** Last update Wed May 18 04:24:56 2016 Ludovic Petrenko
 */
 
 #include "solver.h"
@@ -18,15 +18,14 @@ static void	get_dist_sphere(t_obj *obj, t_ray *ray, t_intersect *inter)
   double	b;
   double	c;
   double	res;
-  t_vec3	tmp;
 
   a = ray->dir.x * ray->dir.x + ray->dir.y * ray->dir.y +
     ray->dir.z * ray->dir.z;
-  tmp = sub_vec3(ray->pos, obj->pos);
-  b = 2.0 * (ray->dir.x * tmp.x +
-	     ray->dir.y * tmp.y +
-	     ray->dir.z * tmp.z);
-  c = tmp.x * tmp.x + tmp.y * tmp.y + tmp.z * tmp.z -
+  b = 2.0 * (ray->dir.x * ray->pos.x +
+	     ray->dir.y * ray->pos.y +
+	     ray->dir.z * ray->pos.z);
+  c = ray->pos.x * ray->pos.x + ray->pos.y *
+    ray->pos.y + ray->pos.z * ray->pos.z -
     obj->sphere.radius * obj->sphere.radius;
   if ((res = solver_second_degree(a, b, c)) == NOT_A_SOLUTION)
     inter->dist = -1.0;
@@ -44,21 +43,11 @@ t_intersect	get_intersect_sphere(t_obj *obj, t_ray *ray)
   get_dist_sphere(obj, ray, &inter);
   if (inter.dist <= 0.0)
     return (inter);
-  /* inter.pos = add_vec3(ray->pos, mult_vec3(ray->dir, inter.dist)); */
   inter.pos.x = ray->pos.x + ray->dir.x * inter.dist;
   inter.pos.y = ray->pos.y + ray->dir.y * inter.dist;
   inter.pos.z = ray->pos.z + ray->dir.z * inter.dist;
-  /* inter.norm = sub_vec3(inter.pos, obj->pos); */
-  inter.norm.x = (inter.pos.x - obj->pos.x) / obj->sphere.radius;
-  inter.norm.y = (inter.pos.y - obj->pos.y) / obj->sphere.radius;
-  inter.norm.z = (inter.pos.z - obj->pos.z) / obj->sphere.radius;
-
-  inter.pos.x = obj->pos.x + (obj->sphere.radius + 0.001) * inter.norm.x;
-  inter.pos.y = obj->pos.y + (obj->sphere.radius + 0.001) * inter.norm.y;
-  inter.pos.z = obj->pos.z + (obj->sphere.radius + 0.001) * inter.norm.z;
-  /* if (dot_vec3(inter.dir, inter.norm) >= 0.0 && ray->src == obj) */
-  /*   inter.dist = -1.0; */
-  /* else */
-    /* inter.obj = obj; */
+  inter.norm.x = inter.pos.x / obj->sphere.radius;
+  inter.norm.y = inter.pos.y / obj->sphere.radius;
+  inter.norm.z = inter.pos.z / obj->sphere.radius;
   return (inter);
 }

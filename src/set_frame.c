@@ -5,29 +5,38 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon May  2 22:15:55 2016 Ludovic Petrenko
-** Last update Thu May 12 08:40:24 2016 Ludovic Petrenko
+** Last update Wed May 18 04:08:33 2016 Ludovic Petrenko
 */
 
 #include <stdio.h>
 #include <pthread.h>
+#include <math.h>
 #include "raytracer.h"
 
 void			refresh_size(t_data *data, int frame)
 {
   double		ratio;
+  double		r;
+  double		a;
 
-  ratio = MINIMUM_FPS / (double)frame;
-  data->cur_width = (int)(data->cur_width / ratio);
-  data->cur_width = (data->cur_width > 0) ? data->cur_width : 1;
-  data->cur_width = (data->cur_width < data->width) ? data->cur_width :
-    data->width;
-  data->cur_height = data->cur_width * data->height / data->width;
-  data->cur_height = (data->cur_height > 0) ? data->cur_height : 1;
-  /* data->cur_width = data->width; */
-  /* data->cur_height = data->height; */
-  /* printf("\r%d %d %f                  ", data->cur_width, data->cur_height, */
-  /* 	 ratio); */
-  /* fflush(stdout); */
+  if (MINIMUM_FPS)
+    {
+      r = (double)data->width / (double)data->height;
+      ratio = (double)frame / (double)MINIMUM_FPS;
+      a = data->cur_width * data->cur_height;
+      data->cur_width = (int)sqrt(a * ratio * r);
+      data->cur_width = (data->cur_width > 0) ? data->cur_width : 1;
+      data->cur_width = (data->cur_width < data->width) ? data->cur_width :
+	data->width;
+      data->cur_height = (int)(data->cur_width / r);
+      data->cur_height = (data->cur_height > 0) ? data->cur_height : 1;
+      printf("\r\t\t%d x %d\t", data->cur_width, data->cur_height);
+    }
+  else
+    {
+      data->cur_width = data->width;
+      data->cur_height = data->height;
+    }
 }
 
 static void		*call_thread(void *arg)

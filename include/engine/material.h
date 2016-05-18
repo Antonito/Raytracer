@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sun Apr 17 16:36:11 2016 Ludovic Petrenko
-** Last update Sat May  7 05:05:51 2016 Ludovic Petrenko
+** Last update Tue May 17 18:14:29 2016 Ludovic Petrenko
 */
 
 #ifndef MATERIAL_H_
@@ -14,7 +14,7 @@
 # define DEFAULT_MAT_COLOR		0xFFFFFFFF
 # define DEFAULT_MAT_OPACITY		1.0
 # define DEFAULT_MAT_REFLECTIVITY	0.2
-# define DEFAULT_MAT_FRESNEL		0.0
+# define DEFAULT_MAT_FRESNEL		1.0
 
 typedef struct	s_material
 {

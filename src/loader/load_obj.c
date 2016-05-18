@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon Apr 18 20:37:43 2016 Ludovic Petrenko
-** Last update Sun May  8 17:55:26 2016 Antoine Baché
+** Last update Tue May 17 17:06:06 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -16,6 +16,8 @@ void		load_obj_basics(t_obj *obj, const t_bunny_ini_scope *s)
 {
   const char	*tmp;
 
+  obj->pos = vec3(0, 0, 0);
+  obj->rot = vec3(0, 0, 0);
   if ((tmp = bunny_ini_scope_get_field(s, POS_FIELD, 0)))
     obj->pos.x = my_getdouble(tmp);
   if ((tmp = bunny_ini_scope_get_field(s, POS_FIELD, 1)))
@@ -23,11 +25,11 @@ void		load_obj_basics(t_obj *obj, const t_bunny_ini_scope *s)
   if ((tmp = bunny_ini_scope_get_field(s, POS_FIELD, 2)))
     obj->pos.z = my_getdouble(tmp);
   if ((tmp = bunny_ini_scope_get_field(s, ROT_FIELD, 0)))
-    obj->rot.x = my_getdouble(tmp);
+    obj->rot.x = my_getdouble(tmp) * M_PI / 180.0;
   if ((tmp = bunny_ini_scope_get_field(s, ROT_FIELD, 1)))
-    obj->rot.y = my_getdouble(tmp);
+    obj->rot.y = my_getdouble(tmp) * M_PI / 180.0;
   if ((tmp = bunny_ini_scope_get_field(s, ROT_FIELD, 2)))
-    obj->rot.z = my_getdouble(tmp);
+    obj->rot.z = my_getdouble(tmp) * M_PI / 180.0;
   obj->next = obj + 1;
 }
 
