@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Wed May 18 18:37:09 2016 Antoine Baché
+## Last update Wed May 18 20:24:12 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -45,7 +45,8 @@ EFFECT_FILES=		effect.c			\
 			sepia.c				\
 			eight_bit.c			\
 			solarized.c			\
-			rotate.c
+			rotate.c			\
+			contrast.c
 
 NOISE_PREFIX=		src/noise/
 
