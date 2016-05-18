@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Wed May 18 07:00:24 2016 Ludovic Petrenko
+** Last update Wed May 18 17:36:10 2016 Antoine Baché
 */
 
 #ifndef	RAYTRACER2_H_
@@ -13,18 +13,19 @@
 
 # include <stdbool.h>
 # include "lapin.h"
+# include "effect.h"
 # include "engine/scene.h"
 # include "config.h"
 # include "events.h"
 # include "tools/memory.h"
 # include "ply.h"
 
-# define DEFAULT_WIDTH		(1280 / 4)
-# define DEFAULT_HEIGHT		(720 / 4)
+# define DEFAULT_WIDTH		(1280)
+# define DEFAULT_HEIGHT		(720)
 # define WIN_NAME		"Ray Ta Soeur"
 # define UNUSED			__attribute__((unused))
-# define MAX_RECURSIVE		2
-# define MINIMUM_FPS		0
+# define MAX_RECURSIVE		4
+# define MINIMUM_FPS		15
 
 /*
 ** Scopes expected in .ini files
@@ -121,6 +122,7 @@ typedef struct		s_data
   int			height;
   int			minimum_fps;
   int			width;
+  t_effect		effect;
   t_bunny_pixelarray	*render;
   t_bunny_window	*win;
   t_config		config;
@@ -154,6 +156,6 @@ t_bunny_response	joystick_buttons(t_bunny_event_state, int, int,
 					 t_data *);
 t_bunny_response	joystick_connected(t_bunny_event_state, int,
 					   const t_bunny_joystick, void *);
-void			joy_preceed_moves(t_data *);
+void			joy_proceed_moves(t_data *);
 
 #endif /* RAYTRACER2_H_ */

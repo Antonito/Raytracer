@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 16 16:32:45 2016 Ludovic Petrenko
-** Last update Wed May 18 06:32:01 2016 Ludovic Petrenko
+** Last update Wed May 18 12:54:47 2016 Antoine Baché
 */
 
 #include <stdio.h>
@@ -32,7 +32,7 @@ t_bunny_response	events(t_data *data)
     ++data->minimum_fps;
   else if (keys[BKS_PAGEDOWN])
     --data->minimum_fps;
-  data->minimum_fps = (data->minimum_fps > 0) ? : 0;
+  data->minimum_fps = (data->minimum_fps > 0) ? data->minimum_fps : 0;
   return (GO_ON);
 }
 
@@ -91,6 +91,9 @@ t_bunny_response	main_loop(t_data *data)
   data->scene->cache->clipable.clip_width = data->cur_width;
   data->scene->cache->clipable.clip_height = data->cur_height;
   blit_scaled(data->scene->cache, data->render);
+  if (data->effect != NO_EFFECT)
+    apply_effect(data->render, data->effect, data->cur_height,
+		 data->cur_width);
   bunny_blit(&data->win->buffer, &data->render->clipable, NULL);
   bunny_display(data->win);
   return (GO_ON);

@@ -5,11 +5,12 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May 17 17:56:10 2016 Antoine Baché
-** Last update Wed May 18 06:52:11 2016 Ludovic Petrenko
+** Last update Wed May 18 12:25:12 2016 Antoine Baché
 */
 
 #include "engine/object.h"
 #include "engine/octree.h"
+#include "tools/str.h"
 #include "tools/memory.h"
 
 static int	count_ply_obj(t_obj *obj)

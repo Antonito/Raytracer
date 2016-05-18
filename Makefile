@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Wed May 18 06:22:28 2016 Ludovic Petrenko
+## Last update Wed May 18 17:34:47 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -34,6 +34,16 @@ SRC_FILES=		init_data.c			\
 			obj_vector.c			\
 			obj_vector_op.c			\
 			move_ray.c
+
+EFFECT_PREFIX=		src/effect/
+
+EFFECT_FILES=		effect.c			\
+			black_and_white.c		\
+			pastel.c			\
+			negative.c			\
+			bayer.c				\
+			sepia.c				\
+			eight_bit.c
 
 NOISE_PREFIX=		src/noise/
 
@@ -197,6 +207,8 @@ PLY_FILES=		add_element.c			\
 
 SRC=			$(addprefix $(SRC_PREFIX),$(SRC_FILES))
 
+SRC_EFFECT=		$(addprefix $(EFFECT_PREFIX),$(EFFECT_FILES))
+
 SRC_NOISE=		$(addprefix $(NOISE_PREFIX),$(NOISE_FILES))
 
 SRC_NETWORK=		$(addprefix $(NETWORK_PREFIX),$(NETWORK_FILES))
@@ -216,6 +228,8 @@ SRC_THREADPOOL=		$(addprefix $(THREADPOOL_PREFIX),$(THREADPOOL_FILES))
 SRC_TOOLS=		$(addprefix $(TOOLS_PREFIX),$(TOOLS_FILES))
 
 SRC_PLY=		$(addprefix $(PLY_PREFIX),$(PLY_FILES))
+
+SRC+=			$(SRC_EFFECT)
 
 SRC+=			$(SRC_NOISE)
 
