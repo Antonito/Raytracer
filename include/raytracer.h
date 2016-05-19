@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Thu May 19 06:30:55 2016 Antoine Baché
+** Last update Thu May 19 06:39:46 2016 Antoine Baché
 */
 
 #ifndef	RAYTRACER2_H_
@@ -163,5 +163,6 @@ t_bunny_response	joystick_buttons(t_bunny_event_state, int, int,
 t_bunny_response	joystick_connected(t_bunny_event_state, int,
 					   const t_bunny_joystick, void *);
 void			joy_proceed_moves(t_data *);
+void			focale(t_data *);
 
 #endif /* RAYTRACER2_H_ */

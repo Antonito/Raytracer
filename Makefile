@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Thu May 19 00:17:45 2016 Antoine Baché
+## Last update Thu May 19 07:30:51 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -33,6 +33,7 @@ SRC_FILES=		init_data.c			\
 			vector_op.c			\
 			obj_vector.c			\
 			obj_vector_op.c			\
+			focale.c			\
 			move_ray.c
 
 EFFECT_PREFIX=		src/effect/
@@ -195,7 +196,8 @@ TOOLS_FILES=		memory.c			\
 			get_next_line.c			\
 			blit_scaled.c			\
 			swap_double.c			\
-			trigo.c
+			trigo.c				\
+			pixelarray.c
 
 PLY_PREFIX=		src/ply/
 

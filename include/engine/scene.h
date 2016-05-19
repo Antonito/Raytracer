@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:53:20 2016 Ludovic Petrenko
-** Last update Wed Apr 27 04:46:13 2016 Ludovic Petrenko
+** Last update Thu May 19 07:35:57 2016 Antoine Baché
 */
 
 #ifndef SCENE_H_
@@ -35,6 +35,7 @@ typedef struct		s_scene
   t_material		*mat;
   t_scene_spec		spec;
   t_bunny_pixelarray	*cache;
+  float			*zbuf;
   t_node		octree;
   struct s_scene	*prev;
   struct s_scene	*next;
