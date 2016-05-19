@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 01:48:54 2016 Ludovic Petrenko
-** Last update Fri May  6 22:15:31 2016 Ludovic Petrenko
+** Last update Wed May 18 22:47:08 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -17,11 +17,11 @@ void	load_point(t_obj *obj, const t_bunny_ini_scope *scope)
   char	*tmp;
 
   obj->light.type = POINT;
-  obj->light.color = DEFAULT_LIGHT_COLOR;
+  obj->light.color.full = DEFAULT_LIGHT_COLOR;
   obj->light.radius = DEFAULT_LIGHT_RADIUS;
   obj->light.power = DEFAULT_LIGHT_POWER;
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, COLOR_FIELD, 0)))
-    obj->light.color = my_gethexa(tmp);
+    obj->light.color.full = my_gethexa(tmp);
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, RADIUS_FIELD, 0)))
     obj->light.radius = my_getdouble(tmp);
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, POWER_FIELD, 0)))
@@ -33,11 +33,11 @@ void	load_directionnal(t_obj *obj, const t_bunny_ini_scope *scope)
   char	*tmp;
 
   obj->light.type = DIRECTIONNAL;
-  obj->light.color = DEFAULT_LIGHT_COLOR;
+  obj->light.color.full = DEFAULT_LIGHT_COLOR;
   obj->light.power = DEFAULT_LIGHT_POWER;
   obj->light.dir = DEFAULT_LIGHT_DIR;
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, COLOR_FIELD, 0)))
-    obj->light.color = my_gethexa(tmp);
+    obj->light.color.full = my_gethexa(tmp);
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, POWER_FIELD, 0)))
     obj->light.power = my_getdouble(tmp);
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, DIR_FIELD, 0)))
@@ -53,12 +53,12 @@ void	load_spot(t_obj *obj, const t_bunny_ini_scope *scope)
   char	*tmp;
 
   obj->light.type = SPOT;
-  obj->light.color = DEFAULT_LIGHT_COLOR;
+  obj->light.color.full = DEFAULT_LIGHT_COLOR;
   obj->light.power = DEFAULT_LIGHT_POWER;
   obj->light.dir = DEFAULT_LIGHT_DIR;
   obj->light.angle = DEFAULT_LIGHT_ANGLE;
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, COLOR_FIELD, 0)))
-    obj->light.color = my_gethexa(tmp);
+    obj->light.color.full = my_gethexa(tmp);
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, POWER_FIELD, 0)))
     obj->light.power = my_getdouble(tmp);
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, DIR_FIELD, 0)))

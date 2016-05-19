@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Thu Apr 21 20:09:40 2016 Ludovic Petrenko
-** Last update Wed May 18 06:20:45 2016 Ludovic Petrenko
+** Last update Thu May 19 08:34:08 2016 Ludovic Petrenko
 */
 
 #pragma GCC warning "\e[31m\e[1mCommentaires + Norme !\e[0m"
@@ -69,16 +69,16 @@ void		calc_fragment(t_data *data, unsigned int *buf, t_ivec2 *pos)
   int		i = 0;
 
   tmp = pos[0];
-  size = data->cur_width * data->cur_height;
+  size = (pos[1].x - pos[0].x) * (pos[1].y - pos[0].y);
   while (tmp.y <= pos[1].y)
     {
       buf[tmp.x + data->cur_width * tmp.y] = calc_pixel(data->scene, &tmp);
       /* buf[i + 1] = buf[i]; */
       /* buf[i + pos[1].x] = buf[i]; */
       /* buf[i + pos[1].x + 1] = buf[i]; */
-      tmp.x = (tmp.x + 1 < pos[1].x) ? tmp.x + 1 : 0;
-      tmp.y += (tmp.x == 0);
-      if (tmp.x == 0)
+      tmp.x = (tmp.x + 1 < pos[1].x) ? tmp.x + 1 : pos[0].x;
+      tmp.y += (tmp.x == pos[0].x);
+      if (tmp.x == pos[0].x)
 	{
 	  printf("\r%.2f%%   ", 100.0 * i / size);
 	  fflush(stdout);

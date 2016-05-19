@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 30 23:30:01 2016 Ludovic Petrenko
-** Last update Wed May 18 06:37:22 2016 Ludovic Petrenko
+** Last update Thu May 19 07:30:27 2016 Ludovic Petrenko
 */
 
 #pragma GCC warning "\e[31m\e[1mCommentaires + Norme !\e[0m"
@@ -23,24 +23,28 @@ unsigned int	mix_colors(t_scene *s, t_intersect *i,
 {
   t_color	final;
   double	coef;
-  double	light;
   double	refl;
   double	refr;
   int		j;
+  double	light[3];
+  double	tmp;
 
-  refl = (i->mat) ? i->mat->reflectivity : DEFAULT_MAT_REFLECTIVITY;
-  refr = (i->mat) ? i->mat->opacity : DEFAULT_MAT_OPACITY;
+  refl = i->mat->reflectivity;
+  refr = i->mat->opacity;
   if (t->dist >= 0.0 && t->dist != INFINITY)
     refr = MAX(MIN(refr / t->dist * 50, 1.0), 0.0);
-  coef = MIN(1.0, MAX(dot_vec3(vec3_normalize(i->norm),
-  			       vec3_normalize(vec3(0,-1,1))), 0.1));
-  /* coef = 1.0; */
-  /* light = get_light(s, i); */
+  /* coef = MIN(1.0, MAX(dot_vec3(vec3_normalize(i->norm), */
+  /* 			       vec3_normalize(vec3(0,-1,1))), 0.1)); */
+  coef = 1.0;
+  get_light(s, i, light);
   j = -1;
-  while (++j < 4)
-    final.argb[j] = (unsigned char)(r->color.argb[j] * refl + (1 - refl) *
-				    (i->color.argb[j] * refr * coef +
-				     t->color.argb[j] * (1 - refr)));
+  while (++j < 3)
+    {
+      tmp = r->color.argb[j] * refl + (1)
+	* (i->color.argb[j] * refr * light[j] +
+	   t->color.argb[j] * (1 - refr));
+      final.argb[j] = (unsigned char)MIN(tmp, 255);
+    }
   return (final.full);
 }
 
@@ -72,7 +76,7 @@ static void	get_refracted_ray(t_intersect *inter, t_ray *i, t_ray *r)
   r->dir = add_vec3(r->dir, mult_vec3(inter->norm, tmp));
   r->dir = vec3_normalize(r->dir);
   r->pos = inter->pos;
-  r->pos = add_vec3(inter->pos, mult_vec3(inter->norm, 0.00001 *
+  r->pos = sub_vec3(inter->pos, mult_vec3(inter->norm, 0.00001 *
 					  dot_vec3(inter->dir, inter->norm)));
   if (dot_vec3(inter->dir, inter->norm) >= 0.0)
     r->env = NULL;
@@ -88,22 +92,31 @@ void		calc_ray(t_scene *scene, t_ray *ray, int i, t_intersect *inter)
 
   *inter = *(t_intersect*)(char[sizeof(t_intersect)]){0};
   inter->dist = INFINITY;
-  inter->color.full = scene->spec.bg_color;
+  inter->color = scene->spec.bg_color;
+  refl = refr = *inter;
   if (i >= MAX_RECURSIVE)
     return ;
   node_intersect(&scene->octree, ray, inter);
-  if (inter->dist < 0.00001 || inter->dist == INFINITY)
+  if (inter->obj && ((t_obj*)inter->obj)->type == LIGHT)
+    return ;
+  if (inter->dist < 0.00001 || inter->dist == INFINITY || inter->mat == NULL)
     {
-      inter->color.full = scene->spec.bg_color;
+      inter->color = scene->spec.bg_color;
       return ;
     }
   /* inter->mat = NULL; */
   /* inter->norm = mult_vec3(inter->norm, -1.0); */
   /* if (fabs(dot_vec3(vec3_normalize(ray->dir), vec3_normalize(inter->norm))) < 0.3) */
   /*   return (0x00000000); */
-  get_reflected_ray(inter, ray, &tmp);
-  calc_ray(scene, &tmp, i + 1, &refl);
-  get_refracted_ray(inter, ray, &tmp);
-  calc_ray(scene, &tmp, i + 1, &refr);
+  if (!IS_ZERO(inter->mat->reflectivity))
+    {
+      get_reflected_ray(inter, ray, &tmp);
+      calc_ray(scene, &tmp, i + 1, &refl);
+    }
+  /* if (inter->mat->opacity < 1.0) */
+  /*   { */
+      get_refracted_ray(inter, ray, &tmp);
+      calc_ray(scene, &tmp, i + 1, &refr);
+    /* } */
   inter->color.full = mix_colors(scene, inter, &refl, &refr);
 }

@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Wed Apr 27 05:31:16 2016 Ludovic Petrenko
-** Last update Wed May 18 05:24:12 2016 Ludovic Petrenko
+** Last update Thu May 19 02:45:40 2016 Ludovic Petrenko
 */
 
 #define _ISOC99_SOURCE
@@ -85,12 +85,19 @@ void	node_intersect(t_node *node, t_ray *ray, t_intersect *cur)
   obj = &node->obj_list;
   while ((obj = obj->next))
     {
+      tmp.obj = obj;
       move_ray(obj, ray, &rotated);
       tmp.mat = obj->mat;
       tmp = obj->get_intersect(obj, &rotated);
-      if (tmp.dist > 0.00001 && tmp.dist < cur->dist + 0.00001)
+      /* printf("tmp.dist %f\n", tmp.dist); */
+      /* printf("cur.dist %f\n", cur->dist); */
+      /* printf("tmp.mat %p\n", tmp.mat); */
+      /* printf("obj->type %d\n", obj->type); */
+      if (tmp.dist > 0.00001 && tmp.dist < cur->dist + 0.00001 &&
+	  (tmp.mat || obj->type == LIGHT))
 	{
-	  tmp.color.full = (tmp.mat) ? (tmp.mat->color) : DEFAULT_MAT_COLOR;
+	  if (tmp.mat)
+	    tmp.color.full = tmp.mat->color;
 	  tmp.obj = obj;
 	  *cur = tmp;
 	}

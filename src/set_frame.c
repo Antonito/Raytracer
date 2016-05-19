@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon May  2 22:15:55 2016 Ludovic Petrenko
-** Last update Wed May 18 06:35:53 2016 Ludovic Petrenko
+** Last update Thu May 19 08:30:38 2016 Ludovic Petrenko
 */
 
 #include <stdio.h>
@@ -13,6 +13,7 @@
 #include <math.h>
 #include "raytracer.h"
 #include "threadpool.h"
+#include "tools/math.h"
 
 #pragma message "comment"
 
@@ -22,10 +23,10 @@ void			refresh_size(t_data *data, int frame)
   double		r;
   double		a;
 
-  if (MINIMUM_FPS > 0)
+  if (data->minimum_fps > 0)
     {
       r = (double)data->width / (double)data->height;
-      ratio = (double)frame / (double)(MINIMUM_FPS /* + data->joy.needed_fps */);
+      ratio = (double)frame / (double)(data->minimum_fps /* + data->joy.needed_fps */);
       a = data->cur_width * data->cur_height;
       data->cur_width = (int)sqrt(a * ratio * r);
       data->cur_width = (data->cur_width > 0) ? data->cur_width : 1;
@@ -33,7 +34,7 @@ void			refresh_size(t_data *data, int frame)
 	data->width;
       data->cur_height = (int)(data->cur_width / r);
       data->cur_height = (data->cur_height > 0) ? data->cur_height : 1;
-      printf("\r\t\t%d x %d\t", data->cur_width, data->cur_height);
+      printf("\r\t\t%02d    %d x %d         ", frame, data->cur_width, data->cur_height);
     }
   else
     {
@@ -95,11 +96,37 @@ int			set_frame(t_data *data)
   /*   return (1); */
   t_ivec2	pos[2];
 
-  pos[0].x = 0;
-  pos[0].y = 0;
-  pos[1].x = data->cur_width;
-  pos[1].y = data->cur_height;
   set_vectors(data, &data->scene->cam);
-  calc_fragment(data, (unsigned int *)data->scene->cache->pixels, pos);
+  data->scene->cache->clipable.clip_width = data->cur_width;
+  data->scene->cache->clipable.clip_height = data->cur_height;
+
+  if (data->minimum_fps)
+    {
+      pos[0].x = 0;
+      pos[0].y = 0;
+      pos[1].x = data->cur_width;
+      pos[1].y = data->cur_height;
+      calc_fragment(data, (unsigned int *)data->scene->cache->pixels, pos);
+    }
+  else
+    {
+      pos[0].y = 0;
+      pos[1].y = 20;
+      while (pos[0].y < data->cur_height)
+	{
+	  pos[0].x = 0;
+	  pos[1].x = 20;
+	  while (pos[0].x < data->cur_width)
+	    {
+	      calc_fragment(data, (unsigned int *)data->scene->cache->pixels, pos);
+	      bunny_blit(&data->win->buffer, &data->scene->cache->clipable, NULL);
+	      bunny_display(data->win);
+	      pos[0].x += 20;
+	      pos[1].x += 20;
+	    }
+	  pos[0].y += 20;
+	  pos[1].y += 20;
+	}
+    }
   return (0);
 }

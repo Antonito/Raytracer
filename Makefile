@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Wed May 18 06:22:28 2016 Ludovic Petrenko
+## Last update Thu May 19 00:03:03 2016 Ludovic Petrenko
 ##
 
 DEBUG=			yes
@@ -33,7 +33,8 @@ SRC_FILES=		init_data.c			\
 			vector_op.c			\
 			obj_vector.c			\
 			obj_vector_op.c			\
-			move_ray.c
+			move_ray.c			\
+			get_light.c
 
 NOISE_PREFIX=		src/noise/
 
@@ -147,7 +148,8 @@ SHAPE_FILES=		plane.c				\
 			chubs.c				\
 			devil.c				\
 			quartic_cylinder.c		\
-			spheroid.c
+			spheroid.c			\
+			light.c
 
 NET_TOOLS_PREFIX=	src/cluster/
 

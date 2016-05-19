@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Wed May 18 07:00:24 2016 Ludovic Petrenko
+** Last update Thu May 19 08:29:18 2016 Ludovic Petrenko
 */
 
 #ifndef	RAYTRACER2_H_
@@ -19,12 +19,12 @@
 # include "tools/memory.h"
 # include "ply.h"
 
-# define DEFAULT_WIDTH		(1280 / 4)
-# define DEFAULT_HEIGHT		(720 / 4)
+# define DEFAULT_WIDTH		(1280 / 2)
+# define DEFAULT_HEIGHT		(720 / 2)
 # define WIN_NAME		"Ray Ta Soeur"
 # define UNUSED			__attribute__((unused))
 # define MAX_RECURSIVE		2
-# define MINIMUM_FPS		0
+# define DEFAULT_FPS		24
 
 /*
 ** Scopes expected in .ini files
@@ -48,6 +48,10 @@
 # define OPACITY_FIELD		"opacity"
 # define REFLECT_FIELD		"reflectivity"
 # define FRESNEL_FIELD		"fresnel"
+# define DIFFUSE_FIELD		"diffuse"
+# define SPECULAR_FIELD		"specular"
+# define AMBIANT_FIELD		"ambiant"
+# define SHININESS_FIELD	"shininess"
 # define POS_FIELD		"position"
 # define ROT_FIELD		"rotation"
 # define MAT_FIELD		"material"
@@ -144,7 +148,8 @@ t_bunny_response	main_loop(t_data *data);
 int			set_frame(t_data *data);
 void			calc_fragment(t_data *data, unsigned int *buf,
 				      t_ivec2 *pos);
-void			calc_ray(t_scene *scene, t_ray *ray, int i, t_intersect *inter);
+void			calc_ray(t_scene *scene, t_ray *ray, int i,
+				 t_intersect *inter);
 void			set_vectors(t_data *data, t_camera *c);
 void			refresh_size(t_data *data, int frame);
 void			blit_scaled(t_bunny_pixelarray *, t_bunny_pixelarray *);
@@ -155,5 +160,7 @@ t_bunny_response	joystick_buttons(t_bunny_event_state, int, int,
 t_bunny_response	joystick_connected(t_bunny_event_state, int,
 					   const t_bunny_joystick, void *);
 void			joy_preceed_moves(t_data *);
+void			get_light(t_scene *s, t_intersect *inter,
+				  double *col);
 
 #endif /* RAYTRACER2_H_ */

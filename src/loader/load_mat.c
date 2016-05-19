@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon Apr 18 19:28:33 2016 Ludovic Petrenko
-** Last update Fri May 13 15:56:45 2016 Luka Boulagnon
+** Last update Wed May 18 18:58:55 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -20,6 +20,9 @@ void	load_mat_data(t_material *mat, const t_bunny_ini *ini)
   mat->opacity = DEFAULT_MAT_OPACITY;
   mat->reflectivity = DEFAULT_MAT_REFLECTIVITY;
   mat->fresnel = DEFAULT_MAT_FRESNEL;
+  mat->diffuse = DEFAULT_MAT_DIFFUSE;
+  mat->specular = DEFAULT_MAT_SPECULAR;
+  mat->shininess = DEFAULT_MAT_SHININESS;
   if ((tmp = (char *)bunny_ini_get_field(ini, mat->name, COLOR_FIELD, 0)))
     mat->color = my_gethexa(tmp);
   if ((tmp = (char *)bunny_ini_get_field(ini, mat->name, OPACITY_FIELD, 0)))
@@ -28,6 +31,12 @@ void	load_mat_data(t_material *mat, const t_bunny_ini *ini)
     mat->reflectivity = my_getdouble(tmp);
   if ((tmp = (char *)bunny_ini_get_field(ini, mat->name, FRESNEL_FIELD, 0)))
     mat->fresnel = my_getdouble(tmp);
+  if ((tmp = (char *)bunny_ini_get_field(ini, mat->name, DIFFUSE_FIELD, 0)))
+    mat->diffuse = my_getdouble(tmp);
+  if ((tmp = (char *)bunny_ini_get_field(ini, mat->name, SPECULAR_FIELD, 0)))
+    mat->specular = my_getdouble(tmp);
+  if ((tmp = (char *)bunny_ini_get_field(ini, mat->name, SHININESS_FIELD, 0)))
+    mat->shininess = my_getdouble(tmp);
 }
 
 int			load_mat(t_material *mat, const t_bunny_ini *ini)

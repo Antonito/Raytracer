@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon Apr 18 23:15:28 2016 Ludovic Petrenko
-** Last update Mon May 16 14:05:21 2016 Antoine Baché
+** Last update Thu May 19 02:34:10 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -55,7 +55,8 @@ void	        load_light_spec(t_obj *obj, const t_bunny_ini_scope *scope)
   i = 0;
   type = bunny_ini_scope_get_field(scope, "type", 0);
   obj->type = LIGHT;
-  obj->get_intersect = &get_intersect_sphere;
+  obj->get_intersect = &get_intersect_light;
+  obj->mat = NULL;
   while (i < NB_LIGHT_TYPE && type)
     {
       if (!my_strcmp(type, types[i]))

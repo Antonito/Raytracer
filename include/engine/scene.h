@@ -5,22 +5,22 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:53:20 2016 Ludovic Petrenko
-** Last update Wed Apr 27 04:46:13 2016 Ludovic Petrenko
+** Last update Wed May 18 22:14:18 2016 Ludovic Petrenko
 */
 
 #ifndef SCENE_H_
 # define SCENE_H_
 
 # include <lapin.h>
-# include "engine/camera.h"
+# include "camera.h"
 # include "object.h"
-# include "engine/octree.h"
+# include "octree.h"
 
 # define DEFAULT_BG_COLOR	0x000000
 
 typedef struct		s_scene_spec
 {
-  unsigned int		bg_color;
+  t_color		bg_color;
   double		ambiant;
 }			t_scene_spec;
 
@@ -30,7 +30,7 @@ typedef struct		s_scene
   int			nb_obj;
   t_obj			*objs;
   int			nb_light;
-  t_light		*lights;
+  t_obj			*lights;
   int			nb_mat;
   t_material		*mat;
   t_scene_spec		spec;

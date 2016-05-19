@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sun Apr 17 19:17:30 2016 Ludovic Petrenko
-** Last update Mon May  9 16:05:15 2016 Antoine Baché
+** Last update Wed May 18 22:47:34 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -40,9 +40,9 @@ void	load_scene_info(t_scene *s, const t_bunny_ini *ini)
 {
   char	*tmp;
 
-  s->spec.bg_color = DEFAULT_BG_COLOR;
+  s->spec.bg_color.full = DEFAULT_BG_COLOR;
   if ((tmp = (char *)bunny_ini_get_field(ini, SCENE_FIELD, BACK_FIELD, 0)))
-    s->spec.bg_color = my_gethexa(tmp);
+    s->spec.bg_color.full = my_gethexa(tmp);
   if ((tmp = (char *)bunny_ini_get_field(ini, SCENE_FIELD, AMB_FIELD, 0)))
     s->spec.ambiant = my_getdouble(tmp);
 }
