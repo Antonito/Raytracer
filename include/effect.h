@@ -5,13 +5,14 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May 18 12:36:29 2016 Antoine Baché
-** Last update Wed May 18 23:28:30 2016 Antoine Baché
+** Last update Thu May 19 03:24:12 2016 Antoine Baché
 */
 
 #ifndef EFFECT_H_
 # define EFFECT_H_
 
 # define CONTRAST_DEFAULT	200.0
+# define BAYER_DEFAULT		2
 # define ANGLE_R_DEFAULT	1.0
 # define ANGLE_G_DEFAULT	1.3
 # define ANGLE_B_DEFAULT	1.5
@@ -57,6 +58,17 @@ typedef struct		s_contrast
 {
   int			value;
 }			t_contrast;
+
+typedef struct		s_bayer
+{
+  int			value;
+}			t_bayer;
+
+typedef struct		s_pastel
+{
+  int			radius;
+  int			level;
+}			t_pastel;
 
 # include "config.h"
 

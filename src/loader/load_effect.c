@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May 18 22:43:51 2016 Antoine Baché
-** Last update Wed May 18 23:36:19 2016 Antoine Baché
+** Last update Thu May 19 02:52:22 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -55,4 +55,15 @@ void		load_contrast(t_config *conf, const t_bunny_ini *ini)
   conf->contrast.value = CONTRAST_DEFAULT;
   if ((tmp = bunny_ini_get_field(ini, SCOPE_EFFECT, VALUE, 0)))
     conf->contrast.value = my_getdouble(tmp);
+}
+
+void		load_bayer(t_config *conf, const t_bunny_ini *ini)
+{
+  const char	*tmp;
+
+  conf->bayer.value = BAYER_DEFAULT;
+  if ((tmp = bunny_ini_get_field(ini, SCOPE_EFFECT, VALUE, 0)))
+    conf->bayer.value = my_getnbr(tmp);
+  if (conf->bayer.value < 1)
+    conf->bayer.value = BAYER_DEFAULT;
 }

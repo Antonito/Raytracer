@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May 18 13:30:09 2016 Antoine Baché
-** Last update Thu May 19 02:23:35 2016 Antoine Baché
+** Last update Thu May 19 02:47:35 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -17,18 +17,17 @@ void		bayer_effect(t_color *pix, int height, int width, t_config *conf)
   int		cur;
 
   i = 0;
-  (void)conf;
   while (i < height)
     {
       j = 0;
       while (j < width)
 	{
 	  cur = i * width + j;
-	  if ((i >> 1) & 1)
+	  if ((i / conf->bayer.value) & 1)
 	    pix[cur].argb[2] = 0;
 	  else
 	    pix[cur].argb[0] = 0;
-	  if ((j >> 1) & 1)
+	  if ((j / conf->bayer.value) & 1)
 	    pix[cur].argb[1] = 0;
 	  ++j;
 	}

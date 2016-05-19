@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 23:13:18 2016 Ludovic Petrenko
-** Last update Wed May 18 23:34:14 2016 Antoine Baché
+** Last update Thu May 19 02:52:47 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -34,7 +34,7 @@ static int	load_effect(t_data *data, const t_bunny_ini *ini)
   const char	*tmp;
   static void	(*effects[])() =
     {load_effect_nothing, load_effect_nothing, load_effect_nothing,
-     load_effect_nothing, load_effect_nothing, load_effect_nothing,
+     load_bayer, load_effect_nothing, load_effect_nothing,
      load_effect_nothing, load_effect_nothing, load_effect_nothing,
      load_solarized, load_rotate, load_contrast};
 

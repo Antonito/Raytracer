@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 19:09:07 2016 Ludovic Petrenko
-** Last update Wed May 18 23:35:11 2016 Antoine Baché
+** Last update Thu May 19 02:53:53 2016 Antoine Baché
 */
 
 #ifndef LOADER_H_
@@ -98,5 +98,6 @@ void		load_effect_nothing(t_config *, const t_bunny_ini *);
 void		load_solarized(t_config *, const t_bunny_ini *);
 void		load_rotate(t_config *, const t_bunny_ini *);
 void		load_contrast(t_config *, const t_bunny_ini *);
+void		load_bayer(t_config *, const t_bunny_ini *);
 
 #endif /* !LOADER_H_  */
