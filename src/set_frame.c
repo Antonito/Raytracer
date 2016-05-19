@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon May  2 22:15:55 2016 Ludovic Petrenko
-** Last update Wed May 18 06:35:53 2016 Ludovic Petrenko
+** Last update Thu May 19 02:36:20 2016 Antoine Baché
 */
 
 #include <stdio.h>
@@ -24,21 +24,21 @@ void			refresh_size(t_data *data, int frame)
 
   if (MINIMUM_FPS > 0)
     {
-      r = (double)data->width / (double)data->height;
+      r = (double)data->config.width / (double)data->config.height;
       ratio = (double)frame / (double)(MINIMUM_FPS /* + data->joy.needed_fps */);
-      a = data->cur_width * data->cur_height;
-      data->cur_width = (int)sqrt(a * ratio * r);
-      data->cur_width = (data->cur_width > 0) ? data->cur_width : 1;
-      data->cur_width = (data->cur_width < data->width) ? data->cur_width :
-	data->width;
-      data->cur_height = (int)(data->cur_width / r);
-      data->cur_height = (data->cur_height > 0) ? data->cur_height : 1;
-      printf("\r\t\t%d x %d\t", data->cur_width, data->cur_height);
+      a = data->config.cur_width * data->config.cur_height;
+      data->config.cur_width = (int)sqrt(a * ratio * r);
+      data->config.cur_width = (data->config.cur_width > 0) ? data->config.cur_width : 1;
+      data->config.cur_width = (data->config.cur_width < data->config.width) ? data->config.cur_width :
+	data->config.width;
+      data->config.cur_height = (int)(data->config.cur_width / r);
+      data->config.cur_height = (data->config.cur_height > 0) ? data->config.cur_height : 1;
+      printf("\r\t\t%d x %d\t", data->config.cur_width, data->config.cur_height);
     }
   else
     {
-      data->cur_width = data->width;
-      data->cur_height = data->height;
+      data->config.cur_width = data->config.width;
+      data->config.cur_height = data->config.height;
     }
 }
 
@@ -55,20 +55,20 @@ static void		set_pos(t_calc_fragment *thread_calc, t_data *data)
 {
   thread_calc[0].pos[0].x = 0;
   thread_calc[0].pos[0].y = 0;
-  thread_calc[0].pos[1].x = data->cur_width / 2;
-  thread_calc[0].pos[1].y = data->cur_height / 2;
-  thread_calc[1].pos[0].x = data->cur_width / 2;
+  thread_calc[0].pos[1].x = data->config.cur_width / 2;
+  thread_calc[0].pos[1].y = data->config.cur_height / 2;
+  thread_calc[1].pos[0].x = data->config.cur_width / 2;
   thread_calc[1].pos[0].y = 0;
-  thread_calc[1].pos[1].x = data->cur_width;
-  thread_calc[1].pos[1].y = data->cur_height / 2;
+  thread_calc[1].pos[1].x = data->config.cur_width;
+  thread_calc[1].pos[1].y = data->config.cur_height / 2;
   thread_calc[2].pos[0].x = 0;
-  thread_calc[2].pos[0].y = data->cur_height / 2;
-  thread_calc[2].pos[1].x = data->cur_width / 2;
-  thread_calc[2].pos[1].y = data->cur_height;
-  thread_calc[3].pos[0].x = data->cur_width / 2;
-  thread_calc[3].pos[0].y = data->cur_height / 2;
-  thread_calc[3].pos[1].x = data->cur_width;
-  thread_calc[3].pos[1].y = data->cur_height;
+  thread_calc[2].pos[0].y = data->config.cur_height / 2;
+  thread_calc[2].pos[1].x = data->config.cur_width / 2;
+  thread_calc[2].pos[1].y = data->config.cur_height;
+  thread_calc[3].pos[0].x = data->config.cur_width / 2;
+  thread_calc[3].pos[0].y = data->config.cur_height / 2;
+  thread_calc[3].pos[1].x = data->config.cur_width;
+  thread_calc[3].pos[1].y = data->config.cur_height;
 }
 
 int			set_frame(t_data *data)
@@ -97,8 +97,8 @@ int			set_frame(t_data *data)
 
   pos[0].x = 0;
   pos[0].y = 0;
-  pos[1].x = data->cur_width;
-  pos[1].y = data->cur_height;
+  pos[1].x = data->config.cur_width;
+  pos[1].y = data->config.cur_height;
   set_vectors(data, &data->scene->cam);
   calc_fragment(data, (unsigned int *)data->scene->cache->pixels, pos);
   return (0);

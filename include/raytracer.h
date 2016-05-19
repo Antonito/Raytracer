@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Wed May 18 23:28:22 2016 Antoine Baché
+** Last update Thu May 19 02:28:45 2016 Antoine Baché
 */
 
 #ifndef	RAYTRACER2_H_
@@ -25,7 +25,7 @@
 # define WIN_NAME		"Ray Ta Soeur"
 # define UNUSED			__attribute__((unused))
 # define MAX_RECURSIVE		4
-# define MINIMUM_FPS		0
+# define MINIMUM_FPS		10
 
 /*
 ** Scopes expected in .ini files
@@ -127,12 +127,6 @@ typedef struct		s_joy_move
 
 typedef struct		s_data
 {
-  bool			fullscreen;
-  int			cur_height;
-  int			cur_width;
-  int			height;
-  int			minimum_fps;
-  int			width;
   t_effect		effect;
   t_bunny_pixelarray	*render;
   t_bunny_window	*win;

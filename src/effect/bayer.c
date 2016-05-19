@@ -5,12 +5,11 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May 18 13:30:09 2016 Antoine Baché
-** Last update Wed May 18 23:37:03 2016 Antoine Baché
+** Last update Thu May 19 02:23:35 2016 Antoine Baché
 */
 
 #include "raytracer.h"
 
-#pragma message("Not implemented")
 void		bayer_effect(t_color *pix, int height, int width, t_config *conf)
 {
   int		i;
@@ -25,6 +24,12 @@ void		bayer_effect(t_color *pix, int height, int width, t_config *conf)
       while (j < width)
 	{
 	  cur = i * width + j;
+	  if ((i >> 1) & 1)
+	    pix[cur].argb[2] = 0;
+	  else
+	    pix[cur].argb[0] = 0;
+	  if ((j >> 1) & 1)
+	    pix[cur].argb[1] = 0;
 	  ++j;
 	}
       ++i;

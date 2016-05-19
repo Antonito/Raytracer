@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 01:30:32 2016 Ludovic Petrenko
-** Last update Wed May 18 23:45:33 2016 Antoine Baché
+** Last update Thu May 19 02:28:55 2016 Antoine Baché
 */
 
 #ifndef CONFIG_H_
@@ -15,6 +15,12 @@
 
 typedef struct		s_config
 {
+  bool			fullscreen;
+  int			cur_height;
+  int			cur_width;
+  int			height;
+  int			minimum_fps;
+  int			width;
   union
   {
     t_contrast		contrast;
