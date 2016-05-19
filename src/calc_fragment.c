@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Thu Apr 21 20:09:40 2016 Ludovic Petrenko
-** Last update Thu May 19 08:34:08 2016 Ludovic Petrenko
+** Last update Thu May 19 10:52:15 2016 Ludovic Petrenko
 */
 
 #pragma GCC warning "\e[31m\e[1mCommentaires + Norme !\e[0m"
@@ -21,7 +21,8 @@ void		set_vectors(t_data *data, t_camera *c)
   double	len;
   t_vec3	tmp;
 
-  len = tan(c->fov / 2.0 * M_PI / 180.0) * 2.0 / (double)data->cur_width;
+  len = tan(c->fov / 2.0 * M_PI / 180.0) * 2.0 /
+    (double)data->config.cur_width;
   tmp = vec3_normalize(vec3(c->dir.y, -c->dir.x, 0));
   c->incr_x = mult_vec3(tmp, len);
   /* len = tan(c->fov * data->cur_width / data->cur_height / 2.0 */
@@ -30,12 +31,12 @@ void		set_vectors(t_data *data, t_camera *c)
   c->incr_y = mult_vec3(tmp, len);
   c->origin = add_vec3(c->pos, c->dir);
   c->origin = sub_vec3(c->origin, mult_vec3(c->incr_x,
-					    data->cur_width / 2.0));
+					    data->config.cur_width / 2.0));
   c->origin = sub_vec3(c->origin, mult_vec3(c->incr_y,
-					    data->cur_height / 2.0));
+					    data->config.cur_height / 2.0));
 }
 
-unsigned int	calc_pixel(t_scene *scene, t_ivec2 *pix)
+unsigned int	calc_pixel(t_scene *scene, t_ivec2 *pix, t_data *data)
 {
   t_ray		ray;
   double	len;
@@ -59,6 +60,11 @@ unsigned int	calc_pixel(t_scene *scene, t_ivec2 *pix)
   /* ray.dir.z /= len; */
   ray.env = NULL;
   calc_ray(scene, &ray, 0, &inter);
+  if (inter.dist < 0.00001 || inter.dist == INFINITY)
+    scene->zbuf[pix->x + pix->y * data->config.width] =
+      (float)scene->cam.focale;
+  else
+    scene->zbuf[pix->x + pix->y * data->config.width] = (float)inter.dist;
   return (inter.color.full);
 }
 
@@ -72,7 +78,8 @@ void		calc_fragment(t_data *data, unsigned int *buf, t_ivec2 *pos)
   size = (pos[1].x - pos[0].x) * (pos[1].y - pos[0].y);
   while (tmp.y <= pos[1].y)
     {
-      buf[tmp.x + data->cur_width * tmp.y] = calc_pixel(data->scene, &tmp);
+      buf[tmp.x + data->config.cur_width * tmp.y] =
+	calc_pixel(data->scene, &tmp, data);
       /* buf[i + 1] = buf[i]; */
       /* buf[i + pos[1].x] = buf[i]; */
       /* buf[i + pos[1].x + 1] = buf[i]; */

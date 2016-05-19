@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 16 16:32:45 2016 Ludovic Petrenko
-** Last update Thu May 19 08:26:36 2016 Ludovic Petrenko
+** Last update Thu May 19 10:35:05 2016 Ludovic Petrenko
 */
 
 #include <stdio.h>
@@ -28,6 +28,12 @@ t_bunny_response	events(t_data *data)
   if (keys[BKS_S])
     data->scene->cam.pos = sub_vec3(data->scene->cam.pos,
 				    mult_vec3(data->scene->cam.dir, 0.2));
+  else if (keys[BKS_PAGEUP])
+    ++data->config.minimum_fps;
+  else if (keys[BKS_PAGEDOWN])
+    --data->config.minimum_fps;
+  data->config.minimum_fps = (data->config.minimum_fps > 0) ?
+    data->config.minimum_fps : 0;
   return (GO_ON);
 }
 
@@ -38,15 +44,15 @@ t_bunny_response	main_events(t_bunny_event_state s,
   if (s == GO_DOWN && k == BKS_ESCAPE)
     return (EXIT_ON_SUCCESS);
   if (s == GO_DOWN && k == BKS_HOME)
-    data->minimum_fps = DEFAULT_FPS;
+    data->config.minimum_fps = DEFAULT_FPS;
   if (s == GO_DOWN && k == BKS_END)
-    data->minimum_fps = 0;
+    data->config.minimum_fps = 0;
   if (s == GO_DOWN && k == BKS_PAGEUP)
-    ++data->minimum_fps;
+    ++data->config.minimum_fps;
   if (s == GO_DOWN && k == BKS_PAGEDOWN)
-    --data->minimum_fps;
-  if (data->minimum_fps < 0)
-    data->minimum_fps = 0;
+    --data->config.minimum_fps;
+  if (data->config.minimum_fps < 0)
+    data->config.minimum_fps = 0;
   return (GO_ON);
 }
 
@@ -79,7 +85,7 @@ t_bunny_response	main_loop(t_data *data)
   static int		t = 0;
   static int		fps = 1;
 
-  if (t != time(NULL) && (fps || !data->minimum_fps))
+  if (t != time(NULL) && (fps || !data->config.minimum_fps))
     {
       t = time(NULL);
       refresh_size(data, fps);
@@ -91,10 +97,14 @@ t_bunny_response	main_loop(t_data *data)
   if (events(data) != GO_ON)
     return (EXIT_ON_SUCCESS);
   set_frame(data);
-  /* joy_proceed_moves(data); */
-  data->scene->cache->clipable.clip_width = data->cur_width;
-  data->scene->cache->clipable.clip_height = data->cur_height;
+  joy_proceed_moves(data);
+  data->scene->cache->clipable.clip_width = data->config.cur_width;
+  data->scene->cache->clipable.clip_height = data->config.cur_height;
   blit_scaled(data->scene->cache, data->render);
+  if (data->config.minimum_fps == 0)
+    focale(data);
+  if (data->effect != NO_EFFECT)
+    apply_effect(data->render, data->effect, data);
   bunny_blit(&data->win->buffer, &data->render->clipable, NULL);
   bunny_display(data->win);
   return (GO_ON);
@@ -129,8 +139,8 @@ void	print_ply(t_ply *ply)
 
 int	launch_raytracer(t_data *data)
 {
-  data->cur_width = data->width / 4;
-  data->cur_height = data->height / 4;
+  data->config.cur_width = data->config.width / 2;
+  data->config.cur_height = data->config.height / 2;
   print_scenes(data->scene);
   /* printf("Objs[1]Type = %d\n", data->scene->objs[1].type); */
   /* print_ply(data->scene->objs[1].ply.ply); */

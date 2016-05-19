@@ -5,15 +5,16 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Thu May 19 08:29:18 2016 Ludovic Petrenko
+** Last update Thu May 19 10:18:47 2016 Ludovic Petrenko
 */
 
-#ifndef	RAYTRACER2_H_
-# define RAYTRACER2_H_
+#ifndef	RAYTRACER_H_
+# define RAYTRACER_H_
 
 # include <stdbool.h>
 # include "lapin.h"
 # include "engine/scene.h"
+# include "effect.h"
 # include "config.h"
 # include "events.h"
 # include "tools/memory.h"
@@ -23,16 +24,25 @@
 # define DEFAULT_HEIGHT		(720 / 2)
 # define WIN_NAME		"Ray Ta Soeur"
 # define UNUSED			__attribute__((unused))
-# define MAX_RECURSIVE		2
+# define MAX_RECURSIVE		4
 # define DEFAULT_FPS		24
 
 /*
 ** Scopes expected in .ini files
 */
+# define VALUE			"value"
+# define ANGLE_R		"angle_r"
+# define ANGLE_G		"angle_g"
+# define ANGLE_B		"angle_b"
+# define MAX_R			"max_r"
+# define MAX_G			"max_g"
+# define MAX_B			"max_b"
+# define TYPE_FIELD		"type"
 # define FILE_PATH		"file"
 # define POLY_PTS_A		"point_a"
 # define POLY_PTS_B		"point_b"
 # define POLY_PTS_C		"point_c"
+# define SCOPE_EFFECT		"effect"
 # define SCOPE_NETWORK		"network"
 # define PORT_NETWORK		"port"
 # define CLIENT_NETWORK		"max_client"
@@ -89,6 +99,8 @@
 # define LISTEN_ERROR		"Error: Cannot listen\n"
 # define CREATE_THREAD_ERROR	"Error: Cannot create the TCP thread\n"
 # define THREAD_ERROR		"Error: In TCP thread\n"
+# define MISSING_EFFECT_SCOPE	"Missing effect scope in config.ini\n"
+# define ERROR_CONFIG_FILE	"Missing config.ini file, check the man\n"
 
 /*
 ** Dhiver messages
@@ -119,12 +131,7 @@ typedef struct		s_joy_move
 
 typedef struct		s_data
 {
-  bool			fullscreen;
-  int			cur_height;
-  int			cur_width;
-  int			height;
-  int			minimum_fps;
-  int			width;
+  t_effect		effect;
   t_bunny_pixelarray	*render;
   t_bunny_window	*win;
   t_config		config;
@@ -162,5 +169,7 @@ t_bunny_response	joystick_connected(t_bunny_event_state, int,
 void			joy_preceed_moves(t_data *);
 void			get_light(t_scene *s, t_intersect *inter,
 				  double *col);
+void			joy_proceed_moves(t_data *);
+void			focale(t_data *);
 
-#endif /* RAYTRACER2_H_ */
+#endif /* !RAYTRACER_H_ */

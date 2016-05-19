@@ -5,21 +5,23 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sun Apr 17 19:17:30 2016 Ludovic Petrenko
-** Last update Wed May 18 22:47:34 2016 Ludovic Petrenko
+** Last update Thu May 19 10:46:08 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
 #include "loader.h"
 #include "tools/str.h"
 
-t_scene		*load_scene(const char *file)
+t_scene		*load_scene(const char *file, t_data *data)
 {
   t_scene	*scene;
   t_bunny_ini	*ini;
 
   if (!(ini = bunny_load_ini(file)))
     return (NULL);
-  if (!(scene = my_calloc(1, sizeof(t_scene))))
+  if (!(scene = my_calloc(1, sizeof(t_scene))) ||
+      !(scene->zbuf = my_calloc(data->config.width * data->config.height,
+				sizeof(float))))
     {
       bunny_delete_ini(ini);
       return (NULL);

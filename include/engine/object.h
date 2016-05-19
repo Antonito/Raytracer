@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:33:45 2016 Ludovic Petrenko
-** Last update Thu May 19 00:03:41 2016 Ludovic Petrenko
+** Last update Thu May 19 10:19:40 2016 Ludovic Petrenko
 */
 
 #ifndef OBJECT_H_
@@ -255,5 +255,7 @@ double			calc_e_klein(t_ray *, t_vec3, t_vec3, t_vec3);
 double			calc_f_klein(t_ray *, t_vec3, t_vec3);
 double			calc_g_klein(t_ray *, t_vec3, t_vec3);
 void			calc_normale_klein(t_intersect *);
+
+void			build_ply_obj(t_obj *);
 
 #endif /* !OBJECT_H_ */
