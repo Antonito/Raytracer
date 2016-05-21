@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Apr 18 11:13:21 2016 Antoine Baché
-** Last update Sat May 21 22:07:05 2016 Arthur ARNAUD
+** Last update Sat May 21 22:39:27 2016 Arthur ARNAUD
 */
 
 #include "tools/memory.h"
@@ -40,7 +40,7 @@ static void	remove_comma(const char *str, char *tmp)
     }
 }
 
-double		my_getdouble(const char *str)
+double		my_getdouble(char *str)
 {
   int		i;
   int		k;
@@ -50,18 +50,15 @@ double		my_getdouble(const char *str)
 
   if (!str)
     return (0);
-  printf("ENTER GET DOUBLE\nstr = %s\n", str);
-  k = i = l = 0;
-  while ((str[l] == '-' || str[l] == '+') && ++l);
-  while (str[l + i] != '.' && str[l + i] && ++i);
-  while (str[l + k + i] && ++k);
+  if (my_strlen(str) > 10)
+    str[10] = '\0';
+  k = i =  0;
+  while (str[i] != '.' && str[i] && ++i);
+  while (str[k + i] && ++k);
   if (!(tmp = my_malloc(my_strlen(str) + 1)))
     return (1);
   remove_comma(str, tmp);
-  printf("str = %s\n", tmp);
-  printf("k = %d i = %d\n", k, i);
   res = ((k) ? (double)my_getnbr(tmp) / my_power(10, k) : my_getnbr(tmp));
   my_free(tmp);
-  printf("double = %f\nEXIT_GET_DOUBLE\n" ,res);
   return (res);
 }
