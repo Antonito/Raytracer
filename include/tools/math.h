@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Apr 27 05:16:20 2016 Antoine Baché
-** Last update Fri May 20 21:25:10 2016 Ludovic Petrenko
+** Last update Sat May 21 11:48:11 2016 Luka Boulagnon
 */
 
 #ifndef	MATH_H_
@@ -26,6 +26,7 @@
 # define CUBIC_ROOT(A)		(pow(A, 1.0 / 3.0))
 # define CHECK_COEF(A)		((A < -ZERO_DP) ? (-1) : (A > ZERO_DP))
 # define SIGNOF(A)		(((A) < -ZERO_DP) ? -1 : !(IS_ZERO(A)))
+# define POW(A)			((A) * (A))
 
 typedef enum	e_trigo_state
   {

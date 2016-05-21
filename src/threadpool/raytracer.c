@@ -5,20 +5,17 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri May 20 20:55:25 2016 Antoine Baché
-** Last update Sat May 21 16:34:24 2016 Antoine Baché
+** Last update Sat May 21 16:50:51 2016 Antoine Baché
 */
 
 #include "threadpool_raytracer.h"
-
-static pthread_cond_t		g_cond = PTHREAD_COND_INITIALIZER;
-static pthread_mutex_t		g_mutex = PTHREAD_MUTEX_INITIALIZER;
-static int			lock[4] = {0};
 
 void				call_thread(t_threadpool_raytracer *arg)
 {
   calc_fragment(arg->data, (unsigned int *)arg->data->scene->cache->pixels,
 		arg->pos);
-  pthread_barrier_wait(arg->barrier);
+  if (arg->barrier)
+    pthread_barrier_wait(arg->barrier);
 }
 
 static void			threadpool_set_arg(int *loop, t_ivec2 **pos,
@@ -46,7 +43,6 @@ static t_threadpool_raytracer	*init_arg(int size, t_data *data)
   i = 0;
   while (i < size)
     {
-      lock[i] = 1;
       arg[i].id = i;
       arg[i].data = data;
       arg[i].mutex = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;;
@@ -56,7 +52,8 @@ static t_threadpool_raytracer	*init_arg(int size, t_data *data)
 }
 
 int				render_multithread(t_data *data, t_ivec2 **pos,
-						   int size)
+						   int size,
+						   t_state_thread state)
 {
   int				i;
   int				ret;
@@ -66,17 +63,19 @@ int				render_multithread(t_data *data, t_ivec2 **pos,
 
   if (!arg && !(loop = 0) && !(arg = init_arg(size, data)))
     return (1);
-  pthread_barrier_init(&barrier, NULL, size + 1);
-  threadpool_set_arg((int [2]){loop, size}, pos, arg, &barrier);
+  if (state == LIVE)
+    pthread_barrier_init(&barrier, NULL, size + 1);
+  threadpool_set_arg((int [2]){loop, size}, pos, arg,
+		     (state == LIVE) ? &barrier : NULL);
   i = (ret = 0) - 1;
   while (++i < size)
+    if (threadpool_exec(call_thread, &arg[i]))
+      ret = 1;
+  if (state == LIVE)
     {
-      if (threadpool_exec(call_thread, &arg[i]))
-	ret = 1;
+      pthread_barrier_wait(&barrier);
+      pthread_barrier_destroy(&barrier);
     }
-  i = -1;
-  pthread_barrier_wait(&barrier);
-  pthread_barrier_destroy(&barrier);
   if (!loop)
     ++loop;
   return (ret);

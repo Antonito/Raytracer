@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 30 23:30:01 2016 Ludovic Petrenko
-** Last update Sat May 21 02:31:12 2016 Ludovic Petrenko
+** Last update Sat May 21 15:24:42 2016 Ludovic Petrenko
 */
 
 #pragma GCC warning "\e[31m\e[1mCommentaires + Norme !\e[0m"
@@ -97,11 +97,16 @@ void		calc_ray(t_scene *scene, t_ray *ray, int i, t_intersect *inter)
   if (i >= MAX_RECURSIVE)
     return ;
   scene_intersect(scene, ray, inter);
-  if (inter->obj && ((t_obj*)inter->obj)->type == LIGHT)
+  if (inter->obj && inter->obj != scene->select && ((t_obj*)inter->obj)->type == LIGHT)
     return ;
   if (inter->dist < 0.00001 || inter->dist == INFINITY || inter->mat == NULL)
     {
       inter->color = scene->spec.bg_color;
+      return ;
+    }
+  if (inter->obj == scene->select && -dot_vec3(inter->norm, ray->dir) < 0.25)
+    {
+      inter->color.full = 0xFF0000FF;
       return ;
     }
   /* inter->mat = NULL; */

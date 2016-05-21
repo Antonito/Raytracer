@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 01:23:21 2016 Ludovic Petrenko
-** Last update Thu May 12 03:55:40 2016 Ludovic Petrenko
+** Last update Sat May 21 12:20:36 2016 Ludovic Petrenko
 */
 
 #ifndef INTERSECT_H_
@@ -23,6 +23,7 @@ typedef struct	s_intersect
   double	dist;
   t_color	color;
   t_material	*mat;
+  void		*tex;
   void		*obj;
 }		t_intersect;
 

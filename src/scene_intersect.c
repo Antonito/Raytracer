@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat May 21 02:22:35 2016 Ludovic Petrenko
-** Last update Sat May 21 04:57:52 2016 Ludovic Petrenko
+** Last update Sat May 21 16:34:13 2016 Ludovic Petrenko
 */
 
 #define _ISOC99_SOURCE
@@ -28,18 +28,16 @@ void		scene_intersect(t_scene *scene, t_ray *ray, t_intersect *cur)
   while (obj->next)
     {
       obj = scene->objs + ++i;
-      tmp.obj = obj;
+
       move_ray(obj, ray, &rotated);
-      tmp.mat = obj->mat;
       tmp = obj->get_intersect(obj, &rotated);
-      /* printf("tmp.dist %f\n", tmp.dist); */
-      /* printf("cur->dist %f\n", cur->dist); */
-      /* printf("tmp.mat %p\n", tmp.mat); */
-      /* printf("obj->type %d\n", obj->type); */
-      if (tmp.dist > 0.00001 && tmp.dist < cur->dist + 0.00001 &&
-	  (tmp.mat || obj->type == LIGHT))
+      tmp.dir = ray->dir;
+      tmp.tex = obj->tex;
+      tmp.obj = obj;
+      if (tmp.dist > 0.00001 && tmp.dist < cur->dist + 0.00001)/*  && */
+	  /* (tmp.mat || obj->type == LIGHT)) */
 	{
-	  if (tmp.mat)
+	  if (tmp.mat && !tmp.tex && tmp.obj != scene->select)
 	    tmp.color.full = tmp.mat->color;
 	  tmp.obj = obj;
 	  *cur = tmp;

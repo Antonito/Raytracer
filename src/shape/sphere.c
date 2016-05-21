@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May  2 04:39:20 2016 Antoine Baché
-** Last update Sat May 21 14:57:52 2016 Antoine Baché
+** Last update Sat May 21 16:39:06 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -52,5 +52,10 @@ t_intersect	get_intersect_sphere(t_obj *obj, t_ray *ray)
   inter.norm.x = inter.pos.x / obj->sphere.radius;
   inter.norm.y = inter.pos.y / obj->sphere.radius;
   inter.norm.z = inter.pos.z / obj->sphere.radius;
+  if (obj->tex)
+      inter.color.full =
+	get_tex_pix(obj->tex,
+		    (t_vec2){atan2(inter.norm.y, inter.norm.x) / M_PI,
+			-2.0 * asin(inter.norm.z) / M_PI});
   return (inter);
 }

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May  2 07:53:57 2016 Antoine Baché
-** Last update Sat May 21 05:55:05 2016 Ludovic Petrenko
+** Last update Sat May 21 12:56:21 2016 Ludovic Petrenko
 */
 
 #include "solver.h"
@@ -17,7 +17,6 @@ t_intersect	get_intersect_plane(t_obj *obj, t_ray *ray)
 {
   t_intersect	inter;
 
-  inter.dir = ray->dir;
   inter.mat = obj->mat;
   inter.dist = -ray->pos.z / ray->dir.z;
   if (inter.dist < 0.00001)

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Sat May 21 15:48:03 2016 Antoine Baché
+** Last update Sat May 21 18:55:31 2016 Antoine Baché
 */
 
 #ifndef	RAYTRACER_H_
@@ -20,8 +20,8 @@
 # include "tools/memory.h"
 # include "ply.h"
 
-# define DEFAULT_WIDTH		(1280)
-# define DEFAULT_HEIGHT		(720)
+# define DEFAULT_WIDTH		(1280 / 4)
+# define DEFAULT_HEIGHT		(720 / 4)
 # define WIN_NAME		"Ray Ta Soeur"
 # define UNUSED			__attribute__((unused))
 # define MAX_RECURSIVE		4
@@ -65,6 +65,7 @@
 # define POS_FIELD		"position"
 # define ROT_FIELD		"rotation"
 # define MAT_FIELD		"material"
+# define TEX_FIELD		"texture"
 # define CAM_FIELD		"camera"
 # define FOV_FIELD		"fov"
 # define FOCALE_FIELD		"focale"
@@ -173,5 +174,6 @@ void			joy_proceed_moves(t_data *);
 void			focale(t_data *);
 bool			check_box(t_obj *obj, t_ray *ray);
 void			scene_intersect(t_scene *, t_ray *, t_intersect *);
+unsigned int		get_tex_pix(t_bunny_pixelarray *, t_vec2);
 
 #endif /* !RAYTRACER_H_ */
