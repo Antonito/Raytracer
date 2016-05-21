@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Wed Apr 27 05:31:16 2016 Ludovic Petrenko
-** Last update Sat May 21 06:42:28 2016 Ludovic Petrenko
+** Last update Sat May 21 06:55:01 2016 Ludovic Petrenko
 */
 
 #define _ISOC99_SOURCE
@@ -41,6 +41,7 @@ void		node_intersect(t_node *node, t_ray *ray, t_intersect *cur)
   t_intersect	tmp;
   t_obj		*obj;
 
+  cur->obj = NULL;
   cur->dist = INFINITY;
   obj = &node->obj_list;
   while ((obj = obj->next))

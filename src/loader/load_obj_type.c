@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 01:06:07 2016 Ludovic Petrenko
-** Last update Thu May 19 19:51:04 2016 Ludovic Petrenko
+** Last update Sat May 21 06:55:17 2016 Ludovic Petrenko
 */
 
 #include <math.h>
@@ -70,6 +70,8 @@ void	load_cylinder(t_obj *obj, const t_bunny_ini_scope *scope)
   obj->type = CYLINDER;
   obj->cylinder.radius = DEFAULT_CYLINDER_RADIUS;
   obj->cylinder.height = DEFAULT_CYLINDER_HEIGHT;
+  obj->pos = (t_vec3){0, 0, 0};
+  obj->rot = (t_vec3){0, 0, 0};
   obj->get_intersect = &get_intersect_cylinder;
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, RADIUS_FIELD, 0)))
     obj->cylinder.radius = my_getdouble(tmp);
