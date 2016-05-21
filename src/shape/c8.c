@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May 16 02:20:19 2016 Antoine Baché
-** Last update Wed May 18 03:26:41 2016 Antoine Baché
+** Last update Sat May 21 07:10:41 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -16,10 +16,8 @@
 static void		get_dist_c8(t_ray *ray, t_intersect *inter,
 				       t_vec3 tmp)
 {
-  double		*s;
+  double		s[9];
 
-  if (!(s = my_malloc(sizeof(double) * 9)))
-    return ;
   s[0] = 64.0 * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.x
     * ray->dir.x * ray->dir.x * ray->dir.x + 64.0 * ray->dir.y * ray->dir.y *
     ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y

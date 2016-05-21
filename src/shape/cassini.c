@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May 14 18:31:54 2016 Antoine Baché
-** Last update Mon May 16 01:37:26 2016 Antoine Baché
+** Last update Sat May 21 07:10:57 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -35,7 +35,7 @@ static void	get_dist_cassini(t_ray *ray, t_intersect *inter, t_vec3 tmp)
   t[4] = -0.5 * tmp.x * tmp.x + 2.0 * tmp.x * tmp.x * tmp.y * tmp.y + 0.5 *
     tmp.y * tmp.y + tmp.x * tmp.x * tmp.x * tmp.x + tmp.y * tmp.y * tmp.y *
     tmp.y - tmp.z * tmp.z * tmp.z * tmp.z + 0.0625;
-  if ((inter->dist = solver_fourth_degree(t[0], t[1], t[2], t[3], t[4])) ==
+  if ((inter->dist = solver_n_degree(t, 4)) ==
       NOT_A_SOLUTION)
     inter->dist = -1.0;
 }

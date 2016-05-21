@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun May 15 00:07:30 2016 Antoine Baché
-** Last update Mon May 16 15:05:46 2016 Antoine Baché
+** Last update Sat May 21 07:09:37 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -66,7 +66,7 @@ static void	get_dist_bifolia(t_ray *ray, t_intersect *inter,
     tmp.z + 2.0 * tmp.y * tmp.y * tmp.z * tmp.z - 3.0 * tmp.y * tmp.z * tmp.z +
     tmp.x * tmp.x * tmp.x * tmp.x + tmp.y * tmp.y * tmp.y * tmp.y + tmp.z *
     tmp.z * tmp.z * tmp.z - 3.0 * tmp.x * tmp.x * tmp.y;
-  if ((inter->dist = solver_fourth_degree(s[0], s[1], s[2], s[3], s[4]))
+  if ((inter->dist = solver_n_degree(s, 4))
       == NOT_A_SOLUTION)
     inter->dist = -1.0;
 }

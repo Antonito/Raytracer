@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun May 15 02:24:37 2016 Antoine Baché
-** Last update Wed May 18 03:28:21 2016 Antoine Baché
+** Last update Sat May 21 07:13:27 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -55,7 +55,7 @@ static void	get_dist_cushion(t_obj *obj, t_ray *ray, t_intersect *inter,
     * tmp.z + 2.0 * tmp.z * tmp.z * tmp.z - tmp.x * tmp.x * tmp.x * tmp.x -
     tmp.y * tmp.y * tmp.y * tmp.y - tmp.z * tmp.z * tmp.z * tmp.z + 2.0 * tmp.y
     * tmp.y * tmp.z;
-  if ((inter->dist = solver_fourth_degree(t[0], t[1], t[2], t[3], t[4])) ==
+  if ((inter->dist = solver_n_degree(t, 4)) ==
       NOT_A_SOLUTION)
     inter->dist = -1.0;
 }

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May 16 02:10:44 2016 Antoine Baché
-** Last update Wed May 18 02:58:14 2016 Antoine Baché
+** Last update Sat May 21 07:10:10 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -16,10 +16,8 @@
 static void		get_dist_bohemian_star(t_ray *ray, t_intersect *inter,
 				       t_vec3 tmp)
 {
-  double		*s;
+  double		s[9];
 
-  if (!(s = my_malloc(sizeof(double) * 9)))
-    return ;
   s[0] = 2.0 * ray->dir.x * ray->dir.x * ray->dir.y * ray->dir.y * ray->dir.y *
     ray->dir.y * ray->dir.z * ray->dir.z + 2.0 * ray->dir.y * ray->dir.y *
     ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.z * ray->dir.z

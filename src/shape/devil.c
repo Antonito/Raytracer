@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May 16 02:52:13 2016 Antoine Baché
-** Last update Mon May 16 02:58:23 2016 Antoine Baché
+** Last update Sat May 21 07:12:21 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -36,7 +36,7 @@ static void		get_dist_devil(t_ray *ray, t_intersect *inter,
   s[4] = -0.36 * tmp.x * tmp.x + 0.25 * tmp.y * tmp.y + 2.0 * tmp.x * tmp.x *
     tmp.z * tmp.z + tmp.x * tmp.x * tmp.x * tmp.x - tmp.y * tmp.y * tmp.y *
     tmp.y + tmp.z * tmp.z * tmp.z * tmp.z;
-  if ((inter->dist = solver_fourth_degree(s[0], s[1], s[2], s[3], s[4]))
+  if ((inter->dist = solver_n_degree(s, 4))
       == NOT_A_SOLUTION)
     inter->dist = -1.0;
 }

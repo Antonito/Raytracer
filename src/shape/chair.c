@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May 14 20:53:15 2016 Antoine Baché
-** Last update Mon May 16 01:43:41 2016 Antoine Baché
+** Last update Sat May 21 07:13:08 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -79,7 +79,7 @@ static void		get_dist_chair(t_ray *ray, t_intersect *inter,
     * tmp.z * tmp.z - 75.0 * tmp.z * tmp.z + 10.0 * tmp.x * tmp.x * tmp.x *
     tmp.x + tmp.y * tmp.y * tmp.y * tmp.y + 2.0 * tmp.z * tmp.z * tmp.z * tmp.z
     + 640.625 + 16.0 * tmp.x * tmp.x * tmp.z - 16.0 * tmp.y * tmp.y * tmp.z;
-  if ((inter->dist = solver_fourth_degree(s[0], s[1], s[2], s[3], s[4]))
+  if ((inter->dist = solver_n_degree(s, 4))
       == NOT_A_SOLUTION)
     inter->dist = -1.0;
 }

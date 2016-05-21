@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May 10 06:43:20 2016 Antoine Baché
-** Last update Tue May 10 15:36:29 2016 Antoine Baché
+** Last update Sat May 21 11:00:07 2016 Antoine Baché
 */
 
 #include "engine/intersect.h"
@@ -58,22 +58,26 @@ inline static void	calc_new_pts_klein(t_vec3 *d, t_vec3 *ori)
   t_vec3		tmp;
   t_intersect		inter;
 
-  inter.pos.x = ori->x + 0.001;
-  inter.pos.y = ori->y + 0.001;
+  inter.pos.x = ori->x + 0.1;
+  inter.pos.y = ori->y + 0.1;
   inter.pos.z = (-1.0 * (d[0].x * (inter.pos.x - ori->x))
-		  - (d[0].y * (inter.pos.y - ori->y))
-		  + (ori->z * d[0].z)) / d[0].z;
+  		 - (d[0].y * (inter.pos.y - ori->y))
+  		 + (ori->z * d[0].z)) / d[0].z;
+  /* inter.pos.z = -(d[0].x * (inter.pos.x - ori->x) + d[0].y * */
+  /* 		  (inter.pos.y - ori->y)) / d[0].z + ori->z; */
   tmp.x = inter.pos.x * inter.pos.x;
   tmp.y = inter.pos.y * inter.pos.y;
   tmp.z = inter.pos.z * inter.pos.z;
   d[1].x = calc_x_derivative(&inter, tmp);
   d[1].y = calc_y_derivative(&inter, tmp);
   d[1].z = calc_z_derivative(&inter, tmp);
-  inter.pos.x = ori->x + 0.002;
-  inter.pos.y = ori->y + 0.002;
+  inter.pos.x = ori->x - 0.1;
+  inter.pos.y = ori->y - 0.1;
   inter.pos.z = (-1.0 * (d[0].x * (inter.pos.x - ori->x))
-		  - (d[0].y * (inter.pos.y - ori->y))
-		  + (ori->z * d[0].z)) / d[0].z;
+  		  - (d[0].y * (inter.pos.y - ori->y))
+  		  + (ori->z * d[0].z)) / d[0].z;
+  /* inter.pos.z = -(d[0].x * (inter.pos.x - ori->x) + d[0].y * */
+  /* 		  (inter.pos.y - ori->y)) / d[0].z + ori->z; */
   tmp.x = inter.pos.x * inter.pos.x;
   tmp.y = inter.pos.y * inter.pos.y;
   tmp.z = inter.pos.z * inter.pos.z;

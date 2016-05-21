@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May 14 23:04:44 2016 Antoine Baché
-** Last update Wed May 18 03:45:21 2016 Antoine Baché
+** Last update Sat May 21 07:09:18 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -16,10 +16,8 @@
 static void	get_dist_barth_sextic(t_obj *obj, t_ray *ray, t_intersect *inter,
 				      t_vec3 tmp)
 {
-  double	*s;
+  double	s[7];
 
-  if (!(s = my_malloc(sizeof(double) * 7)))
-    return ;
   s[0] = 27.41640789 * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.x *
     ray->dir.y * ray->dir.y + 67.77708776 * ray->dir.x * ray->dir.x *
     ray->dir.y * ray->dir.y * ray->dir.z * ray->dir.z + 10.47213596 *

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May 16 02:05:34 2016 Antoine Baché
-** Last update Mon May 16 15:31:50 2016 Antoine Baché
+** Last update Sat May 21 07:09:53 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -64,7 +64,7 @@ static void		get_dist_bohemian_dome(t_ray *ray, t_intersect *inter,
     tmp.x * tmp.x * tmp.z * tmp.z - 2.0 * tmp.y * tmp.y * tmp.z * tmp.z - tmp.x
     * tmp.x * tmp.x * tmp.x - tmp.y * tmp.y * tmp.y * tmp.y - tmp.z * tmp.z *
     tmp.z * tmp.z;
-  if ((inter->dist = solver_fourth_degree(s[0], s[1], s[2], s[3], s[4]))
+  if ((inter->dist = solver_n_degree(s, 4))
       == NOT_A_SOLUTION)
     inter->dist = -1.0;
 }
