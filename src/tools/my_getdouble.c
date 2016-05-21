@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Apr 18 11:13:21 2016 Antoine Baché
-** Last update Sat May 21 21:11:48 2016 Antoine Baché
+** Last update Sat May 21 22:28:37 2016 Antoine Baché
 */
 
 #include "tools/memory.h"
@@ -49,7 +49,9 @@ double		my_getdouble(const char *str)
 
   if (!str)
     return (0);
-  k = i = 0;
+  if (my_strlen(str) > 10)
+    str[10] = '\0';
+  k = i =  0;
   while (str[i] != '.' && str[i] && ++i);
   while (str[k + i] && ++k);
   if (!(tmp = my_malloc(my_strlen(str) + 1)))

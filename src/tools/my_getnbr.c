@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Apr 18 10:35:03 2016 Antoine Baché
-** Last update Fri May 13 15:57:39 2016 Luka Boulagnon
+** Last update Sat May 21 22:20:33 2016 Antoine Baché
 */
 
 int	my_getnbr(const char *str)
@@ -17,6 +17,8 @@ int	my_getnbr(const char *str)
   i = 0;
   s = 1;
   r = 0;
+  if (!str)
+    return (0);
   while (str[i] == 43 || str[i] == 45)
     {
       if (str[i] == 45)
