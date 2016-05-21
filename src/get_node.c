@@ -5,12 +5,12 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Wed Apr 20 20:28:51 2016 Ludovic Petrenko
-** Last update Sat May  7 01:13:30 2016 Antoine Baché
+** Last update Sat May 21 04:06:48 2016 Ludovic Petrenko
 */
 
 #include <math.h>
 #include "raytracer.h"
-#include "engine/octree.h"
+#include "engine/engine.h"
 
 bool	light_node(t_node *node, t_obj *obj)
 {

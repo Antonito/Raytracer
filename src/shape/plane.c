@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May  2 07:53:57 2016 Antoine Baché
-** Last update Mon May  9 10:45:51 2016 Ludovic Petrenko
+** Last update Sat May 21 05:55:05 2016 Ludovic Petrenko
 */
 
 #include "solver.h"
@@ -13,38 +13,22 @@
 #include "engine/object.h"
 #include "tools/math.h"
 
-static void	get_plane_dist(t_ray *ray, t_intersect *inter, t_obj *obj)
-{
-  double	tmp;
-
-  tmp = ray->dir.x * obj->plane.normale.x +
-    ray->dir.y * obj->plane.normale.y +
-    ray->dir.z * obj->plane.normale.z;
-  if (IS_ZERO(tmp))
-    inter->dist = -1.0;
-  else
-    {
-      inter->dist = -((ray->pos.x - obj->pos.x) * obj->plane.normale.x +
-		     (ray->pos.y - obj->pos.y) * obj->plane.normale.y +
-		     (ray->pos.z - obj->pos.z) * obj->plane.normale.z) / tmp;
-    }
-  if (inter->dist < 0.0 || IS_ZERO(inter->dist))
-    inter->dist = -1.0;
-}
-
 t_intersect	get_intersect_plane(t_obj *obj, t_ray *ray)
 {
   t_intersect	inter;
 
   inter.dir = ray->dir;
   inter.mat = obj->mat;
-  get_plane_dist(ray, &inter, obj);
+  inter.dist = -ray->pos.z / ray->dir.z;
+  if (inter.dist < 0.00001)
+    inter.dist = -1.0;
   if (inter.dist == -1.0)
     return (inter);
-  inter.pos = add_vec3(ray->pos, mult_vec3(ray->dir, inter.dist));
+  inter.pos.y = ray->pos.y + inter.dist * ray->dir.y;
+  inter.pos.x = ray->pos.x + inter.dist * ray->dir.x;
   if ((((int)inter.pos.x + (inter.pos.x < 0.0)) & 1) ^
       ((((int)inter.pos.y + (inter.pos.y < 0.0)) & 1)))
     inter.mat = NULL;
-  inter.norm = obj->plane.normale;
+  inter.norm = vec3(0, 0, 1.0);
   return (inter);
 }

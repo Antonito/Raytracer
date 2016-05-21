@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri May 13 06:44:05 2016 Antoine Baché
-** Last update Tue May 17 17:55:46 2016 Antoine Baché
+** Last update Sat May 21 06:19:31 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -52,8 +52,9 @@ void		load_ply(t_obj *obj, const t_bunny_ini_scope *scope)
   obj->get_intersect = &get_intersect_ply;
   obj->ply.ply = NULL;
   ratio = 1.0;
-  if ((tmp = (char *)bunny_ini_scope_get_field(scope, FILE_PATH, 0)))
-    obj->ply.ply = get_ply((!tmp) ? "" : tmp);
+  if (!(tmp = (char *)bunny_ini_scope_get_field(scope, FILE_PATH, 0)) ||
+      !(obj->ply.ply = get_ply((!tmp) ? "" : tmp)))
+    return ;
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, RATIO_FIELD, 0)))
     ratio = my_getdouble(tmp);
   if (ratio != 1.0 && ratio != 0.0)

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May  9 01:15:33 2016 Antoine Baché
-** Last update Mon May 16 15:26:37 2016 Antoine Baché
+** Last update Sat May 21 00:21:49 2016 Ludovic Petrenko
 */
 
 #include "solver.h"
@@ -90,14 +90,14 @@ inline static double	calc_a_klein(t_ray *ray)
 t_intersect		get_intersect_klein(t_obj *obj, t_ray *ray)
 {
   t_intersect		inter;
-  double		*coef;
+  double		coef[7];
   t_vec3		tmp;
 
-  tmp = sub_vec3(ray->pos, obj->pos);
+  tmp = ray->pos;
   inter.dir = ray->dir;
   inter.mat = obj->mat;
   inter.dist = -1.0;
-  if (!(coef = my_malloc(7 * sizeof(double))))
+  if (!check_box(obj, ray))
     return (inter);
   coef[0] = calc_a_klein(ray);
   coef[1] = calc_b_klein(ray, tmp, square_vec3(ray->dir));

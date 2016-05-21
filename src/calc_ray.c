@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 30 23:30:01 2016 Ludovic Petrenko
-** Last update Thu May 19 07:30:27 2016 Ludovic Petrenko
+** Last update Sat May 21 02:31:12 2016 Ludovic Petrenko
 */
 
 #pragma GCC warning "\e[31m\e[1mCommentaires + Norme !\e[0m"
@@ -96,7 +96,7 @@ void		calc_ray(t_scene *scene, t_ray *ray, int i, t_intersect *inter)
   refl = refr = *inter;
   if (i >= MAX_RECURSIVE)
     return ;
-  node_intersect(&scene->octree, ray, inter);
+  scene_intersect(scene, ray, inter);
   if (inter->obj && ((t_obj*)inter->obj)->type == LIGHT)
     return ;
   if (inter->dist < 0.00001 || inter->dist == INFINITY || inter->mat == NULL)
@@ -113,10 +113,10 @@ void		calc_ray(t_scene *scene, t_ray *ray, int i, t_intersect *inter)
       get_reflected_ray(inter, ray, &tmp);
       calc_ray(scene, &tmp, i + 1, &refl);
     }
-  /* if (inter->mat->opacity < 1.0) */
-  /*   { */
+  if (!IS_ZERO(inter->mat->opacity - 1.0))
+    {
       get_refracted_ray(inter, ray, &tmp);
       calc_ray(scene, &tmp, i + 1, &refr);
-    /* } */
+    }
   inter->color.full = mix_colors(scene, inter, &refl, &refr);
 }

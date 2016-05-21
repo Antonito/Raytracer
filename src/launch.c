@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 16 16:32:45 2016 Ludovic Petrenko
-** Last update Thu May 19 10:35:05 2016 Ludovic Petrenko
+** Last update Sat May 21 00:36:24 2016 Ludovic Petrenko
 */
 
 #include <stdio.h>
@@ -101,8 +101,8 @@ t_bunny_response	main_loop(t_data *data)
   data->scene->cache->clipable.clip_width = data->config.cur_width;
   data->scene->cache->clipable.clip_height = data->config.cur_height;
   blit_scaled(data->scene->cache, data->render);
-  if (data->config.minimum_fps == 0)
-    focale(data);
+  /* if (data->config.minimum_fps == 0) */
+  /*   focale(data); */
   if (data->effect != NO_EFFECT)
     apply_effect(data->render, data->effect, data);
   bunny_blit(&data->win->buffer, &data->render->clipable, NULL);
@@ -139,8 +139,8 @@ void	print_ply(t_ply *ply)
 
 int	launch_raytracer(t_data *data)
 {
-  data->config.cur_width = data->config.width / 2;
-  data->config.cur_height = data->config.height / 2;
+  data->config.cur_width = data->config.width / 10;
+  data->config.cur_height = data->config.height / 10;
   print_scenes(data->scene);
   /* printf("Objs[1]Type = %d\n", data->scene->objs[1].type); */
   /* print_ply(data->scene->objs[1].ply.ply); */

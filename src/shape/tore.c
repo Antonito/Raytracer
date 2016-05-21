@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May  2 08:11:21 2016 Antoine Baché
-** Last update Fri May 13 14:47:39 2016 Antoine Baché
+** Last update Fri May 20 23:46:46 2016 Ludovic Petrenko
 */
 
 #include "solver.h"
@@ -21,11 +21,13 @@ static void	get_dist_tore(t_ray *ray, t_intersect *inter, t_obj *obj)
   double	e;
   t_vec3	tmp;
 
-  tmp = sub_vec3(ray->pos, obj->pos);
-  a = (ray->dir.x * ray->dir.x + ray->dir.y * ray->dir.y + ray->dir.z *
-       ray->dir.z) *
-    (ray->dir.x * ray->dir.x + ray->dir.y * ray->dir.y + ray->dir.z *
-     ray->dir.z);
+  double	test[5];
+
+  tmp = ray->pos;
+  a = /* (ray->dir.x * ray->dir.x + ray->dir.y * ray->dir.y + ray->dir.z * */
+    /*    ray->dir.z) * */
+    /* (ray->dir.x * ray->dir.x + ray->dir.y * ray->dir.y + ray->dir.z * */
+    /*  ray->dir.z) */1.0;
   b = 4.0 * (ray->dir.x * ray->dir.x + ray->dir.y * ray->dir.y +
 	     ray->dir.z * ray->dir.z) *
     (ray->dir.x * tmp.x + ray->dir.y * tmp.y + ray->dir.z * tmp.z);
@@ -52,7 +54,26 @@ static void	get_dist_tore(t_ray *ray, t_intersect *inter, t_obj *obj)
      obj->torus.radius_hole - obj->torus.radius_solid *
      obj->torus.radius_solid) - 4.0 * obj->torus.radius_hole *
     obj->torus.radius_hole * (tmp.x * tmp.x + tmp.y * tmp.y);
-  inter->dist = solver_fourth_degree(a, b, c, d, e);
+  test[0] = a;
+  test[1] = b;
+  test[2] = c;
+  test[3] = d;
+  test[4] = e;
+  /* if ((inter->dist = solver_fourth_degree(a, b, c, d, e)) > 0.0001) */
+  /*   { */
+  /*     printf("%f %f %f %f %f\n", a, b, c, d, e); */
+  /*     printf("4: %f N: %f 4: %f\n",inter->dist, */
+  /* 	     (test[0] = solver_n_degree(test, 4)), */
+  /* 	     (test[1] = solver_fourth_degree(a, b, c, d, e))); */
+  /*     read(0, test, 1); */
+  /*   } */
+  /* inter->dist = solver_fourth_degree(a, b, c, d, e); */
+  inter->dist = solver_n_degree(test, 4);
+  /* if (inter->dist > 0.0 && fabs(inter->dist - solver_n_degree(test, 4)) > 0.001) */
+  /*   { */
+  /*     asm("int $3"); */
+  /*     solver_n_degree(test, 4); */
+  /*   } */
 }
 
 t_intersect	get_intersect_tore(t_obj *obj, t_ray *ray)
@@ -62,6 +83,8 @@ t_intersect	get_intersect_tore(t_obj *obj, t_ray *ray)
 
   inter.dir = ray->dir;
   inter.mat = obj->mat;
+  if (!check_box(obj, ray))
+    return (inter);
   get_dist_tore(ray, &inter, obj);
   if (inter.dist < 0.0 || inter.dist == NOT_A_SOLUTION)
     {
