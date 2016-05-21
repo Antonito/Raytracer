@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:33:45 2016 Ludovic Petrenko
-** Last update Thu May 19 11:19:17 2016 Ludovic Petrenko
+** Last update Sat May 21 13:43:38 2016 Antoine Baché
 */
 
 #ifndef OBJECT_H_
@@ -199,6 +199,15 @@ typedef struct		s_ply_load
   void			*node;
   int			nb_obj;
 }			t_ply_load;
+
+/*
+** Generic Normal Vector Calculator
+**
+** The first function pointeurs should take as parameters inter and a t_vec3
+** The t_vec3 is basically inter->pos * inter->pos (it allows optimization)
+*/
+void			calc_normale(double (*)(), double (*)(), double (*)(),
+				     t_intersect *);
 
 /*
 ** Functions

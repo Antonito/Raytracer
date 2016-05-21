@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon May  2 22:15:55 2016 Ludovic Petrenko
-** Last update Sat May 21 04:49:02 2016 Antoine Baché
+** Last update Sat May 21 12:45:53 2016 Antoine Baché
 */
 
 #include <stdio.h>
@@ -82,43 +82,43 @@ static t_ivec2		**prepare_tab_frame(void)
 
 int			set_frame(t_data *data)
 {
-  t_ivec2		pos[2];
-  /* static t_ivec2	**pos = NULL; */
+  /* t_ivec2		pos[2]; */
+  static t_ivec2	**pos = NULL;
 
-  /* /\* if (!pos && !(pos = prepare_tab_frame())) *\/ */
-  /* /\*   return (1); *\/ */
+  if (!pos && !(pos = prepare_tab_frame()))
+    return (1);
   set_vectors(data, &data->scene->cam);
   data->scene->cache->clipable.clip_width = data->config.cur_width;
   data->scene->cache->clipable.clip_height = data->config.cur_height;
-  /* set_pos(pos, data); */
-  /* render_multithread(data, pos, 4); */
-  if (data->config.minimum_fps)
-    {
-      pos[0].x = 0;
-      pos[0].y = 0;
-      pos[1].x = data->config.cur_width;
-      pos[1].y = data->config.cur_height;
-      calc_fragment(data, (unsigned int *)data->scene->cache->pixels, pos);
-    }
-  else
-    {
-      pos[0].y = 0;
-      pos[1].y = 20;
-      while (pos[0].y < data->config.cur_height)
-  	{
-  	  pos[0].x = 0;
-  	  pos[1].x = 20;
-  	  while (pos[0].x < data->config.cur_width)
-  	    {
-  	      calc_fragment(data, (unsigned int *)data->scene->cache->pixels, pos);
-  	      bunny_blit(&data->win->buffer, &data->scene->cache->clipable, NULL);
-  	      bunny_display(data->win);
-  	      pos[0].x += 20;
-  	      pos[1].x += 20;
-  	    }
-  	  pos[0].y += 20;
-  	  pos[1].y += 20;
-  	}
-    }
+  set_pos(pos, data);
+  render_multithread(data, pos, 4);
+  /* if (data->config.minimum_fps) */
+  /*   { */
+  /*     pos[0].x = 0; */
+  /*     pos[0].y = 0; */
+  /*     pos[1].x = data->config.cur_width; */
+  /*     pos[1].y = data->config.cur_height; */
+  /*     calc_fragment(data, (unsigned int *)data->scene->cache->pixels, pos); */
+  /*   } */
+  /* else */
+  /*   { */
+  /*     pos[0].y = 0; */
+  /*     pos[1].y = 20; */
+  /*     while (pos[0].y < data->config.cur_height) */
+  /* 	{ */
+  /* 	  pos[0].x = 0; */
+  /* 	  pos[1].x = 20; */
+  /* 	  while (pos[0].x < data->config.cur_width) */
+  /* 	    { */
+  /* 	      calc_fragment(data, (unsigned int *)data->scene->cache->pixels, pos); */
+  /* 	      bunny_blit(&data->win->buffer, &data->scene->cache->clipable, NULL); */
+  /* 	      bunny_display(data->win); */
+  /* 	      pos[0].x += 20; */
+  /* 	      pos[1].x += 20; */
+  /* 	    } */
+  /* 	  pos[0].y += 20; */
+  /* 	  pos[1].y += 20; */
+  /* 	} */
+  /*   } */
   return (0);
 }

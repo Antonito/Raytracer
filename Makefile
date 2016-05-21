@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sat May 21 06:59:42 2016 Antoine Baché
+## Last update Sat May 21 13:37:57 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -41,6 +41,7 @@ EFFECT_PREFIX=		src/effect/
 EFFECT_FILES=		effect.c			\
 			black_and_white.c		\
 			pastel.c			\
+			stained_glass.c			\
 			negative.c			\
 			bayer.c				\
 			sepia.c				\
@@ -164,7 +165,8 @@ SHAPE_FILES=		plane.c				\
 			devil.c				\
 			quartic_cylinder.c		\
 			spheroid.c			\
-			light.c
+			light.c				\
+			normale_generic.c
 
 NET_TOOLS_PREFIX=	src/cluster/
 

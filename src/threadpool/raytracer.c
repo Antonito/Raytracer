@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri May 20 20:55:25 2016 Antoine Baché
-** Last update Sat May 21 04:43:48 2016 Antoine Baché
+** Last update Sat May 21 13:20:36 2016 Antoine Baché
 */
 
 #include "threadpool_raytracer.h"
@@ -15,6 +15,7 @@ void				call_thread(t_threadpool_raytracer *arg)
   calc_fragment(arg->data, (unsigned int *)arg->data->scene->cache->pixels,
 		arg->pos);
   pthread_mutex_lock(arg->mutex);
+  /* *(arg->state) = 1; */
   pthread_cond_signal(arg->cond);
   pthread_mutex_unlock(arg->mutex);
 }
@@ -38,13 +39,17 @@ static t_threadpool_raytracer	*init_arg(int size, pthread_cond_t *cond,
 					  t_data *data)
 {
   int				i;
+  static int			state = 0;
   t_threadpool_raytracer	*arg;
 
-  if (!(arg = my_malloc(sizeof(t_threadpool_raytracer) * (size))))
+  if (!(arg = my_malloc(sizeof(t_threadpool_raytracer) * (size))) ||
+      !(arg[0].state = my_malloc(sizeof(int))))
     return (NULL);
   i = 0;
+  *(arg[0].state) = 0;
   while (i < size)
     {
+      arg[i].state = arg[0].state;
       arg[i].data = data;
       arg[i].cond = cond;
       arg[i].mutex = mutex;
@@ -73,13 +78,15 @@ int				render_multithread(t_data *data, t_ivec2 **pos,
 	ret = 1;
     }
   i = -1;
-  pthread_mutex_lock(arg[0].mutex);
   while (++i < size)
     {
+      pthread_mutex_lock(arg[0].mutex);
+      arg[i].state = 0;
       printf("Wait %d : %x %x\n", i, arg[i].mutex, arg[i].cond);
-      pthread_cond_wait(arg[0].cond, arg[0].mutex);
+      /* while (!*(arg[i].state)) */
+	/* pthread_cond_wait(arg[0].cond, arg[0].mutex); */
+      pthread_mutex_unlock(arg[0].mutex);
     }
-  pthread_mutex_unlock(arg[0].mutex);
   if (!loop)
     ++loop;
   return (ret);

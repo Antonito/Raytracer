@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri May 20 21:03:14 2016 Antoine Baché
-** Last update Sat May 21 04:41:20 2016 Antoine Baché
+** Last update Sat May 21 13:03:48 2016 Antoine Baché
 */
 
 #ifndef	THREADPOOL_RAYTRACER_H_
@@ -16,7 +16,7 @@
 
 typedef struct		s_threadpool_raytracer
 {
-  int			*active;
+  int			*state;
   pthread_cond_t	*cond;
   pthread_mutex_t	*mutex;
   t_data		*data;
