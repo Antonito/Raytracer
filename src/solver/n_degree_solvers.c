@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon May  9 23:20:33 2016 Ludovic Petrenko
-** Last update Fri May 20 22:09:51 2016 Ludovic Petrenko
+** Last update Sat May 21 14:54:57 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -27,18 +27,18 @@ void	solve_second(double *coef, double *sol)
   double	opti;
 
   sol[0] = -MAX_ROOT;
-  /* opti = -2.0 * coef[0]; */
-  det = coef[1] * coef[1] - 4.0 * coef[0] * coef[2];
+  opti = -2.0 * coef[0];
+  det = coef[1] * coef[1] + 2.0 * opti * coef[2];
   if (det == 0.0)
     {
-      sol[1] = -coef[1] / (2.0 * coef[0]);
+      sol[1] = coef[1] / opti;
       sol[2] = MAX_ROOT;
     }
   else if (det >= 0.0)
     {
       det = sqrt(det);
-      sol[1] = (-coef[1] - det) / (2.0 * coef[0]);
-      sol[2] = (-coef[1] + det) / (2.0 * coef[0]);
+      sol[1] = (coef[1] - det) / opti;
+      sol[2] = (coef[1] + det) / opti;
       if (sol[1] > sol[2])
 	swap_double(sol + 1, sol + 2);
       sol[3] = MAX_ROOT;

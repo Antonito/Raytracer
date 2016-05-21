@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May 17 02:25:38 2016 Antoine Baché
-** Last update Sat May 21 04:08:18 2016 Antoine Baché
+** Last update Sat May 21 15:45:51 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -54,6 +54,7 @@ void			threadpool_destroy(t_threadpool *pool)
   i = 0;
   while (i < pool->total_threads)
     {
+      pthread_kill(pool->threads[i], 2);
       pthread_detach(pool->threads[i]);
       ++i;
     }

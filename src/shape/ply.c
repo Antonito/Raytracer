@@ -5,9 +5,10 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri May 13 18:26:44 2016 Antoine Baché
-** Last update Sat May 21 06:20:10 2016 Ludovic Petrenko
+** Last update Sat May 21 14:56:55 2016 Antoine Baché
 */
 
+#include "raytracer.h"
 #include "solver.h"
 #include "engine/intersect.h"
 #include "engine/object.h"
@@ -17,8 +18,6 @@
 t_intersect	get_intersect_ply(t_obj *obj, t_ray *ray)
 {
   t_intersect	inter;
-  t_vec3	i;
-  double	t;
 
   inter.dir = ray->dir;
   inter.mat = obj->mat;
