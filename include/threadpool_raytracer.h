@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri May 20 21:03:14 2016 Antoine Baché
-** Last update Sat May 21 20:52:05 2016 Antoine Baché
+** Last update Sun May 22 00:00:55 2016 Antoine Baché
 */
 
 #ifndef	THREADPOOL_RAYTRACER_H_
@@ -38,5 +38,11 @@ typedef struct		s_threadpool_raytracer
 */
 int			render_multithread(t_data *, t_ivec2 **pos, int nb,
 					   t_state_thread state);
+
+/*
+** These functions should not be called
+*/
+int			loop_raytracer_th(t_data *, t_ivec2 **, int,
+					  t_state_thread);
 
 #endif /* !THREADPOOL_RAYTRACER_H_  */
