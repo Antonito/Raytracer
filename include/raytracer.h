@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Sat May 21 23:10:19 2016 Ludovic Petrenko
+** Last update Sun May 22 00:28:27 2016 Antoine Baché
 */
 
 #ifndef	RAYTRACER_H_
@@ -26,8 +26,8 @@
 # define UNUSED			__attribute__((unused))
 # define MAX_RECURSIVE		4
 # define DEFAULT_FPS		24
-# define WIDTH_20		(data->config.cur_width / 20 + 1)
-# define HEIGHT_20		(data->config.cur_height / 20 + 1)
+# define WIDTH_20		(data->config.cur_width / 4 + 1)
+# define HEIGHT_20		(data->config.cur_height / 4 + 1)
 # define NB_FRAGMENT		(WIDTH_20 * HEIGHT_20)
 
 /*

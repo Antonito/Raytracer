@@ -5,15 +5,16 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri May 20 20:55:25 2016 Antoine Baché
-** Last update Sat May 21 23:34:36 2016 Ludovic Petrenko
+** Last update Sun May 22 00:40:14 2016 Antoine Baché
 */
 
 #include "threadpool_raytracer.h"
 
 void				call_thread(t_threadpool_raytracer *arg)
 {
-  calc_fragment(arg->data, (unsigned int *)arg->data->scene->cache->pixels,
-		arg->pos);
+  if (arg->data)
+    calc_fragment(arg->data, (unsigned int *)arg->data->scene->cache->pixels,
+		  arg->pos);
   if (arg->barrier)
     pthread_barrier_wait(arg->barrier);
 }
@@ -56,9 +57,9 @@ static int	threadpool_raytracer_free(t_threadpool_raytracer **arg)
   *arg = NULL;
 }
 
-int				render_multithread(t_data *data, t_ivec2 **pos,
-						   int size,
-						   t_state_thread state)
+int				loop_raytracer_th(t_data *data, t_ivec2 **pos,
+						  int size,
+						  t_state_thread state)
 {
   int				i;
   int				ret;
@@ -71,7 +72,7 @@ int				render_multithread(t_data *data, t_ivec2 **pos,
   i = (ret = 0) - 1;
   if (!arg && (loop = -1) && !(arg = init_arg(size, data)))
     return (1);
-  if (state == LIVE && pthread_barrier_init(&barrier, NULL, NB_THREADS + 1))
+  if (state == LIVE && pthread_barrier_init(&barrier, NULL, 5))
     return (1);
   threadpool_set_arg((int [2]){++loop, size}, pos, arg,
 		     (state == LIVE) ? &barrier : NULL);
