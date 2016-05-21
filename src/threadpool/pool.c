@@ -5,20 +5,25 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May 17 02:25:38 2016 Antoine Baché
-** Last update Tue May 17 16:45:28 2016 Antoine Baché
+** Last update Sat May 21 04:08:18 2016 Antoine Baché
 */
 
-#include "threadpool.h"
+#include <stdlib.h>
 #include "tools/memory.h"
+#include "threadpool.h"
 
 static int		threadpool_init_start_threads(t_threadpool *pool)
 {
+  pthread_attr_t	attr;
   int			i;
 
+  if (pthread_attr_init(&attr) ||
+      pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED))
+    return (1);
   i = 0;
-  while (i < NB_THREADS)
+  while (i < pool->total_threads)
     {
-      if (pthread_create(&pool->threads[i], NULL, threadpool_loop, pool))
+      if (pthread_create(&pool->threads[i], &attr, threadpool_loop, pool))
 	break;
       ++i;
     }
@@ -28,16 +33,17 @@ static int		threadpool_init_start_threads(t_threadpool *pool)
 
 int			threadpool_init(t_threadpool *pool)
 {
+  pool->mutex = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;
   pool->queue.mutex = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;
   pool->queue.condition = (pthread_cond_t)PTHREAD_COND_INITIALIZER;
   pool->queue.first = NULL;
-  pool->queue.last = pool->queue.first;
+  pool->queue.last = NULL;
   pool->queue.over = true;
-  pool->mutex = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;
-  if (!(pool->threads = my_malloc(sizeof(pthread_t) * (NB_THREADS + 1))) ||
-      threadpool_init_start_threads(pool))
-    return (1);
   pool->total_threads = NB_THREADS;
+  if (!(pool->threads = my_malloc(sizeof(pthread_t) *
+				  (pool->total_threads + 1)))
+      || threadpool_init_start_threads(pool))
+    return (1);
   return (0);
 }
 
@@ -46,9 +52,9 @@ void			threadpool_destroy(t_threadpool *pool)
   int			i;
 
   i = 0;
-  while (i < NB_THREADS)
+  while (i < pool->total_threads)
     {
-      pthread_join(pool->threads[i], NULL);
+      pthread_detach(pool->threads[i]);
       ++i;
     }
   my_free(pool->threads);

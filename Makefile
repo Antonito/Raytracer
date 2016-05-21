@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Thu May 19 10:21:11 2016 Ludovic Petrenko
+## Last update Fri May 20 20:56:10 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -178,7 +178,8 @@ THREADPOOL_PREFIX=	src/threadpool/
 THREADPOOL_FILES=	init.c				\
 			pool.c				\
 			queue.c				\
-			task.c
+			task.c				\
+			raytracer.c
 
 TOOLS_PREFIX=		src/tools/
 

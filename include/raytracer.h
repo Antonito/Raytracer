@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Thu May 19 10:18:47 2016 Ludovic Petrenko
+** Last update Fri May 20 09:36:38 2016 Antoine Baché
 */
 
 #ifndef	RAYTRACER_H_

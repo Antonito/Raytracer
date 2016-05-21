@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May 17 01:20:45 2016 Antoine Baché
-** Last update Tue May 17 16:15:54 2016 Antoine Baché
+** Last update Fri May 20 20:58:41 2016 Antoine Baché
 */
 
 #ifndef THREADPOOL_H_
@@ -43,9 +43,17 @@ typedef struct			s_threadpool
   int				total_threads;
 }				t_threadpool;
 
+/*
+** Exec a function within a separated thread.
+*/
+int				threadpool_exec(void (*func)(), void *arg);
+
+/*
+** These functions are called before and after main thanks to
+** gcc attributes.
+*/
 void				start_threadpool(void);
 void				stop_threadpool(void);
-int				threadpool_exec(void (*func)(), void *);
 
 /*
 ** These functions should not be called.

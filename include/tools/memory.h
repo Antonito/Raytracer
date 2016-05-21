@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 22:54:52 2016 Ludovic Petrenko
-** Last update Thu May 19 07:29:14 2016 Antoine Baché
+** Last update Thu May 19 11:31:53 2016 Antoine Baché
 */
 
 #ifndef MEMORY_H_
@@ -18,6 +18,6 @@ void	*my_malloc(size_t size);
 void	*my_calloc(size_t nmemb, size_t size);
 int	my_free(void *ptr);
 void	swap_double(double *, double *);
-void	cpy_pixelarray(t_bunny_pixelarray *, t_bunny_pixelarray *, size_t);
+void	cpy_pixelarray(t_bunny_pixelarray *, t_bunny_pixelarray *, int, int);
 
 #endif /* !MEMORY_H_ */

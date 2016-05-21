@@ -5,19 +5,17 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May 17 01:45:57 2016 Antoine Baché
-** Last update Tue May 17 16:14:13 2016 Antoine Baché
+** Last update Fri May 20 19:24:38 2016 Antoine Baché
 */
 
+#include <stdlib.h>
 #include "threadpool.h"
-#include "tools/memory.h"
 
 void	threadpool_task_init(t_threadpool_task *task, void (*func)(), void *data)
 {
-  if (!(task->next = my_malloc(sizeof(t_threadpool_task))))
-    return ;
-  task->next->func = func;
-  task->next->data = data;
-  task->next->next = NULL;
+  task->func = func;
+  task->data = data;
+  task->next = NULL;
 }
 
 void	threadpool_task_destroy(t_threadpool_task *task)

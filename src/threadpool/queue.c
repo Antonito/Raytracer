@@ -5,11 +5,12 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May 17 01:57:52 2016 Antoine Baché
-** Last update Tue May 17 17:19:05 2016 Antoine Baché
+** Last update Sat May 21 01:15:19 2016 Antoine Baché
 */
 
-#include "threadpool.h"
+#include <stdlib.h>
 #include "tools/memory.h"
+#include "threadpool.h"
 
 int			threadpool_push(t_threadpool_queue *queue,
 					t_threadpool_task *task)
@@ -34,8 +35,10 @@ int			threadpool_push(t_threadpool_queue *queue,
       queue->last->next = queue_task;
       queue->last = queue_task;
     }
-  pthread_cond_signal(condition);
+  if (queue->over)
+    queue->over = false;
   pthread_mutex_unlock(mutex);
+  pthread_cond_signal(condition);
   return (0);
 }
 
@@ -46,10 +49,9 @@ int			threadpool_pop(t_threadpool_queue *queue,
   pthread_mutex_t	*mutex;
   pthread_cond_t	*condition;
 
-  if (!queue || !task)
+  if (!queue || !task || !(condition = &queue->condition) ||
+      !(mutex = &queue->mutex))
     return (1);
-  condition = &queue->condition;
-  mutex = &queue->mutex;
   pthread_mutex_lock(mutex);
   while (!queue->first)
     {
@@ -60,8 +62,9 @@ int			threadpool_pop(t_threadpool_queue *queue,
 	  return (1);
 	}
     }
-  queue_task = queue->first;
-  queue->first = queue->first->next;
+  if (!(queue->first = (queue_task = queue->first)->next) &&
+      (queue->over = true))
+    queue->last = NULL;
   pthread_mutex_unlock(mutex);
   threadpool_task_init(task, queue_task->func, queue_task->data);
   threadpool_task_destroy(queue_task);

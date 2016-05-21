@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu May 19 06:35:26 2016 Antoine Baché
-** Last update Thu May 19 10:49:45 2016 Ludovic Petrenko
+** Last update Fri May 20 23:57:12 2016 Antoine Baché
 */
 
 #include <math.h>
@@ -63,16 +63,17 @@ static void		calc_gaussian_blur(t_data *data,
     }
 }
 
-void			focale(t_data *data)
+void				focale(t_data *data)
 {
-  int			cur;
-  int			i;
-  int			j;
-  t_bunny_pixelarray	*tmp;
+  int				cur;
+  int				i;
+  int				j;
+  t_bunny_pixelarray		*tmp;
 
+  return ;
   if (!(tmp = bunny_new_pixelarray(data->config.width, data->config.height)))
     return ;
-  cpy_pixelarray(tmp, data->render, data->config.width * data->config.height);
+  cpy_pixelarray(tmp, data->render, data->config.width, data->config.height);
   i = 0;
   while (i < data->config.height)
     {
@@ -86,5 +87,5 @@ void			focale(t_data *data)
 	}
       ++i;
     }
-  bunny_delete_clipable(&tmp->clipable);
+  my_free(tmp);
 }

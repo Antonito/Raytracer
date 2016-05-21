@@ -5,15 +5,17 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 22:32:39 2016 Ludovic Petrenko
-** Last update Thu May 19 10:28:24 2016 Ludovic Petrenko
+** Last update Sat May 21 01:19:27 2016 Antoine Baché
 */
 
 #include "raytracer.h"
+#include "threadpool.h"
 #include "loader.h"
 #include "tools/math.h"
 
 static void	set_fields(t_data *data)
 {
+  start_threadpool();
   data->config.width = DEFAULT_WIDTH;
   data->config.height = DEFAULT_HEIGHT;
   data->config.fullscreen = false;
@@ -23,11 +25,14 @@ static void	set_fields(t_data *data)
   data->joy.lat = 0;
   data->joy.hor = 0;
   data->joy.ver = 0;
+  my_sin(0.0, DRAW);
+  my_cos(0.0, DRAW);
 }
 
 int	init_data(int ac, char **av, t_data **data)
 {
   bunny_set_maximum_ram(2 * 1000 * 1000 * 1000);
+  bunny_set_memory_check(true);
   if (!(*data = my_calloc(1, sizeof(t_data))))
     return (1);
   set_fields(*data);
@@ -49,7 +54,5 @@ int	init_data(int ac, char **av, t_data **data)
 	bunny_new_pixelarray((*data)->config.width, (*data)->config.height)) ||
       load_config(*data, CONFIG_FILE))
     return (1);
-  my_sin(0.0, DRAW);
-  my_cos(0.0, DRAW);
   return (0);
 }
