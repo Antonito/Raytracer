@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Thu May 19 10:21:11 2016 Ludovic Petrenko
+## Last update Sat May 21 07:50:04 2016 Luka Boulagnon
 ##
 
 DEBUG=			yes
@@ -42,6 +42,7 @@ EFFECT_PREFIX=		src/effect/
 EFFECT_FILES=		effect.c			\
 			black_and_white.c		\
 			pastel.c			\
+			stained_glass.c			\
 			negative.c			\
 			bayer.c				\
 			sepia.c				\
