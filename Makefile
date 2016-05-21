@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Fri May 20 20:56:10 2016 Antoine Baché
+## Last update Sat May 21 06:59:42 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -14,14 +14,10 @@ SRC_PREFIX=		src/
 
 SRC_FILES=		init_data.c			\
 			joystick.c			\
-			build_octree.c			\
 			calc_fragment.c			\
 			calc_ray.c			\
 			camera.c			\
 			free.c				\
-			get_dim.c			\
-			get_node.c			\
-			get_node2.c			\
 			launch.c			\
 			main.c				\
 			node_intersect.c		\
@@ -35,7 +31,10 @@ SRC_FILES=		init_data.c			\
 			obj_vector_op.c			\
 			move_ray.c			\
 			get_light.c			\
-			focale.c
+			focale.c			\
+			check_box.c			\
+			build_bsp.c			\
+			scene_intersect.c
 
 EFFECT_PREFIX=		src/effect/
 
@@ -213,7 +212,8 @@ PLY_FILES=		add_element.c			\
 			free_ply.c			\
 			read_header.c			\
 			resize.c			\
-			build_obj.c
+			build_obj.c			\
+			set_box.c
 
 SRC=			$(addprefix $(SRC_PREFIX),$(SRC_FILES))
 

@@ -5,67 +5,101 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May 18 13:16:08 2016 Antoine Baché
-** Last update Thu May 19 06:29:19 2016 Antoine Baché
+** Last update Fri May 20 23:00:31 2016 Luka Boulagnon
 */
 
+#include <stdio.h>
 #include "raytracer.h"
 #include "tools/memory.h"
+#include "tools/math.h"
 
-static bool	pastel_is_in_radius(t_ivec2 pos, t_ivec2 cur, int radius)
+static void			reinit_avg(int averages[][4], t_config *conf)
 {
-  return ((((cur.x - pos.x) * (cur.x - pos.x) + (cur.y - pos.y) *
-	    (cur.y - pos.y)) < radius * radius) ? true : false);
+  int				i;
+  int				j;
+
+  i = conf->pastel.level;
+  while (j = 4, i--)
+    while (j--)
+      averages[i][j] = 0;
 }
 
-static void	pastel_calc_intensity()
+static void			each_in_radius(t_config *conf,
+					       t_bunny_position pix[2],
+					       t_color *from,
+					       int averages[][4])
 {
+  int				lvl;
+  int				i;
+  int				j;
 
-}
-
-static void	pastel_get_current_max(int *current_max, int *max_id, int *count)
-{
-  int		i;
-
-  i = 0;
-  *current_max = 0;
-  *max_id = 0;
-  while (i < 256)
-    {
-      if (count[i] > (*current_max))
+  reinit_avg(averages, conf);
+  i = -conf->pastel.radius - 1;
+  while (j = -conf->pastel.radius - 1, ++i < conf->pastel.radius)
+    while (++j < conf->pastel.radius)
+      if ((i + pix->x) >= 0 && (i + pix->x) < pix[1].x
+	  && (j + pix->y) >= 0 && (j + pix->y) < pix[1].y)
 	{
-	  (*current_max) = count[i];
-	  (*max_id) = i;
+	  lvl = (((double)(from[(j + pix->y) * pix[1].x + i + pix->x].argb[0]
+			   + from[(j + pix->y) * pix[1].x + i + pix->x].argb[1]
+			   + from[(j + pix->y) * pix[1].x + i + pix->x].argb[2])
+		  / 3.0)) * (double)conf->pastel.level / 256.0;
+	  averages[lvl][3]++;
+	  averages[lvl][0] += from[(j + pix->y) * pix[1].x
+	    + i + pix->x].argb[0];
+	  averages[lvl][1] += from[(j + pix->y) * pix[1].x
+	    + i + pix->x].argb[1];
+	  averages[lvl][2] += from[(j + pix->y) * pix[1].x
+	    + i + pix->x].argb[2];
 	}
-      ++i;
-    }
+}
+
+static void			filler(t_config *conf, t_bunny_position pix[2],
+				       t_color *to, int averages[][4])
+{
+  double			max;
+  double			max_index;
+  int				i;
+
+  i = conf->pastel.level;
+  max = 1;
+  max_index = 0;
+  while (i--)
+    if (max < averages[i][3])
+      {
+	max = averages[i][3];
+	max_index = i;
+      }
+  to[pix->y * pix[1].x + pix->x].argb[0] = averages[(int)max_index][0] / max;
+  to[pix->y * pix[1].x + pix->x].argb[1] = averages[(int)max_index][1] / max;
+  to[pix->y * pix[1].x + pix->x].argb[2] = averages[(int)max_index][2] / max;
 }
 
 void		pastel_effect(t_color *pix, int height, int width,
 			      t_config *conf)
 {
-
+  conf->pastel.level = 10;
+  conf->pastel.radius = 10;
+  int		averages[conf->pastel.level][4];
   int		i;
-  int		j;
-  int		cur;
-  int		cur_max;
+  int		x;
+  int		y;
   t_color	*sum;
-  int		intensity[256];
-  int		max_index;
 
-  conf->pastel.radius = 5;
-  conf->pastel.level = 20;
-  if (conf->pastel.radius >= height * width || !(i = -1) ||
+  if (conf->pastel.radius >= height * width || !(x = -1) ||
       !(sum = my_calloc(height * width, sizeof(t_color))))
     return ;
-  while (++i < height && (j = -1))
-    while (++j < width && (cur = i * width + j) >= 0)
+  while (y = -1, ++x < width)
+    while (++y < height)
       {
-	/* pastel_calc_intensity((t_color *[2]){sum, pix}, conf, (t_ivec2){j, i}, */
-	/* 		      intensity); */
-	pastel_get_current_max(&cur_max, &max_index, intensity);
-	pix[cur].argb[0] = sum[max_index].argb[0] / ((!cur_max) ? 1 : cur_max);
-	pix[cur].argb[1] = sum[max_index].argb[1] / ((!cur_max) ? 1 : cur_max);
-	pix[cur].argb[2] = sum[max_index].argb[2] / ((!cur_max) ? 1 : cur_max);
+	each_in_radius(conf, (t_bunny_position []){{x, y}, {width, height}},
+		       pix, averages);
+	filler(conf, (t_bunny_position []){{x, y}, {width, height}},
+	       sum, averages);
       }
+  y = width * height;
+  while (y--)
+    pix[y].full = sum[y].full;
+  i = -1;
   my_free(sum);
 }
