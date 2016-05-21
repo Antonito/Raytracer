@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 01:30:32 2016 Ludovic Petrenko
-** Last update Thu May 19 03:42:00 2016 Antoine Baché
+** Last update Sat May 21 07:59:05 2016 Luka Boulagnon
 */
 
 #ifndef CONFIG_H_
@@ -23,11 +23,12 @@ typedef struct		s_config
   int			width;
   union
   {
+    t_bayer		bayer;
     t_contrast		contrast;
+    t_pastel		pastel;
     t_rotate		rotate;
     t_solarized		solarized;
-    t_bayer		bayer;
-    t_pastel		pastel;
+    t_stainedglass	stainedglass;
   };
 }			t_config;
 

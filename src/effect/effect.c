@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May 18 12:39:56 2016 Antoine Baché
-** Last update Thu May 19 02:38:47 2016 Antoine Baché
+** Last update Sat May 21 07:54:57 2016 Luka Boulagnon
 */
 
 #include "raytracer.h"
@@ -16,7 +16,7 @@ void		apply_effect(t_bunny_pixelarray *pix, t_effect effect,
   static void	(*effect_func[])() =
     { black_and_white_effect, pastel_effect, negative_effect, bayer_effect,
       sepia_effect, eight_bit_effect, NULL, NULL, NULL, solarized_effect,
-      rotate_effect, contrast_effect};
+      rotate_effect, contrast_effect, stained_glass_effect};
 
   effect_func[effect]((t_color *)pix->pixels, ((t_data *)data)->config.height,
 		      ((t_data *)data)->config.width,

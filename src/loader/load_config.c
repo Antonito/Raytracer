@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 23:13:18 2016 Ludovic Petrenko
-** Last update Thu May 19 02:52:47 2016 Antoine Baché
+** Last update Sat May 21 07:56:49 2016 Luka Boulagnon
 */
 
 #include "raytracer.h"
@@ -17,7 +17,8 @@ static t_effect	load_effect_get(const char * const tmp)
   int		i;
   static char	*ref[] =
     {"black_and_white", "pastel", "negative", "bayer", "sepia", "eight_bit",
-     "max_filter", "retro", "watercolor", "solarized", "rotate", "contrast"};
+     "max_filter", "retro", "watercolor", "solarized", "rotate", "contrast",
+    "stainedglass"};
 
   i = 0;
   while (i < NB_EFFECT)

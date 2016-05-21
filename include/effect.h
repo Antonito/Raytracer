@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May 18 12:36:29 2016 Antoine Baché
-** Last update Thu May 19 03:24:12 2016 Antoine Baché
+** Last update Sat May 21 07:54:40 2016 Luka Boulagnon
 */
 
 #ifndef EFFECT_H_
@@ -37,6 +37,7 @@ typedef enum		e_effect
     SOLARIZED,
     ROTATE,
     CONTRAST,
+    STAINEDGLASS,
     NB_EFFECT
   }			t_effect;
 
@@ -70,6 +71,12 @@ typedef struct		s_pastel
   int			level;
 }			t_pastel;
 
+typedef struct		s_stainedglass
+{
+  int			nb_points;
+  int			seed;
+}			t_stainedglass;
+
 # include "config.h"
 
 void			apply_effect(t_bunny_pixelarray *, t_effect, void *);
@@ -77,17 +84,18 @@ void			apply_effect(t_bunny_pixelarray *, t_effect, void *);
 /*
 ** Effects
 */
-void			black_and_white_effect(t_color *, int, int, t_config *);
-void			pastel_effect(t_color *, int, int, t_config *);
-void			negative_effect(t_color *, int, int, t_config *);
 void			bayer_effect(t_color *, int, int, t_config *);
-void			sepia_effect(t_color *, int, int, t_config *);
+void			black_and_white_effect(t_color *, int, int, t_config *);
+void			contrast_effect(t_color *, int, int, t_config *);
 void			eight_bit_effect(t_color *, int, int, t_config *);
 void			max_filter_effect(t_color *, int, int, t_config *);
+void			negative_effect(t_color *, int, int, t_config *);
+void			pastel_effect(t_color *, int, int, t_config *);
 void			retro_effect(t_color *, int, int, t_config *);
-void			watercolor_effect(t_color *, int, int, t_config *);
-void			solarized_effect(t_color *, int, int, t_config *);
 void			rotate_effect(t_color *, int, int, t_config *);
-void			contrast_effect(t_color *, int, int, t_config *);
+void			sepia_effect(t_color *, int, int, t_config *);
+void			solarized_effect(t_color *, int, int, t_config *);
+void			stained_glass_effect(t_color *, int, int, t_config *);
+void			watercolor_effect(t_color *, int, int, t_config *);
 
 #endif /* !EFFECT_H_  */
