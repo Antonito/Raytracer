@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 16 16:32:45 2016 Ludovic Petrenko
-** Last update Sat May 21 20:51:56 2016 Arthur ARNAUD
+** Last update Sun May 22 00:34:09 2016 Ludovic Petrenko
 */
 
 #include <stdio.h>
@@ -35,6 +35,10 @@ t_bunny_response	events(t_data *data)
     --data->config.minimum_fps;
   data->config.minimum_fps = (data->config.minimum_fps > 0) ?
     data->config.minimum_fps : 0;
+  if (keys[BKS_SPACE] && keys[BKS_LEFT])
+    data->scene = data->scene->prev;
+  if (keys[BKS_SPACE] && keys[BKS_RIGHT])
+    data->scene = data->scene->next;
   return (GO_ON);
 }
 

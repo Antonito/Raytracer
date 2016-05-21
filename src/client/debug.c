@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May  7 18:08:38 2016 Antoine Baché
-** Last update Mon May 16 14:04:49 2016 Antoine Baché
+** Last update Sun May 22 00:30:36 2016 Ludovic Petrenko
 */
 
 #include <stdio.h>
@@ -99,7 +99,7 @@ void		print_scenes(t_scene *scenes)
 
   i = 0;
   scene = scenes;
-  while (scene)
+  while (!i || scene != scenes)
     {
       printf("=========================\n");
       printf("Scene %d\n", i);
