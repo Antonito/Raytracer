@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Wed Apr 20 09:57:10 2016 Arthur ARNAUD
-** Last update Thu May 19 11:19:03 2016 Ludovic Petrenko
+** Last update Sat May 21 20:04:18 2016 Arthur ARNAUD
 */
 
 #ifndef PLY_H_
@@ -15,7 +15,7 @@
 # include "engine/vector.h"
 
 # define LIST_ELEM		"no_elem vertex face"
-# define LIST_V_VAR		"x y z red green blue alpha confidence intensity"
+# define LIST_V_VAR		"x y z red green blue alpha nx ny nz"
 # define COORD_TYPE		"float"
 # define COLOR_TYPE		"uchar"
 # define LIST_F_VAR1		"vertex_indices texcoord "
@@ -56,8 +56,9 @@ typedef enum	e_vertex_property
     V_GREEN,
     V_BLUE,
     V_ALPHA,
-    V_CONFIDENCE,
-    V_INTENSITY,
+    V_NX,
+    V_NY,
+    V_NZ,
     NB_V_VAR
   }		t_vertex_property;
 

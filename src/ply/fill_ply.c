@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Mon Apr 25 00:37:50 2016 Arthur ARNAUD
-** Last update Sun May 15 19:03:33 2016 Antoine Baché
+** Last update Sat May 21 21:38:14 2016 Arthur ARNAUD
 */
 
 #include "ply.h"
@@ -88,6 +88,17 @@ int	fill_vertex(t_ply *ply,
       if (parse_color_vertex
 	  (&ply->list_vertex[i].color, tab, info->vertex_prop))
 	return (1);
+      printf("Vertex %d : [%s %f] [%s %f] [%s %f] %d %d %d %d\n", i,
+	     tab[info->vertex_prop[V_X]],
+	     ply->list_vertex[i].vec.x,
+	     tab[info->vertex_prop[V_Y]],
+	     ply->list_vertex[i].vec.y,
+	     tab[info->vertex_prop[V_Z]],
+	     ply->list_vertex[i].vec.z,
+	     ply->list_vertex[i].color.argb[0],
+	     ply->list_vertex[i].color.argb[1],
+	     ply->list_vertex[i].color.argb[2],
+	     ply->list_vertex[i].color.argb[3]);
       my_free(tab);
       my_free(str);
     }

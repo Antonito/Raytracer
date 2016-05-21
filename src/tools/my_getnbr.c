@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Apr 18 10:35:03 2016 Antoine Baché
-** Last update Fri May 13 15:57:39 2016 Luka Boulagnon
+** Last update Sat May 21 22:11:15 2016 Arthur ARNAUD
 */
 
 int	my_getnbr(const char *str)
@@ -14,22 +14,21 @@ int	my_getnbr(const char *str)
   int	s;
   long	r;
 
-  i = 0;
+  if (!str)
+    return (0);
   s = 1;
   r = 0;
-  while (str[i] == 43 || str[i] == 45)
-    {
-      if (str[i] == 45)
-	s = -s;
-      ++i;
-    }
+  i = -1;
+  while (str[++i] == '-' || str[i] == '+')
+    if (str[i] == '-')
+      s = -s;
   str += i;
   i = 0;
-  while (str[i] > 47 && str[i] < 58)
+  while (str[i] >= '0' && str[i] <= '9')
     {
       r = r * 10;
       r = r + str[i] - 48;
       ++i;
     }
-  return (r > 2147483647 || r < -2147483648 ? 0 : s * r);
+  return (s * r);
 }
