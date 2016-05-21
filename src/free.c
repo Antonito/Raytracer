@@ -5,12 +5,12 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May 10 09:31:47 2016 Antoine Baché
-** Last update Sat May 21 11:04:31 2016 Antoine Baché
+** Last update Sat May 21 20:59:55 2016 Antoine Baché
 */
 
 #include "raytracer.h"
 #include "tools/math.h"
-#include "threadpool.h"
+#include "threadpool_raytracer.h"
 #include "tools/memory.h"
 
 #pragma message("Free data here !")
@@ -21,6 +21,7 @@ int		free_raytracer(t_data *data, int ret)
   t_scene	*prev;
 
   stop_threadpool();
+  render_multithread(NULL, NULL, NB_FRAGMENT, FREE_T);
   tmp = data->scene;
   /* while (tmp) */
   /*   { */

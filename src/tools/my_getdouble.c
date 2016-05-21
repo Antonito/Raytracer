@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Apr 18 11:13:21 2016 Antoine Baché
-** Last update Fri May 13 17:50:14 2016 Arthur ARNAUD
+** Last update Sat May 21 21:11:48 2016 Antoine Baché
 */
 
 #include "tools/memory.h"
