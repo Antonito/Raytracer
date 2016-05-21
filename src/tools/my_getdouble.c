@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Apr 18 11:13:21 2016 Antoine Baché
-** Last update Sat May 21 22:28:37 2016 Antoine Baché
+** Last update Sat May 21 22:31:47 2016 Antoine Baché
 */
 
 #include "tools/memory.h"
@@ -40,7 +40,7 @@ static void	remove_comma(const char *str, char *tmp)
     }
 }
 
-double		my_getdouble(const char *str)
+double		my_getdouble(char *str)
 {
   int		i;
   int		k;
