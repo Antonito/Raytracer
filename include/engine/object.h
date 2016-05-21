@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:33:45 2016 Ludovic Petrenko
-** Last update Thu May 19 11:19:17 2016 Ludovic Petrenko
+** Last update Sat May 21 11:59:11 2016 Ludovic Petrenko
 */
 
 #ifndef OBJECT_H_
@@ -166,6 +166,7 @@ typedef struct		s_obj
   t_vec3		pos;
   t_vec3		rot;
   t_material		*mat;
+  t_bunny_pixelarray	*tex;
   t_vec3		box[2];
   struct s_obj		*next;
   t_intersect		(*get_intersect)(struct s_obj *, t_ray *);

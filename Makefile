@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sat May 21 07:58:03 2016 Luka Boulagnon
+## Last update Sat May 21 13:04:27 2016 Ludovic Petrenko
 ##
 
 DEBUG=			yes
@@ -34,7 +34,8 @@ SRC_FILES=		init_data.c			\
 			focale.c			\
 			check_box.c			\
 			build_bsp.c			\
-			scene_intersect.c
+			scene_intersect.c		\
+			get_tex_pix.c
 
 EFFECT_PREFIX=		src/effect/
 

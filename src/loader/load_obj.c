@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon Apr 18 20:37:43 2016 Ludovic Petrenko
-** Last update Sat May 21 04:48:59 2016 Ludovic Petrenko
+** Last update Sat May 21 13:08:14 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -30,6 +30,9 @@ void		load_obj_basics(t_obj *obj, const t_bunny_ini_scope *s)
     obj->rot.y = my_getdouble(tmp) * M_PI / 180.0;
   if ((tmp = bunny_ini_scope_get_field(s, ROT_FIELD, 2)))
     obj->rot.z = my_getdouble(tmp) * M_PI / 180.0;
+  obj->tex = NULL;
+  if ((tmp = bunny_ini_scope_get_field(s, TEX_FIELD, 0)))
+    obj->tex = bunny_load_pixelarray(tmp);
   obj->next = obj + 1;
 }
 

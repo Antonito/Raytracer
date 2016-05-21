@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sun Apr 17 19:17:30 2016 Ludovic Petrenko
-** Last update Thu May 19 10:46:08 2016 Ludovic Petrenko
+** Last update Sat May 21 14:52:07 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -47,6 +47,7 @@ void	load_scene_info(t_scene *s, const t_bunny_ini *ini)
     s->spec.bg_color.full = my_gethexa(tmp);
   if ((tmp = (char *)bunny_ini_get_field(ini, SCENE_FIELD, AMB_FIELD, 0)))
     s->spec.ambiant = my_getdouble(tmp);
+  s->select = NULL;
 }
 
 void	load_camera(t_camera *c, const t_bunny_ini *ini)
