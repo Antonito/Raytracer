@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon Apr 18 20:37:43 2016 Ludovic Petrenko
-** Last update Thu May 19 01:39:38 2016 Ludovic Petrenko
+** Last update Sat May 21 04:48:59 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -74,5 +74,4 @@ void			load_objs(t_scene *scene, t_obj *obj,
       }
   if (i)
     obj[i - 1].next = NULL;
-  scene->octree.obj_list.next = obj;
 }

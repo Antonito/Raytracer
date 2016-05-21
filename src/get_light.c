@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Wed May 18 05:37:31 2016 Ludovic Petrenko
-** Last update Thu May 19 06:23:56 2016 Ludovic Petrenko
+** Last update Sat May 21 04:09:32 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -39,7 +39,7 @@ static void	get_lum(double *col, t_scene *s, t_intersect *inter, int m)
   ray.pos = add_vec3(inter->pos, mult_vec3(inter->norm, 0.00001));
   ray.dir = l;
   ray.env = NULL;
-  node_intersect(&s->octree, &ray, &shadow);
+  scene_intersect(s, &ray, &shadow);
   if (shadow.dist < dist - 0.0001)
     return ;
   i = -1;

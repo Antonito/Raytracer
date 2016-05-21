@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 01:06:07 2016 Ludovic Petrenko
-** Last update Mon May 16 14:46:18 2016 Antoine Baché
+** Last update Sat May 21 00:14:37 2016 Ludovic Petrenko
 */
 
 #include <math.h>
@@ -35,6 +35,8 @@ void	load_klein(t_obj *obj, const t_bunny_ini_scope *scope)
 {
   (void)scope;
   obj->type = KLEIN;
+  obj->box[0] = vec3(-3.5, -3.5, -3.5);
+  obj->box[1] = vec3(3.5, 3.5, 3.5);
   obj->get_intersect = &get_intersect_klein;
 }
 

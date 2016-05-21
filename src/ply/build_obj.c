@@ -5,11 +5,11 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May 17 17:56:10 2016 Antoine Baché
-** Last update Wed May 18 18:08:36 2016 Antoine Baché
+** Last update Sat May 21 06:47:49 2016 Ludovic Petrenko
 */
 
 #include "engine/object.h"
-#include "engine/octree.h"
+#include "engine/bsp.h"
 #include "tools/str.h"
 #include "tools/memory.h"
 
@@ -34,13 +34,21 @@ static void	fill_obj_ply_3(t_obj *objs, int i, int j, t_ply *ply)
   objs[i].triangle.pts[0] = ply->list_vertex[ply->list_face[j].face[0]].vec;
   objs[i].triangle.pts[1] = ply->list_vertex[ply->list_face[j].face[1]].vec;
   objs[i].triangle.pts[2] = ply->list_vertex[ply->list_face[j].face[2]].vec;
+  objs[i].box[0] = vec3_min(objs[i].triangle.pts[0], objs[i].triangle.pts[1]);
+  objs[i].box[1] = vec3_max(objs[i].triangle.pts[0], objs[i].triangle.pts[1]);
+  objs[i].box[0] = vec3_min(objs[i].box[0], objs[i].triangle.pts[2]);
+  objs[i].box[1] = vec3_max(objs[i].box[1], objs[i].triangle.pts[2]);
 }
 
 static void	fill_obj_ply_4(t_obj *objs, int i, int j, t_ply *ply)
 {
   objs[i].triangle.pts[0] = ply->list_vertex[ply->list_face[j].face[0]].vec;
-  objs[i].triangle.pts[1] = ply->list_vertex[ply->list_face[j].face[3]].vec;
-  objs[i].triangle.pts[2] = ply->list_vertex[ply->list_face[j].face[2]].vec;
+  objs[i].triangle.pts[1] = ply->list_vertex[ply->list_face[j].face[2]].vec;
+  objs[i].triangle.pts[2] = ply->list_vertex[ply->list_face[j].face[3]].vec;
+  objs[i].box[0] = vec3_min(objs[i].triangle.pts[0], objs[i].triangle.pts[1]);
+  objs[i].box[1] = vec3_max(objs[i].triangle.pts[0], objs[i].triangle.pts[1]);
+  objs[i].box[0] = vec3_min(objs[i].box[0], objs[i].triangle.pts[2]);
+  objs[i].box[1] = vec3_max(objs[i].box[1], objs[i].triangle.pts[2]);
 }
 
 static void	fill_obj_ply(t_obj *obj, t_obj *objs, t_ply *ply, int nb_face)
@@ -75,11 +83,17 @@ static void	fill_obj_ply(t_obj *obj, t_obj *objs, t_ply *ply, int nb_face)
 void		build_ply_obj(t_obj *obj)
 {
   obj->ply.nb_obj = count_ply_obj(obj);
+  obj->ply.node = NULL;
   if (!(obj->ply.objs = my_malloc(sizeof(t_obj) * obj->ply.nb_obj)) ||
-      !(obj->ply.node = my_malloc(sizeof(t_node))))
+      !(obj->ply.node = my_calloc(1, sizeof(t_node))))
     return ;
   ((t_node *)(obj->ply.node))->nb_obj = obj->ply.nb_obj;
   ((t_node *)(obj->ply.node))->obj_list.next = obj->ply.objs;
   my_bzero(obj->ply.objs, sizeof(t_obj) * obj->ply.nb_obj);
   fill_obj_ply(obj, obj->ply.objs, obj->ply.ply, obj->ply.ply->nb_face);
+  set_box(obj);
+  ((t_node *)(obj->ply.node))->box[0] = obj->box[0];
+  ((t_node *)(obj->ply.node))->box[1] = obj->box[1];
+  if (obj->ply.ply)
+    build_bsp(obj->ply.node, 0);
 }

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May  4 01:20:34 2016 Antoine Baché
-** Last update Fri May 13 18:50:10 2016 Antoine Baché
+** Last update Sat May 21 05:35:07 2016 Ludovic Petrenko
 */
 
 #include "solver.h"
@@ -48,6 +48,8 @@ t_intersect	get_intersect_triangle(t_obj *obj, t_ray *ray)
   inter.dir = ray->dir;
   inter.mat = obj->mat;
   inter.dist = -1.0;
+  if (!check_box(obj, ray))
+    return (inter);
   edge[0] = sub_vec3(obj->triangle.pts[1], obj->triangle.pts[0]);
   edge[1] = sub_vec3(obj->triangle.pts[2], obj->triangle.pts[0]);
   get_dist_triangle(obj, ray, &inter, edge);

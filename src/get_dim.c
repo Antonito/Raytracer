@@ -5,12 +5,12 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Wed May  4 04:34:28 2016 Ludovic Petrenko
-** Last update Sat May  7 06:28:21 2016 Ludovic Petrenko
+** Last update Sat May 21 04:07:01 2016 Ludovic Petrenko
 */
 
 #include <math.h>
 #include "raytracer.h"
-#include "engine/octree.h"
+#include "engine/bsp.h"
 
 void	light_dim(t_obj *obj, t_vec3 *dim)
 {

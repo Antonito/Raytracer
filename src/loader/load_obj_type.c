@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 01:06:07 2016 Ludovic Petrenko
-** Last update Fri May 20 17:34:14 2016 Luka Boulagnon
+** Last update Sat May 21 06:55:17 2016 Ludovic Petrenko
 */
 
 #include <math.h>
@@ -25,6 +25,12 @@ void	load_torus(t_obj *obj, const t_bunny_ini_scope *scope)
     obj->torus.radius_hole = my_getdouble(tmp);
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, RADIUS_TORE_FIELD2, 0)))
     obj->torus.radius_solid = my_getdouble(tmp);
+  obj->box[0].x = -obj->torus.radius_solid- obj->torus.radius_hole;
+  obj->box[0].y = obj->box[0].x;
+  obj->box[0].z = -obj->torus.radius_solid;
+  obj->box[1].x = -obj->box[0].x;
+  obj->box[1].y = -obj->box[0].y;
+  obj->box[1].z = -obj->box[0].z;
 }
 
 void	load_sphere(t_obj *obj, const t_bunny_ini_scope *scope)
@@ -36,6 +42,8 @@ void	load_sphere(t_obj *obj, const t_bunny_ini_scope *scope)
   obj->get_intersect = &get_intersect_sphere;
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, RADIUS_FIELD, 0)))
     obj->sphere.radius = my_getdouble(tmp);
+  obj->box[0].x = obj->box[0].y = obj->box[0].z = -obj->sphere.radius;
+  obj->box[1].x = obj->box[1].y = obj->box[1].z = obj->sphere.radius;
 }
 
 void	load_plane(t_obj *obj, const t_bunny_ini_scope *scope)
@@ -52,6 +60,7 @@ void	load_plane(t_obj *obj, const t_bunny_ini_scope *scope)
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, NORMALE_FIELD, 2)))
     obj->plane.normale.z = my_getdouble(tmp);
   obj->plane.normale = vec3_normalize(obj->plane.normale);
+  obj->box[0] = obj->box[1] = vec3(0, 0, 0);
 }
 
 void	load_cylinder(t_obj *obj, const t_bunny_ini_scope *scope)
@@ -68,6 +77,7 @@ void	load_cylinder(t_obj *obj, const t_bunny_ini_scope *scope)
     obj->cylinder.radius = my_getdouble(tmp);
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, HEIGHT_FIELD, 0)))
     obj->cylinder.height = my_getdouble(tmp);
+  obj->box[0] = obj->box[1] = vec3(0, 0, 0);
 }
 
 void	load_cone(t_obj *obj, const t_bunny_ini_scope *scope)
@@ -85,4 +95,5 @@ void	load_cone(t_obj *obj, const t_bunny_ini_scope *scope)
   obj->cone.radius = tan(obj->cone.angle * M_PI / 360.0) *
     obj->cone.height;
   obj->cone.angle = tan(obj->cone.angle);
+  obj->box[0] = obj->box[1] = vec3(0, 0, 0);
 }

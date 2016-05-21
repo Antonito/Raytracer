@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May  2 04:39:20 2016 Antoine Baché
-** Last update Wed May 18 23:47:17 2016 Ludovic Petrenko
+** Last update Thu May 19 11:37:20 2016 Ludovic Petrenko
 */
 
 #include "solver.h"
@@ -40,6 +40,8 @@ t_intersect	get_intersect_sphere(t_obj *obj, t_ray *ray)
   inter.dir = ray->dir;
   inter.mat = obj->mat;
   inter.dist = -1.0;
+  if (!check_box(obj, ray))
+    return (inter);
   get_dist_sphere(obj, ray, &inter);
   if (inter.dist <= 0.0)
     return (inter);
