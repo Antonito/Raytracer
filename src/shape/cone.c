@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May  4 03:24:31 2016 Antoine Baché
-** Last update Fri May 20 10:15:14 2016 Antoine Baché
+** Last update Sat May 21 19:22:08 2016 Antoine Baché
 */
 
 #include <math.h>
@@ -21,7 +21,7 @@ static void	get_dist_cone(t_ray *ray, t_intersect *inter, t_obj *obj)
   double	d;
   t_vec3	tmp;
 
-  tmp = sub_vec3(ray->pos, obj->pos);
+  tmp = ray->pos;
   d = obj->cone.angle * obj->cone.angle;
   a = ray->dir.x * ray->dir.x + ray->dir.y * ray->dir.y -
     ((ray->dir.z  * ray->dir.z) / (d));

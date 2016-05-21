@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun May 15 04:02:43 2016 Antoine Baché
-** Last update Mon May 16 14:59:51 2016 Antoine Baché
+** Last update Sat May 21 19:26:39 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -16,10 +16,8 @@
 static void	get_dist_kiss(t_ray *ray, t_intersect *inter,
 			      t_vec3 tmp)
 {
-  double	*s;
+  double	s[6];
 
-  if (!(s = my_malloc(sizeof(double) * 6)))
-    return ;
   s[0] = ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z;
   s[1] = -ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z +
     5.0 * tmp.z * ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z;
@@ -44,8 +42,9 @@ t_intersect	get_intersect_kiss(t_obj *obj, t_ray *ray)
   inter.dir = ray->dir;
   inter.mat = obj->mat;
   inter.dist = -1.0;
-  get_dist_kiss(ray, &inter, sub_vec3(ray->pos, obj->pos));
+  get_dist_kiss(ray, &inter, ray->pos);
   if (inter.dist <= 0.0)
     return (inter);
+  inter.pos = add_vec3(mult_vec3(ray->dir, inter.dist), ray->pos);
   return (inter);
 }

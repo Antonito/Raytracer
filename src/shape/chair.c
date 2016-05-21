@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May 14 20:53:15 2016 Antoine Baché
-** Last update Sat May 21 07:13:08 2016 Antoine Baché
+** Last update Sat May 21 19:23:27 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -94,5 +94,6 @@ t_intersect		get_intersect_chair(t_obj *obj, t_ray *ray)
   get_dist_chair(ray, &inter, sub_vec3(ray->pos, obj->pos));
   if (inter.dist <= 0.0)
     return (inter);
+  inter.pos = add_vec3(mult_vec3(ray->dir, inter.dist), ray->pos);
   return (inter);
 }

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun May 15 03:43:18 2016 Antoine Baché
-** Last update Wed May 18 03:45:00 2016 Antoine Baché
+** Last update Sat May 21 19:28:04 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -43,7 +43,8 @@ static void		get_dist_miter(t_ray *ray, t_intersect *inter,
     ray->dir.z * ray->dir.z + 16.0 * tmp.x * ray->dir.x * ray->dir.x *
     ray->dir.x + 4.0 * tmp.y * ray->dir.y * ray->dir.y * ray->dir.y + 8.0 *
     tmp.y * ray->dir.x * ray->dir.x * ray->dir.y + 8.0 * tmp.z * ray->dir.x *
-    ray->dir.x * ray->dir.z + 2.0 * tmp.z * ray->dir.y * ray->dir.y * ray->dir.z;
+    ray->dir.x * ray->dir.z + 2.0 * tmp.z * ray->dir.y * ray->dir.y *
+    ray->dir.z;
   s[2] = calc_c_miter(ray, tmp);
   s[3] = 8.0 * tmp.x * tmp.y * tmp.y * ray->dir.x + 8.0 * tmp.x * tmp.z * tmp.z
     * ray->dir.x + 16.0 * tmp.x * tmp.x * tmp.x * ray->dir.x + 2.0 * tmp.y *
@@ -54,8 +55,7 @@ static void		get_dist_miter(t_ray *ray, t_intersect *inter,
   s[4] = -tmp.y * tmp.y + 4.0 * tmp.x * tmp.x * tmp.y * tmp.y + 4.0 * tmp.x *
     tmp.x * tmp.z * tmp.z + tmp.y * tmp.y * tmp.z * tmp.z + 4.0 * tmp.x * tmp.x
     * tmp.x * tmp.x + tmp.y * tmp.y * tmp.y * tmp.y;
-  if ((inter->dist = solver_fourth_degree(s[0], s[1], s[2], s[3], s[4]))
-      == NOT_A_SOLUTION)
+  if ((inter->dist = solver_n_degree(s, 4)) == NOT_A_SOLUTION)
     inter->dist = -1.0;
 }
 
@@ -66,8 +66,9 @@ t_intersect		get_intersect_miter(t_obj *obj, t_ray *ray)
   inter.dir = ray->dir;
   inter.mat = obj->mat;
   inter.dist = -1.0;
-  get_dist_miter(ray, &inter, sub_vec3(ray->pos, obj->pos));
+  get_dist_miter(ray, &inter, ray->pos);
   if (inter.dist <= 0.0)
     return (inter);
+  inter.pos = add_vec3(mult_vec3(ray->dir, inter.dist), ray->pos);
   return (inter);
 }

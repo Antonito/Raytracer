@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May 14 22:13:54 2016 Antoine Baché
-** Last update Mon May 16 01:49:27 2016 Antoine Baché
+** Last update Sat May 21 19:38:26 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -15,10 +15,8 @@
 
 static void	get_dist_tritrumpet(t_ray *ray, t_intersect *inter, t_vec3 tmp)
 {
-  double	*s;
+  double	s[4];
 
-  if (!(s = my_malloc(sizeof(double) * 4)))
-    return ;
   s[0] = 6.0 * ray->dir.x * ray->dir.y * ray->dir.y - 2.0 * ray->dir.x *
     ray->dir.x * ray->dir.x;
   s[1] = 3.0 * ray->dir.x * ray->dir.x - 6.0 * tmp.x * ray->dir.x * ray->dir.x
@@ -40,8 +38,9 @@ t_intersect	get_intersect_tritrumpet(t_obj *obj, t_ray *ray)
   inter.dir = ray->dir;
   inter.mat = obj->mat;
   inter.dist = -1.0;
-  get_dist_tritrumpet(ray, &inter, sub_vec3(ray->pos, obj->pos));
+  get_dist_tritrumpet(ray, &inter, ray->pos);
   if (inter.dist <= 0.0)
     return (inter);
+  inter.pos = add_vec3(mult_vec3(ray->dir, inter.dist), ray->pos);
   return (inter);
 }

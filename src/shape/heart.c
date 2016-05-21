@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun May 15 03:09:14 2016 Antoine Baché
-** Last update Sun May 15 03:15:27 2016 Antoine Baché
+** Last update Sat May 21 19:25:18 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -38,8 +38,9 @@ t_intersect	get_intersect_heart(t_obj *obj, t_ray *ray)
   inter.dir = ray->dir;
   inter.mat = obj->mat;
   inter.dist = -1.0;
-  get_dist_heart(obj, ray, &inter, sub_vec3(ray->pos, obj->pos));
+  get_dist_heart(obj, ray, &inter, ray->pos);
   if (inter.dist <= 0.0)
     return (inter);
+  inter.pos = add_vec3(mult_vec3(ray->dir, inter.dist), ray->pos);
   return (inter);
 }

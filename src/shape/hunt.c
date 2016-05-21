@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun May 15 03:24:57 2016 Antoine Baché
-** Last update Sun May 15 03:31:24 2016 Antoine Baché
+** Last update Sat May 21 19:26:01 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -16,10 +16,8 @@
 static void	get_dist_hunt(t_obj *obj, t_ray *ray, t_intersect *inter,
 			       t_vec3 tmp)
 {
-  double	*s;
+  double	s[7];
 
-  if (!(s = my_malloc(sizeof(double) * 7)))
-    return ;
   s[0] = 12.0 * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.y * ray->dir.y + 24.0 * ray->dir.x * ray->dir.x * ray->dir.y * ray->dir.y * ray->dir.z * ray->dir.z + 12.0 * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.z * ray->dir.z + 12.0 * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.z * ray->dir.z + 12.0 * ray->dir.x * ray->dir.x * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y + 12.0 * ray->dir.x * ray->dir.x * ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z + 12.0 * ray->dir.y * ray->dir.y * ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z + 4.0 * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.x + 4.0 * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y + 4.0 * ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z;
   s[1] = 48.0 * tmp.x * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.y * ray->dir.y + 48.0 * tmp.x * ray->dir.x * ray->dir.y * ray->dir.y * ray->dir.z * ray->dir.z + 48.0 * tmp.x * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.z * ray->dir.z + 48.0 * tmp.y * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.z * ray->dir.z + 48.0 * tmp.y * ray->dir.x * ray->dir.x * ray->dir.y * ray->dir.z * ray->dir.z + 48.0 * tmp.y * ray->dir.x * ray->dir.x * ray->dir.y * ray->dir.y * ray->dir.y + 48.0 * tmp.z * ray->dir.x * ray->dir.x * ray->dir.z * ray->dir.z * ray->dir.z + 48.0 * tmp.z * ray->dir.y * ray->dir.y * ray->dir.z * ray->dir.z * ray->dir.z + 24.0 * tmp.x * ray->dir.x * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y + 24.0 * tmp.x * ray->dir.x * ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z + 24.0 * tmp.y * ray->dir.y * ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z + 24.0 * tmp.x * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.x + 24.0 * tmp.y * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y + 24.0 * tmp.z * ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z + 24.0 * tmp.y * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.y + 48.0 * tmp.z * ray->dir.x * ray->dir.x * ray->dir.y * ray->dir.y * ray->dir.z + 24.0 * tmp.z * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.z + 24.0 * tmp.z * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.z;
   s[2] = -150.0 * ray->dir.x * ray->dir.x * ray->dir.y * ray->dir.y + 72.0 * tmp.x * tmp.x * ray->dir.x * ray->dir.x * ray->dir.y * ray->dir.y + 72.0 * tmp.y * tmp.y * ray->dir.x * ray->dir.x * ray->dir.y * ray->dir.y + 24.0 * tmp.z * tmp.z * ray->dir.x * ray->dir.x * ray->dir.y * ray->dir.y - 960.0 * ray->dir.x * ray->dir.x * ray->dir.z * ray->dir.z + 72.0 * tmp.x * tmp.x * ray->dir.x * ray->dir.x * ray->dir.z * ray->dir.z + 24.0 * tmp.y * tmp.y * ray->dir.x * ray->dir.x * ray->dir.z * ray->dir.z + 72.0 * tmp.z * tmp.z * ray->dir.x * ray->dir.x * ray->dir.z * ray->dir.z + 24.0 * tmp.x * tmp.x * ray->dir.y * ray->dir.y * ray->dir.z * ray->dir.z + 72.0 * tmp.y * tmp.y * ray->dir.y * ray->dir.y * ray->dir.z * ray->dir.z + 72.0 * tmp.z * tmp.z * ray->dir.y * ray->dir.y * ray->dir.z * ray->dir.z - 528.0 * ray->dir.y * ray->dir.y * ray->dir.z * ray->dir.z + 96.0 * tmp.x * tmp.y * ray->dir.x * ray->dir.y * ray->dir.z * ray->dir.z + 96.0 * tmp.x * tmp.y * ray->dir.x * ray->dir.y * ray->dir.y * ray->dir.y + 96.0 * tmp.x * tmp.z * ray->dir.x * ray->dir.z * ray->dir.z * ray->dir.z + 96.0 * tmp.y * tmp.z * ray->dir.y * ray->dir.z * ray->dir.z * ray->dir.z + 60.0 * tmp.x * tmp.x * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.x + 12.0 * tmp.y * tmp.y * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.x + 12.0 * tmp.z * tmp.z * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.x + 87.0 * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.x + 12.0 * tmp.x * tmp.x * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y + 60.0 * tmp.y * tmp.y * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y + 12.0 * tmp.z * tmp.z * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y - 129.0 * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y + 12.0 * tmp.x * tmp.x * ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z + 12.0 * tmp.y * tmp.y * ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z + 60.0 * tmp.z * tmp.z * ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z + 276.0 * ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z + 96.0 * tmp.x * tmp.y * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.y + 96.0 * tmp.x * tmp.z * ray->dir.x * ray->dir.y * ray->dir.y * ray->dir.z + 96.0 * tmp.x * tmp.z * ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.z + 96.0 * tmp.y * tmp.z * ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.z + 96.0 * tmp.y * tmp.z * ray->dir.x * ray->dir.x * ray->dir.y * ray->dir.z;
@@ -38,8 +36,9 @@ t_intersect	get_intersect_hunt(t_obj *obj, t_ray *ray)
   inter.dir = ray->dir;
   inter.mat = obj->mat;
   inter.dist = -1.0;
-  get_dist_hunt(obj, ray, &inter, sub_vec3(ray->pos, obj->pos));
+  get_dist_hunt(obj, ray, &inter, ray->pos);
   if (inter.dist <= 0.0)
     return (inter);
+  inter.pos = add_vec3(mult_vec3(ray->dir, inter.dist), ray->pos);
   return (inter);
 }

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Sat May 21 18:55:31 2016 Antoine Baché
+** Last update Sat May 21 19:50:20 2016 Antoine Baché
 */
 
 #ifndef	RAYTRACER_H_
@@ -26,6 +26,7 @@
 # define UNUSED			__attribute__((unused))
 # define MAX_RECURSIVE		4
 # define DEFAULT_FPS		24
+# define NB_FRAGMENT		4
 
 /*
 ** Scopes expected in .ini files

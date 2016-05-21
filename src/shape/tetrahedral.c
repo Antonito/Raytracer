@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May 14 22:53:40 2016 Antoine Baché
-** Last update Mon May 16 01:55:54 2016 Antoine Baché
+** Last update Sat May 21 19:29:49 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -72,8 +72,7 @@ static void		get_dist_tetrahedral(t_ray *ray, t_intersect *inter,
     + 2.0 * tmp.y * tmp.y * tmp.z * tmp.z + tmp.x * tmp.x * tmp.x * tmp.x +
     tmp.y * tmp.y * tmp.y * tmp.y + tmp.z * tmp.z * tmp.z * tmp.z + 25.0 + 8.0
     * tmp.x * tmp.y * tmp.z;
-  if ((inter->dist = solver_fourth_degree(s[0], s[1], s[2], s[3], s[4]))
-      == NOT_A_SOLUTION)
+  if ((inter->dist = solver_n_degree(s, 4)) == NOT_A_SOLUTION)
     inter->dist = -1.0;
 }
 
@@ -84,8 +83,9 @@ t_intersect		get_intersect_tetrahedral(t_obj *obj, t_ray *ray)
   inter.dir = ray->dir;
   inter.mat = obj->mat;
   inter.dist = -1.0;
-  get_dist_tetrahedral(ray, &inter, sub_vec3(ray->pos, obj->pos));
+  get_dist_tetrahedral(ray, &inter, ray->pos);
   if (inter.dist <= 0.0)
     return (inter);
+  inter.pos = add_vec3(mult_vec3(ray->dir, inter.dist), ray->pos);
   return (inter);
 }

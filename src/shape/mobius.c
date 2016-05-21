@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May  4 07:24:31 2016 Antoine Baché
-** Last update Sun May 15 02:16:06 2016 Antoine Baché
+** Last update Sat May 21 19:28:21 2016 Antoine Baché
 */
 
 #include <math.h>
@@ -17,10 +17,8 @@
 static void	get_dist_mobius(t_obj *obj, t_ray *ray, t_intersect *inter,
 				t_vec3 tmp)
 {
-  double	*s;
+  double	s[4];
 
-  if (!(s = my_malloc(sizeof(double) * 4)))
-    return ;
   s[0] = ray->dir.y * ray->dir.z * ray->dir.z + ray->dir.y * ray->dir.y *
     ray->dir.y + ray->dir.x * ray->dir.x * ray->dir.y - 2.0 * ray->dir.x *
     ray->dir.x * ray->dir.z - 2.0 * ray->dir.y * ray->dir.y * ray->dir.z;

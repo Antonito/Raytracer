@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May  3 16:58:16 2016 Antoine Baché
-** Last update Fri May 13 15:43:23 2016 Antoine Baché
+** Last update Sat May 21 19:33:00 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -17,7 +17,7 @@ static void	get_dist_void_cube(t_ray *ray, t_intersect *inter, t_obj *obj)
   double	sol[5];
   t_vec3	tmp;
 
-  tmp = sub_vec3(ray->pos, obj->pos);
+  tmp = ray->pos;
   sol[0] = (ray->dir.x * ray->dir.x * ray->dir.x * ray->dir.x) +
     (ray->dir.y * ray->dir.y * ray->dir.y * ray->dir.y) +
     (ray->dir.z * ray->dir.z * ray->dir.z * ray->dir.z);

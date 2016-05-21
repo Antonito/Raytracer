@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May 16 02:05:34 2016 Antoine Baché
-** Last update Sat May 21 07:09:53 2016 Antoine Baché
+** Last update Sat May 21 19:22:30 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -76,8 +76,9 @@ t_intersect		get_intersect_bohemian_dome(t_obj *obj, t_ray *ray)
   inter.dir = ray->dir;
   inter.mat = obj->mat;
   inter.dist = -1.0;
-  get_dist_bohemian_dome(ray, &inter, sub_vec3(ray->pos, obj->pos));
+  get_dist_bohemian_dome(ray, &inter, ray->pos);
   if (inter.dist <= 0.0)
     return (inter);
+  inter.pos = add_vec3(mult_vec3(ray->dir, inter.dist), ray->pos);
   return (inter);
 }

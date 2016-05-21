@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May 14 21:51:37 2016 Antoine Baché
-** Last update Wed May 18 03:43:39 2016 Antoine Baché
+** Last update Sat May 21 19:27:07 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -16,10 +16,8 @@
 static void	get_dist_kusner(t_obj *obj, t_ray *ray, t_intersect *inter,
 			       t_vec3 tmp)
 {
-  double	*s;
+  double	s[7];
 
-  if (!(s = my_malloc(sizeof(double) * 7)))
-    return ;
   s[0] = ray->dir.x * ray->dir.x * ray->dir.y * ray->dir.y * ray->dir.z *
     ray->dir.z;
   s[1] = 2.0 * tmp.x * ray->dir.x * ray->dir.y * ray->dir.y * ray->dir.z *
@@ -86,8 +84,9 @@ t_intersect	get_intersect_kusner(t_obj *obj, t_ray *ray)
   inter.dir = ray->dir;
   inter.mat = obj->mat;
   inter.dist = -1.0;
-  get_dist_kusner(obj, ray, &inter, sub_vec3(ray->pos, obj->pos));
+  get_dist_kusner(obj, ray, &inter, ray->pos);
   if (inter.dist <= 0.0)
     return (inter);
+  inter.pos = add_vec3(mult_vec3(ray->dir, inter.dist), ray->pos);
   return (inter);
 }

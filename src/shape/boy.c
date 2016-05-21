@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May 14 17:38:13 2016 Antoine Baché
-** Last update Sat May 21 07:10:30 2016 Antoine Baché
+** Last update Sat May 21 19:15:34 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -242,7 +242,7 @@ t_intersect		get_intersect_boy(t_obj *obj, t_ray *ray)
   inter.dir = ray->dir;
   inter.mat = obj->mat;
   inter.dist = -1.0;
-  tmp = sub_vec3(ray->pos, obj->pos);
+  tmp = ray->pos;
   coef[0] = calc_a_boy(ray, &tmp);
   coef[1] = calc_b_boy(ray, &tmp);
   coef[2] = calc_c_boy(ray, &tmp);
