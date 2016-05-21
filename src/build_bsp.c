@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri May 13 10:39:58 2016 Ludovic Petrenko
-** Last update Sat May 21 06:45:29 2016 Ludovic Petrenko
+** Last update Sat May 21 07:13:31 2016 Ludovic Petrenko
 */
 
 #include "tools/memory.h"
@@ -35,8 +35,8 @@ static int	create_subnode(t_node *node)
 {
   double	mid;
 
-  if ((node->child[0] = my_malloc(sizeof(t_node))) ||
-      (node->child[1] = my_malloc(sizeof(t_node))))
+  if ((node->child[0] = my_calloc(1, sizeof(t_node))) ||
+      (node->child[1] = my_calloc(1, sizeof(t_node))))
     return (1);
   node->child[0]->box[0] = node->child[1]->box[1] = node->box[0];
   node->child[0]->box[0] = node->child[1]->box[1] = node->box[1];
@@ -83,7 +83,7 @@ int	build_bsp(t_node *node, int level)
   t_obj	*cur;
   int	subnode;
 
-  if (level >= 12)
+  if (level >= 24)
     return (0);
   node->axis = level % 3;
   if (create_subnode(node))

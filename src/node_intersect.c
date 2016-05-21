@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Wed Apr 27 05:31:16 2016 Ludovic Petrenko
-** Last update Sat May 21 06:55:01 2016 Ludovic Petrenko
+** Last update Sat May 21 07:00:42 2016 Ludovic Petrenko
 */
 
 #define _ISOC99_SOURCE
@@ -57,5 +57,4 @@ void		node_intersect(t_node *node, t_ray *ray, t_intersect *cur)
   cur->dir = ray->dir;
   cur->pos = add_vec3(ray->pos, mult_vec3(ray->dir, cur->dist));
   subnode_intersect(node, ray, cur);
-  exit(1);
 }
