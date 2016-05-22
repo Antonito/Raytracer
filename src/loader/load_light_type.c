@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 01:48:54 2016 Ludovic Petrenko
-** Last update Wed May 18 22:47:08 2016 Ludovic Petrenko
+** Last update Sun May 22 13:18:18 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -46,6 +46,7 @@ void	load_directionnal(t_obj *obj, const t_bunny_ini_scope *scope)
     obj->light.dir.y = my_getdouble(tmp);
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, DIR_FIELD, 2)))
     obj->light.dir.z = my_getdouble(tmp);
+  obj->light.dir = vec3_normalize(obj->light.dir);
 }
 
 void	load_spot(t_obj *obj, const t_bunny_ini_scope *scope)

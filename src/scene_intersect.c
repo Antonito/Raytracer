@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat May 21 02:22:35 2016 Ludovic Petrenko
-** Last update Sat May 21 16:34:13 2016 Ludovic Petrenko
+** Last update Sun May 22 13:59:04 2016 Ludovic Petrenko
 */
 
 #define _ISOC99_SOURCE
@@ -23,11 +23,13 @@ void		scene_intersect(t_scene *scene, t_ray *ray, t_intersect *cur)
   int		i;
 
   cur->dist = INFINITY;
+  cur->obj = NULL;
   obj = scene->objs;
   i = -1;
   while (obj->next)
     {
-      obj = scene->objs + ++i;
+      if ((obj = scene->objs + ++i)->type == NONE)
+	continue ;
 
       move_ray(obj, ray, &rotated);
       tmp = obj->get_intersect(obj, &rotated);

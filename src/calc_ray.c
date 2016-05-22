@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 30 23:30:01 2016 Ludovic Petrenko
-** Last update Sat May 21 15:24:42 2016 Ludovic Petrenko
+** Last update Sun May 22 13:07:50 2016 Ludovic Petrenko
 */
 
 #pragma GCC warning "\e[31m\e[1mCommentaires + Norme !\e[0m"
@@ -17,6 +17,7 @@
 #include "raytracer.h"
 #include "engine/scene.h"
 #include "tools/math.h"
+#include "tools/str.h"
 
 unsigned int	mix_colors(t_scene *s, t_intersect *i,
 			   t_intersect *r, t_intersect *t)
@@ -90,7 +91,7 @@ void		calc_ray(t_scene *scene, t_ray *ray, int i, t_intersect *inter)
   t_intersect	refr;
   t_ray		tmp;
 
-  *inter = *(t_intersect*)(char[sizeof(t_intersect)]){0};
+  my_bzero(inter, sizeof(t_intersect));
   inter->dist = INFINITY;
   inter->color = scene->spec.bg_color;
   refl = refr = *inter;
@@ -101,7 +102,7 @@ void		calc_ray(t_scene *scene, t_ray *ray, int i, t_intersect *inter)
     return ;
   if (inter->dist < 0.00001 || inter->dist == INFINITY || inter->mat == NULL)
     {
-      inter->color = scene->spec.bg_color;
+      inter->color.full = skybox_intersect(scene, ray);
       return ;
     }
   if (inter->obj == scene->select && -dot_vec3(inter->norm, ray->dir) < 0.25)
@@ -109,10 +110,6 @@ void		calc_ray(t_scene *scene, t_ray *ray, int i, t_intersect *inter)
       inter->color.full = 0xFF0000FF;
       return ;
     }
-  /* inter->mat = NULL; */
-  /* inter->norm = mult_vec3(inter->norm, -1.0); */
-  /* if (fabs(dot_vec3(vec3_normalize(ray->dir), vec3_normalize(inter->norm))) < 0.3) */
-  /*   return (0x00000000); */
   if (!IS_ZERO(inter->mat->reflectivity))
     {
       get_reflected_ray(inter, ray, &tmp);

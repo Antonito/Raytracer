@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sun May  8 01:17:03 2016 Ludovic Petrenko
-** Last update Sun May  8 04:23:08 2016 Ludovic Petrenko
+** Last update Sun May 22 12:03:38 2016 Antoine Baché
 */
 
 #include <lapin.h>
@@ -26,24 +26,6 @@ static char	mix(t_color **pix, t_ivec2 incr, double scale, int t,
   total = 0;
   return (pix[0][(int)(incr.x / scale) + (int)(incr.y / scale)
 		 * src->clipable.clip_width].argb[t]);
-
-  if (scale > 1.0)
-    {
-      c.x = incr.x / scale + 0.5;
-      c.x = c.x - (int)c.x;
-      c.y = incr.y / scale + 0.5;
-      c.y = c.y - (int)c.y;
-      full =
-	pix[0][(int)(incr.x / scale - 0.5) + (int)(incr.y / scale - 0.5)
-	       * src->clipable.clip_width].argb[t] * (1 - c.x) * (1 - c.y) +
-	pix[0][(int)(incr.x / scale + 0.5) + (int)(incr.y / scale - 0.5)
-	       * src->clipable.clip_width].argb[t] * c.x * (1 - c.y) +
-	pix[0][(int)(incr.x / scale - 0.5) + (int)(incr.y / scale + 0.5)
-	       * src->clipable.clip_width].argb[t] * (1 - c.x) * c.y +
-	pix[0][(int)(incr.x / scale + 0.5) + (int)(incr.y / scale + 0.5)
-	       * src->clipable.clip_width].argb[t] * c.x * c.y;
-      return (full);
-    }
 }
 
 void		blit_scaled(t_bunny_pixelarray *src, t_bunny_pixelarray *dest)

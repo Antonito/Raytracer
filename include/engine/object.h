@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:33:45 2016 Ludovic Petrenko
-** Last update Sun May 22 03:48:59 2016 Antoine Baché
+** Last update Sun May 22 15:45:27 2016 Arthur ARNAUD
 */
 
 #ifndef OBJECT_H_
@@ -259,6 +259,20 @@ t_intersect		get_intersect_chubs(t_obj *, t_ray *);
 t_intersect		get_intersect_devil(t_obj *, t_ray *);
 t_intersect		get_intersect_quartic_cylinder(t_obj *, t_ray *);
 t_intersect		get_intersect_spheroid(t_obj *, t_ray *);
+
+/*
+** Normales functions
+*/
+void			calc_normale_bohemian_dome(t_intersect *);
+void			calc_normale_bohemian_star(t_intersect *);
+void			calc_normale_c8(t_intersect *);
+void			calc_normale_cassini(t_intersect *);
+void			calc_normale_chair(t_intersect *);
+void			calc_normale_chubs(t_intersect *);
+void			calc_normale_cushion(t_intersect *);
+void			calc_normale_devil(t_intersect *);
+void			calc_normale_heart(t_intersect *);
+void			calc_normale_hunt(t_intersect *);
 
 /*
 ** Klein specific functions

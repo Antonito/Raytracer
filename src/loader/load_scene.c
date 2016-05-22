@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sun Apr 17 19:17:30 2016 Ludovic Petrenko
-** Last update Sat May 21 16:39:31 2016 Antoine Baché
+** Last update Sun May 22 02:55:48 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -21,7 +21,9 @@ t_scene		*load_scene(const char *file, t_data *data)
     return (NULL);
   if (!(scene = my_calloc(1, sizeof(t_scene))) ||
       !(scene->zbuf = my_calloc(data->config.width * data->config.height,
-				sizeof(float))))
+				sizeof(float))) ||
+      !(scene->cache = bunny_new_pixelarray(data->config.width,
+					    data->config.height)))
     {
       bunny_delete_ini(ini);
       return (NULL);
@@ -35,6 +37,7 @@ t_scene		*load_scene(const char *file, t_data *data)
       my_free(scene);
       return (NULL);
     }
+  bunny_delete_ini(ini);
   return (scene);
 }
 
@@ -48,6 +51,9 @@ void	load_scene_info(t_scene *s, const t_bunny_ini *ini)
   if ((tmp = (char *)bunny_ini_get_field(ini, SCENE_FIELD, AMB_FIELD, 0)))
     s->spec.ambiant = my_getdouble(tmp);
   s->select = NULL;
+  s->spec.skybox = NULL;
+  if ((tmp = (char *)bunny_ini_get_field(ini, SCENE_FIELD, SKYBOX_FIELD, 0)))
+    s->spec.skybox = bunny_load_pixelarray(tmp);
 }
 
 void	load_camera(t_camera *c, const t_bunny_ini *ini)
@@ -101,7 +107,5 @@ int	load_scene_elements(t_scene *s, const t_bunny_ini *ini)
       return (1);
     }
   load_objs(s, s->objs, ini);
-  /* if (build_octree(&s->octree, 0)) */
-  /*   return (1); */
   return (0);
 }

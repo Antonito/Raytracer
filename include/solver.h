@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed Apr 27 04:02:18 2016 Antoine Baché
-** Last update Fri May 20 21:25:58 2016 Ludovic Petrenko
+** Last update Sun May 22 14:14:45 2016 Antoine Baché
 */
 
 #ifndef SOLVER_H_
@@ -42,6 +42,7 @@ double		solver_second_degree(double, double, double);
 double		solver_third_degree(double, double, double, double);
 double		solver_fourth_degree(double, double, double, ...);
 double		solver_n_degree(double *coef, int degree);
+void		solve_n(double *coef, double *sol, int deg);
 
 /*
 ** Those functions should never be

@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon May  2 22:15:55 2016 Ludovic Petrenko
-** Last update Sun May 22 02:21:37 2016 Antoine Baché
+** Last update Sun May 22 15:46:18 2016 Antoine Baché
 */
 
 #include <stdio.h>
@@ -91,8 +91,17 @@ int			set_frame(t_data *data)
   data->scene->cache->clipable.clip_height = data->config.cur_height;
   set_pos(pos, data);
   if (data->config.minimum_fps)
-    render_multithread(data, pos, 4, LIVE);
+    {
+      render_multithread(data, pos, 4, LIVE);
+    }
   else
-    render_multithread(data, pos, 4, RENDER);
+    {
+      data->config.cur_width = data->config.width;
+      data->config.cur_height = data->config.height;
+      data->scene->cache->clipable.clip_width = data->config.width;
+      data->scene->cache->clipable.clip_height = data->config.height;
+      set_pos(pos, data);
+      render_multithread(data, pos, 4, RENDER);
+    }
   return (0);
 }

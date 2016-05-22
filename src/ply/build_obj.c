@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May 17 17:56:10 2016 Antoine Baché
-** Last update Sun May 22 03:53:37 2016 Antoine Baché
+** Last update Sun May 22 04:58:52 2016 Ludovic Petrenko
 */
 
 #include "engine/object.h"
@@ -40,11 +40,14 @@ static void	fill_obj_ply_3(t_obj *objs, int i, int j, t_ply *ply)
     {
       k = -1;
       objs[i].triangle.color.argb[3] = 255;
-      while (++k < 3)
-	objs[i].triangle.color.argb[k] =
-	  (ply->list_vertex[ply->list_face[j].face[0]].color.argb[k] +
-	   ply->list_vertex[ply->list_face[j].face[1]].color.argb[k] +
-	   ply->list_vertex[ply->list_face[j].face[2]].color.argb[k]) / 3;
+      /* while (++k < 3) */
+      /* 	objs[i].triangle.color.argb[k] = */
+      /* 	  (ply->list_vertex[ply->list_face[j].face[0]].color.argb[k] + */
+      /* 	   ply->list_vertex[ply->list_face[j].face[1]].color.argb[k] + */
+      /* 	   ply->list_vertex[ply->list_face[j].face[2]].color.argb[k]) / 3; */
+      objs[i].triangle.color.full = ply->list_vertex[ply->list_face[j].face[0]].color.full;
+      if (objs[i].triangle.color.full != 0xFFFFFFFF)
+	printf("%X\n", objs[i].triangle.color.full);
     }
   objs[i].triangle.pts[0] = ply->list_vertex[ply->list_face[j].face[0]].vec;
   objs[i].triangle.pts[1] = ply->list_vertex[ply->list_face[j].face[1]].vec;

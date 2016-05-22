@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 16 16:32:45 2016 Ludovic Petrenko
-** Last update Sat May 21 20:51:56 2016 Arthur ARNAUD
+** Last update Sun May 22 16:57:42 2016 Antoine Baché
 */
 
 #include <stdio.h>
@@ -23,15 +23,15 @@ t_bunny_response	events(t_data *data)
     keys = bunny_get_keyboard();
   if (keys[BKS_ESCAPE])
     return (EXIT_ON_SUCCESS);
-  if (keys[BKS_Z])
+  if (keys[BKS_Z] && data->config.minimum_fps)
     data->scene->cam.pos = add_vec3(data->scene->cam.pos,
 				    mult_vec3(data->scene->cam.dir, 0.2));
-  if (keys[BKS_S])
+  if (keys[BKS_S] && data->config.minimum_fps)
     data->scene->cam.pos = sub_vec3(data->scene->cam.pos,
 				    mult_vec3(data->scene->cam.dir, 0.2));
   else if (keys[BKS_PAGEUP])
     ++data->config.minimum_fps;
-  else if (keys[BKS_PAGEDOWN])
+  else if (keys[BKS_PAGEDOWN] && data->config.minimum_fps > 1)
     --data->config.minimum_fps;
   data->config.minimum_fps = (data->config.minimum_fps > 0) ?
     data->config.minimum_fps : 0;
@@ -40,8 +40,13 @@ t_bunny_response	events(t_data *data)
 
 t_bunny_response	main_events(t_bunny_event_state s,
 				    t_bunny_keysym k,
-				    UNUSED t_data *data)
+				    t_data *data)
 {
+  static const bool	*keys = NULL;
+
+  if (!keys)
+    keys = bunny_get_keyboard();
+
   if (s == GO_DOWN && k == BKS_ESCAPE)
     return (EXIT_ON_SUCCESS);
   if (s == GO_DOWN && k == BKS_HOME)
@@ -54,6 +59,14 @@ t_bunny_response	main_events(t_bunny_event_state s,
     --data->config.minimum_fps;
   if (data->config.minimum_fps < 0)
     data->config.minimum_fps = 0;
+  if (s == GO_DOWN && keys[BKS_SPACE] &&
+      k == BKS_LEFT && data->config.minimum_fps)
+    data->scene = data->scene->prev;
+  if (s == GO_DOWN && keys[BKS_SPACE] &&
+      k == BKS_RIGHT && data->config.minimum_fps)
+    data->scene = data->scene->next;
+  if (s == GO_DOWN && k == BKS_DELETE && data->config.minimum_fps)
+    delete_object(data->scene);
   return (GO_ON);
 }
 
@@ -63,12 +76,12 @@ t_bunny_response	mouse_response(const t_bunny_position *rel,
   const bool		*button;
 
   button = bunny_get_mouse_button();
-  if (button[BMB_LEFT])
+  if (button[BMB_LEFT] && data->config.minimum_fps)
     {
       data->scene->cam.rot_x += rel->x / 5.0;
       data->scene->cam.rot_y += rel->y / 5.0;
-      data->scene->cam.rot_y = MAX(data->scene->cam.rot_y, -90.0);
-      data->scene->cam.rot_y = MIN(data->scene->cam.rot_y, 90.0);
+      data->scene->cam.rot_y = MAX(data->scene->cam.rot_y, -89.99);
+      data->scene->cam.rot_y = MIN(data->scene->cam.rot_y, 89.99);
       refresh_forward(&data->scene->cam);
     }
   return (GO_ON);
@@ -82,7 +95,7 @@ t_bunny_response	click_response(t_bunny_event_state sta,
   t_intersect	inter;
   t_ivec2	pix;
 
-  if (sta == GO_DOWN && but == BMB_RIGHT)
+  if (sta == GO_DOWN && but == BMB_RIGHT && data->config.minimum_fps)
     {
       pix = *(bunny_get_mouse_position());
       pix.x *= 1.0 * data->config.cur_width / data->config.width;
@@ -132,48 +145,10 @@ t_bunny_response	main_loop(t_data *data)
   return (GO_ON);
 }
 
-void	print_ply(t_ply *ply)
-{
-  printf("=============================\n");
-  printf("              PLY\n");
-  printf("=============================\n");
-  printf("Nb_vertex: %d\n", ply->nb_vertex);
-  printf("Nb_face: %d\n", ply->nb_face);
-  int	i = 0;
-  while (i < ply->nb_vertex)
-    {
-      printf("Vertex %d : %f %f %f %d %d %d %d\n", i, ply->list_vertex[i].vec.x,
-	     ply->list_vertex[i].vec.y, ply->list_vertex[i].vec.z,
-	     ply->list_vertex[i].color.argb[0],
-	     ply->list_vertex[i].color.argb[1],
-	     ply->list_vertex[i].color.argb[2],
-	     ply->list_vertex[i].color.argb[3]);
-      ++i;
-    }
-  /* i = 0; */
-  /* int	j; */
-  /* while (i < ply->nb_face) */
-  /*   { */
-  /*     j = 0; */
-  /*     while (j < ply->list_face[i].nb_face) */
-  /* 	{ */
-  /* 	  printf("Face %d : %d\n", i, ply->list_face[i].face[j]); */
-  /* 	  ++j; */
-  /* 	} */
-  /*     ++i; */
-  /*   } */
-}
-
 int	launch_raytracer(t_data *data)
 {
   data->config.cur_width = data->config.width / 10;
   data->config.cur_height = data->config.height / 10;
-  print_scenes(data->scene);
-  /* printf("Objs[1]Type = %d\n", data->scene->objs[1].type); */
-  /* print_ply(data->scene->objs[2].ply.ply); */
-  if (init_server(data))
-    return (free_raytracer(data, 1));
-  printf("Starting to draw\n");
   bunny_set_loop_main_function((t_bunny_loop)main_loop);
   bunny_set_key_response((t_bunny_key)main_events);
   bunny_set_move_response((t_bunny_move)mouse_response);

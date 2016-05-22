@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 22:32:39 2016 Ludovic Petrenko
-** Last update Sat May 21 01:19:27 2016 Antoine Baché
+** Last update Sun May 22 16:58:00 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -16,8 +16,6 @@
 static void	set_fields(t_data *data)
 {
   start_threadpool();
-  data->config.width = DEFAULT_WIDTH;
-  data->config.height = DEFAULT_HEIGHT;
   data->config.fullscreen = false;
   data->config.minimum_fps = DEFAULT_FPS;
   data->effect = NO_EFFECT;
@@ -29,6 +27,35 @@ static void	set_fields(t_data *data)
   my_cos(0.0, DRAW);
 }
 
+static int	load_all_scenes(int ac, char **av, t_data *data)
+{
+  int		i;
+  t_scene	*s;
+
+  if (ac == 1 && (!(s = load_scene(SCENE_DEFAULT, data)) ||
+		  !(data->scene = s->next = s->prev = s)))
+    return (1);
+  else
+    {
+      i = 0;
+      while (++i < ac)
+	{
+	  if (!(s = load_scene(av[i], data)))
+	    return (1);
+	  if (i == 1)
+	    data->scene = s->next = s->prev = s;
+	  else
+	    {
+	      s->next = data->scene;
+	      data->scene->prev->next = s;
+	      s->prev = data->scene->prev;
+	      data->scene->prev = s;
+	    }
+	}
+    }
+  return (0);
+}
+
 int	init_data(int ac, char **av, t_data **data)
 {
   bunny_set_maximum_ram(2 * 1000 * 1000 * 1000);
@@ -36,23 +63,13 @@ int	init_data(int ac, char **av, t_data **data)
   if (!(*data = my_calloc(1, sizeof(t_data))))
     return (1);
   set_fields(*data);
-  if ((*data)->config.width <= 0 || (*data)->config.height <= 0 ||
+  if (load_config(*data, CONFIG_FILE) ||
       !((*data)->win = bunny_start((*data)->config.width,
 				   (*data)->config.height,
 				   (*data)->config.fullscreen, WIN_NAME)) ||
       !((*data)->render = bunny_new_pixelarray((*data)->config.width,
-					       (*data)->config.height)))
-    return (1);
-  if (ac == 2)
-    {
-      if (!((*data)->scene = load_scene(av[1], *data)))
-	return (1);
-    }
-  else if (!((*data)->scene = load_scene(SCENE_DEFAULT, *data)))
-    return (1);
-  if (!((*data)->scene->cache =
-	bunny_new_pixelarray((*data)->config.width, (*data)->config.height)) ||
-      load_config(*data, CONFIG_FILE))
+					       (*data)->config.height)) ||
+      load_all_scenes(ac, av, *data))
     return (1);
   return (0);
 }

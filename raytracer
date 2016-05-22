@@ -468,7 +468,9 @@ No specific parameters.
 .B Ply:
 You can specify the path (
 .I file="path/file.ply"
-) of the file you want to load.
+) of the file you want to load, and also the
+.I ratio
+of the object.
 
 .SH CONFIG
 The

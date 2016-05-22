@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Mon Apr 25 00:37:50 2016 Arthur ARNAUD
-** Last update Sun May 22 03:48:06 2016 Antoine Baché
+** Last update Sun May 22 15:55:40 2016 Antoine Baché
 */
 
 #include "ply.h"
@@ -51,11 +51,10 @@ int		fill_face(t_ply *ply, t_ply_info *info, int fd)
       j = 0;
       if (!(tab = str_to_wordtab(str, ' ')) || (size = count_tab(tab)) < count)
 	return (1);
-      ply->list_face[i].face =
-	(info->face_prop[F_VERTICES_INDICES] == -1)
+      ply->list_face[i].face = (info->face_prop[F_VERTICES_INDICES] == -1)
 	? NULL : add_list_face(tab, &j, &ply->list_face[i].nb_face, size);
       ply->list_face[i].texcoord = (info->face_prop[F_TEXCOORD] == -1)
-	? NULL : add_list_texcoord(tab, &j, &ply->list_face[i].nb_tex ,size);
+	? NULL : add_list_texcoord(tab, &j, &ply->list_face[i].nb_tex, size);
       ply->list_face[i].texnumber = (info->face_prop[F_TEXNUMBER] == -1)
 	? 0 : (F_TEXNUMBER + j >= size)
 	? 0 : my_getnbr(tab[info->face_prop[F_TEXNUMBER] + j]);

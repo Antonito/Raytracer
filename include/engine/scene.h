@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:53:20 2016 Ludovic Petrenko
-** Last update Sat May 21 14:51:40 2016 Ludovic Petrenko
+** Last update Sun May 22 02:38:12 2016 Ludovic Petrenko
 */
 
 #ifndef SCENE_H_
@@ -22,6 +22,7 @@ typedef struct		s_scene_spec
 {
   t_color		bg_color;
   double		ambiant;
+  void			*skybox;
 }			t_scene_spec;
 
 typedef struct		s_scene

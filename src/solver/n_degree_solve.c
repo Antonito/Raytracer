@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun May  8 21:44:20 2016 Antoine Baché
-** Last update Sat May 21 14:54:48 2016 Antoine Baché
+** Last update Sun May 22 14:14:27 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -54,7 +54,7 @@ static void	reduce_coef(double *coef, int *deg)
     }
 }
 
-static void	solve_n(double *coef, double *sol, int deg)
+void		solve_n(double *coef, double *sol, int deg)
 {
   double	dcoef[10];
   double	dsol[10];

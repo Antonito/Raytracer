@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May  3 02:16:26 2016 Antoine Baché
-** Last update Fri May 13 03:04:53 2016 Antoine Baché
+** Last update Sun May 22 14:36:51 2016 Ludovic Petrenko
 */
 
 #include "solver.h"
@@ -17,26 +17,26 @@ static void	get_dist_cylinder_face(t_obj *obj, t_ray *ray,
 				       t_intersect *inter)
 {
   double	t;
+  t_vec3	pos;
+  double	s;
 
-  if (ray->pos.y * ray->pos.y + ray->pos.z * ray->pos.z <=
-      obj->cylinder.radius * obj->cylinder.radius)
+  s = -1.0;
+  while (s < 2.0)
     {
-      if (ray->pos.x > obj->cylinder.height ||
-	  (POSITIVE(ray->pos.x) && ray->pos.x < obj->cylinder.height))
+      t = (s * obj->cylinder.height - ray->pos.x) / ray->dir.x;
+      pos.x = s * obj->cylinder.height;
+      pos.y = ray->pos.y + t * ray->dir.y;
+      pos.z = ray->pos.z + t * ray->dir.z;
+      if (t > 0.0 && (t < inter->dist || inter->dist < 0.0)
+	  && pos.y * pos.y + pos.z * pos.z <=
+	  obj->cylinder.radius * obj->cylinder.radius)
 	{
-	  t = (obj->cylinder.height - ray->pos.x) / ray->dir.x;
-	  inter->pos.y = ray->dir.y * t + ray->pos.y;
-	  inter->pos.z = ray->dir.z * t + ray->pos.z;
+	  inter->dist = t;
+	  inter->pos = pos;
+	  inter->norm = vec3(s, 0, 0);
 	}
-      else if (ray->pos.x < 0.0)
-	{
-	  t = -ray->pos.x / ray->dir.x;
-	  inter->pos.y = ray->dir.y * t + ray->pos.y;
-	  inter->pos.z = ray->dir.z * t + ray->pos.z;
-	}
+      s += 2.0;
     }
-  else
-    inter->dist = -1.0;
 }
 
 static void	get_dist_cylinder(t_obj *obj, t_ray *ray, t_intersect *inter)
@@ -66,13 +66,16 @@ t_intersect	get_intersect_cylinder(t_obj *obj, t_ray *ray)
   inter.norm.z = 0.0;
   inter.dist = -1.0;
   get_dist_cylinder(obj, ray, &inter);
-  if (inter.dist == -1.0)
-    return (inter);
-  inter.pos = add_vec3(mult_vec3(ray->dir, inter.dist), ray->pos);
+  if (inter.dist != -1.0)
+    {
+      inter.pos = add_vec3(mult_vec3(ray->dir, inter.dist), ray->pos);
 #pragma message("Il faut afficher les face du cylindre")
-  if (inter.pos.x > obj->cylinder.height ||
-      inter.pos.x < -obj->cylinder.height)
-    get_dist_cylinder_face(obj, ray, &inter);
-  inter.norm = vec3(inter.pos.x, inter.pos.y, 0.0);
+      inter.norm = vec3(0, inter.pos.y / obj->cylinder.radius,
+			inter.pos.z / obj->cylinder.radius);
+    }
+  if (inter.pos.x >= obj->cylinder.height - 0.00001 ||
+      inter.pos.x <= -obj->cylinder.height + 0.00001)
+    inter.dist = -1.0;
+  get_dist_cylinder_face(obj, ray, &inter);
   return (inter);
 }
