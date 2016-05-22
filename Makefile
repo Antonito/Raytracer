@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sun May 22 02:44:50 2016 Ludovic Petrenko
+## Last update Sun May 22 16:02:43 2016 Ludovic Petrenko
 ##
 
 DEBUG=			yes
@@ -52,7 +52,8 @@ EFFECT_FILES=		effect.c			\
 			solarized.c			\
 			rotate.c			\
 			contrast.c			\
-			max_filter.c
+			max_filter.c			\
+			antialiasing.c
 
 NOISE_PREFIX=		src/noise/
 
@@ -111,6 +112,12 @@ LOADER_FILES=		count.c				\
 			load_obj.c			\
 			load_obj_type.c			\
 			load_obj_type_more.c		\
+			load_obj_part_two.c		\
+			load_obj_part_three.c		\
+			load_obj_part_four.c		\
+			load_obj_part_five.c		\
+			load_obj_part_six.c		\
+			load_obj_part_seven.c		\
 			load_polygons.c			\
 			load_scene.c			\
 			obj_type.c
@@ -189,7 +196,6 @@ THREADPOOL_FILES=	init.c				\
 TOOLS_PREFIX=		src/tools/
 
 TOOLS_FILES=		memory.c			\
-			fast_sqrt.c			\
 			my_bzero.c			\
 			my_memset.c			\
 			my_strlen.c			\

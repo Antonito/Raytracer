@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Wed May 18 05:37:31 2016 Ludovic Petrenko
-** Last update Sun May 22 13:23:55 2016 Ludovic Petrenko
+** Last update Sun May 22 16:12:10 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -30,8 +30,8 @@ static void	get_lum(double *col, t_scene *s, t_intersect *inter, int m)
     {
       while (++i < 3)
 	{
-	  col[i] = dot_vec3(inter->norm, s->lights[m].light.dir) *
-	    s->lights[m].light.color.argb[i] / 255.0 *
+	  ln = dot_vec3(inter->norm, s->lights[m].light.dir);
+	  col[i] =  MAX(ln, 0) * s->lights[m].light.color.argb[i] / 255.0 *
 	    s->lights[m].light.power;
 	}
       return ;

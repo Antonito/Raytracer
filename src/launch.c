@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 16 16:32:45 2016 Ludovic Petrenko
-** Last update Sun May 22 05:19:31 2016 Ludovic Petrenko
+** Last update Sun May 22 16:07:23 2016 Ludovic Petrenko
 */
 
 #include <stdio.h>
@@ -23,15 +23,15 @@ t_bunny_response	events(t_data *data)
     keys = bunny_get_keyboard();
   if (keys[BKS_ESCAPE])
     return (EXIT_ON_SUCCESS);
-  if (keys[BKS_Z])
+  if (keys[BKS_Z] && data->config.minimum_fps)
     data->scene->cam.pos = add_vec3(data->scene->cam.pos,
 				    mult_vec3(data->scene->cam.dir, 0.2));
-  if (keys[BKS_S])
+  if (keys[BKS_S] && data->config.minimum_fps)
     data->scene->cam.pos = sub_vec3(data->scene->cam.pos,
 				    mult_vec3(data->scene->cam.dir, 0.2));
   else if (keys[BKS_PAGEUP])
     ++data->config.minimum_fps;
-  else if (keys[BKS_PAGEDOWN])
+  else if (keys[BKS_PAGEDOWN] && data->config.minimum_fps > 1)
     --data->config.minimum_fps;
   data->config.minimum_fps = (data->config.minimum_fps > 0) ?
     data->config.minimum_fps : 0;
@@ -59,11 +59,13 @@ t_bunny_response	main_events(t_bunny_event_state s,
     --data->config.minimum_fps;
   if (data->config.minimum_fps < 0)
     data->config.minimum_fps = 0;
-  if (s == GO_DOWN && keys[BKS_SPACE] && k == BKS_LEFT)
+  if (s == GO_DOWN && keys[BKS_SPACE] &&
+      k == BKS_LEFT && data->config.minimum_fps)
     data->scene = data->scene->prev;
-  if (s == GO_DOWN && keys[BKS_SPACE] && k == BKS_RIGHT)
+  if (s == GO_DOWN && keys[BKS_SPACE] &&
+      k == BKS_RIGHT && data->config.minimum_fps)
     data->scene = data->scene->next;
-  if (s == GO_DOWN && k == BKS_DELETE)
+  if (s == GO_DOWN && k == BKS_DELETE && data->config.minimum_fps)
     delete_object(data->scene);
   return (GO_ON);
 }
@@ -74,7 +76,7 @@ t_bunny_response	mouse_response(const t_bunny_position *rel,
   const bool		*button;
 
   button = bunny_get_mouse_button();
-  if (button[BMB_LEFT])
+  if (button[BMB_LEFT] && data->config.minimum_fps)
     {
       data->scene->cam.rot_x += rel->x / 5.0;
       data->scene->cam.rot_y += rel->y / 5.0;
@@ -93,7 +95,7 @@ t_bunny_response	click_response(t_bunny_event_state sta,
   t_intersect	inter;
   t_ivec2	pix;
 
-  if (sta == GO_DOWN && but == BMB_RIGHT)
+  if (sta == GO_DOWN && but == BMB_RIGHT && data->config.minimum_fps)
     {
       pix = *(bunny_get_mouse_position());
       pix.x *= 1.0 * data->config.cur_width / data->config.width;

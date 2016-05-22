@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 22:32:39 2016 Ludovic Petrenko
-** Last update Sun May 22 16:00:14 2016 Ludovic Petrenko
+** Last update Sun May 22 16:48:35 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -16,8 +16,6 @@
 static void	set_fields(t_data *data)
 {
   start_threadpool();
-  data->config.width = DEFAULT_WIDTH;
-  data->config.height = DEFAULT_HEIGHT;
   data->config.fullscreen = false;
   data->config.minimum_fps = DEFAULT_FPS;
   data->effect = NO_EFFECT;
@@ -65,13 +63,13 @@ int	init_data(int ac, char **av, t_data **data)
   if (!(*data = my_calloc(1, sizeof(t_data))))
     return (1);
   set_fields(*data);
-  if ((*data)->config.width <= 0 || (*data)->config.height <= 0 ||
+  if (load_config(*data, CONFIG_FILE) ||
       !((*data)->win = bunny_start((*data)->config.width,
 				   (*data)->config.height,
 				   (*data)->config.fullscreen, WIN_NAME)) ||
       !((*data)->render = bunny_new_pixelarray((*data)->config.width,
 					       (*data)->config.height)) ||
-      load_all_scenes(ac, av, *data) || load_config(*data, CONFIG_FILE))
+      load_all_scenes(ac, av, *data))
     return (1);
   return (0);
 }

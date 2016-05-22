@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 23:13:18 2016 Ludovic Petrenko
-** Last update Sat May 21 07:56:49 2016 Luka Boulagnon
+** Last update Sun May 22 16:49:33 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -75,6 +75,26 @@ static int	load_network(t_data *data, const t_bunny_ini *ini)
   return (0);
 }
 
+static void	load_general(t_data *data, const t_bunny_ini *ini)
+{
+  const char	*tmp;
+
+  data->config.width = DEFAULT_WIDTH;
+  data->config.height = DEFAULT_HEIGHT;
+  if ((tmp = bunny_ini_get_field(ini, "general", "width", 0)) &&
+      (data->config.width = my_getnbr(tmp)) < 1)
+    {
+      my_puterr("Invalid 'width' in 'config.ini' (using 1280 by default)\n");
+      data->config.width = DEFAULT_WIDTH;
+    }
+  if ((tmp = bunny_ini_get_field(ini, "general", "height", 0)) &&
+      (data->config.height = my_getnbr(tmp)) < 1)
+    {
+      my_puterr("Invalid 'height' in 'config.ini' (using 720 by default)\n");
+      data->config.height = DEFAULT_HEIGHT;
+    }
+}
+
 int		load_config(t_data *data, const char *file)
 {
   t_bunny_ini	*ini;
@@ -84,6 +104,7 @@ int		load_config(t_data *data, const char *file)
       my_puterr(ERROR_CONFIG_FILE);
       return (1);
     }
+  load_general(data, ini);
   if (load_network(data, ini) ||
       load_effect(data, ini))
     {
