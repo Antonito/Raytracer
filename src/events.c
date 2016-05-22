@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun May 22 19:59:54 2016 Antoine Baché
-** Last update Sun May 22 22:29:08 2016 Antoine Baché
+** Last update Sun May 22 22:41:54 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -17,9 +17,9 @@ t_bunny_response	events(t_data *data)
 
   if (!keys)
     keys = bunny_get_keyboard();
-  if (keys[BKS_ESCAPE])
+  if (keys[BKS_ESCAPE] && !data->rendering)
     return (EXIT_ON_SUCCESS);
-  if (keys[BKS_E] && !data->config.minimum_fps)
+  if (keys[BKS_E] && !data->config.minimum_fps && !data->rendering)
     save_bmp(data->render, "./raytracer.bmp");
   if (keys[BKS_Z] && data->config.minimum_fps)
     data->scene->cam.pos = add_vec3(data->scene->cam.pos,
@@ -44,9 +44,9 @@ t_bunny_response	main_events(t_bunny_event_state s,
 
   if (!keys)
     keys = bunny_get_keyboard();
-  if (s == GO_DOWN && k == BKS_ESCAPE)
+  if (s == GO_DOWN && k == BKS_ESCAPE && !data->rendering)
     return (EXIT_ON_SUCCESS);
-  if (s == GO_DOWN && k == BKS_HOME)
+  if (s == GO_DOWN && k == BKS_HOME && !data->rendering)
     data->config.minimum_fps = DEFAULT_FPS;
   if (s == GO_DOWN && k == BKS_END)
     data->config.minimum_fps = 0;

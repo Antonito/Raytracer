@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Thu Apr 21 20:09:40 2016 Ludovic Petrenko
-** Last update Sun May 22 19:42:32 2016 Antoine Baché
+** Last update Sun May 22 22:48:15 2016 Antoine Baché
 */
 
 #include <stdio.h>
@@ -60,7 +60,7 @@ void		calc_fragment(t_data *data, unsigned int *buf, t_ivec2 *pos,
   t_ivec2	tmp;
 
   tmp = pos[0];
-  while (tmp.y < pos[1].y && (tmp.x = pos[0].x - 1))
+  while (tmp.y <= pos[1].y && (tmp.x = pos[0].x - 1))
     {
       while (++tmp.x < pos[1].x)
 	buf[tmp.x + data->config.cur_width * tmp.y] =

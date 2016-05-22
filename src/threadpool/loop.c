@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May 21 23:37:35 2016 Antoine Baché
-** Last update Sun May 22 19:42:19 2016 Antoine Baché
+** Last update Sun May 22 22:44:22 2016 Antoine Baché
 */
 
 #include "threadpool_raytracer.h"
@@ -23,11 +23,16 @@ int				render_multithread(t_data *data, t_ivec2 **pos,
 	{
 	  ++loop;
 	  loop_raytracer_th(data, pos, size, state);
+	  data->rendering = true;
 	}
       return (0);
     }
   if (state != RENDER)
-    loop = 0;
+    {
+      loop = 0;
+      if (state == LIVE)
+	data->rendering = false;
+    }
   previous = state;
   return (loop_raytracer_th(data, pos, size, state));
 }
