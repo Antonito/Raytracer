@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 22:32:39 2016 Ludovic Petrenko
-** Last update Sun May 22 16:58:00 2016 Antoine Baché
+** Last update Sun May 22 22:38:56 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -23,6 +23,7 @@ static void	set_fields(t_data *data)
   data->joy.lat = 0;
   data->joy.hor = 0;
   data->joy.ver = 0;
+  data->rendering = false;
   my_sin(0.0, DRAW);
   my_cos(0.0, DRAW);
 }

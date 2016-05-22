@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Sun May 22 22:29:42 2016 Antoine Baché
+** Last update Sun May 22 22:38:22 2016 Antoine Baché
 */
 
 #ifndef	RAYTRACER_H_
@@ -144,6 +144,7 @@ typedef struct		s_data
   t_joy_move		joy;
   t_network		network;
   t_scene		*scene;
+  bool			rendering;
 }			t_data;
 
 typedef struct		s_calc_fragment

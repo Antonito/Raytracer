@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sun Apr 17 19:17:30 2016 Ludovic Petrenko
-** Last update Sun May 22 22:13:04 2016 Antoine Baché
+** Last update Sun May 22 22:47:09 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -23,7 +23,7 @@ t_scene		*load_scene(const char *file, t_data *data)
       !(scene->zbuf = my_calloc(data->config.width * data->config.height,
 				sizeof(double))) ||
       !(scene->cache = bunny_new_pixelarray(data->config.width,
-					    data->config.height)))
+					    data->config.height + 1)))
     {
       bunny_delete_ini(ini);
       return (NULL);
