@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 22:32:39 2016 Ludovic Petrenko
-** Last update Sun May 22 00:23:51 2016 Ludovic Petrenko
+** Last update Sun May 22 16:00:14 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -34,14 +34,14 @@ static int	load_all_scenes(int ac, char **av, t_data *data)
   int		i;
   t_scene	*s;
 
-  if (ac == 1 && !(data->scene = load_scene(SCENE_DEFAULT, data)))
+  if (ac == 1 && (!(s = load_scene(SCENE_DEFAULT, data)) ||
+		  !(data->scene = s->next = s->prev = s)))
     return (1);
   else
     {
       i = 0;
       while (++i < ac)
 	{
-	  printf("\e[91mi = %d ac = %d\e[0m\n", i, ac);
 	  if (!(s = load_scene(av[i], data)))
 	    return (1);
 	  if (i == 1)
