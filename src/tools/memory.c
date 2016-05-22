@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 22:40:54 2016 Ludovic Petrenko
-** Last update Sun May 22 16:20:44 2016 Antoine Baché
+** Last update Sun May 22 16:55:13 2016 Antoine Baché
 */
 
 #include <lapin.h>
@@ -16,14 +16,14 @@ void	*my_malloc(size_t size)
 {
   void	*ptr;
 
-  if (!(ptr = bunny_malloc(size)))
+  if (!(ptr = malloc(size)))
     my_puterr("Malloc Failed !\n");
   return (ptr);
 }
 
 int	my_free(void *ptr)
 {
-  bunny_free(ptr);
+  free(ptr);
   return (0);
 }
 
@@ -34,7 +34,7 @@ void		*my_calloc(size_t nmemb, size_t size)
   size_t	total_size;
 
   total_size = nmemb * size;
-  if (!(ptr = bunny_malloc(total_size)))
+  if (!(ptr = malloc(total_size)))
     {
       my_puterr("Calloc Failed !\n");
       return (NULL);

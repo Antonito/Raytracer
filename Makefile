@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sun May 22 13:24:58 2016 Antoine Baché
+## Last update Sun May 22 16:53:58 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -75,29 +75,6 @@ NOISE_FILES=		perlin.c			\
 			simplex_calc_pixel.c		\
 			simplex_calc_table.c		\
 			simplex_mask.c
-
-NETWORK_PREFIX=		src/cluster/
-
-NETWORK_FILES=		camera.c			\
-			connection.c			\
-			lights.c			\
-			materials.c			\
-			objects.c			\
-			scene.c				\
-			server.c			\
-			select.c
-
-CLIENT_PREFIX=		src/client/
-
-CLIENT_FILES=		camera.c			\
-			debug.c				\
-			light.c				\
-			loop.c				\
-			main.c				\
-			materials.c			\
-			objects.c			\
-			scene.c				\
-			specs.c
 
 LOADER_PREFIX=		src/loader/
 
@@ -176,12 +153,6 @@ SHAPE_FILES=		plane.c				\
 			light.c				\
 			normale_generic.c
 
-NET_TOOLS_PREFIX=	src/cluster/
-
-NET_TOOLS_FILES=	messages.c			\
-			numbers.c			\
-			packet.c
-
 THREADPOOL_PREFIX=	src/threadpool/
 
 THREADPOOL_FILES=	init.c				\
@@ -231,17 +202,11 @@ SRC_EFFECT=		$(addprefix $(EFFECT_PREFIX),$(EFFECT_FILES))
 
 SRC_NOISE=		$(addprefix $(NOISE_PREFIX),$(NOISE_FILES))
 
-SRC_NETWORK=		$(addprefix $(NETWORK_PREFIX),$(NETWORK_FILES))
-
-SRC_CLIENT=		$(addprefix $(CLIENT_PREFIX),$(CLIENT_FILES))
-
 SRC_LOADER=		$(addprefix $(LOADER_PREFIX),$(LOADER_FILES))
 
 SRC_SHAPE=		$(addprefix $(SHAPE_PREFIX),$(SHAPE_FILES))
 
 SRC_SOLVER=		$(addprefix $(SOLVER_PREFIX),$(SOLVER_FILES))
-
-SRC_NET_TOOLS=		$(addprefix $(NET_TOOLS_PREFIX),$(NET_TOOLS_FILES))
 
 SRC_THREADPOOL=		$(addprefix $(THREADPOOL_PREFIX),$(THREADPOOL_FILES))
 
@@ -252,8 +217,6 @@ SRC_PLY=		$(addprefix $(PLY_PREFIX),$(PLY_FILES))
 SRC+=			$(SRC_EFFECT)
 
 SRC+=			$(SRC_NOISE)
-
-SRC+=			$(SRC_NETWORK)
 
 SRC+=			$(SRC_THREADPOOL)
 
@@ -267,17 +230,7 @@ SRC+=			$(SRC_SHAPE)
 
 SRC+=			$(SRC_SOLVER)
 
-SRC+=			$(SRC_NET_TOOLS)
-
-SRC+=			src/client/debug.c
-
-SRC_CLIENT+=		$(SRC_TOOLS)
-
-SRC_CLIENT+=		$(SRC_NET_TOOLS)
-
 NAME=			raytracer2
-
-NAME_CLIENT=		client_raytracer2
 
 HEAD=			-Iinclude			\
 			-I/home/${USER}/.froot/include
@@ -309,13 +262,6 @@ RM=			rm -f
 
 OBJ=			$(SRC:.c=.o)
 
-OBJ_CLIENT=		$(SRC_CLIENT:.c=.o)
-
-$(NAME_CLIENT): $(OBJ_CLIENT)
-	@$(CC) $(OBJ_CLIENT) -o $(NAME_CLIENT) $(LIB)
-	@echo -ne '\e[1m\e[32m[ OK ] \e[0m'
-	@echo "Compiled client"
-
 $(NAME): $(OBJ)
 	@$(CC) $(OBJ) -o $(NAME) $(LIB)
 	@echo -ne '\e[1m\e[32m[ OK ] \e[0m'
@@ -326,7 +272,7 @@ $(NAME): $(OBJ)
 	@echo -ne '\e[1m\e[32m[ OK ] \e[0m'
 	@echo "Compiling" $<
 
-all:	$(NAME) $(NAME_CLIENT) infos
+all:	$(NAME) infos
 
 infos:
 ifeq ($(DEBUG), yes)
@@ -340,13 +286,11 @@ endif
 
 clean:
 	@$(RM) $(OBJ)
-	@$(RM) $(OBJ_CLIENT)
 	@echo -ne '\e[1m\e[31m[ RM ] \e[0m'
 	@echo "Removing OBJ files ..."
 
 fclean:	clean
 	@$(RM) $(NAME)
-	@$(RM) $(NAME_CLIENT)
 	@echo -ne '\e[1m\e[31m[ RM ] \e[0m'
 	@echo "Removing binaries ..."
 
