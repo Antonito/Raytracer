@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sun Apr 17 19:17:30 2016 Ludovic Petrenko
-** Last update Sun May 22 17:00:42 2016 Ludovic Petrenko
+** Last update Sun May 22 21:45:06 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -37,6 +37,7 @@ t_scene		*load_scene(const char *file, t_data *data)
       my_free(scene);
       return (NULL);
     }
+  printf("Coucou\n");
   bunny_delete_ini(ini);
   return (scene);
 }

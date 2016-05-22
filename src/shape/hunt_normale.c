@@ -5,9 +5,8 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun May 22 15:25:54 2016 Arthur ARNAUD
-** Last update Sun May 22 20:32:30 2016 Arthur ARNAUD
+** Last update Sun May 22 21:20:29 2016 Antoine Baché
 */
-
 
 #include "engine/object.h"
 #include "engine/intersect.h"

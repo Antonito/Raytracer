@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May 14 23:04:44 2016 Antoine Baché
-** Last update Sun May 22 03:03:30 2016 Antoine Baché
+** Last update Sun May 22 20:43:57 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -13,7 +13,7 @@
 #include "engine/object.h"
 #include "tools/memory.h"
 
-static void	get_dist_barth_sextic(t_obj *obj, t_ray *ray, t_intersect *inter,
+static void	get_dist_barth_sextic(t_ray *ray, t_intersect *inter,
 				      t_vec3 tmp)
 {
   double	s[7];
@@ -30,7 +30,7 @@ t_intersect	get_intersect_barth_sextic(t_obj *obj, t_ray *ray)
   inter.dir = ray->dir;
   inter.mat = obj->mat;
   inter.dist = -1.0;
-  get_dist_barth_sextic(obj, ray, &inter, ray->pos);
+  get_dist_barth_sextic(ray, &inter, ray->pos);
   if (inter.dist <= 0.0)
     return (inter);
   inter.pos = add_vec3(mult_vec3(ray->dir, inter.dist), ray->pos);

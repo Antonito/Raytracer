@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun May 22 12:23:05 2016 Antoine Baché
-** Last update Sun May 22 13:21:29 2016 Antoine Baché
+** Last update Sun May 22 20:24:18 2016 Antoine Baché
 */
 
 #include <math.h>
@@ -20,7 +20,7 @@ void	load_double_sphere(t_obj *obj, const t_bunny_ini_scope *scope)
 
   obj->type = DOUBLE_SPHERE;
   obj->sphere.radius = DEFAULT_SPHERE_RADIUS;
-  obj->get_intersect = &get_intersect_double_sphere;
+  obj->get_intersect = &no_shape;
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, RADIUS_FIELD, 0)))
     obj->sphere.radius = my_getdouble(tmp);
 }

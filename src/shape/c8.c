@@ -1,11 +1,11 @@
 /*
-1;4402;0c** c8.c for Raytracer2 in /gfx_raytracer2/src/shape
+** c8.c for Raytracer2 in /gfx_raytracer2/src/shape
 **
 ** Made by Antoine Baché
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May 16 02:20:19 2016 Antoine Baché
-** Last update Sun May 22 20:04:55 2016 Arthur ARNAUD
+** Last update Sun May 22 21:22:11 2016 Antoine Baché
 */
 
 #include "solver.h"

@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:33:45 2016 Ludovic Petrenko
-** Last update Sun May 22 18:46:00 2016 Ludovic Petrenko
+** Last update Sun May 22 20:21:45 2016 Antoine Baché
 */
 
 #ifndef OBJECT_H_
@@ -215,6 +215,7 @@ void			calc_normale(double (*)(), double (*)(), double (*)(),
 /*
 ** Functions
 */
+t_intersect		no_shape(t_obj *, t_ray *);
 void			light_dim(t_obj *, t_vec3 *);
 void			sphere_dim(t_obj *, t_vec3 *);
 void			cylinder_dim(t_obj *, t_vec3 *);

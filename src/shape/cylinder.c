@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May  3 02:16:26 2016 Antoine Baché
-** Last update Sun May 22 14:36:51 2016 Ludovic Petrenko
+** Last update Sun May 22 20:45:34 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -69,7 +69,6 @@ t_intersect	get_intersect_cylinder(t_obj *obj, t_ray *ray)
   if (inter.dist != -1.0)
     {
       inter.pos = add_vec3(mult_vec3(ray->dir, inter.dist), ray->pos);
-#pragma message("Il faut afficher les face du cylindre")
       inter.norm = vec3(0, inter.pos.y / obj->cylinder.radius,
 			inter.pos.z / obj->cylinder.radius);
     }
