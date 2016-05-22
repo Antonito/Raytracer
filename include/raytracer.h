@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Sun May 22 18:50:46 2016 Ludovic Petrenko
+** Last update Sun May 22 20:04:05 2016 Antoine Baché
 */
 
 #ifndef	RAYTRACER_H_
@@ -184,5 +184,12 @@ unsigned int		skybox_intersect(t_scene *, t_ray *);
 void			delete_object(t_scene *);
 void			move_ray(t_obj *, t_ray *, t_ray *);
 void			unmove_intersect(t_intersect *, t_obj *);
+t_bunny_response	click_response(t_bunny_event_state,
+				       t_bunny_mouse_button, t_data *);
+t_bunny_response	mouse_response(const t_bunny_position *, t_data *);
+t_bunny_response	main_events(t_bunny_event_state,
+				    t_bunny_keysym,
+				    t_data *);
+t_bunny_response	events(t_data *);
 
 #endif /* !RAYTRACER_H_ */

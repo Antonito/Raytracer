@@ -5,11 +5,8 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 30 23:30:01 2016 Ludovic Petrenko
-** Last update Sun May 22 17:06:54 2016 Antoine Baché
+** Last update Sun May 22 19:55:38 2016 Antoine Baché
 */
-
-#pragma GCC warning "\e[31m\e[1mCommentaires + Norme !\e[0m"
-#pragma message "\e[31m\e[1mGros Yolo pas C89 (tab dynamique)\e[0m"
 
 #define _ISOC99_SOURCE
 
@@ -79,7 +76,22 @@ static void	get_refracted_ray(t_intersect *inter, t_ray *i, t_ray *r)
     r->env = inter->obj;
 }
 
-#pragma "Norme Calc_ray"
+static int	calc_ray_color(t_intersect *inter, t_scene *scene,
+				       t_ray *ray)
+{
+  if (inter->dist < 0.00001 || inter->dist == INFINITY || inter->mat == NULL)
+    {
+      inter->color.full = skybox_intersect(scene, ray);
+      return (1);
+    }
+  if (inter->obj == scene->select && -dot_vec3(inter->norm, ray->dir) < 0.25)
+    {
+      inter->color.full = 0xFF0000FF;
+      return (1);
+    }
+  return (0);
+}
+
 void		calc_ray(t_scene *scene, t_ray *ray, int i, t_intersect *inter)
 {
   t_intersect	refl;
@@ -93,19 +105,9 @@ void		calc_ray(t_scene *scene, t_ray *ray, int i, t_intersect *inter)
   if (i >= MAX_RECURSIVE)
     return ;
   scene_intersect(scene, ray, inter);
-  if (inter->obj && inter->obj != scene->select &&
-      ((t_obj*)inter->obj)->type == LIGHT)
+  if ((inter->obj && inter->obj != scene->select && ((t_obj*)inter->obj)->type
+       == LIGHT) || calc_ray_color(inter, scene, ray))
     return ;
-  if (inter->dist < 0.00001 || inter->dist == INFINITY || inter->mat == NULL)
-    {
-      inter->color.full = skybox_intersect(scene, ray);
-      return ;
-    }
-  if (inter->obj == scene->select && -dot_vec3(inter->norm, ray->dir) < 0.25)
-    {
-      inter->color.full = 0xFF0000FF;
-      return ;
-    }
   if (!IS_ZERO(inter->mat->reflectivity))
     {
       get_reflected_ray(inter, ray, &tmp);

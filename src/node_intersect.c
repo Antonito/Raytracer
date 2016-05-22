@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Wed Apr 27 05:31:16 2016 Ludovic Petrenko
-** Last update Sun May 22 04:46:44 2016 Ludovic Petrenko
+** Last update Sun May 22 20:07:38 2016 Antoine Baché
 */
 
 #define _ISOC99_SOURCE
@@ -15,7 +15,7 @@
 #include "engine/intersect.h"
 #include "engine/object.h"
 
-static void	subnode_intersect(t_node *node ,t_ray *ray, t_intersect *cur)
+static void	subnode_intersect(t_node *node, t_ray *ray, t_intersect *cur)
 {
   t_intersect	tmp;
   int		side;
@@ -26,13 +26,13 @@ static void	subnode_intersect(t_node *node ,t_ray *ray, t_intersect *cur)
     {
       node_intersect(node->child[side], ray, &tmp);
       if (tmp.dist > 0.00001 && tmp.dist < cur->dist + 0.00001)
-	  *cur = tmp;
+	*cur = tmp;
     }
   if (node->child[!side])
     {
       node_intersect(node->child[!side], ray, &tmp);
       if (tmp.dist > 0.00001 && tmp.dist < cur->dist + 0.00001)
-	  *cur = tmp;
+	*cur = tmp;
     }
 }
 
