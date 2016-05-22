@@ -5,13 +5,14 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May 17 01:45:57 2016 Antoine Baché
-** Last update Fri May 20 19:24:38 2016 Antoine Baché
+** Last update Sun May 22 12:13:57 2016 Antoine Baché
 */
 
 #include <stdlib.h>
 #include "threadpool.h"
 
-void	threadpool_task_init(t_threadpool_task *task, void (*func)(), void *data)
+void	threadpool_task_init(t_threadpool_task *task, void (*func)(),
+			     void *data)
 {
   task->func = func;
   task->data = data;

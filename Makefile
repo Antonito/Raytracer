@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sat May 21 23:59:44 2016 Antoine Baché
+## Last update Sun May 22 12:07:19 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -50,7 +50,8 @@ EFFECT_FILES=		effect.c			\
 			solarized.c			\
 			rotate.c			\
 			contrast.c			\
-			max_filter.c
+			max_filter.c			\
+			antialiasing.c
 
 NOISE_PREFIX=		src/noise/
 
@@ -187,7 +188,6 @@ THREADPOOL_FILES=	init.c				\
 TOOLS_PREFIX=		src/tools/
 
 TOOLS_FILES=		memory.c			\
-			fast_sqrt.c			\
 			my_bzero.c			\
 			my_memset.c			\
 			my_strlen.c			\
