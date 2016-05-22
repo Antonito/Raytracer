@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May 18 13:16:08 2016 Antoine Baché
-** Last update Fri May 20 23:00:31 2016 Luka Boulagnon
+** Last update Sun May 22 18:54:21 2016 Ludovic Petrenko
 */
 
 #include <stdio.h>
@@ -78,14 +78,13 @@ static void			filler(t_config *conf, t_bunny_position pix[2],
 void		pastel_effect(t_color *pix, int height, int width,
 			      t_config *conf)
 {
-  conf->pastel.level = 10;
-  conf->pastel.radius = 10;
   int		averages[conf->pastel.level][4];
-  int		i;
   int		x;
   int		y;
   t_color	*sum;
 
+  conf->pastel.level = 10;
+  conf->pastel.radius = 10;
   if (conf->pastel.radius >= height * width || !(x = -1) ||
       !(sum = my_calloc(height * width, sizeof(t_color))))
     return ;
@@ -100,6 +99,5 @@ void		pastel_effect(t_color *pix, int height, int width,
   y = width * height;
   while (y--)
     pix[y].full = sum[y].full;
-  i = -1;
   my_free(sum);
 }

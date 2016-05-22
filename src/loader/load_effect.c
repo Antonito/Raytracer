@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May 18 22:43:51 2016 Antoine Baché
-** Last update Thu May 19 02:52:22 2016 Antoine Baché
+** Last update Sun May 22 18:44:57 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -41,11 +41,11 @@ void		load_rotate(t_config *conf, const t_bunny_ini *ini)
   conf->rotate.angle_g = ANGLE_G_DEFAULT;
   conf->rotate.angle_b = ANGLE_B_DEFAULT;
   if ((tmp = bunny_ini_get_field(ini, SCOPE_EFFECT, ANGLE_R, 0)))
-    conf->rotate.angle_r = my_getdouble(tmp);
+    conf->rotate.angle_r = my_getdouble((char *)tmp);
   if ((tmp = bunny_ini_get_field(ini, SCOPE_EFFECT, ANGLE_G, 0)))
-    conf->rotate.angle_g = my_getdouble(tmp);
+    conf->rotate.angle_g = my_getdouble((char *)tmp);
   if ((tmp = bunny_ini_get_field(ini, SCOPE_EFFECT, ANGLE_B, 0)))
-    conf->rotate.angle_b = my_getdouble(tmp);
+    conf->rotate.angle_b = my_getdouble((char *)tmp);
 }
 
 void		load_contrast(t_config *conf, const t_bunny_ini *ini)
@@ -54,7 +54,7 @@ void		load_contrast(t_config *conf, const t_bunny_ini *ini)
 
   conf->contrast.value = CONTRAST_DEFAULT;
   if ((tmp = bunny_ini_get_field(ini, SCOPE_EFFECT, VALUE, 0)))
-    conf->contrast.value = my_getdouble(tmp);
+    conf->contrast.value = my_getdouble((char *)tmp);
 }
 
 void		load_bayer(t_config *conf, const t_bunny_ini *ini)

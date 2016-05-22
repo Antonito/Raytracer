@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri May 13 10:39:58 2016 Ludovic Petrenko
-** Last update Sat May 21 07:13:31 2016 Ludovic Petrenko
+** Last update Sun May 22 19:56:13 2016 Antoine Baché
 */
 
 #include "tools/memory.h"
@@ -28,7 +28,6 @@ static void	push_to_node(t_node *src, t_node *dst, t_obj *obj)
     ++dst->nb_obj;
   else
     --src->nb_obj;
-
 }
 
 static int	create_subnode(t_node *node)

@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon May  2 22:15:55 2016 Ludovic Petrenko
-** Last update Sun May 22 15:46:18 2016 Antoine Baché
+** Last update Sun May 22 20:14:34 2016 Antoine Baché
 */
 
 #include <stdio.h>
@@ -26,15 +26,17 @@ void			refresh_size(t_data *data, int frame)
   if (data->config.minimum_fps > 0)
     {
       r = (double)data->config.width / (double)data->config.height;
-      ratio = (double)frame / (double)(DEFAULT_FPS /* + data->joy.needed_fps */);
+      ratio = (double)frame / (double)(DEFAULT_FPS);
       a = data->config.cur_width * data->config.cur_height;
       data->config.cur_width = (int)sqrt(a * ratio * r);
-      data->config.cur_width = (data->config.cur_width > 0) ? data->config.cur_width : 1;
-      data->config.cur_width = (data->config.cur_width < data->config.width) ? data->config.cur_width :
+      data->config.cur_width = (data->config.cur_width > 0) ?
+	data->config.cur_width : 1;
+      data->config.cur_width = (data->config.cur_width < data->config.width) ?
+	data->config.cur_width :
 	data->config.width;
       data->config.cur_height = (int)(data->config.cur_width / r);
-      data->config.cur_height = (data->config.cur_height > 0) ? data->config.cur_height : 1;
-      printf("\r\t\t%d x %d\t", data->config.cur_width, data->config.cur_height);
+      data->config.cur_height = (data->config.cur_height > 0) ?
+	data->config.cur_height : 1;
     }
   else
     {

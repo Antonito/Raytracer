@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon Apr 18 11:13:21 2016 Antoine Baché
-** Last update Sat May 21 22:39:27 2016 Arthur ARNAUD
+** Last update Sun May 22 18:59:35 2016 Ludovic Petrenko
 */
 
 #include "tools/memory.h"
@@ -44,7 +44,6 @@ double		my_getdouble(char *str)
 {
   int		i;
   int		k;
-  int		l;
   double	res;
   char		*tmp;
 

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May  4 03:24:31 2016 Antoine Baché
-** Last update Sun May 22 15:31:46 2016 Ludovic Petrenko
+** Last update Sun May 22 19:11:09 2016 Ludovic Petrenko
 */
 
 #include <math.h>
@@ -56,7 +56,6 @@ static void	get_dist_cone(t_ray *ray, t_intersect *inter, t_obj *obj)
 t_intersect	get_intersect_cone(t_obj *obj, t_ray *ray)
 {
   t_intersect	inter;
-  double	tmp[2];
 
   inter.dir = ray->dir;
   inter.mat = obj->mat;
