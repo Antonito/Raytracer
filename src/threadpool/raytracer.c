@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri May 20 20:55:25 2016 Antoine Baché
-** Last update Sun May 22 00:40:14 2016 Antoine Baché
+** Last update Sun May 22 02:11:01 2016 Antoine Baché
 */
 
 #include "threadpool_raytracer.h"

@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 16 16:32:45 2016 Ludovic Petrenko
-** Last update Sun May 22 01:04:26 2016 Ludovic Petrenko
+** Last update Sun May 22 05:19:31 2016 Ludovic Petrenko
 */
 
 #include <stdio.h>
@@ -78,8 +78,8 @@ t_bunny_response	mouse_response(const t_bunny_position *rel,
     {
       data->scene->cam.rot_x += rel->x / 5.0;
       data->scene->cam.rot_y += rel->y / 5.0;
-      data->scene->cam.rot_y = MAX(data->scene->cam.rot_y, -90.0);
-      data->scene->cam.rot_y = MIN(data->scene->cam.rot_y, 90.0);
+      data->scene->cam.rot_y = MAX(data->scene->cam.rot_y, -89.99);
+      data->scene->cam.rot_y = MIN(data->scene->cam.rot_y, 89.99);
       refresh_forward(&data->scene->cam);
     }
   return (GO_ON);

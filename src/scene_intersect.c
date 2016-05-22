@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat May 21 02:22:35 2016 Ludovic Petrenko
-** Last update Sun May 22 01:10:43 2016 Ludovic Petrenko
+** Last update Sun May 22 13:59:04 2016 Ludovic Petrenko
 */
 
 #define _ISOC99_SOURCE
@@ -23,6 +23,7 @@ void		scene_intersect(t_scene *scene, t_ray *ray, t_intersect *cur)
   int		i;
 
   cur->dist = INFINITY;
+  cur->obj = NULL;
   obj = scene->objs;
   i = -1;
   while (obj->next)

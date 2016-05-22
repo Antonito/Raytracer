@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May 14 23:04:44 2016 Antoine Baché
-** Last update Sat May 21 19:22:21 2016 Antoine Baché
+** Last update Sun May 22 03:03:30 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -34,5 +34,7 @@ t_intersect	get_intersect_barth_sextic(t_obj *obj, t_ray *ray)
   if (inter.dist <= 0.0)
     return (inter);
   inter.pos = add_vec3(mult_vec3(ray->dir, inter.dist), ray->pos);
+  /* calc_normale(calc_x_barth_sextic, calc_y,_bart_sextic calc_z_bart_sextic, */
+  /* 	       &inter); */
   return (inter);
 }
