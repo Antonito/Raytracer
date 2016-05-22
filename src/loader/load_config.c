@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 23:13:18 2016 Ludovic Petrenko
-** Last update Sun May 22 16:49:33 2016 Ludovic Petrenko
+** Last update Sun May 22 21:41:15 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -111,7 +111,6 @@ int		load_config(t_data *data, const char *file)
       bunny_delete_ini(ini);
       return (1);
     }
-  /* load_keyboard(data, ini); */
   bunny_delete_ini(ini);
   return (0);
 }
