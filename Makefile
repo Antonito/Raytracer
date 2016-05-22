@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sun May 22 20:14:11 2016 Ludovic Petrenko
+## Last update Sun May 22 22:46:30 2016 Ludovic Petrenko
 ##
 
 DEBUG=			yes
@@ -37,7 +37,8 @@ SRC_FILES=		init_data.c			\
 			scene_intersect.c		\
 			get_tex_pix.c			\
 			delete_object.c			\
-			skybox.c
+			skybox.c			\
+			events.c
 
 EFFECT_PREFIX=		src/effect/
 
@@ -52,9 +53,8 @@ EFFECT_FILES=		effect.c			\
 			solarized.c			\
 			rotate.c			\
 			contrast.c			\
-			max_filter.c			\
-			antialiasing.c			\
-			blit_scaled_blur.c
+			blit_scaled_blur.c		\
+			antialiasing.c
 
 NOISE_PREFIX=		src/noise/
 
@@ -127,7 +127,6 @@ SHAPE_FILES=		plane.c				\
 			hyperbola.c			\
 			ellipsoid.c			\
 			ply.c				\
-			boy.c				\
 			cassini.c			\
 			chair.c				\
 			kusner.c			\
@@ -138,22 +137,29 @@ SHAPE_FILES=		plane.c				\
 			bifolia.c			\
 			duplin.c			\
 			cushion.c			\
-			double_sphere.c			\
 			tooth.c				\
 			heart.c				\
 			hunt.c				\
 			miter.c				\
 			kiss.c				\
-			kummer.c			\
-			enneper.c			\
 			bohemian_dome.c			\
 			bohemian_star.c			\
 			c8.c				\
 			chubs.c				\
 			devil.c				\
 			quartic_cylinder.c		\
-			spheroid.c			\
 			light.c				\
+			no_shape.c			\
+			bohemian_dome_normale.c		\
+			bohemian_star_normale.c		\
+			c8_normale.c			\
+			cassini_normale.c		\
+			chair_normale.c			\
+			chubs_normale.c			\
+			cushion_normale.c		\
+			devil_normale.c			\
+			heart_normale.c			\
+			hunt_normale.c			\
 			normale_generic.c
 
 THREADPOOL_PREFIX=	src/threadpool/
@@ -183,7 +189,8 @@ TOOLS_FILES=		memory.c			\
 			blit_scaled.c			\
 			swap_double.c			\
 			trigo.c				\
-			pixelarray.c
+			pixelarray.c			\
+			bmp.c
 
 PLY_PREFIX=		src/ply/
 

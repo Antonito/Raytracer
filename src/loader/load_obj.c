@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon Apr 18 20:37:43 2016 Ludovic Petrenko
-** Last update Sun May 22 19:08:08 2016 Ludovic Petrenko
+** Last update Sun May 22 22:36:00 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -47,34 +47,32 @@ void		load_obj_data(t_scene *scene, t_obj *obj,
   load_obj_spec(obj, scope);
 }
 
-void			load_objs(t_scene *scene, t_obj *obj,
+int			load_objs(t_scene *scene, t_obj *obj,
 				  const t_bunny_ini *ini)
 {
   t_bunny_ini_scope	*scope;
   const char		*scope_name;
-  int			i;
-  int			j;
+  int			i[2];
 
-  i = j = 0;
-  if (!(scope = bunny_ini_first((t_bunny_ini *)ini)))
-    return ;
+  if (!(i[0] = i[1] = 0) && !(scope = bunny_ini_first((t_bunny_ini *)ini)))
+    return (1);
   while ((scope = bunny_ini_next((t_bunny_ini *)ini, scope)))
     if ((scope_name = bunny_ini_scope_name(ini, scope)) &&
 	!my_strncmp(scope_name, OBJ_PREFIX, 4))
       {
-	load_obj_basics(obj + i, scope);
-	load_obj_data(scene, obj + i, scope);
-	++i;
+	load_obj_basics(obj + i[0], scope);
+	load_obj_data(scene, obj + i[0], scope);
+	++i[0];
       }
     else if (scope_name && !my_strncmp(scope_name, LIGHT_PREFIX, 6))
       {
-	load_obj_basics(obj + i, scope);
-	load_light_spec(obj + i, scope);
-	load_obj_basics(scene->lights + j, scope);
-	load_light_spec(scene->lights + j, scope);
-	++i;
-	++j;
+	load_obj_basics(obj + i[0], scope);
+	load_light_spec(obj + i[0]++, scope);
+	load_obj_basics(scene->lights + i[1], scope);
+	load_light_spec(scene->lights + i[1]++, scope);
       }
-  if (i)
-    obj[i - 1].next = NULL;
+  if (!i[0])
+    return (write(2, "Incorrect ini file\n", 19));
+  obj[i[0] - 1].next = NULL;
+  return (0);
 }

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May 17 01:57:52 2016 Antoine Baché
-** Last update Sun May 22 16:56:15 2016 Antoine Baché
+** Last update Sun May 22 19:38:46 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -19,7 +19,7 @@ int			threadpool_push(t_threadpool_queue *queue,
   pthread_mutex_t	*mutex;
   pthread_cond_t	*condition;
 
-  if (!queue || !task || !(queue_task = my_malloc(sizeof(t_threadpool_task))))
+  if (!queue || !task || !(queue_task = malloc(sizeof(t_threadpool_task))))
     return (1);
   threadpool_task_init(queue_task, task->func, task->data);
   mutex = &queue->mutex;
@@ -68,6 +68,6 @@ int			threadpool_pop(t_threadpool_queue *queue,
   pthread_mutex_unlock(mutex);
   threadpool_task_init(task, queue_task->func, queue_task->data);
   threadpool_task_destroy(queue_task);
-  my_free(queue_task);
+  free(queue_task);
   return (0);
 }

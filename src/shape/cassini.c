@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May 14 18:31:54 2016 Antoine Baché
-** Last update Sat May 21 19:23:22 2016 Antoine Baché
+** Last update Sun May 22 20:05:43 2016 Arthur ARNAUD
 */
 
 #include "solver.h"
@@ -51,5 +51,6 @@ t_intersect	get_intersect_cassini(t_obj *obj, t_ray *ray)
   if (inter.dist <= 0.0)
     return (inter);
   inter.pos = add_vec3(mult_vec3(ray->dir, inter.dist), ray->pos);
+  calc_normale_cassini(&inter);
   return (inter);
 }

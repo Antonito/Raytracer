@@ -5,14 +5,12 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun May  8 21:44:20 2016 Antoine Baché
-** Last update Sun May 22 14:14:27 2016 Antoine Baché
+** Last update Sun May 22 20:46:28 2016 Antoine Baché
 */
 
 #include "solver.h"
 #include "tools/math.h"
 #include "tools/memory.h"
-
-#pragma message("\e[31mFREE SOL\e[0m")
 
 double	calc_poly(double *coef, int degree, double a)
 {

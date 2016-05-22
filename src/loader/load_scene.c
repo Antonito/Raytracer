@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sun Apr 17 19:17:30 2016 Ludovic Petrenko
-** Last update Sun May 22 17:00:42 2016 Ludovic Petrenko
+** Last update Sun May 22 22:13:04 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -106,6 +106,5 @@ int	load_scene_elements(t_scene *s, const t_bunny_ini *ini)
       my_free(s->objs);
       return (1);
     }
-  load_objs(s, s->objs, ini);
-  return (0);
+  return (load_objs(s, s->objs, ini));
 }

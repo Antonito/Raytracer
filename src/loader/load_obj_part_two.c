@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun May 22 12:23:05 2016 Antoine Baché
-** Last update Sun May 22 12:34:51 2016 Antoine Baché
+** Last update Sun May 22 20:56:27 2016 Antoine Baché
 */
 
 #include <math.h>
@@ -18,7 +18,7 @@ void	load_boy(t_obj *obj, const t_bunny_ini_scope *scope)
 {
   (void)scope;
   obj->type = BOY;
-  obj->get_intersect = &get_intersect_boy;
+  obj->get_intersect = &no_shape;
 }
 
 void	load_cassini(t_obj *obj, const t_bunny_ini_scope *scope)

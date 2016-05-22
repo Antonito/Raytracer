@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun May 15 00:07:30 2016 Antoine Baché
-** Last update Sat May 21 19:22:13 2016 Antoine Baché
+** Last update Sun May 22 21:28:19 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -34,12 +34,11 @@ inline static double	calc_b_bifolia(t_ray *ray, t_vec3 tmp)
 	  ray->dir.x * ray->dir.z * ray->dir.z - 3.0 * ray->dir.y * ray->dir.z *
 	  ray->dir.z + 4.0 * tmp.y * ray->dir.y * ray->dir.z * ray->dir.z + 4.0 *
 	  tmp.x * ray->dir.x * ray->dir.x * ray->dir.x + 4.0 * tmp.y *
-	  ray->dir.y *
-	  ray->dir.y * ray->dir.y + 4.0 * tmp.z * ray->dir.z * ray->dir.z *
-	  ray->dir.z - 3.0 * ray->dir.x * ray->dir.x * ray->dir.y + 4.0 * tmp.y *
-	  ray->dir.x * ray->dir.x * ray->dir.y + 4.0 * tmp.z * ray->dir.x *
-	  ray->dir.x * ray->dir.z + 4.0 * tmp.z * ray->dir.y * ray->dir.y *
-	  ray->dir.z);
+	  ray->dir.y * ray->dir.y * ray->dir.y + 4.0 * tmp.z * ray->dir.z *
+	  ray->dir.z * ray->dir.z - 3.0 * ray->dir.x * ray->dir.x * ray->dir.y
+	  + 4.0 * tmp.y * ray->dir.x * ray->dir.x * ray->dir.y +
+	  4.0 * tmp.z * ray->dir.x * ray->dir.x * ray->dir.z + 4.0 * tmp.z *
+	  ray->dir.y * ray->dir.y * ray->dir.z);
 }
 
 static void	get_dist_bifolia(t_ray *ray, t_intersect *inter,
@@ -82,5 +81,6 @@ t_intersect	get_intersect_bifolia(t_obj *obj, t_ray *ray)
   if (inter.dist <= 0.0)
     return (inter);
   inter.pos = add_vec3(mult_vec3(ray->dir, inter.dist), ray->pos);
+  inter.norm = vec3(0, 0, 0);
   return (inter);
 }

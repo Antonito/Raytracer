@@ -5,16 +5,13 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May 10 09:31:47 2016 Antoine Baché
-** Last update Sun May 22 18:40:06 2016 Ludovic Petrenko
+** Last update Sun May 22 20:55:53 2016 Antoine Baché
 */
 
 #include "raytracer.h"
 #include "tools/math.h"
 #include "threadpool_raytracer.h"
 #include "tools/memory.h"
-
-#pragma message("Free data here !")
-#pragma message("/!\\ Ply obj !!")
 
 void	free_bsp(t_node *node)
 {
@@ -53,6 +50,7 @@ int		free_raytracer(t_data *data, int ret)
   t_scene	*cur;
   t_scene	*next;
 
+  stop_threadpool();
   cur = data->scene;
   cur->prev->next = NULL;
   next = cur->next;
@@ -64,8 +62,7 @@ int		free_raytracer(t_data *data, int ret)
     }
   bunny_delete_clipable(&data->render->clipable);
   my_free(data);
-  /* stop_threadpool(); */
-  /* render_multithread(NULL, NULL, NB_FRAGMENT, FREE_T); */
+  render_multithread(NULL, NULL, NB_FRAGMENT, FREE_T);
   my_sin(0.0, FREE);
   my_cos(0.0, FREE);
   return (ret);

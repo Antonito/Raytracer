@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May 16 02:20:19 2016 Antoine Baché
-** Last update Sat May 21 19:23:16 2016 Antoine Baché
+** Last update Sun May 22 21:22:11 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -34,5 +34,6 @@ t_intersect		get_intersect_c8(t_obj *obj, t_ray *ray)
   if (inter.dist <= 0.0)
     return (inter);
   inter.pos = add_vec3(mult_vec3(ray->dir, inter.dist), ray->pos);
+  calc_normale_c8(&inter);
   return (inter);
 }
