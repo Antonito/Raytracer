@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sun May 22 16:58:56 2016 Antoine Baché
+## Last update Sun May 22 20:14:11 2016 Ludovic Petrenko
 ##
 
 DEBUG=			yes
@@ -53,7 +53,8 @@ EFFECT_FILES=		effect.c			\
 			rotate.c			\
 			contrast.c			\
 			max_filter.c			\
-			antialiasing.c
+			antialiasing.c			\
+			blit_scaled_blur.c
 
 NOISE_PREFIX=		src/noise/
 

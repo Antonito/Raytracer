@@ -5,76 +5,80 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun May 22 05:06:37 2016 Antoine Baché
-** Last update Sun May 22 18:56:49 2016 Ludovic Petrenko
+** Last update Sun May 22 22:43:02 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
 #include "effect.h"
 #include "tools/memory.h"
 #include "tools/types.h"
+#include "tools/math.h"
 
-static void		antialiase_reduce(t_bunny_pixelarray *src,
-					  t_color *new, int ratio,
-					  t_ivec2 incr)
+static t_color	avg_color(t_color *p, t_ivec2 pos, int ratio, t_ivec2 size)
 {
-  int			cur;
-  t_color		*big;
-  int			i;
-  int			j;
-  int			tmp[3];
+  int		total;
+  t_ivec2	i;
+  unsigned int	full[3];
+  t_color	tmp;
 
-  big = src->pixels;
-  i = tmp[0] = tmp[1] = tmp[2] = 0;
-  cur = (incr.x / ratio) * src->clipable.clip_width + (incr.y / ratio);
-  while (i < ratio && (j = 0))
+  ratio /= 2;
+  full[0] = full[1] = full[2] = total = 0;
+  i.y = MAX(pos.y - ratio - 1, 0);
+  while (++i.y < pos.y + ratio && i.y < size.y)
     {
-      while (j < ratio)
+      i.x = MAX(pos.x - ratio - 1, 0);
+      while (++i.x < pos.x + ratio && i.x < size.x)
 	{
-	  tmp[0] += big[incr.y + i + (incr.x + j) *
-			src->clipable.clip_width].argb[0];
-	  tmp[1] += big[incr.y + i + (incr.x + j) *
-			src->clipable.clip_width].argb[1];
-	  tmp[2] += big[incr.y + i + (incr.x + j) *
-			src->clipable.clip_width].argb[2];
-	  ++j;
+	  tmp = p[i.x + i.y * size.x];
+	  full[0] += tmp.argb[0];
+	  full[1] += tmp.argb[1];
+	  full[2] += tmp.argb[2];
+	  ++total;
 	}
-      ++i;
     }
-  new[cur].argb[0] = tmp[0] / ratio;
-  new[cur].argb[1] = tmp[1] / ratio;
-  new[cur].argb[2] = tmp[2] / ratio;
+  tmp.argb[0] = full[0] / MAX(total, 1);
+  tmp.argb[1] = full[1] / MAX(total, 1);
+  tmp.argb[2] = full[2] / MAX(total, 1);
+  return (tmp);
 }
 
-static void		antialiase_it(t_bunny_pixelarray *dest,
-				      t_bunny_pixelarray *src, int ratio)
+static void	blur_it(t_bunny_pixelarray *sharp,
+			t_bunny_pixelarray *blur, int ratio)
 {
-  int			tmp[3];
-  int			cur;
-  t_ivec2		incr;
-  int			i;
-  int			j;
+  t_ivec2	i;
+  t_color	*s;
+  t_color	*b;
+  t_ivec2	size;
 
-  incr.y = 0;
-  while (incr.y < src->clipable.clip_height)
+  s = sharp->pixels;
+  b = blur->pixels;
+  i.y = -1;
+  size.x = blur->clipable.clip_width;
+  size.y = blur->clipable.clip_height;
+  while (++i.y < size.y)
     {
-      incr.x = 0;
-      while (incr.x < src->clipable.clip_width)
-	{
-	  antialiase_reduce(src, dest->pixels, ratio, incr);
-	  incr.x += ratio;
-	}
-      incr.y += ratio;
+      i.x = -1;
+      while (++i.x < size.x)
+	b[i.x + i.y * size.x] =
+	  avg_color(s, i, 2 * ratio, size);
     }
 }
 
-int			antialiasing(t_bunny_pixelarray *pix, int ratio)
+
+
+void			antialiasing(t_bunny_pixelarray *pix, int ratio)
 {
   t_bunny_pixelarray	*new;
+  t_bunny_pixelarray	*blur;
 
   if (!(new = bunny_new_pixelarray(pix->clipable.clip_width * ratio,
+				   pix->clipable.clip_width * ratio)) ||
+      !(blur = bunny_new_pixelarray(pix->clipable.clip_width * ratio,
 				   pix->clipable.clip_width * ratio)))
-    return (1);
-  return (0);
+    return ;
   blit_scaled(pix, new);
+  blur_it(new, blur, ratio);
+  blit_scaled_blur(blur, pix, ratio);
   bunny_delete_clipable(&new->clipable);
+  bunny_delete_clipable(&blur->clipable);
 }
