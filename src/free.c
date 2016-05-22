@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May 10 09:31:47 2016 Antoine Baché
-** Last update Sun May 22 23:23:34 2016 Antoine Baché
+** Last update Sun May 22 23:31:22 2016 Antoine Baché
 */
 
 #include "raytracer.h"
