@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri May 20 20:55:25 2016 Antoine Baché
-** Last update Sun May 22 15:00:03 2016 Antoine Baché
+** Last update Sun May 22 17:14:54 2016 Antoine Baché
 */
 
 #include "threadpool_raytracer.h"
@@ -14,7 +14,7 @@ void				call_thread(t_threadpool_raytracer *arg)
 {
   if (arg->data)
     calc_fragment(arg->data, (unsigned int *)arg->data->scene->cache->pixels,
-		  arg->pos);
+		  arg->pos, arg->mutex);
   if (arg->barrier)
     pthread_barrier_wait(arg->barrier);
 }
@@ -38,12 +38,14 @@ static t_threadpool_raytracer	*init_arg(int size, t_data *data)
 {
   int				i;
   t_threadpool_raytracer	*arg;
+  static pthread_mutex_t	mut = PTHREAD_MUTEX_INITIALIZER;
 
   if (!(arg = my_malloc(sizeof(t_threadpool_raytracer) * (size))))
     return (NULL);
   i = 0;
   while (i < size)
     {
+      arg[i].mutex = &mut;
       arg[i].data = data;
       ++i;
     }

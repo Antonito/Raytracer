@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Sun May 22 16:15:20 2016 Ludovic Petrenko
+** Last update Sun May 22 17:13:31 2016 Antoine Baché
 */
 
 #ifndef	RAYTRACER_H_
@@ -19,6 +19,7 @@
 # include "events.h"
 # include "tools/memory.h"
 # include "ply.h"
+# include "threadpool.h"
 
 # define DEFAULT_WIDTH		1280
 # define DEFAULT_HEIGHT		720
@@ -159,7 +160,7 @@ t_bunny_response	main_events(UNUSED t_bunny_event_state s,
 t_bunny_response	main_loop(t_data *data);
 int			set_frame(t_data *data);
 void			calc_fragment(t_data *data, unsigned int *buf,
-				      t_ivec2 *pos);
+				      t_ivec2 *pos, pthread_mutex_t *);
 void			calc_ray(t_scene *scene, t_ray *ray, int i,
 				 t_intersect *inter);
 void			set_vectors(t_data *data, t_camera *c);
