@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Tue May  3 16:39:40 2016 Arthur ARNAUD
-** Last update Tue May 10 15:25:49 2016 Arthur ARNAUD
+** Last update Sun May 22 22:30:13 2016 Antoine Baché
 */
 
 #ifndef BMP_H_
@@ -19,11 +19,6 @@ typedef enum		e_bmp
     BMP_24,
     BMP_8
   }			t_bmp;
-
-typedef enum		e_nb_bits
-  {
-
-  }			t_nb_bits;
 
 typedef struct		s_bmp_header
 {

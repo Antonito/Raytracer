@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Sun May 22 20:04:05 2016 Antoine Baché
+** Last update Sun May 22 22:29:42 2016 Antoine Baché
 */
 
 #ifndef	RAYTRACER_H_
@@ -191,5 +191,6 @@ t_bunny_response	main_events(t_bunny_event_state,
 				    t_bunny_keysym,
 				    t_data *);
 t_bunny_response	events(t_data *);
+int			save_bmp(t_bunny_pixelarray *, const char *);
 
 #endif /* !RAYTRACER_H_ */
