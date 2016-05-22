@@ -5,9 +5,10 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon Apr 18 20:37:43 2016 Ludovic Petrenko
-** Last update Sun May 22 22:36:00 2016 Antoine Baché
+** Last update Sun May 22 23:03:32 2016 Arthur ARNAUD
 */
 
+#include <unistd.h>
 #include "raytracer.h"
 #include "tools/str.h"
 #include "loader.h"

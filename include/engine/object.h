@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:33:45 2016 Ludovic Petrenko
-** Last update Sun May 22 23:03:53 2016 Antoine Baché
+** Last update Sun May 22 23:27:21 2016 Antoine Baché
 */
 
 #ifndef OBJECT_H_
@@ -275,6 +275,7 @@ void			calc_normale_cushion(t_intersect *);
 void			calc_normale_devil(t_intersect *);
 void			calc_normale_heart(t_intersect *);
 void			calc_normale_hunt(t_intersect *);
+void			calc_normale_barth(t_intersect *);
 
 /*
 ** Klein specific functions
