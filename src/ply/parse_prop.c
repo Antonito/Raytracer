@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Tue Apr 26 15:35:12 2016 Arthur ARNAUD
-** Last update Sun May 22 03:47:51 2016 Antoine Baché
+** Last update Sun May 22 12:18:58 2016 Antoine Baché
 */
 
 #include "ply.h"
@@ -14,7 +14,7 @@
 
 int	*add_list_face(char **tab, int *j, int *nb, int count)
 {
-  int	*list_prop ;
+  int	*list_prop;
   int	i;
 
   if ((*nb = my_getnbr(tab[*j + F_VERTICES_INDICES])) <= 0 ||
@@ -32,7 +32,7 @@ int	*add_list_face(char **tab, int *j, int *nb, int count)
 
 double		*add_list_texcoord(char **tab, int *j, int *nb, int count)
 {
-  double	*list_prop ;
+  double	*list_prop;
   int		i;
 
   if ((*nb = my_getnbr(tab[*j + F_TEXCOORD])) <= 0 ||
@@ -44,7 +44,7 @@ double		*add_list_texcoord(char **tab, int *j, int *nb, int count)
     {
       list_prop[i] = my_getdouble(tab[*j + F_TEXCOORD + 1 + i]);
     }
-  *j += *nb ;
+  *j += *nb;
   return (list_prop);
 }
 

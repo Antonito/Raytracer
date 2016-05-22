@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon May  9 23:20:33 2016 Ludovic Petrenko
-** Last update Sun May 22 12:12:52 2016 Antoine Baché
+** Last update Sun May 22 13:17:56 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -53,7 +53,7 @@ static double	loop_dicho(double *coeff, int deg, t_dicho *d)
   i = -1;
   while (++i < 1000000)
     {
-      if (d->sl == 0 || dl->sr == 0)
+      if (d->sl == 0 || d->sr == 0)
 	return ((d->sl == 0) ? d->l : d->r);
       d->mid = d->l / 2.0 + d->r / 2.0;
       tmp = calc_poly(coeff, deg, d->mid);

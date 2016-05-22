@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sun May 22 12:07:19 2016 Antoine Baché
+## Last update Sun May 22 13:24:58 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -110,6 +110,12 @@ LOADER_FILES=		count.c				\
 			load_obj.c			\
 			load_obj_type.c			\
 			load_obj_type_more.c		\
+			load_obj_part_two.c		\
+			load_obj_part_three.c		\
+			load_obj_part_four.c		\
+			load_obj_part_five.c		\
+			load_obj_part_six.c		\
+			load_obj_part_seven.c		\
 			load_polygons.c			\
 			load_scene.c			\
 			obj_type.c
