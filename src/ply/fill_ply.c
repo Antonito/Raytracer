@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Mon Apr 25 00:37:50 2016 Arthur ARNAUD
-** Last update Sat May 21 22:39:47 2016 Arthur ARNAUD
+** Last update Sun May 22 03:43:47 2016 Arthur ARNAUD
 */
 
 #include "ply.h"
@@ -86,7 +86,8 @@ int	fill_vertex(t_ply *ply,
       ply->list_vertex[i].vec.z = (info->vertex_prop[V_Z] == -1) ? 0 :
 	my_getdouble(tab[info->vertex_prop[V_Z]]);
       if (parse_color_vertex
-	  (&ply->list_vertex[i].color, tab, info->vertex_prop))
+	  (&ply->list_vertex[i].color, tab, info->vertex_prop,
+	   &ply->list_vertex[i].get_color))
 	return (1);
       my_free(tab);
       my_free(str);
