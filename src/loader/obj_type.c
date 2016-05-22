@@ -5,12 +5,22 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon Apr 18 23:15:28 2016 Ludovic Petrenko
-** Last update Thu May 19 02:34:10 2016 Ludovic Petrenko
+** Last update Sun May 22 22:14:43 2016 Antoine Baché
 */
 
 #include "raytracer.h"
 #include "loader.h"
 #include "tools/str.h"
+
+static void	(*g_loader[])(t_obj *, const t_bunny_ini_scope *) =
+{load_sphere, load_plane, load_cylinder, load_cone, load_triangle,
+ load_torus, load_mobius, load_void_cube, load_klein, load_hyperbola,
+ load_ellipsoid, load_ply, load_boy, load_cassini, load_chair, load_kusner,
+ load_tritrumpet, load_whitney, load_tetrahedral, load_barth_sextic,
+ load_bifolia, load_duplin, load_cushion, load_double_sphere,
+ load_tooth, load_heart, load_hunt, load_miter, load_kiss, load_kummer,
+ load_enneper, load_bohemian_dome, load_bohemian_star, load_c8, load_chubs,
+ load_devil, load_quartic_cylinder, load_spheroid};
 
 void		load_obj_spec(t_obj *obj, const t_bunny_ini_scope *scope)
 {
@@ -21,15 +31,6 @@ void		load_obj_spec(t_obj *obj, const t_bunny_ini_scope *scope)
      "bifolia", "duplin", "cushion", "double_sphere", "tooth", "heart",
      "hunt", "miter", "kiss", "kummer", "enneper", "bohemian_dome",
      "bohemian_star", "c8", "chubs", "devil", "quartic_cylinder", "spheroid"};
-  static void	(*loader[])(t_obj *, const t_bunny_ini_scope *) =
-    {load_sphere, load_plane, load_cylinder, load_cone, load_triangle,
-     load_torus, load_mobius, load_void_cube, load_klein, load_hyperbola,
-     load_ellipsoid, load_ply, load_boy, load_cassini, load_chair, load_kusner,
-     load_tritrumpet, load_whitney, load_tetrahedral, load_barth_sextic,
-     load_bifolia, load_duplin, load_cushion, load_double_sphere,
-     load_tooth, load_heart, load_hunt, load_miter, load_kiss, load_kummer,
-     load_enneper, load_bohemian_dome, load_bohemian_star, load_c8, load_chubs,
-     load_devil, load_quartic_cylinder, load_spheroid};
   int		i;
   char		*type;
 
@@ -38,10 +39,10 @@ void		load_obj_spec(t_obj *obj, const t_bunny_ini_scope *scope)
   while (++i < NB_OBJ_TYPE - SPHERE && type)
     if (!my_strcmp(type, types[i]))
       {
-	loader[i](obj, scope);
+	g_loader[i](obj, scope);
 	return ;
       }
-  loader[0](obj, scope);
+  g_loader[0](obj, scope);
 }
 
 void	        load_light_spec(t_obj *obj, const t_bunny_ini_scope *scope)
