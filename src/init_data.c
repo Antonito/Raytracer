@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 22:32:39 2016 Ludovic Petrenko
-** Last update Sun May 22 23:38:18 2016 Antoine Baché
+** Last update Mon May 23 00:22:38 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -60,7 +60,7 @@ static int	load_all_scenes(int ac, char **av, t_data *data)
 int	init_data(int ac, char **av, t_data **data)
 {
   bunny_set_maximum_ram(2 * 1000 * 1000 * 1000);
-  bunny_set_memory_check(true);
+  /* bunny_set_memory_check(true); */
   if (!(*data = my_calloc(1, sizeof(t_data))))
     return (1);
   set_fields(*data);
