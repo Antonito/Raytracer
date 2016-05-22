@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Sun May 22 16:15:20 2016 Ludovic Petrenko
+** Last update Sun May 22 20:04:05 2016 Antoine Baché
 */
 
 #ifndef	RAYTRACER_H_
@@ -19,6 +19,7 @@
 # include "events.h"
 # include "tools/memory.h"
 # include "ply.h"
+# include "threadpool.h"
 
 # define DEFAULT_WIDTH		1280
 # define DEFAULT_HEIGHT		720
@@ -151,34 +152,44 @@ typedef struct		s_calc_fragment
   t_ivec2		pos[2];
 }			t_calc_fragment;
 
-int			init_data(int ac, char **av, t_data **data);
-int			launch_raytracer(t_data *data);
-t_bunny_response	main_events(UNUSED t_bunny_event_state s,
-				    UNUSED t_bunny_keysym k,
-				    t_data *data);
-t_bunny_response	main_loop(t_data *data);
-int			set_frame(t_data *data);
-void			calc_fragment(t_data *data, unsigned int *buf,
-				      t_ivec2 *pos);
-void			calc_ray(t_scene *scene, t_ray *ray, int i,
-				 t_intersect *inter);
-void			set_vectors(t_data *data, t_camera *c);
-void			refresh_size(t_data *data, int frame);
+int			init_data(int, char **, t_data **);
+int			launch_raytracer(t_data *);
+t_bunny_response	main_events(t_bunny_event_state,
+				    t_bunny_keysym,
+				    t_data *);
+t_bunny_response	main_loop(t_data *);
+int			set_frame(t_data *);
+void			calc_fragment(t_data *, unsigned int *,
+				      t_ivec2 *, pthread_mutex_t *);
+void			calc_ray(t_scene *, t_ray *, int,
+				 t_intersect *);
+void			set_vectors(t_data *, t_camera *);
+void			refresh_size(t_data *, int);
 void			blit_scaled(t_bunny_pixelarray *, t_bunny_pixelarray *);
-int			free_raytracer(t_data *data, int ret);
+int			free_raytracer(t_data *, int);
 t_bunny_response	joystick_axises(int, t_bunny_axis, float, t_data *);
 t_bunny_response	joystick_buttons(t_bunny_event_state, int, int,
 					 t_data *);
 t_bunny_response	joystick_connected(t_bunny_event_state, int,
 					   const t_bunny_joystick, void *);
 void			joy_preceed_moves(t_data *);
-void			get_light(t_scene *s, t_intersect *inter,
-				  double *col);
+void			get_light(t_scene *, t_intersect *,
+				  double *);
 void			joy_proceed_moves(t_data *);
 void			focale(t_data *);
-bool			check_box(t_obj *obj, t_ray *ray);
+bool			check_box(t_obj *, t_ray *);
 void			scene_intersect(t_scene *, t_ray *, t_intersect *);
 unsigned int		get_tex_pix(t_bunny_pixelarray *, t_vec2);
-unsigned int		skybox_intersect(t_scene *s, t_ray *r);
+unsigned int		skybox_intersect(t_scene *, t_ray *);
+void			delete_object(t_scene *);
+void			move_ray(t_obj *, t_ray *, t_ray *);
+void			unmove_intersect(t_intersect *, t_obj *);
+t_bunny_response	click_response(t_bunny_event_state,
+				       t_bunny_mouse_button, t_data *);
+t_bunny_response	mouse_response(const t_bunny_position *, t_data *);
+t_bunny_response	main_events(t_bunny_event_state,
+				    t_bunny_keysym,
+				    t_data *);
+t_bunny_response	events(t_data *);
 
 #endif /* !RAYTRACER_H_ */

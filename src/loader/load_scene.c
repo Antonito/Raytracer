@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sun Apr 17 19:17:30 2016 Ludovic Petrenko
-** Last update Sun May 22 02:55:48 2016 Ludovic Petrenko
+** Last update Sun May 22 17:00:42 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -21,7 +21,7 @@ t_scene		*load_scene(const char *file, t_data *data)
     return (NULL);
   if (!(scene = my_calloc(1, sizeof(t_scene))) ||
       !(scene->zbuf = my_calloc(data->config.width * data->config.height,
-				sizeof(float))) ||
+				sizeof(double))) ||
       !(scene->cache = bunny_new_pixelarray(data->config.width,
 					    data->config.height)))
     {

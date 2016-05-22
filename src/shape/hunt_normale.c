@@ -5,14 +5,14 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun May 22 15:25:54 2016 Arthur ARNAUD
-** Last update Sun May 22 15:28:59 2016 Arthur ARNAUD
+** Last update Sun May 22 20:32:30 2016 Arthur ARNAUD
 */
 
 
 #include "engine/object.h"
 #include "engine/intersect.h"
 
-double	calc_x_derivative(t_intersect *inter, t_vec3 tmp)
+double	calc_x_derivative_hunt(t_intersect *inter, t_vec3 tmp)
 {
   return (24 * inter->pos.x * tmp.x *
 	  tmp.x + (48 * tmp.z + 48 * tmp.y + 348) *
@@ -23,17 +23,17 @@ double	calc_x_derivative(t_intersect *inter, t_vec3 tmp)
 	  inter->pos.x);
 }
 
-double	calc_y_derivative(t_intersect *inter, t_vec3 tmp)
+double	calc_y_derivative_hunt(t_intersect *inter, t_vec3 tmp)
 {
   return (24 * inter->pos.y * tmp.y *
 	  tmp.y + (48 * tmp.z + 48 * tmp.x - 516) *
 	  inter->pos.y * tmp.y +
 	  (24 * tmp.z * tmp.z +
 	   (48 * tmp.x - 1056) * tmp.z + 24 *
-	   tmp.x * tmp.x - 300 * tmp.x + 2760) * inter->pos.);
+	   tmp.x * tmp.x - 300 * tmp.x + 2760) * inter->pos.y);
 }
 
-double	calc_z_derivative(t_intersect *inter, t_vec3 tmp)
+double	calc_z_derivative_hunt(t_intersect *inter, t_vec3 tmp)
 {
   return (24 * inter->pos.z *
 	  (tmp.z * tmp.z +
@@ -44,6 +44,7 @@ double	calc_z_derivative(t_intersect *inter, t_vec3 tmp)
 
 void	calc_normale_hunt(t_intersect *inter)
 {
-  calc_normale(calc_x_derivative, calc_y_derivative, calc_z_derivative,
+  calc_normale(calc_x_derivative_hunt, calc_y_derivative_hunt,
+	       calc_z_derivative_hunt,
 	       inter);
 }

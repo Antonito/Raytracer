@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May 17 02:25:38 2016 Antoine Baché
-** Last update Sun May 22 16:44:40 2016 Antoine Baché
+** Last update Sun May 22 19:40:14 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -33,8 +33,6 @@ static int		threadpool_init_start_threads(t_threadpool *pool)
 
 int			threadpool_init(t_threadpool *pool)
 {
-  static pthread_t	threads[NB_THREADS + 1];
-
   pool->mutex = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;
   pool->queue.mutex = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;
   pool->queue.condition = (pthread_cond_t)PTHREAD_COND_INITIALIZER;
@@ -43,7 +41,7 @@ int			threadpool_init(t_threadpool *pool)
   pool->queue.over = true;
   pool->total_threads = NB_THREADS;
   if (!(pool->threads = my_malloc(sizeof(pthread_t) *
-				  (pool->total_threads + 1)))
+			       (pool->total_threads + 1)))
       || threadpool_init_start_threads(pool))
     return (1);
   return (0);
@@ -56,8 +54,7 @@ void			threadpool_destroy(t_threadpool *pool)
   i = 0;
   while (i < pool->total_threads)
     {
-      pthread_kill(pool->threads[i], 2);
-      pthread_detach(pool->threads[i]);
+      pthread_cancel(pool->threads[i]);
       ++i;
     }
   my_free(pool->threads);
@@ -87,7 +84,9 @@ void			*threadpool_loop(void *data)
 {
   t_threadpool		*pool;
   t_threadpool_task	task;
+  int			cancel_type;
 
+  pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS, &cancel_type);
   pool = (t_threadpool *)data;
   pthread_mutex_lock(&pool->mutex);
   ++pool->init_threads;

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May 10 09:12:24 2016 Antoine Baché
-** Last update Tue May 10 09:54:18 2016 Antoine Baché
+** Last update Sun May 22 18:47:16 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -59,7 +59,7 @@ static int		get_val(double nb)
   value %= NB_TRIGO;
   while (value < 0)
     value += NB_TRIGO;
-  return (value);
+  return (value % NB_TRIGO);
 }
 
 double			my_sin(double nb, t_trigo_state mode)

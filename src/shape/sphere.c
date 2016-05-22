@@ -5,9 +5,10 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May  2 04:39:20 2016 Antoine Baché
-** Last update Sat May 21 16:39:06 2016 Antoine Baché
+** Last update Sun May 22 19:10:45 2016 Ludovic Petrenko
 */
 
+#include <math.h>
 #include "raytracer.h"
 #include "solver.h"
 #include "engine/intersect.h"

@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Thu May 12 06:35:31 2016 Ludovic Petrenko
-** Last update Thu May 12 07:25:53 2016 Ludovic Petrenko
+** Last update Sun May 22 20:09:09 2016 Antoine Baché
 */
 
 #include "engine/obj_vector.h"
@@ -40,7 +40,7 @@ int		vector_push_back(t_vector *v, void *elem)
   return (0);
 }
 
-void	vector_pop_back(t_vector *v)
+void		vector_pop_back(t_vector *v)
 {
   if (v->nb_elem)
     --v->nb_elem;
@@ -52,7 +52,6 @@ void		vector_remove(t_vector *v, unsigned int elem)
   unsigned int	j;
   char		*src;
   char		*dest;
-
 
   if (elem >= v->nb_elem)
     return ;

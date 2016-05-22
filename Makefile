@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sun May 22 16:58:56 2016 Antoine Baché
+## Last update Sun May 22 20:34:34 2016 Arthur ARNAUD
 ##
 
 DEBUG=			yes
@@ -37,7 +37,8 @@ SRC_FILES=		init_data.c			\
 			scene_intersect.c		\
 			get_tex_pix.c			\
 			delete_object.c			\
-			skybox.c
+			skybox.c			\
+			events.c
 
 EFFECT_PREFIX=		src/effect/
 
@@ -153,6 +154,16 @@ SHAPE_FILES=		plane.c				\
 			quartic_cylinder.c		\
 			spheroid.c			\
 			light.c				\
+			bohemian_dome_normale.c		\
+			bohemian_star_normale.c		\
+			c8_normale.c			\
+			cassini_normale.c		\
+			chair_normale.c			\
+			chubs_normale.c			\
+			cushion_normale.c		\
+			devil_normale.c			\
+			heart_normale.c			\
+			hunt_normale.c			\
 			normale_generic.c
 
 THREADPOOL_PREFIX=	src/threadpool/
