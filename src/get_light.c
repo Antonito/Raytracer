@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Wed May 18 05:37:31 2016 Ludovic Petrenko
-** Last update Sat May 21 04:09:32 2016 Ludovic Petrenko
+** Last update Sun May 22 16:12:10 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -25,6 +25,17 @@ static void	get_lum(double *col, t_scene *s, t_intersect *inter, int m)
   t_ray		ray;
   t_intersect	shadow;
 
+  i = -1;
+  if (s->lights[m].light.type == DIRECTIONNAL)
+    {
+      while (++i < 3)
+	{
+	  ln = dot_vec3(inter->norm, s->lights[m].light.dir);
+	  col[i] =  MAX(ln, 0) * s->lights[m].light.color.argb[i] / 255.0 *
+	    s->lights[m].light.power;
+	}
+      return ;
+    }
   l = sub_vec3(s->lights[m].pos, inter->pos);
   dist = vec3_len(l);
   l = div_vec3(l, dist);
@@ -42,7 +53,6 @@ static void	get_lum(double *col, t_scene *s, t_intersect *inter, int m)
   scene_intersect(s, &ray, &shadow);
   if (shadow.dist < dist - 0.0001)
     return ;
-  i = -1;
   while (++i < 3)
     {
       tmp = inter->mat->diffuse * MAX(ln, 0) * id *

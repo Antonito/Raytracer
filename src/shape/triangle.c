@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May  4 01:20:34 2016 Antoine Baché
-** Last update Sun May 22 04:19:33 2016 Antoine Baché
+** Last update Sun May 22 12:47:48 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -62,7 +62,7 @@ t_intersect	get_intersect_triangle(t_obj *obj, t_ray *ray)
   inter.pos = add_vec3(mult_vec3(ray->dir, inter.dist), ray->pos);
   if (obj->triangle.color.argb[3])
     {
-      inter.mat = NULL;
+      inter.tex = inter.mat;
       inter.color = obj->triangle.color;
     }
   return (inter);

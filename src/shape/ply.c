@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri May 13 18:26:44 2016 Antoine Baché
-** Last update Sat May 21 14:56:55 2016 Antoine Baché
+** Last update Sun May 22 04:27:11 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -30,5 +30,6 @@ t_intersect	get_intersect_ply(t_obj *obj, t_ray *ray)
   inter.dir = ray->dir;
   inter.mat = obj->mat;
   node_intersect(obj->ply.node, ray, &inter);
+  inter.obj = obj;
   return (inter);
 }

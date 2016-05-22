@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sun May 22 16:53:58 2016 Antoine Baché
+## Last update Sun May 22 16:58:56 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -35,7 +35,9 @@ SRC_FILES=		init_data.c			\
 			check_box.c			\
 			build_bsp.c			\
 			scene_intersect.c		\
-			get_tex_pix.c
+			get_tex_pix.c			\
+			delete_object.c			\
+			skybox.c
 
 EFFECT_PREFIX=		src/effect/
 
