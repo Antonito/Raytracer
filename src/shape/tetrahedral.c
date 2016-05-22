@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sat May 14 22:53:40 2016 Antoine Baché
-** Last update Sat May 21 19:29:49 2016 Antoine Baché
+** Last update Sun May 22 21:29:45 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -87,5 +87,6 @@ t_intersect		get_intersect_tetrahedral(t_obj *obj, t_ray *ray)
   if (inter.dist <= 0.0)
     return (inter);
   inter.pos = add_vec3(mult_vec3(ray->dir, inter.dist), ray->pos);
+  inter.norm = vec3(0, 0, 0);
   return (inter);
 }

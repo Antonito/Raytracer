@@ -5,13 +5,14 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May  9 03:28:07 2016 Antoine Baché
-** Last update Sun May 22 20:37:05 2016 Antoine Baché
+** Last update Sun May 22 20:45:21 2016 Antoine Baché
 */
 
 #include "engine/intersect.h"
 
 double			calc_g_klein(t_ray *ray, t_vec3 tmp, t_vec3 pos)
 {
+  (void)ray;
   (void)pos;
   return (-2.0 * tmp.x * tmp.x * tmp.y * tmp.y + 3.0 * tmp.x * tmp.x * tmp.x *
 	  tmp.x * tmp.y * tmp.y - 10.0 * tmp.x * tmp.x * tmp.z * tmp.z - 10.0 *

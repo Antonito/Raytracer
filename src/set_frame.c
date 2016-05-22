@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon May  2 22:15:55 2016 Ludovic Petrenko
-** Last update Sun May 22 20:14:34 2016 Antoine Baché
+** Last update Sun May 22 20:56:05 2016 Antoine Baché
 */
 
 #include <stdio.h>
@@ -14,8 +14,6 @@
 #include "raytracer.h"
 #include "threadpool_raytracer.h"
 #include "tools/math.h"
-
-#pragma message "comment"
 
 void			refresh_size(t_data *data, int frame)
 {

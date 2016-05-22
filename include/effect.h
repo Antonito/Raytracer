@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May 18 12:36:29 2016 Antoine Baché
-** Last update Sun May 22 05:09:35 2016 Antoine Baché
+** Last update Sun May 22 21:18:36 2016 Antoine Baché
 */
 
 #ifndef EFFECT_H_
@@ -31,9 +31,6 @@ typedef enum		e_effect
     BAYER,
     SEPIA,
     EIGHT_BIT,
-    MAX_FILTER,
-    RETRO,
-    WATERCOLOR,
     SOLARIZED,
     ROTATE,
     CONTRAST,

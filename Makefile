@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sun May 22 20:25:35 2016 Antoine Baché
+## Last update Sun May 22 21:34:31 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -53,7 +53,6 @@ EFFECT_FILES=		effect.c			\
 			solarized.c			\
 			rotate.c			\
 			contrast.c			\
-			max_filter.c			\
 			antialiasing.c
 
 NOISE_PREFIX=		src/noise/
@@ -127,7 +126,6 @@ SHAPE_FILES=		plane.c				\
 			hyperbola.c			\
 			ellipsoid.c			\
 			ply.c				\
-			boy.c				\
 			cassini.c			\
 			chair.c				\
 			kusner.c			\
@@ -138,7 +136,6 @@ SHAPE_FILES=		plane.c				\
 			bifolia.c			\
 			duplin.c			\
 			cushion.c			\
-			double_sphere.c			\
 			tooth.c				\
 			heart.c				\
 			hunt.c				\
@@ -151,8 +148,18 @@ SHAPE_FILES=		plane.c				\
 			devil.c				\
 			quartic_cylinder.c		\
 			light.c				\
-			normale_generic.c		\
-			no_shape.c
+			no_shape.c			\
+			bohemian_dome_normale.c		\
+			bohemian_star_normale.c		\
+			c8_normale.c			\
+			cassini_normale.c		\
+			chair_normale.c			\
+			chubs_normale.c			\
+			cushion_normale.c		\
+			devil_normale.c			\
+			heart_normale.c			\
+			hunt_normale.c			\
+			normale_generic.c
 
 THREADPOOL_PREFIX=	src/threadpool/
 

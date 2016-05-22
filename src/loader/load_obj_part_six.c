@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun May 22 12:23:05 2016 Antoine Baché
-** Last update Sun May 22 20:23:51 2016 Antoine Baché
+** Last update Sun May 22 20:45:58 2016 Antoine Baché
 */
 
 #include <math.h>
@@ -42,7 +42,6 @@ void	load_quartic_cylinder(t_obj *obj, const t_bunny_ini_scope *scope)
   obj->get_intersect = &get_intersect_quartic_cylinder;
 }
 
-#pragma message("Spheroid a implementer")
 void	load_spheroid(t_obj *obj, const t_bunny_ini_scope *scope)
 {
   char	*tmp;

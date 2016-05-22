@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May 10 13:28:30 2016 Antoine Baché
-** Last update Fri May 13 01:55:16 2016 Antoine Baché
+** Last update Sun May 22 21:28:51 2016 Antoine Baché
 */
 
 #include <math.h>
@@ -44,5 +44,6 @@ t_intersect	get_intersect_hyperbola(t_obj *obj, t_ray *ray)
   if (inter.pos.x > obj->hyperbola.length || inter.pos.z < 0.0)
     inter.dist = -1.0;
   inter.obj = obj;
+  inter.norm = vec3(0, 0, 0);
   return (inter);
 }

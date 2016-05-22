@@ -5,13 +5,13 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun May 22 15:21:42 2016 Arthur ARNAUD
-** Last update Sun May 22 15:24:59 2016 Arthur ARNAUD
+** Last update Sun May 22 20:27:31 2016 Arthur ARNAUD
 */
 
 #include "engine/object.h"
 #include "engine/intersect.h"
 
-double	calc_x_derivative(t_intersect *inter, t_vec3 tmp)
+double	calc_x_derivative_heart(t_intersect *inter, t_vec3 tmp)
 {
   return ((240 * inter->pos.x * tmp.x * tmp.x +
 	   (240 * tmp.z + 240 * tmp.y - 240) *
@@ -22,7 +22,7 @@ double	calc_x_derivative(t_intersect *inter, t_vec3 tmp)
 	    tmp.y + 60) * inter->pos.x) / 5);
 }
 
-double	calc_y_derivative(t_intersect *inter, t_vec3 tmp)
+double	calc_y_derivative_heart(t_intersect *inter, t_vec3 tmp)
 {
   return (6 * inter->pos.y * tmp.y * tmp.y +
 	  (12 * tmp.z + 24 * tmp.x - 12) *
@@ -32,7 +32,7 @@ double	calc_y_derivative(t_intersect *inter, t_vec3 tmp)
 	   tmp.z + 24 * tmp.x * tmp.x - 24 *
 	   tmp.x + 6) * inter->pos.y);
 }
-double	calc_z_derivative(t_intersect *inter, t_vec3 tmp)
+double	calc_z_derivative_heart(t_intersect *inter, t_vec3 tmp)
 {
   return (3 * inter->pos.z *
 	  (20 * tmp.z * tmp.z +
@@ -45,6 +45,7 @@ double	calc_z_derivative(t_intersect *inter, t_vec3 tmp)
 
 void	calc_normale_heart(t_intersect *inter)
 {
-  calc_normale(calc_x_derivative, calc_y_derivative, calc_z_derivative,
+  calc_normale(calc_x_derivative_heart, calc_y_derivative_heart,
+	       calc_z_derivative_heart,
 	       inter);
 }

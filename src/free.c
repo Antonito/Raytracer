@@ -5,16 +5,13 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May 10 09:31:47 2016 Antoine Baché
-** Last update Sun May 22 19:56:35 2016 Antoine Baché
+** Last update Sun May 22 20:55:53 2016 Antoine Baché
 */
 
 #include "raytracer.h"
 #include "tools/math.h"
 #include "threadpool_raytracer.h"
 #include "tools/memory.h"
-
-#pragma message("Free data here !")
-#pragma message("/!\\ Ply obj !!")
 
 void	free_bsp(t_node *node)
 {
