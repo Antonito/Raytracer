@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May 18 13:16:08 2016 Antoine Baché
-** Last update Sun May 22 18:54:21 2016 Ludovic Petrenko
+** Last update Sun May 22 23:56:30 2016 Luka Boulagnon
 */
 
 #include <stdio.h>
@@ -83,8 +83,6 @@ void		pastel_effect(t_color *pix, int height, int width,
   int		y;
   t_color	*sum;
 
-  conf->pastel.level = 10;
-  conf->pastel.radius = 10;
   if (conf->pastel.radius >= height * width || !(x = -1) ||
       !(sum = my_calloc(height * width, sizeof(t_color))))
     return ;
