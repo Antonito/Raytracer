@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sun May 22 20:01:04 2016 Antoine Baché
+## Last update Sun May 22 20:25:35 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -144,17 +144,15 @@ SHAPE_FILES=		plane.c				\
 			hunt.c				\
 			miter.c				\
 			kiss.c				\
-			kummer.c			\
-			enneper.c			\
 			bohemian_dome.c			\
 			bohemian_star.c			\
 			c8.c				\
 			chubs.c				\
 			devil.c				\
 			quartic_cylinder.c		\
-			spheroid.c			\
 			light.c				\
-			normale_generic.c
+			normale_generic.c		\
+			no_shape.c
 
 THREADPOOL_PREFIX=	src/threadpool/
 

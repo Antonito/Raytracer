@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun May 22 12:23:05 2016 Antoine Baché
-** Last update Sun May 22 13:21:40 2016 Antoine Baché
+** Last update Sun May 22 20:23:51 2016 Antoine Baché
 */
 
 #include <math.h>
@@ -50,7 +50,7 @@ void	load_spheroid(t_obj *obj, const t_bunny_ini_scope *scope)
   obj->type = SPHEROID;
   obj->spheroid.radius = DEFAULT_SPHEROID_RADIUS;
   obj->spheroid.height = DEFAULT_SPHEROID_HEIGHT;
-  obj->get_intersect = &get_intersect_spheroid;
+  obj->get_intersect = &no_shape;
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, RADIUS_FIELD, 0)))
     obj->spheroid.radius = my_getdouble(tmp);
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, RADIUS_FIELD, 0)))

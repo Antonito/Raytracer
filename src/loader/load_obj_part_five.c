@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun May 22 12:23:05 2016 Antoine Baché
-** Last update Sun May 22 13:20:57 2016 Antoine Baché
+** Last update Sun May 22 20:26:17 2016 Antoine Baché
 */
 
 #include <math.h>
@@ -25,14 +25,14 @@ void	load_kummer(t_obj *obj, const t_bunny_ini_scope *scope)
 {
   (void)scope;
   obj->type = KUMMER;
-  obj->get_intersect = &get_intersect_kummer;
+  obj->get_intersect = &no_shape;
 }
 
 void	load_enneper(t_obj *obj, const t_bunny_ini_scope *scope)
 {
   (void)scope;
   obj->type = ENNEPER;
-  obj->get_intersect = &get_intersect_enneper;
+  obj->get_intersect = &no_shape;
 }
 
 void	load_bohemian_dome(t_obj *obj, const t_bunny_ini_scope *scope)
