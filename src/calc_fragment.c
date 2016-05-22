@@ -5,13 +5,10 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Thu Apr 21 20:09:40 2016 Ludovic Petrenko
-** Last update Sun May 22 17:14:42 2016 Ludovic Petrenko
+** Last update Sun May 22 18:38:29 2016 Ludovic Petrenko
 */
 
-#pragma GCC warning "\e[31m\e[1mCommentaires + Norme !\e[0m"
-
 #include <stdio.h>
-
 #include <math.h>
 #include "raytracer.h"
 #include "engine/vector.h"
@@ -25,8 +22,6 @@ void		set_vectors(t_data *data, t_camera *c)
     (double)data->config.cur_width;
   tmp = vec3_normalize(vec3(c->dir.y, -c->dir.x, 0));
   c->incr_x = mult_vec3(tmp, len);
-  /* len = tan(c->fov * data->cur_width / data->cur_height / 2.0 */
-  /* 	    * M_PI / 180.0) * 2.0 / data->cur_height; */
   tmp = vec3_normalize(cross_vec3(c->dir, tmp));
   c->incr_y = mult_vec3(tmp, len);
   c->origin = add_vec3(c->pos, c->dir);
@@ -36,10 +31,10 @@ void		set_vectors(t_data *data, t_camera *c)
 					    data->config.cur_height / 2.0));
 }
 
-unsigned int	calc_pixel(t_scene *scene, t_ivec2 *pix, t_data *data)
+unsigned int	calc_pixel(t_scene *scene, t_ivec2 *pix, t_data *data,
+			   pthread_mutex_t *mutex)
 {
   t_ray		ray;
-  double	len;
   t_intersect	inter;
 
   ray.pos = scene->cam.pos;
@@ -47,51 +42,29 @@ unsigned int	calc_pixel(t_scene *scene, t_ivec2 *pix, t_data *data)
   		     mult_vec3(scene->cam.incr_x, pix->x));
   ray.dir = add_vec3(ray.dir, mult_vec3(scene->cam.incr_y, pix->y));
   ray.dir = vec3_normalize(sub_vec3(ray.dir, ray.pos));
-  /* ray.dir.x = scene->cam.origin.x + scene->cam.incr_x.x * pix->x + */
-  /*   scene->cam.incr_y.x * pix->y - ray.pos.x; */
-  /* ray.dir.y = scene->cam.origin.y + scene->cam.incr_x.y * pix->x + */
-  /*   scene->cam.incr_y.y * pix->y - ray.pos.y; */
-  /* ray.dir.z = scene->cam.origin.z + scene->cam.incr_x.z * pix->x + */
-  /*   scene->cam.incr_y.z * pix->y - ray.pos.z; */
-  /* len = sqrt(ray.dir.x * ray.dir.x + ray.dir.y * */
-  /* 	     ray.dir.y + ray.dir.z * ray.dir.z); */
-  /* ray.dir.x /= len; */
-  /* ray.dir.y /= len; */
-  /* ray.dir.z /= len; */
   ray.env = NULL;
+  pthread_mutex_lock(mutex);
   calc_ray(scene, &ray, 0, &inter);
   if (inter.dist < 0.00001 || inter.dist == INFINITY)
-    scene->zbuf[pix->x + pix->y * data->config.width] =
+    scene->zbuf[pix->x + pix->y * data->config.cur_width] =
       (float)scene->cam.focale;
   else
-    scene->zbuf[pix->x + pix->y * data->config.width] = (float)inter.dist;
+    scene->zbuf[pix->x + pix->y * data->config.cur_width] = (float)inter.dist;
+  pthread_mutex_unlock(mutex);
   return (inter.color.full);
 }
 
-void		calc_fragment(t_data *data, unsigned int *buf, t_ivec2 *pos)
+void		calc_fragment(t_data *data, unsigned int *buf, t_ivec2 *pos,
+			      pthread_mutex_t *mutex)
 {
   t_ivec2	tmp;
-  int		size;
-  int		i = 0;
 
   tmp = pos[0];
-  size = (pos[1].x - pos[0].x) * (pos[1].y - pos[0].y);
-  while (tmp.y <= pos[1].y)
+  while (tmp.y < pos[1].y && (tmp.x = pos[0].x - 1))
     {
-      buf[tmp.x + data->config.cur_width * tmp.y] =
-	calc_pixel(data->scene, &tmp, data);
-      /* buf[i + 1] = buf[i]; */
-      /* buf[i + pos[1].x] = buf[i]; */
-      /* buf[i + pos[1].x + 1] = buf[i]; */
-      tmp.x = (tmp.x + 1 < pos[1].x) ? tmp.x + 1 : pos[0].x;
-      tmp.y += (tmp.x == pos[0].x);
-      if (tmp.x == pos[0].x)
-	{
-	  printf("\r%.2f%%   ", 100.0 * i / size);
-	  fflush(stdout);
-	}
-      /* if (tmp.x == 0) */
-      /* 	i += pos[1].x; */
-      ++i;
+      while (++tmp.x < pos[1].x)
+	buf[tmp.x + data->config.cur_width * tmp.y] =
+	  calc_pixel(data->scene, &tmp, data, mutex);
+      ++tmp.y;
     }
 }

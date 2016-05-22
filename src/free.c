@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May 10 09:31:47 2016 Antoine Baché
-** Last update Sun May 22 18:34:39 2016 Ludovic Petrenko
+** Last update Sun May 22 18:40:06 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -56,10 +56,8 @@ int		free_raytracer(t_data *data, int ret)
   cur = data->scene;
   cur->prev->next = NULL;
   next = cur->next;
-  printf("%p\n", cur);
   while (cur)
     {
-      printf("FREE\n");
       next = cur->next;
       free_scene(cur);
       cur = next;

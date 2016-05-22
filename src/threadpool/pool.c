@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May 17 02:25:38 2016 Antoine Baché
-** Last update Sun May 22 16:44:40 2016 Antoine Baché
+** Last update Sun May 22 18:33:29 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -33,8 +33,6 @@ static int		threadpool_init_start_threads(t_threadpool *pool)
 
 int			threadpool_init(t_threadpool *pool)
 {
-  static pthread_t	threads[NB_THREADS + 1];
-
   pool->mutex = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;
   pool->queue.mutex = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;
   pool->queue.condition = (pthread_cond_t)PTHREAD_COND_INITIALIZER;
@@ -56,7 +54,7 @@ void			threadpool_destroy(t_threadpool *pool)
   i = 0;
   while (i < pool->total_threads)
     {
-      pthread_kill(pool->threads[i], 2);
+      pthread_cancel(pool->threads[i]);
       pthread_detach(pool->threads[i]);
       ++i;
     }

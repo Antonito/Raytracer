@@ -5,9 +5,10 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun May 22 05:06:37 2016 Antoine Baché
-** Last update Sun May 22 11:03:33 2016 Antoine Baché
+** Last update Sun May 22 18:56:49 2016 Ludovic Petrenko
 */
 
+#include "raytracer.h"
 #include "effect.h"
 #include "tools/memory.h"
 #include "tools/types.h"

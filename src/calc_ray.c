@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 30 23:30:01 2016 Ludovic Petrenko
-** Last update Sun May 22 13:07:50 2016 Ludovic Petrenko
+** Last update Sun May 22 17:06:54 2016 Antoine Baché
 */
 
 #pragma GCC warning "\e[31m\e[1mCommentaires + Norme !\e[0m"
@@ -23,7 +23,6 @@ unsigned int	mix_colors(t_scene *s, t_intersect *i,
 			   t_intersect *r, t_intersect *t)
 {
   t_color	final;
-  double	coef;
   double	refl;
   double	refr;
   int		j;
@@ -34,9 +33,6 @@ unsigned int	mix_colors(t_scene *s, t_intersect *i,
   refr = i->mat->opacity;
   if (t->dist >= 0.0 && t->dist != INFINITY)
     refr = MAX(MIN(refr / t->dist * 50, 1.0), 0.0);
-  /* coef = MIN(1.0, MAX(dot_vec3(vec3_normalize(i->norm), */
-  /* 			       vec3_normalize(vec3(0,-1,1))), 0.1)); */
-  coef = 1.0;
   get_light(s, i, light);
   j = -1;
   while (++j < 3)
@@ -68,10 +64,8 @@ static void	get_refracted_ray(t_intersect *inter, t_ray *i, t_ray *r)
 
   coeff[0] = (i->env) ? ((t_obj *)i->env)->mat->fresnel : 1.0;
   coeff[1] = (inter->mat) ? inter->mat->fresnel : 1.0;
-  /* r->dir = sub_vec3(i->dir, mult_vec3(inter->norm, coeff[0] / coeff[1])); */
   c = dot_vec3(i->dir, inter->norm);
   s = (coeff[0] / coeff[1]) * (coeff[0] / coeff[1]) * (1 - c * c);
-  /* r->dir = vec3_normalize(r->dir); */
   r->dir = mult_vec3(i->dir, coeff[0] / coeff[1]);
   tmp = coeff[0] / coeff[1] * c - sqrt(1 - s);
   r->dir = add_vec3(r->dir, mult_vec3(inter->norm, tmp));
@@ -85,6 +79,7 @@ static void	get_refracted_ray(t_intersect *inter, t_ray *i, t_ray *r)
     r->env = inter->obj;
 }
 
+#pragma "Norme Calc_ray"
 void		calc_ray(t_scene *scene, t_ray *ray, int i, t_intersect *inter)
 {
   t_intersect	refl;
@@ -98,7 +93,8 @@ void		calc_ray(t_scene *scene, t_ray *ray, int i, t_intersect *inter)
   if (i >= MAX_RECURSIVE)
     return ;
   scene_intersect(scene, ray, inter);
-  if (inter->obj && inter->obj != scene->select && ((t_obj*)inter->obj)->type == LIGHT)
+  if (inter->obj && inter->obj != scene->select &&
+      ((t_obj*)inter->obj)->type == LIGHT)
     return ;
   if (inter->dist < 0.00001 || inter->dist == INFINITY || inter->mat == NULL)
     {
