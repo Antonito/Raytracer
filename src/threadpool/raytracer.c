@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Fri May 20 20:55:25 2016 Antoine Baché
-** Last update Sun May 22 19:39:26 2016 Antoine Baché
+** Last update Sun May 22 19:42:00 2016 Antoine Baché
 */
 
 #include "threadpool_raytracer.h"
@@ -61,6 +61,7 @@ static int	threadpool_raytracer_free(t_threadpool_raytracer **arg)
   if (*arg)
     my_free(*arg);
   *arg = NULL;
+  return (0);
 }
 
 int				loop_raytracer_th(t_data *data, t_ivec2 **pos,

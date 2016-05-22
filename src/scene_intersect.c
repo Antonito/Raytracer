@@ -5,12 +5,13 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat May 21 02:22:35 2016 Ludovic Petrenko
-** Last update Sun May 22 13:59:04 2016 Ludovic Petrenko
+** Last update Sun May 22 18:50:49 2016 Ludovic Petrenko
 */
 
 #define _ISOC99_SOURCE
 
 #include <math.h>
+#include "raytracer.h"
 #include "engine/intersect.h"
 #include "engine/object.h"
 #include "engine/scene.h"

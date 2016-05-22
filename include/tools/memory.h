@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 22:54:52 2016 Ludovic Petrenko
-** Last update Thu May 19 11:31:53 2016 Antoine Baché
+** Last update Sun May 22 19:06:21 2016 Ludovic Petrenko
 */
 
 #ifndef MEMORY_H_

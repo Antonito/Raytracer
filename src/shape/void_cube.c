@@ -5,14 +5,14 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May  3 16:58:16 2016 Antoine Baché
-** Last update Sat May 21 19:33:00 2016 Antoine Baché
+** Last update Sun May 22 19:12:10 2016 Ludovic Petrenko
 */
 
 #include "solver.h"
 #include "engine/intersect.h"
 #include "engine/object.h"
 
-static void	get_dist_void_cube(t_ray *ray, t_intersect *inter, t_obj *obj)
+static void	get_dist_void_cube(t_ray *ray, t_intersect *inter)
 {
   double	sol[5];
   t_vec3	tmp;
@@ -45,7 +45,7 @@ t_intersect	get_intersect_void_cube(t_obj *obj, t_ray *ray)
 
   inter.dir = ray->dir;
   inter.mat = obj->mat;
-  get_dist_void_cube(ray, &inter, obj);
+  get_dist_void_cube(ray, &inter);
   if (inter.dist == -1.0 || inter.dist == NOT_A_SOLUTION)
     {
       inter.dist = -1.0;

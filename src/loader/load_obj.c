@@ -5,33 +5,33 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Mon Apr 18 20:37:43 2016 Ludovic Petrenko
-** Last update Sat May 21 13:08:14 2016 Ludovic Petrenko
+** Last update Sun May 22 19:08:08 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
 #include "tools/str.h"
 #include "loader.h"
 
-void		load_obj_basics(t_obj *obj, const t_bunny_ini_scope *s)
+void	load_obj_basics(t_obj *obj, const t_bunny_ini_scope *s)
 {
-  const char	*tmp;
+  char	*tmp;
 
   obj->pos = vec3(0, 0, 0);
   obj->rot = vec3(0, 0, 0);
-  if ((tmp = bunny_ini_scope_get_field(s, POS_FIELD, 0)))
+  if ((tmp = (char *)bunny_ini_scope_get_field(s, POS_FIELD, 0)))
     obj->pos.x = my_getdouble(tmp);
-  if ((tmp = bunny_ini_scope_get_field(s, POS_FIELD, 1)))
+  if ((tmp = (char *)bunny_ini_scope_get_field(s, POS_FIELD, 1)))
     obj->pos.y = my_getdouble(tmp);
-  if ((tmp = bunny_ini_scope_get_field(s, POS_FIELD, 2)))
+  if ((tmp = (char *)bunny_ini_scope_get_field(s, POS_FIELD, 2)))
     obj->pos.z = my_getdouble(tmp);
-  if ((tmp = bunny_ini_scope_get_field(s, ROT_FIELD, 0)))
+  if ((tmp = (char *)bunny_ini_scope_get_field(s, ROT_FIELD, 0)))
     obj->rot.x = my_getdouble(tmp) * M_PI / 180.0;
-  if ((tmp = bunny_ini_scope_get_field(s, ROT_FIELD, 1)))
+  if ((tmp = (char *)bunny_ini_scope_get_field(s, ROT_FIELD, 1)))
     obj->rot.y = my_getdouble(tmp) * M_PI / 180.0;
-  if ((tmp = bunny_ini_scope_get_field(s, ROT_FIELD, 2)))
+  if ((tmp = (char *)bunny_ini_scope_get_field(s, ROT_FIELD, 2)))
     obj->rot.z = my_getdouble(tmp) * M_PI / 180.0;
   obj->tex = NULL;
-  if ((tmp = bunny_ini_scope_get_field(s, TEX_FIELD, 0)))
+  if ((tmp = (char *)bunny_ini_scope_get_field(s, TEX_FIELD, 0)))
     obj->tex = bunny_load_pixelarray(tmp);
   obj->next = obj + 1;
 }
