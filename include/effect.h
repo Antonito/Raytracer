@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May 18 12:36:29 2016 Antoine Baché
-** Last update Sun May 22 22:44:35 2016 Ludovic Petrenko
+** Last update Sun May 22 23:00:08 2016 Antoine Baché
 */
 
 #ifndef EFFECT_H_
@@ -82,8 +82,11 @@ void			apply_effect(t_bunny_pixelarray *, t_effect, void *);
 /*
 ** Effects
 */
+int			blit_scaled_blur(t_bunny_pixelarray *,
+					 t_bunny_pixelarray *, int);
 void			bayer_effect(t_color *, int, int, t_config *);
-void			black_and_white_effect(t_color *, int, int, t_config *);
+void			black_and_white_effect(t_color *, int, int,
+					       t_config *);
 void			contrast_effect(t_color *, int, int, t_config *);
 void			eight_bit_effect(t_color *, int, int, t_config *);
 void			max_filter_effect(t_color *, int, int, t_config *);

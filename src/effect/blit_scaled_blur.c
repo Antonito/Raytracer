@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sun May 22 20:01:03 2016 Ludovic Petrenko
-** Last update Sun May 22 22:42:49 2016 Ludovic Petrenko
+** Last update Sun May 22 22:57:32 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -45,10 +45,8 @@ int		blit_scaled_blur(t_bunny_pixelarray *src,
 				 int ratio)
 {
   t_ivec2	i;
-  t_color	*s;
   t_color	*d;
 
-  s = src->pixels;
   d = dest->pixels;
   i.y = -1;
   while (++i.y < dest->clipable.clip_height)

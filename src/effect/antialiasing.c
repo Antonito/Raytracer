@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun May 22 05:06:37 2016 Antoine Baché
-** Last update Sun May 22 22:43:02 2016 Ludovic Petrenko
+** Last update Sun May 22 22:56:43 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -46,11 +46,9 @@ static void	blur_it(t_bunny_pixelarray *sharp,
 			t_bunny_pixelarray *blur, int ratio)
 {
   t_ivec2	i;
-  t_color	*s;
   t_color	*b;
   t_ivec2	size;
 
-  s = sharp->pixels;
   b = blur->pixels;
   i.y = -1;
   size.x = blur->clipable.clip_width;
@@ -60,7 +58,7 @@ static void	blur_it(t_bunny_pixelarray *sharp,
       i.x = -1;
       while (++i.x < size.x)
 	b[i.x + i.y * size.x] =
-	  avg_color(s, i, 2 * ratio, size);
+	  avg_color(sharp->pixels, i, 2 * ratio, size);
     }
 }
 
