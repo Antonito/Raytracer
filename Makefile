@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sun May 22 21:34:31 2016 Antoine Baché
+## Last update Sun May 22 22:26:25 2016 Antoine Baché
 ##
 
 DEBUG=			yes
@@ -188,7 +188,8 @@ TOOLS_FILES=		memory.c			\
 			blit_scaled.c			\
 			swap_double.c			\
 			trigo.c				\
-			pixelarray.c
+			pixelarray.c			\
+			bmp.c
 
 PLY_PREFIX=		src/ply/
 

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun May 22 19:59:54 2016 Antoine Baché
-** Last update Sun May 22 20:00:50 2016 Antoine Baché
+** Last update Sun May 22 22:29:08 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -19,6 +19,8 @@ t_bunny_response	events(t_data *data)
     keys = bunny_get_keyboard();
   if (keys[BKS_ESCAPE])
     return (EXIT_ON_SUCCESS);
+  if (keys[BKS_E] && !data->config.minimum_fps)
+    save_bmp(data->render, "./raytracer.bmp");
   if (keys[BKS_Z] && data->config.minimum_fps)
     data->scene->cam.pos = add_vec3(data->scene->cam.pos,
 				    mult_vec3(data->scene->cam.dir, 0.2));
