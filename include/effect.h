@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May 18 12:36:29 2016 Antoine Baché
-** Last update Sun May 22 21:18:36 2016 Antoine Baché
+** Last update Sun May 22 22:44:35 2016 Ludovic Petrenko
 */
 
 #ifndef EFFECT_H_
@@ -76,7 +76,7 @@ typedef struct		s_stainedglass
 
 # include "config.h"
 
-int			antialiasing(t_bunny_pixelarray *pix, int ratio);
+void			antialiasing(t_bunny_pixelarray *pix, int ratio);
 void			apply_effect(t_bunny_pixelarray *, t_effect, void *);
 
 /*

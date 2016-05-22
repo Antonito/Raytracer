@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sun May 22 22:26:25 2016 Antoine Baché
+## Last update Sun May 22 22:46:30 2016 Ludovic Petrenko
 ##
 
 DEBUG=			yes
@@ -53,6 +53,7 @@ EFFECT_FILES=		effect.c			\
 			solarized.c			\
 			rotate.c			\
 			contrast.c			\
+			blit_scaled_blur.c		\
 			antialiasing.c
 
 NOISE_PREFIX=		src/noise/

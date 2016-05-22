@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 16 16:32:45 2016 Ludovic Petrenko
-** Last update Sun May 22 22:27:41 2016 Antoine Baché
+** Last update Sun May 22 22:44:17 2016 Ludovic Petrenko
 */
 
 #include <stdio.h>
@@ -35,8 +35,10 @@ t_bunny_response	main_loop(t_data *data)
   data->scene->cache->clipable.clip_width = data->config.cur_width;
   data->scene->cache->clipable.clip_height = data->config.cur_height;
   blit_scaled(data->scene->cache, data->render);
-  if (data->effect != NO_EFFECT)
+  if (data->effect != NO_EFFECT && !data->config.minimum_fps)
     apply_effect(data->render, data->effect, data);
+  if (!data->config.minimum_fps)
+    antialiasing(data->render, 2);
   bunny_blit(&data->win->buffer, &data->render->clipable, NULL);
   bunny_display(data->win);
   return (GO_ON);
