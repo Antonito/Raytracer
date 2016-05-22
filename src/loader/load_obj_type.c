@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 01:06:07 2016 Ludovic Petrenko
-** Last update Sun May 22 22:21:12 2016 Antoine Baché
+** Last update Sun May 22 23:04:21 2016 Antoine Baché
 */
 
 #include <math.h>
@@ -52,6 +52,7 @@ void	load_plane(t_obj *obj, const t_bunny_ini_scope *scope)
 
   obj->type = PLANE;
   obj->plane.normale = DEFAULT_PLANE_NORMALE;
+  obj->plane.chess = 0;
   obj->get_intersect = &get_intersect_plane;
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, NORMALE_FIELD, 0)))
     obj->plane.normale.x = my_getdouble(tmp);
@@ -59,6 +60,8 @@ void	load_plane(t_obj *obj, const t_bunny_ini_scope *scope)
     obj->plane.normale.y = my_getdouble(tmp);
   if ((tmp = (char *)bunny_ini_scope_get_field(scope, NORMALE_FIELD, 2)))
     obj->plane.normale.z = my_getdouble(tmp);
+  if ((tmp = (char *)bunny_ini_scope_get_field(scope, "chess", 0)))
+    obj->plane.chess = my_gethexa(tmp);
   obj->plane.normale = vec3_normalize(obj->plane.normale);
   obj->box[0] = obj->box[1] = vec3(0, 0, 0);
 }

@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May 10 09:31:47 2016 Antoine Baché
-** Last update Sun May 22 20:55:53 2016 Antoine Baché
+** Last update Sun May 22 23:23:34 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -27,7 +27,6 @@ void	free_scene(t_scene *scene)
   int	i;
 
   my_free(scene->zbuf);
-  bunny_delete_clipable(&scene->cache->clipable);
   my_free(scene->mat);
   i = -1;
   while (++i < scene->nb_obj)

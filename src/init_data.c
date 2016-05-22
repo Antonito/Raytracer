@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 22:32:39 2016 Ludovic Petrenko
-** Last update Sun May 22 22:38:56 2016 Antoine Baché
+** Last update Sun May 22 23:26:54 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -16,7 +16,7 @@
 static void	set_fields(t_data *data)
 {
   start_threadpool();
-  data->config.fullscreen = false;
+  data->config.fullscreen = true;
   data->config.minimum_fps = DEFAULT_FPS;
   data->effect = NO_EFFECT;
   data->joy.lon = 0;

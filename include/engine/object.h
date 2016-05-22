@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:33:45 2016 Ludovic Petrenko
-** Last update Sun May 22 20:21:45 2016 Antoine Baché
+** Last update Sun May 22 23:03:53 2016 Antoine Baché
 */
 
 #ifndef OBJECT_H_
@@ -110,6 +110,7 @@ typedef struct		s_sphere
 
 typedef struct		s_plane
 {
+  unsigned int		chess;
   t_vec3		normale;
 }			t_plane;
 

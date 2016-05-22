@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Mon May  2 07:53:57 2016 Antoine Baché
-** Last update Sat May 21 12:56:21 2016 Ludovic Petrenko
+** Last update Sun May 22 23:19:56 2016 Antoine Baché
 */
 
 #include "solver.h"
@@ -27,7 +27,9 @@ t_intersect	get_intersect_plane(t_obj *obj, t_ray *ray)
   inter.pos.x = ray->pos.x + inter.dist * ray->dir.x;
   if ((((int)inter.pos.x + (inter.pos.x < 0.0)) & 1) ^
       ((((int)inter.pos.y + (inter.pos.y < 0.0)) & 1)))
-    inter.mat = NULL;
+    {
+      inter.mat = NULL;
+    }
   inter.norm = vec3(0, 0, 1.0);
   return (inter);
 }
