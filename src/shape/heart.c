@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Sun May 15 03:09:14 2016 Antoine Baché
-** Last update Sat May 21 19:25:18 2016 Antoine Baché
+** Last update Sun May 22 20:11:04 2016 Arthur ARNAUD
 */
 
 #include "solver.h"
@@ -42,5 +42,6 @@ t_intersect	get_intersect_heart(t_obj *obj, t_ray *ray)
   if (inter.dist <= 0.0)
     return (inter);
   inter.pos = add_vec3(mult_vec3(ray->dir, inter.dist), ray->pos);
+  calc_normale_heart(&inter);
   return (inter);
 }
