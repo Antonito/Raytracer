@@ -5,7 +5,7 @@
 ## Login   <bache_a@epitech.net>
 ##
 ## Started on  Thu Apr 14 12:22:26 2016 Antoine Baché
-## Last update Sun May 22 21:34:31 2016 Antoine Baché
+## Last update Sun May 22 22:13:45 2016 Arthur ARNAUD
 ##
 
 DEBUG=			yes
@@ -159,6 +159,7 @@ SHAPE_FILES=		plane.c				\
 			devil_normale.c			\
 			heart_normale.c			\
 			hunt_normale.c			\
+			barth_sextic_normale.c		\
 			normale_generic.c
 
 THREADPOOL_PREFIX=	src/threadpool/
