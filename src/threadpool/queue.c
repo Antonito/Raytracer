@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May 17 01:57:52 2016 Antoine Baché
-** Last update Sat May 21 01:15:19 2016 Antoine Baché
+** Last update Sun May 22 16:35:44 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -68,6 +68,6 @@ int			threadpool_pop(t_threadpool_queue *queue,
   pthread_mutex_unlock(mutex);
   threadpool_task_init(task, queue_task->func, queue_task->data);
   threadpool_task_destroy(queue_task);
-  my_free(queue_task);
+  bunny_free(queue_task);
   return (0);
 }

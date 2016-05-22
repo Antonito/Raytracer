@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun May 22 14:51:17 2016 Arthur ARNAUD
-** Last update Sun May 22 14:54:28 2016 Arthur ARNAUD
+** Last update Sun May 22 15:56:48 2016 Antoine Baché
 */
 
 #include "engine/object.h"
@@ -25,7 +25,7 @@ double	calc_z_derivative(t_intersect *inter, t_vec3 tmp)
   return (-4 * inter->pos.z * (tmp.z + tmp.y - tmp.x));
 }
 
-void			calc_normale_bohemian_dome(t_intersect *inter)
+void	calc_normale_bohemian_dome(t_intersect *inter)
 {
   calc_normale(calc_x_derivative, calc_y_derivative, calc_z_derivative,
 	       inter);
