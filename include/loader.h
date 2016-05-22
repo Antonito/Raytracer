@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Tue Apr 19 19:09:07 2016 Ludovic Petrenko
-** Last update Thu May 19 10:27:55 2016 Ludovic Petrenko
+** Last update Sun May 22 22:04:58 2016 Antoine Baché
 */
 
 #ifndef LOADER_H_
@@ -24,7 +24,7 @@ void		load_light_spec(t_obj *obj, const t_bunny_ini_scope *scope);
 void		load_obj_basics(t_obj *obj, const t_bunny_ini_scope *s);
 void		load_obj_data(t_scene *scene, t_obj *o,
 			      const t_bunny_ini_scope *s);
-void		load_objs(t_scene *scene, t_obj *obj, const t_bunny_ini *ini);
+int		load_objs(t_scene *scene, t_obj *obj, const t_bunny_ini *ini);
 void		load_obj_spec(t_obj *obj, const t_bunny_ini_scope *scope);
 void		load_point(t_obj *obj, const t_bunny_ini_scope *scope);
 
