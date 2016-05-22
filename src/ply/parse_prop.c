@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Tue Apr 26 15:35:12 2016 Arthur ARNAUD
-** Last update Sun May 15 18:49:00 2016 Antoine Baché
+** Last update Sun May 22 03:47:51 2016 Antoine Baché
 */
 
 #include "ply.h"
@@ -63,8 +63,14 @@ int	parse_color_face(t_color *color, char **tab, int *face_prop, int dec)
   return (0);
 }
 
-int	parse_color_vertex(t_color *color, char **tab, int *vertex_prop)
+int	parse_color_vertex(t_color *color, char **tab, int *vertex_prop,
+			   bool *get_color)
 {
+  if (vertex_prop[V_RED] == -1 || vertex_prop[V_GREEN] == -1 ||
+      vertex_prop[V_BLUE] == -1)
+    *get_color = false;
+  else
+    *get_color = true;
   color->argb[0] = (vertex_prop[V_RED] == -1)
     ? 0 : (unsigned char)my_getnbr(tab[vertex_prop[V_RED]]);
   color->argb[1] = (vertex_prop[V_BLUE] == -1)
