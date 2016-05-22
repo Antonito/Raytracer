@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 16 16:32:45 2016 Ludovic Petrenko
-** Last update Sun May 22 00:34:09 2016 Ludovic Petrenko
+** Last update Sun May 22 01:04:26 2016 Ludovic Petrenko
 */
 
 #include <stdio.h>
@@ -35,17 +35,18 @@ t_bunny_response	events(t_data *data)
     --data->config.minimum_fps;
   data->config.minimum_fps = (data->config.minimum_fps > 0) ?
     data->config.minimum_fps : 0;
-  if (keys[BKS_SPACE] && keys[BKS_LEFT])
-    data->scene = data->scene->prev;
-  if (keys[BKS_SPACE] && keys[BKS_RIGHT])
-    data->scene = data->scene->next;
   return (GO_ON);
 }
 
 t_bunny_response	main_events(t_bunny_event_state s,
 				    t_bunny_keysym k,
-				    UNUSED t_data *data)
+				    t_data *data)
 {
+  static const bool	*keys = NULL;
+
+  if (!keys)
+    keys = bunny_get_keyboard();
+
   if (s == GO_DOWN && k == BKS_ESCAPE)
     return (EXIT_ON_SUCCESS);
   if (s == GO_DOWN && k == BKS_HOME)
@@ -58,6 +59,12 @@ t_bunny_response	main_events(t_bunny_event_state s,
     --data->config.minimum_fps;
   if (data->config.minimum_fps < 0)
     data->config.minimum_fps = 0;
+  if (s == GO_DOWN && keys[BKS_SPACE] && k == BKS_LEFT)
+    data->scene = data->scene->prev;
+  if (s == GO_DOWN && keys[BKS_SPACE] && k == BKS_RIGHT)
+    data->scene = data->scene->next;
+  if (s == GO_DOWN && k == BKS_DELETE)
+    delete_object(data->scene);
   return (GO_ON);
 }
 

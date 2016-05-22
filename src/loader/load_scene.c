@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sun Apr 17 19:17:30 2016 Ludovic Petrenko
-** Last update Sun May 22 00:20:31 2016 Ludovic Petrenko
+** Last update Sun May 22 02:55:48 2016 Ludovic Petrenko
 */
 
 #include "raytracer.h"
@@ -51,6 +51,9 @@ void	load_scene_info(t_scene *s, const t_bunny_ini *ini)
   if ((tmp = (char *)bunny_ini_get_field(ini, SCENE_FIELD, AMB_FIELD, 0)))
     s->spec.ambiant = my_getdouble(tmp);
   s->select = NULL;
+  s->spec.skybox = NULL;
+  if ((tmp = (char *)bunny_ini_get_field(ini, SCENE_FIELD, SKYBOX_FIELD, 0)))
+    s->spec.skybox = bunny_load_pixelarray(tmp);
 }
 
 void	load_camera(t_camera *c, const t_bunny_ini *ini)

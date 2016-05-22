@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 30 23:30:01 2016 Ludovic Petrenko
-** Last update Sat May 21 15:24:42 2016 Ludovic Petrenko
+** Last update Sun May 22 03:07:29 2016 Ludovic Petrenko
 */
 
 #pragma GCC warning "\e[31m\e[1mCommentaires + Norme !\e[0m"
@@ -101,7 +101,7 @@ void		calc_ray(t_scene *scene, t_ray *ray, int i, t_intersect *inter)
     return ;
   if (inter->dist < 0.00001 || inter->dist == INFINITY || inter->mat == NULL)
     {
-      inter->color = scene->spec.bg_color;
+      inter->color.full = skybox_intersect(scene, ray);
       return ;
     }
   if (inter->obj == scene->select && -dot_vec3(inter->norm, ray->dir) < 0.25)
@@ -109,10 +109,6 @@ void		calc_ray(t_scene *scene, t_ray *ray, int i, t_intersect *inter)
       inter->color.full = 0xFF0000FF;
       return ;
     }
-  /* inter->mat = NULL; */
-  /* inter->norm = mult_vec3(inter->norm, -1.0); */
-  /* if (fabs(dot_vec3(vec3_normalize(ray->dir), vec3_normalize(inter->norm))) < 0.3) */
-  /*   return (0x00000000); */
   if (!IS_ZERO(inter->mat->reflectivity))
     {
       get_reflected_ray(inter, ray, &tmp);
