@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Wed Apr 20 00:59:49 2016 Ludovic Petrenko
-** Last update Fri May 13 16:00:46 2016 Luka Boulagnon
+** Last update Sun May 22 19:17:03 2016 Antoine Baché
 */
 
 #pragma message("WARNING Enlever printf")
@@ -17,7 +17,7 @@ int		get_obj_node(t_node *n, t_obj *obj)
 {
   static bool	(*get_node[])(t_node *, t_obj *) =
     {light_node, sphere_node, plane_node, cylinder_node, cone_node, NULL,
-    torus_node};
+     torus_node};
   bool		node[8];
   int		i;
   int		cur;
