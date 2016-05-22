@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Sat Apr 16 16:32:45 2016 Ludovic Petrenko
-** Last update Sun May 22 16:07:23 2016 Ludovic Petrenko
+** Last update Sun May 22 16:57:42 2016 Antoine Baché
 */
 
 #include <stdio.h>
@@ -145,48 +145,10 @@ t_bunny_response	main_loop(t_data *data)
   return (GO_ON);
 }
 
-void	print_ply(t_ply *ply)
-{
-  printf("=============================\n");
-  printf("              PLY\n");
-  printf("=============================\n");
-  printf("Nb_vertex: %d\n", ply->nb_vertex);
-  printf("Nb_face: %d\n", ply->nb_face);
-  int	i = 0;
-  while (i < ply->nb_vertex)
-    {
-      printf("Vertex %d : %f %f %f %d %d %d %d\n", i, ply->list_vertex[i].vec.x,
-	     ply->list_vertex[i].vec.y, ply->list_vertex[i].vec.z,
-	     ply->list_vertex[i].color.argb[0],
-	     ply->list_vertex[i].color.argb[1],
-	     ply->list_vertex[i].color.argb[2],
-	     ply->list_vertex[i].color.argb[3]);
-      ++i;
-    }
-  /* i = 0; */
-  /* int	j; */
-  /* while (i < ply->nb_face) */
-  /*   { */
-  /*     j = 0; */
-  /*     while (j < ply->list_face[i].nb_face) */
-  /* 	{ */
-  /* 	  printf("Face %d : %d\n", i, ply->list_face[i].face[j]); */
-  /* 	  ++j; */
-  /* 	} */
-  /*     ++i; */
-  /*   } */
-}
-
 int	launch_raytracer(t_data *data)
 {
   data->config.cur_width = data->config.width / 10;
   data->config.cur_height = data->config.height / 10;
-  print_scenes(data->scene);
-  /* printf("Objs[1]Type = %d\n", data->scene->objs[1].type); */
-  /* print_ply(data->scene->objs[2].ply.ply); */
-  if (init_server(data))
-    return (free_raytracer(data, 1));
-  printf("Starting to draw\n");
   bunny_set_loop_main_function((t_bunny_loop)main_loop);
   bunny_set_key_response((t_bunny_key)main_events);
   bunny_set_move_response((t_bunny_move)mouse_response);

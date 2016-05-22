@@ -1,15 +1,15 @@
 /*
 ** select.c for Raytracer2 in /home/asphahyre/rendu/gfx_raytracer2/src/cluster
-** 
+**
 ** Made by Luka Boulagnon
 ** Login   <boulag_l@epitech.net>
-** 
+**
 ** Started on  Mon May 16 21:34:58 2016 Luka Boulagnon
-** Last update Mon May 16 21:42:59 2016 Luka Boulagnon
+** Last update Sun May 22 16:08:58 2016 Antoine Baché
 */
 
-#include "network.h"
 #include <unistd.h>
+#include "network.h"
 
 static int		fdready(t_data *data, fd_set *clients, int fd, int *max)
 {
@@ -27,9 +27,6 @@ static int		fdready(t_data *data, fd_set *clients, int fd, int *max)
     }
   else if (fd != data->network.fd && step)
     {
-      /*
-      ** On read du data du client i. <3
-      */
     }
   else if (fd == data->network.fd && !step)
     if (new_connection(clients, data->network.fd, max) == -1)

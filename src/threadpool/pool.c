@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Tue May 17 02:25:38 2016 Antoine Baché
-** Last update Sat May 21 15:45:51 2016 Antoine Baché
+** Last update Sun May 22 16:44:40 2016 Antoine Baché
 */
 
 #include <stdlib.h>
@@ -33,6 +33,8 @@ static int		threadpool_init_start_threads(t_threadpool *pool)
 
 int			threadpool_init(t_threadpool *pool)
 {
+  static pthread_t	threads[NB_THREADS + 1];
+
   pool->mutex = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;
   pool->queue.mutex = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;
   pool->queue.condition = (pthread_cond_t)PTHREAD_COND_INITIALIZER;
