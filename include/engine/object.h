@@ -5,7 +5,7 @@
 ** Login   <ludonope@epitech.net>
 **
 ** Started on  Fri Apr 15 00:33:45 2016 Ludovic Petrenko
-** Last update Sun May 22 15:44:04 2016 Arthur ARNAUD
+** Last update Sun May 22 15:45:27 2016 Arthur ARNAUD
 */
 
 #ifndef OBJECT_H_
@@ -128,6 +128,7 @@ typedef struct		s_cone
 
 typedef struct		s_triangle
 {
+  t_color		color;
   t_vec3		pts[3];
 }			t_triangle;
 
@@ -195,6 +196,7 @@ typedef struct		s_obj
 
 typedef struct		s_ply_load
 {
+  t_color		color;
   t_ply			*ply;
   t_obj			*objs;
   void			*node;

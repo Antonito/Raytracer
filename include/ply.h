@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Wed Apr 20 09:57:10 2016 Arthur ARNAUD
-** Last update Sat May 21 20:04:18 2016 Arthur ARNAUD
+** Last update Sun May 22 03:45:38 2016 Antoine Baché
 */
 
 #ifndef PLY_H_
@@ -78,6 +78,7 @@ typedef struct	s_vertex
 {
   t_vec3	vec;
   t_color	color;
+  bool		get_color;
 }		t_vertex;
 
 typedef struct	s_face
@@ -126,7 +127,7 @@ int		fill_ply(t_ply *, t_ply_info *, int);
 int		*add_list_face(char **, int *, int *, int);
 double		*add_list_texcoord(char **, int *, int *, int);
 int		parse_color_face(t_color *, char **, int *, int);
-int		parse_color_vertex(t_color *, char **, int *);
+int		parse_color_vertex(t_color *, char **, int *, bool *);
 void		free_tab(char **tab);
 void		free_ply_info(t_ply_info *info);
 void		free_ply(t_ply *ply);
