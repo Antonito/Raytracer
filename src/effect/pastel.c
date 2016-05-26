@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May 18 13:16:08 2016 Antoine Baché
-** Last update Sun May 22 23:56:30 2016 Luka Boulagnon
+** Last update Tue May 24 15:55:39 2016 Antoine Baché
 */
 
 #include <stdio.h>
@@ -78,6 +78,8 @@ static void			filler(t_config *conf, t_bunny_position pix[2],
 void		pastel_effect(t_color *pix, int height, int width,
 			      t_config *conf)
 {
+  conf->pastel.level = 10;
+  conf->pastel.radius = 10;
   int		averages[conf->pastel.level][4];
   int		x;
   int		y;

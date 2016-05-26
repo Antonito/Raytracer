@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Wed May 18 20:25:05 2016 Antoine Baché
-** Last update Wed May 18 23:37:35 2016 Antoine Baché
+** Last update Thu May 26 20:54:22 2016 Antoine Baché
 */
 
 #include "raytracer.h"
@@ -20,6 +20,7 @@ void		contrast_effect(t_color *pix, int height, int width,
   int		cur;
 
   i = -1;
+
   contrast = (conf->contrast.value / 100.0) * (conf->contrast.value / 100.0);
   while (++i < height && (j = -1))
     while (++j < width)

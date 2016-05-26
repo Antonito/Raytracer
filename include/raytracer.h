@@ -5,7 +5,7 @@
 ** Login   <bache_a@epitech.net>
 **
 ** Started on  Thu Apr 14 12:39:45 2016 Antoine Baché
-** Last update Sun May 22 22:38:22 2016 Antoine Baché
+** Last update Tue May 24 18:21:08 2016 Antoine Baché
 */
 
 #ifndef	RAYTRACER_H_
@@ -25,7 +25,7 @@
 # define DEFAULT_HEIGHT		720
 # define WIN_NAME		"Ray Ta Soeur"
 # define UNUSED			__attribute__((unused))
-# define MAX_RECURSIVE		4
+# define MAX_RECURSIVE		10
 # define DEFAULT_FPS		24
 # define WIDTH_20		(data->config.cur_width / 4 + 1)
 # define HEIGHT_20		(data->config.cur_height / 4 + 1)
