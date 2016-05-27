@@ -35,6 +35,7 @@ Objects:
 ![Torus](/screenshots/torus.bmp?raw=true "Torus")
 ![Quartic Cylinder](/screenshots/quartic_cylinder.bmp?raw=true "Quartic Cylinder")
 ![TangleCube](/screenshots/void_cube.bmp?raw=true "TangleCube")
+![1000 stars](/screenshots/1000stars.jpe?raw=true "1000 stars")
 ![Solar System](/screenshots/solar.bmp?raw=true "Solar System")
 
 PLY:
