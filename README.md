@@ -61,4 +61,5 @@ Effects:
 ![Normal Mapping](/screenshots/normal_mapping2.jpe?raw=true "Normal Mapping")
 
 Realized with Arthur Arnaud, Antoine Bache, Luka Boulagnon and Ludovic Petrenko during our first year of Epitech.
+
 Mark : 29
