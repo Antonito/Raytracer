@@ -47,7 +47,6 @@ PLY:
 Effects:
 ![Bayer Filter](/screenshots/bayer.bmp?raw=true "Bayer Filter")
 ![Black And White](/screenshots/black_and_white.bmp?raw=true "Black And White")
-![Cassini](/screenshots/cassini.bmp?raw=true "Cassini")
 ![Negative](/screenshots/negative.bmp?raw=true "Negative")
 ![Pastel](/screenshots/pastel.png?raw=true "Pastel")
 ![Sepia](/screenshots/sepia.bmp?raw=true "Sepia")
