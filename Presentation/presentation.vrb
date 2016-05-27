@@ -1,0 +1,6 @@
+\frametitle{Un futur...~?}
+\only<1>{\includegraphics[width=9cm]{./imgs/pastel.png}}
+\only<2>{\includegraphics[width=9cm]{./imgs/stained-glass0.png}}
+\only<3>{\includegraphics[width=9cm]{./imgs/stained-glass1.png}}
+\only<4>{\includegraphics[width=9cm]{./imgs/bump-mapping1.png}}
+\only<5>{\includegraphics[width=9cm]{./imgs/bump-mapping0.png}}

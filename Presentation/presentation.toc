@@ -1,0 +1,10 @@
+\beamer@endinputifotherversion {3.33pt}
+\select@language {french}
+\beamer@sectionintoc {1}{Rendering}{11}{0}{1}
+\beamer@subsectionintoc {1}{1}{Temps r\IeC {\'e}el}{16}{0}{1}
+\beamer@subsectionintoc {1}{2}{Rendu final}{17}{0}{1}
+\beamer@sectionintoc {2}{Techniquement}{18}{0}{2}
+\beamer@sectionintoc {3}{Formes}{23}{0}{3}
+\beamer@subsectionintoc {3}{1}{\texttt {PLY}}{50}{0}{3}
+\beamer@sectionintoc {4}{Effets}{57}{0}{4}
+\beamer@sectionintoc {5}{Images}{64}{0}{5}
