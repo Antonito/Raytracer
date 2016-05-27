@@ -38,7 +38,7 @@ Objects:
 ![Solar System](/screenshots/solar.bmp?raw=true "Solar System")
 
 PLY:
-![Ark Reactor](/screenshots/ark_reactor.bmp?raw=true "Ark Reactor")
+![Ark Reactor](/screenshots/Ark%20Reactor.png?raw=true "Ark Reactor")
 ![Cube](/screenshots/cube.bmp?raw=true "Cube")
 ![Dragon](/screenshots/dragon.bmp?raw=true "Dragon")
 ![Lego Brick](/screenshots/lego_brick.bmp?raw=true "Lego Brick")
