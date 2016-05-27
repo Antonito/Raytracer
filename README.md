@@ -43,6 +43,13 @@ PLY:
 ![Dragon](/screenshots/dragon.bmp?raw=true "Dragon")
 ![Lego Brick](/screenshots/lego_brick.bmp?raw=true "Lego Brick")
 ![Mobius](/screenshots/mobius.bmp?raw=true "Mobius")
+![Mobius](/screenshots/mobius.jpe?raw=true "Mobius")
+![Mobius](/screenshots/mobius2.jpe?raw=true "Mobius")
+![Mobius](/screenshots/mobius3.jpe?raw=true "Mobius")
+![Mobius](/screenshots/mobius4.jpe?raw=true "Mobius")
+![Knife](/screenshots/knife.jpe?raw=true "Knife")
+![Chair](/screenshots/chair.jpe?raw=true "Chair scene")
+![Chair](/screenshots/chair2.jpe?raw=true "Chair scene 2")
 
 Effects:
 ![Bayer Filter](/screenshots/bayer.bmp?raw=true "Bayer Filter")
@@ -50,6 +57,9 @@ Effects:
 ![Negative](/screenshots/negative.bmp?raw=true "Negative")
 ![Pastel](/screenshots/pastel.png?raw=true "Pastel")
 ![Sepia](/screenshots/sepia.bmp?raw=true "Sepia")
+![Normal Mapping](/screenshots/normal_mapping.jpe?raw=true "Normal Mapping")
+![Normal Mapping](/screenshots/normal_mapping2.jpe?raw=true "Normal Mapping")
 
 Realized with Arthur Arnaud, Antoine Bache, Luka Boulagnon and Ludovic Petrenko during our first year of Epitech.
+
 Mark : 29
